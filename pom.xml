@@ -56,9 +56,9 @@
         <vavr.version>0.10.4</vavr.version>
         <bits.version>0.1.1</bits.version>
 
-        <commons-lang3.version>3.12.0</commons-lang3.version>
-        <commons-codec.version>1.15</commons-codec.version>
-        <uwutils.version>0.1.1</uwutils.version>
+<!--        <commons-lang3.version>3.12.0</commons-lang3.version>-->
+<!--        <commons-codec.version>1.15</commons-codec.version>-->
+<!--        <uwutils.version>0.1.1</uwutils.version>-->
 
         <junit.version>5.9.1</junit.version>
 
@@ -74,32 +74,38 @@
     </properties>
 
     <dependencies>
-        <!-- Main Dependencies -->
         <dependency>
-            <groupId>io.vavr</groupId>
-            <artifactId>vavr</artifactId>
-            <version>${vavr.version}</version>
+            <groupId>io.github.iwyfewwnt</groupId>
+            <artifactId>uwutils</artifactId>
+            <version>0.2.0-SNAPSHOT</version>
         </dependency>
+
+        <!-- Main Dependencies -->
+<!--        <dependency>-->
+<!--            <groupId>io.vavr</groupId>-->
+<!--            <artifactId>vavr</artifactId>-->
+<!--            <version>${vavr.version}</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>io.github.u004</groupId>
             <artifactId>bits</artifactId>
             <version>${bits.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>${commons-codec.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.u004</groupId>
-            <artifactId>uwutils</artifactId>
-            <version>${uwutils.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.commons</groupId>-->
+<!--            <artifactId>commons-lang3</artifactId>-->
+<!--            <version>${commons-lang3.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>commons-codec</groupId>-->
+<!--            <artifactId>commons-codec</artifactId>-->
+<!--            <version>${commons-codec.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.github.u004</groupId>-->
+<!--            <artifactId>uwutils</artifactId>-->
+<!--            <version>${uwutils.version}</version>-->
+<!--        </dependency>-->
 
         <!-- Test Dependencies -->
         <dependency>
@@ -107,12 +113,14 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 

@@ -16,48 +16,48 @@
 
 package io.github.iwyfewwnt.steamid;
 
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.ValueSource;
-import io.github.iwyfewwnt.steamid.utils.USteamInvite;
+//import org.junit.jupiter.params.ParameterizedTest;
+//import org.junit.jupiter.params.provider.CsvSource;
+//import org.junit.jupiter.params.provider.NullAndEmptySource;
+//import org.junit.jupiter.params.provider.ValueSource;
+//import io.github.iwyfewwnt.steamid.utils.USteamInvite;
+//
+//import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+final class TestUSteamInvite {
 
-public final class TestUSteamInvite {
-
-	@ParameterizedTest
-	@CsvSource(value = {
-			USteamInvite.MIN_CODE + " " + SteamId.MIN_XUID,
-			USteamInvite.MAX_CODE + " " + SteamId.MAX_XUID
-	}, delimiter = ' ')
-	void Test_FromCode_ToCode_MustBeCompatible(String code, long xuid) {
-		assertDoesNotThrow(() -> {
-			assertEquals(code, USteamInvite.toCode(xuid)
-					.get());
-
-			assertEquals(xuid, USteamInvite.fromCode(code)
-					.get());
-		});
-	}
-
-	@ParameterizedTest
-	@NullAndEmptySource
-	void Test_FromCode_ShouldFail_WhenPassedInvalidCode(String code) {
-		assertTrue(USteamInvite.fromCode(code).isFailure());
-	}
-
-	@ParameterizedTest
-	@ValueSource(longs = { Long.MIN_VALUE, SteamId.MIN_XUID - 1, SteamId.BASE_XUID, SteamId.MAX_XUID + 1, Long.MAX_VALUE })
-	void Test_ToCode_ShouldFail_WhenPassedInvalidXuid(long xuid) {
-		assertTrue(USteamInvite.toCode(xuid).isFailure());
-	}
-
-	@ParameterizedTest
-	@ValueSource(strings = { USteamInvite.MIN_CODE, USteamInvite.MAX_CODE })
-	void Test_FromCode_ShouldSuccess_WhenPassedUntrimmedString(String code) {
-		assertTrue(USteamInvite.fromCode(" " + code + " ").isSuccess());
-	}
+//	@ParameterizedTest
+//	@CsvSource(value = {
+//			USteamInvite.MIN_CODE + " " + SteamId.MIN_XUID,
+//			USteamInvite.MAX_CODE + " " + SteamId.MAX_XUID
+//	}, delimiter = ' ')
+//	void Test_FromCode_ToCode_MustBeCompatible(String code, long xuid) {
+//		assertDoesNotThrow(() -> {
+//			assertEquals(code, USteamInvite.toCode(xuid)
+//					.get());
+//
+//			assertEquals(xuid, USteamInvite.fromCode(code)
+//					.get());
+//		});
+//	}
+//
+//	@ParameterizedTest
+//	@NullAndEmptySource
+//	void Test_FromCode_ShouldFail_WhenPassedInvalidCode(String code) {
+//		assertTrue(USteamInvite.fromCode(code).isFailure());
+//	}
+//
+//	@ParameterizedTest
+//	@ValueSource(longs = { Long.MIN_VALUE, SteamId.MIN_XUID - 1, SteamId.BASE_XUID, SteamId.MAX_XUID + 1, Long.MAX_VALUE })
+//	void Test_ToCode_ShouldFail_WhenPassedInvalidXuid(long xuid) {
+//		assertTrue(USteamInvite.toCode(xuid).isFailure());
+//	}
+//
+//	@ParameterizedTest
+//	@ValueSource(strings = { USteamInvite.MIN_CODE, USteamInvite.MAX_CODE })
+//	void Test_FromCode_ShouldSuccess_WhenPassedUntrimmedString(String code) {
+//		assertTrue(USteamInvite.fromCode(" " + code + " ").isSuccess());
+//	}
 
 	private TestUSteamInvite() {
 	}

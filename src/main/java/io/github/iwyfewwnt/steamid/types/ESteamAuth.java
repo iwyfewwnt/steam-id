@@ -16,10 +16,11 @@
 
 package io.github.iwyfewwnt.steamid.types;
 
-import io.github.u004.uwutils.UwArray;
-import io.github.u004.uwutils.UwMap;
-import io.vavr.control.Option;
+//import io.github.u004.uwutils.UwArray;
+//import io.github.u004.uwutils.UwMap;
+//import io.vavr.control.Option;
 import io.github.iwyfewwnt.steamid.utils.USteamAuth;
+import io.github.iwyfewwnt.uwutils.UwMap;
 
 import java.util.Map;
 
@@ -45,7 +46,8 @@ public enum ESteamAuth {
 	 */
 	YES(USteamAuth.YES);
 
-	private static final Map<Integer, ESteamAuth> MAP_BY_VALUE = UwMap.newEnumMapByFieldRaw(
+	// TODO: doc-comment
+	private static final Map<Integer, ESteamAuth> MAP_BY_VALUE = UwMap.newMapByFieldOrNull(
 			entry -> entry.value, ESteamAuth.class
 	);
 
@@ -72,45 +74,45 @@ public enum ESteamAuth {
 		return this.value;
 	}
 
-	/**
-	 * Get the {@code ESteamAuth} instance by its type ID.
-	 *
-	 * @param value		authentication type ID
-	 * @return			{@code ESteamAuth} instance
-	 * 					that wrapped in {@link Option}
-	 */
-	public static Option<ESteamAuth> fromValue(Integer value) {
-		return UwMap.get(value, MAP_BY_VALUE);
-	}
+//	/**
+//	 * Get the {@code ESteamAuth} instance by its type ID.
+//	 *
+//	 * @param value		authentication type ID
+//	 * @return			{@code ESteamAuth} instance
+//	 * 					that wrapped in {@link Option}
+//	 */
+//	public static Option<ESteamAuth> fromValue(Integer value) {
+//		return UwMap.get(value, MAP_BY_VALUE);
+//	}
 
-	/**
-	 * Get the {@code ESteamAuth} instance by its index.
-	 *
-	 * @param index		{@code ESteamAuth} instance index
-	 * @return			{@code ESteamAuth} instance
-	 * 					that wrapped in {@link Option}
-	 */
-	public static Option<ESteamAuth> fromIndex(Integer index) {
-		return UwArray.get(index, values());
-	}
+//	/**
+//	 * Get the {@code ESteamAuth} instance by its index.
+//	 *
+//	 * @param index		{@code ESteamAuth} instance index
+//	 * @return			{@code ESteamAuth} instance
+//	 * 					that wrapped in {@link Option}
+//	 */
+//	public static Option<ESteamAuth> fromIndex(Integer index) {
+//		return UwArray.get(index, values());
+//	}
 
-	/**
-	 * Get the {@code ESteamAuth} instance by its type ID.
-	 *
-	 * @param value		authentication type ID
-	 * @return			{@code ESteamAuth} instance or null
-	 */
-	public static ESteamAuth fromValueRaw(Integer value) {
-		return fromValue(value).getOrNull();
-	}
+//	/**
+//	 * Get the {@code ESteamAuth} instance by its type ID.
+//	 *
+//	 * @param value		authentication type ID
+//	 * @return			{@code ESteamAuth} instance or null
+//	 */
+//	public static ESteamAuth fromValueRaw(Integer value) {
+//		return fromValue(value).getOrNull();
+//	}
 
-	/**
-	 * Get the {@code ESteamAuth} instance by its index.
-	 *
-	 * @param index		{@code ESteamAuth} instance index
-	 * @return			{@code ESteamAuth} instance or null
-	 */
-	public static ESteamAuth fromIndexRaw(Integer index) {
-		return fromIndex(index).getOrNull();
-	}
+//	/**
+//	 * Get the {@code ESteamAuth} instance by its index.
+//	 *
+//	 * @param index		{@code ESteamAuth} instance index
+//	 * @return			{@code ESteamAuth} instance or null
+//	 */
+//	public static ESteamAuth fromIndexRaw(Integer index) {
+//		return fromIndex(index).getOrNull();
+//	}
 }

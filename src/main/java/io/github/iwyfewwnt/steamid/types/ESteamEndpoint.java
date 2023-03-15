@@ -17,9 +17,10 @@
 package io.github.iwyfewwnt.steamid.types;
 
 import io.github.iwyfewwnt.steamid.utils.USteamEndpoint;
-import io.github.u004.uwutils.UwArray;
-import io.github.u004.uwutils.UwMap;
-import io.vavr.control.Option;
+import io.github.iwyfewwnt.uwutils.UwMap;
+//import io.github.u004.uwutils.UwArray;
+//import io.github.u004.uwutils.UwMap;
+//import io.vavr.control.Option;
 
 import java.util.Map;
 
@@ -59,7 +60,8 @@ public enum ESteamEndpoint {
 	 */
 	P(USteamEndpoint.P);
 
-	private static final Map<String, ESteamEndpoint> MAP_BY_VALUE = UwMap.newEnumMapByFieldRaw(
+	// TODO: doc-comment
+	private static final Map<String, ESteamEndpoint> MAP_BY_VALUE = UwMap.newMapByFieldOrNull(
 			entry -> entry.value, ESteamEndpoint.class
 	);
 
@@ -86,45 +88,45 @@ public enum ESteamEndpoint {
 		return this.value;
 	}
 
-	/**
-	 * Get the {@code ESteamEndpoint} instance by its endpoint string.
-	 *
-	 * @param value		endpoint string
-	 * @return			{@code ESteamEndpoint} instance
-	 * 					that wrapped in {@link Option}
-	 */
-	public static Option<ESteamEndpoint> fromValue(String value) {
-		return UwMap.get(value, MAP_BY_VALUE);
-	}
+//	/**
+//	 * Get the {@code ESteamEndpoint} instance by its endpoint string.
+//	 *
+//	 * @param value		endpoint string
+//	 * @return			{@code ESteamEndpoint} instance
+//	 * 					that wrapped in {@link Option}
+//	 */
+//	public static Option<ESteamEndpoint> fromValue(String value) {
+//		return UwMap.get(value, MAP_BY_VALUE);
+//	}
 
-	/**
-	 * Get the {@code ESteamEndpoint} instance by its index.
-	 *
-	 * @param index		{@code ESteamEndpoint} instance index
-	 * @return			{@code ESteamEndpoint} instance
-	 * 					that wrapped in {@link Option}
-	 */
-	public static Option<ESteamEndpoint> fromIndex(Integer index) {
-		return UwArray.get(index, values());
-	}
+//	/**
+//	 * Get the {@code ESteamEndpoint} instance by its index.
+//	 *
+//	 * @param index		{@code ESteamEndpoint} instance index
+//	 * @return			{@code ESteamEndpoint} instance
+//	 * 					that wrapped in {@link Option}
+//	 */
+//	public static Option<ESteamEndpoint> fromIndex(Integer index) {
+//		return UwArray.get(index, values());
+//	}
 
-	/**
-	 * Get the {@code ESteamEndpoint} instance by its endpoint string.
-	 *
-	 * @param value		endpoint string
-	 * @return			{@code ESteamEndpoint} instance or null
-	 */
-	public static ESteamEndpoint fromValueRaw(String value) {
-		return fromValue(value).getOrNull();
-	}
+//	/**
+//	 * Get the {@code ESteamEndpoint} instance by its endpoint string.
+//	 *
+//	 * @param value		endpoint string
+//	 * @return			{@code ESteamEndpoint} instance or null
+//	 */
+//	public static ESteamEndpoint fromValueRaw(String value) {
+//		return fromValue(value).getOrNull();
+//	}
 
-	/**
-	 * Get the {@code ESteamEndpoint} instance by its index.
-	 *
-	 * @param index		{@code ESteamEndpoint} instance index
-	 * @return			{@code ESteamEndpoint} instance or null
-	 */
-	public static ESteamEndpoint fromIndexRaw(Integer index) {
-		return fromIndex(index).getOrNull();
-	}
+//	/**
+//	 * Get the {@code ESteamEndpoint} instance by its index.
+//	 *
+//	 * @param index		{@code ESteamEndpoint} instance index
+//	 * @return			{@code ESteamEndpoint} instance or null
+//	 */
+//	public static ESteamEndpoint fromIndexRaw(Integer index) {
+//		return fromIndex(index).getOrNull();
+//	}
 }

@@ -16,11 +16,12 @@
 
 package io.github.iwyfewwnt.steamid.types;
 
-import io.github.u004.uwutils.UwArray;
-import io.github.u004.uwutils.UwMap;
-import io.vavr.control.Option;
+//import io.github.u004.uwutils.UwArray;
+//import io.github.u004.uwutils.UwMap;
+//import io.vavr.control.Option;
 import io.github.iwyfewwnt.steamid.utils.USteamAccount;
 import io.github.iwyfewwnt.steamid.utils.USteamBit;
+import io.github.iwyfewwnt.uwutils.UwMap;
 
 import java.util.Map;
 
@@ -123,11 +124,13 @@ public enum ESteamAccount {
 	 */
 	public static final int OFFSET = USteamBit.ACCOUNT_TYPE_OFFSET;
 
-	private static final Map<Integer, ESteamAccount> MAP_BY_VALUE = UwMap.newEnumMapByFieldRaw(
+	// TODO: doc-comment
+	private static final Map<Integer, ESteamAccount> MAP_BY_VALUE = UwMap.newMapByFieldOrNull(
 			entry -> entry.value, ESteamAccount.class
 	);
 
-	private static final Map<Character, ESteamAccount> MAP_BY_CHAR = UwMap.newEnumMapByFieldRaw(
+	// TODO: doc-comment
+	private static final Map<Character, ESteamAccount> MAP_BY_CHAR = UwMap.newMapByFieldOrNull(
 			entry -> entry.ch, ESteamAccount.class
 	);
 
@@ -170,66 +173,66 @@ public enum ESteamAccount {
 		return this.ch;
 	}
 
-	/**
-	 * Get the {@code ESteamAccount} instance by its type ID.
-	 *
-	 * @param value		account type ID
-	 * @return			{@code ESteamAccount} instance
-	 * 					that wrapped in {@link Option}
-	 */
-	public static Option<ESteamAccount> fromValue(Integer value) {
-		return UwMap.get(value, MAP_BY_VALUE);
-	}
+//	/**
+//	 * Get the {@code ESteamAccount} instance by its type ID.
+//	 *
+//	 * @param value		account type ID
+//	 * @return			{@code ESteamAccount} instance
+//	 * 					that wrapped in {@link Option}
+//	 */
+//	public static Option<ESteamAccount> fromValue(Integer value) {
+//		return UwMap.get(value, MAP_BY_VALUE);
+//	}
 
-	/**
-	 * Get the {@code ESteamAccount} instance by its type char.
-	 *
-	 * @param value		account type char
-	 * @return			{@code ESteamAccount} instance
-	 * 					that wrapped in {@link Option}
-	 */
-	public static Option<ESteamAccount> fromChar(Character value) {
-		return UwMap.get(value, MAP_BY_CHAR);
-	}
+//	/**
+//	 * Get the {@code ESteamAccount} instance by its type char.
+//	 *
+//	 * @param value		account type char
+//	 * @return			{@code ESteamAccount} instance
+//	 * 					that wrapped in {@link Option}
+//	 */
+//	public static Option<ESteamAccount> fromChar(Character value) {
+//		return UwMap.get(value, MAP_BY_CHAR);
+//	}
 
-	/**
-	 * Get the {@code ESteamAccount} instance by its index.
-	 *
-	 * @param index		{@code ESteamAccount} instance index
-	 * @return			{@code ESteamAccount} instance
-	 * 					that wrapped in {@link Option}
-	 */
-	public static Option<ESteamAccount> fromIndex(Integer index) {
-		return UwArray.get(index, values());
-	}
+//	/**
+//	 * Get the {@code ESteamAccount} instance by its index.
+//	 *
+//	 * @param index		{@code ESteamAccount} instance index
+//	 * @return			{@code ESteamAccount} instance
+//	 * 					that wrapped in {@link Option}
+//	 */
+//	public static Option<ESteamAccount> fromIndex(Integer index) {
+//		return UwArray.get(index, values());
+//	}
 
-	/**
-	 * Get the {@code ESteamAccount} instance by its type ID.
-	 *
-	 * @param value		account type ID
-	 * @return			{@code ESteamAccount} instance or null
-	 */
-	public static ESteamAccount fromValueRaw(Integer value) {
-		return fromValue(value).getOrNull();
-	}
+//	/**
+//	 * Get the {@code ESteamAccount} instance by its type ID.
+//	 *
+//	 * @param value		account type ID
+//	 * @return			{@code ESteamAccount} instance or null
+//	 */
+//	public static ESteamAccount fromValueRaw(Integer value) {
+//		return fromValue(value).getOrNull();
+//	}
 
-	/**
-	 * Get the {@code ESteamAccount} instance by its type char.
-	 *
-	 * @param value		account type char
-	 * @return			{@code ESteamAccount} instance or null
-	 */
-	public static ESteamAccount fromCharRaw(Character value) {
-		return fromChar(value).getOrNull();
-	}
+//	/**
+//	 * Get the {@code ESteamAccount} instance by its type char.
+//	 *
+//	 * @param value		account type char
+//	 * @return			{@code ESteamAccount} instance or null
+//	 */
+//	public static ESteamAccount fromCharRaw(Character value) {
+//		return fromChar(value).getOrNull();
+//	}
 
-	/**
-	 * Get the {@code ESteamAccount} instance by its index.
-	 *
-	 * @param index		{@code ESteamAccount} instance index
-	 * @return			{@code ESteamAccount} instance or null
-	 */
-	public static ESteamAccount fromIndexRaw(Integer index) {
-		return fromIndex(index).getOrNull();
-	}
+//	/**
+//	 * Get the {@code ESteamAccount} instance by its index.
+//	 *
+//	 * @param index		{@code ESteamAccount} instance index
+//	 * @return			{@code ESteamAccount} instance or null
+//	 */
+//	public static ESteamAccount fromIndexRaw(Integer index) {
+//		return fromIndex(index).getOrNull();
+//	}
 }

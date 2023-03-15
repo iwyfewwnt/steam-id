@@ -16,11 +16,12 @@
 
 package io.github.iwyfewwnt.steamid.types;
 
-import io.github.u004.uwutils.UwArray;
-import io.github.u004.uwutils.UwMap;
-import io.vavr.control.Option;
+//import io.github.u004.uwutils.UwArray;
+//import io.github.u004.uwutils.UwMap;
+//import io.vavr.control.Option;
 import io.github.iwyfewwnt.steamid.utils.USteamBit;
 import io.github.iwyfewwnt.steamid.utils.USteamInstance;
+import io.github.iwyfewwnt.uwutils.UwMap;
 
 import java.util.Map;
 
@@ -88,7 +89,8 @@ public enum ESteamInstance {
 	 */
 	public static final int OFFSET = USteamBit.ACCOUNT_INSTANCE_OFFSET;
 
-	private static final Map<Integer, ESteamInstance> MAP_BY_VALUE = UwMap.newEnumMapByFieldRaw(
+	// TODO: doc-comment
+	private static final Map<Integer, ESteamInstance> MAP_BY_VALUE = UwMap.newMapByFieldOrNull(
 			entry -> entry.value, ESteamInstance.class
 	);
 
@@ -115,45 +117,45 @@ public enum ESteamInstance {
 		return this.value;
 	}
 
-	/**
-	 * Get the {@code ESteamInstance} instance by its type ID.
-	 *
-	 * @param value		account instance type ID
-	 * @return			{@code ESteamInstance} instance
-	 * 					that wrapped in {@link Option}
-	 */
-	public static Option<ESteamInstance> fromValue(Integer value) {
-		return UwMap.get(value, MAP_BY_VALUE);
-	}
+//	/**
+//	 * Get the {@code ESteamInstance} instance by its type ID.
+//	 *
+//	 * @param value		account instance type ID
+//	 * @return			{@code ESteamInstance} instance
+//	 * 					that wrapped in {@link Option}
+//	 */
+//	public static Option<ESteamInstance> fromValue(Integer value) {
+//		return UwMap.get(value, MAP_BY_VALUE);
+//	}
 
-	/**
-	 * Get the {@code ESteamInstance} instance by its index.
-	 *
-	 * @param index		{@code ESteamInstance} instance index
-	 * @return			{@code ESteamInstance} instance
-	 * 					that wrapped in {@link Option}
-	 */
-	public static Option<ESteamInstance> fromIndex(Integer index) {
-		return UwArray.get(index, values());
-	}
+//	/**
+//	 * Get the {@code ESteamInstance} instance by its index.
+//	 *
+//	 * @param index		{@code ESteamInstance} instance index
+//	 * @return			{@code ESteamInstance} instance
+//	 * 					that wrapped in {@link Option}
+//	 */
+//	public static Option<ESteamInstance> fromIndex(Integer index) {
+//		return UwArray.get(index, values());
+//	}
 
-	/**
-	 * Get the {@code ESteamInstance} instance by its type ID.
-	 *
-	 * @param value		account instance type ID
-	 * @return			{@code ESteamInstance} instance or null
-	 */
-	public static ESteamInstance fromValueRaw(Integer value) {
-		return fromValue(value).getOrNull();
-	}
+//	/**
+//	 * Get the {@code ESteamInstance} instance by its type ID.
+//	 *
+//	 * @param value		account instance type ID
+//	 * @return			{@code ESteamInstance} instance or null
+//	 */
+//	public static ESteamInstance fromValueRaw(Integer value) {
+//		return fromValue(value).getOrNull();
+//	}
 
-	/**
-	 * Get the {@code ESteamInstance} instance by its index.
-	 *
-	 * @param index		{@code ESteamInstance} instance index
-	 * @return			{@code ESteamInstance} instance or null
-	 */
-	public static ESteamInstance fromIndexRaw(Integer index) {
-		return fromIndex(index).getOrNull();
-	}
+//	/**
+//	 * Get the {@code ESteamInstance} instance by its index.
+//	 *
+//	 * @param index		{@code ESteamInstance} instance index
+//	 * @return			{@code ESteamInstance} instance or null
+//	 */
+//	public static ESteamInstance fromIndexRaw(Integer index) {
+//		return fromIndex(index).getOrNull();
+//	}
 }
