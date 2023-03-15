@@ -141,7 +141,7 @@ public final class USteamCsgo {
 				byte idNibble = (byte) (xuid & UBitMask.UINT4);
 				byte hashNibble = (byte) ((hash >> i) & 1);
 
-				long a = ((res << 4) & UBitMask.UINT32) | (idNibble & UBitMask.UINT32);
+				long a = ((res << 4) & UBitMask.UINT32) | idNibble;
 
 				res = (res >> 28) << 32 | (a & UBitMask.UINT16);
 				res = (res >> 31) << 32 | (a << 1 | hashNibble);
@@ -162,7 +162,7 @@ public final class USteamCsgo {
 			for (int i = 0; i < 8; i++) {
 				val >>= 1;
 
-				long idNibble = (val & UBitMask.UINT4) & UBitMask.UINT32;
+				long idNibble = val & UBitMask.UINT4;
 
 				xuid <<= 4;
 				xuid |= idNibble;
