@@ -1,0 +1,29 @@
+name: Java Test
+
+on:
+  push:
+    branches:
+      - '**'
+
+    tags-ignore:
+      - '**'
+
+  pull_request:
+
+  workflow_dispatch:
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup
+        uses: actions/setup-java@v3
+        with:
+          java-version: 8
+          distribution: corretto
+
+      - name: Run
+        run: mvn test
