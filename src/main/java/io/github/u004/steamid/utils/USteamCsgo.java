@@ -83,7 +83,7 @@ public final class USteamCsgo {
 	 *
 	 * <p>Used to normalize the {@code SteamId}'s xuid.
 	 */
-	private static final long MASK = 0x4353474F00000000L;
+	private static final long HASH_MASK = 0x4353474F00000000L;
 
 	// Unsafe. Should be wrapped at a higher level.
 	private static String base32(long val) {
@@ -115,7 +115,7 @@ public final class USteamCsgo {
 
 	// Unsafe. Should be wrapped at a higher level.
 	private static long hash(long xuid) {
-		xuid |= MASK;
+		xuid |= HASH_MASK;
 
 		byte[] bytes = ByteBuffer.allocate(Long.BYTES)
 				.order(ByteOrder.LITTLE_ENDIAN)
