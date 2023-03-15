@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 u004
+ * Copyright 2023 iwyfewwnt
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,8 +34,6 @@ public final class USteamRegex {
 	 * <p>{@code USteamRegex.Group} is the utility class
 	 * for all group names that were used in this project
 	 * for pattern matching.
-	 *
-	 * @since 0.1.0
 	 */
 	public static final class Group {
 
