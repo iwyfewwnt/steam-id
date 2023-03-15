@@ -54,7 +54,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <vavr.version>0.10.4</vavr.version>
-        <bits.version>0.1.0</bits.version>
+        <bits.version>0.1.1</bits.version>
 
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-codec.version>1.15</commons-codec.version>
