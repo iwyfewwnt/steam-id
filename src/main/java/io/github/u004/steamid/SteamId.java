@@ -171,7 +171,8 @@ public final class SteamId {
 		ESteamUniverse universe = this.getUniverseRaw();
 		ESteamInstance instance = this.getInstanceRaw();
 
-		return xuid >= BASE_XUID
+		return xuid != null
+				&& xuid >= BASE_XUID
 				&& xuid <= MAX_XUID
 				&& account != null
 				&& universe != null
