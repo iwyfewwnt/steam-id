@@ -97,7 +97,7 @@ public final class SteamId {
 	public static final String MAX_ID3 = "[U:1:4294967295]";
 
 	/**
-	 * Unique account identifier.
+	 * Unique account identifier that wrapped in {@link Option}.
 	 */
 	private Option<Long> xuid;
 

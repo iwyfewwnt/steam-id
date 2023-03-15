@@ -178,7 +178,7 @@ public final class USteamCsgo {
 	 * Convert unique Steam account identifier
 	 * to the interface-friendly CS:GO friend code.
 	 *
-	 * <p>Calls private static method {@code USteamCsgo#toRawCode(long)}
+	 * <p>Calls private static method {@code USteamCsgo#toExtendedFriendCode(long)}
 	 * and cuts {@value USteamCsgo#CODE_PREFIX} from the start of the code.
 	 *
 	 * <p>Possible failure exceptions:
@@ -222,7 +222,7 @@ public final class USteamCsgo {
 	 * to the unique Steam account identifier.
 	 *
 	 * <p>Adds {@value USteamCsgo#CODE_PREFIX} to the code and calls
-	 * private static method {@code USteamCsgo#fromRawCode(String)}.
+	 * private static method {@code USteamCsgo#fromExtendedFriendCode(String)}.
 	 *
 	 * <p>Possible failure exceptions:
 	 * <ul>
@@ -266,7 +266,7 @@ public final class USteamCsgo {
 	 * Rawly convert unique Steam account identifier
 	 * to the interface-friendly CS:GO friend code.
 	 *
-	 * <p>Calls private static method {@code USteamCsgo#toRawCode(long)}
+	 * <p>Calls private static method {@code USteamCsgo#toExtendedFriendCode(long)}
 	 * and cuts {@value USteamCsgo#CODE_PREFIX} from the start of the code.
 	 *
 	 * <hr>
@@ -297,7 +297,7 @@ public final class USteamCsgo {
 	 * to the unique Steam account identifier.
 	 *
 	 * <p>Adds {@value USteamCsgo#CODE_PREFIX} to the code and calls
-	 * private static method {@code USteamCsgo#fromRawCode(String)}.
+	 * private static method {@code USteamCsgo#fromExtendedFriendCode(String)}.
 	 *
 	 * <hr>
 	 * <pre>{@code
