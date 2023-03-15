@@ -1317,14 +1317,12 @@ public final class SteamId {
 		Matcher m = USteamPattern.STEAM_2.matcher(id2);
 
 		if (m.matches()) {
-			Long id = Try.of(() -> Long.parseUnsignedLong(m.group(USteamRegex.Group.ID)))
-					.getOrNull();
+			Long xuid = Try.of(() -> {
+				long id = Long.parseUnsignedLong(m.group(USteamRegex.Group.ID));
+				long auth = Long.parseUnsignedLong(m.group(USteamRegex.Group.AUTH));
 
-			Long auth = Try.of(() -> Long.parseUnsignedLong(m.group(USteamRegex.Group.AUTH)))
-					.getOrNull();
-
-			Long xuid = Try.of(() -> id << 1 | auth)
-					.getOrNull();
+				return id << 1 | auth;
+			}).getOrNull();
 
 			return isSteamXuidValid(xuid);
 		}
