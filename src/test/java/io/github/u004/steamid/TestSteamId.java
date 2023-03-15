@@ -57,14 +57,14 @@ public final class TestSteamId {
 			assertEquals(id64, defaultSteamId.getAsSteam64().get());
 			assertEquals(id2, defaultSteamId.getAsSteam2().get());
 			assertEquals(id3, defaultSteamId.getAsSteam3().get());
-			assertEquals(csgoCode, defaultSteamId.getAsCsgoFriendCode().get());
+			assertEquals(csgoCode, defaultSteamId.getAsCsgoCode().get());
 			assertEquals(inviteCode, defaultSteamId.getAsSteamInviteCode().get());
 
 			// Instance Equals
 			assertEquals(defaultSteamId, SteamId.fromSteam64(id64).get());
 			assertEquals(defaultSteamId, SteamId.fromSteam2(id2).get());
 			assertEquals(defaultSteamId, SteamId.fromSteam3(id3).get());
-			assertEquals(defaultSteamId, SteamId.fromCsgoFriendCode(csgoCode).get());
+			assertEquals(defaultSteamId, SteamId.fromCsgoCode(csgoCode).get());
 			assertEquals(defaultSteamId, SteamId.fromSteamInviteCode(inviteCode).get());
 
 			// Invite Code Equals
@@ -81,10 +81,10 @@ public final class TestSteamId {
 			// CS:GO Code Equals
 			steamId = defaultSteamId;
 
-			assertEquals(steamId.getAsCsgoFriendCode().get(),
+			assertEquals(steamId.getAsCsgoCode().get(),
 					USteamCsgo.toCode(steamId.getXuid().get()).get());
 
-			steamId = SteamId.fromCsgoFriendCode(csgoCode)
+			steamId = SteamId.fromCsgoCode(csgoCode)
 					.get();
 
 			assertEquals(steamId.getXuid().get(),

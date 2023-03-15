@@ -24,14 +24,14 @@ package io.github.u004.steamid.exceptions;
  *
  * @since 0.1.0
  */
-public final class InvalidCsgoFriendCodeStateException extends IllegalStateException {
+public final class InvalidCsgoCodeStateException extends IllegalStateException {
 
 	/**
-	 * Initialize an {@code InvalidCsgoFriendCodeException} instance.
+	 * Initialize an {@code InvalidCsgoCodeException} instance.
 	 *
 	 * <p>Default exception message: "CS:GO friend code has an invalid state".
 	 */
-	public InvalidCsgoFriendCodeStateException() {
+	public InvalidCsgoCodeStateException() {
 		super("CS:GO friend code has an invalid state");
 	}
 }

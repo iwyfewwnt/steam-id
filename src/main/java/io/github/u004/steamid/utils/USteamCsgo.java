@@ -21,7 +21,7 @@ import io.github.u004.steamid.SteamId;
 import io.vavr.control.Try;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
-import io.github.u004.steamid.exceptions.InvalidCsgoFriendCodeStateException;
+import io.github.u004.steamid.exceptions.InvalidCsgoCodeStateException;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -184,7 +184,7 @@ public final class USteamCsgo {
 	 * <p>Possible failure exceptions:
 	 * <ul>
 	 *     <li>{@link IllegalArgumentException}
-	 *     <li>{@link InvalidCsgoFriendCodeStateException}
+	 *     <li>{@link InvalidCsgoCodeStateException}
 	 * </ul>
 	 *
 	 * <hr>
@@ -214,7 +214,7 @@ public final class USteamCsgo {
 
 		return toExtendedCode(xuid)
 				.map(code -> code.substring(CODE_PREFIX.length()))
-				.filter(code -> code.matches(USteamRegex.CSGO_CODE), InvalidCsgoFriendCodeStateException::new);
+				.filter(code -> code.matches(USteamRegex.CSGO_CODE), InvalidCsgoCodeStateException::new);
 	}
 
 	/**

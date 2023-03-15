@@ -376,13 +376,13 @@ public final class SteamId {
 	 * <ul>
 	 *     <li>{@link InvalidSteamIdStateException}
 	 *     <li>{@link IllegalArgumentException}
-	 *     <li>{@link InvalidCsgoFriendCodeStateException}
+	 *     <li>{@link InvalidCsgoCodeStateException}
 	 * </ul>
 	 *
 	 * @return		string value of the CS:GO friend code
 	 * 				that wrapped in {@link Try}
 	 */
-	public Try<String> getAsCsgoFriendCode() {
+	public Try<String> getAsCsgoCode() {
 		if (!this.isValid()) {
 			return Try.failure(new InvalidSteamIdStateException());
 		}
@@ -454,8 +454,8 @@ public final class SteamId {
 	 *
 	 * @return		string value of the CS:GO friend code or null
 	 */
-	public String getAsCsgoFriendCodeRaw() {
-		return this.getAsCsgoFriendCode().getOrNull();
+	public String getAsCsgoCodeRaw() {
+		return this.getAsCsgoCode().getOrNull();
 	}
 
 	/**
@@ -653,7 +653,7 @@ public final class SteamId {
 	 * @return			this {@code SteamId} instance
 	 * 					that wrapped in {@link Try}
 	 */
-	public Try<SteamId> setAsCsgoFriendCode(String code) {
+	public Try<SteamId> setAsCsgoCode(String code) {
 		return USteamCsgo.fromCode(code)
 				.flatMap(this::setAsIndividual);
 	}
@@ -749,7 +749,7 @@ public final class SteamId {
 	 *     <li>{@link SteamId#setAsSteam2(String)}
 	 *     <li>{@link SteamId#setAsSteam3(String)}
 	 *     <li>{@link SteamId#setAsSteamInviteCode(String)}
-	 *     <li>{@link SteamId#setAsCsgoFriendCode(String)}
+	 *     <li>{@link SteamId#setAsCsgoCode(String)}
 	 *     <li>{@link SteamId#setAsSteamUrl(String)}
 	 * </ul>
 	 *
@@ -768,7 +768,7 @@ public final class SteamId {
 				.recoverWith($ -> this.setAsSteam2(str))
 				.recoverWith($ -> this.setAsSteam3(str))
 				.recoverWith($ -> this.setAsSteamInviteCode(str))
-				.recoverWith($ -> this.setAsCsgoFriendCode(str))
+				.recoverWith($ -> this.setAsCsgoCode(str))
 				.recoverWith($ -> this.setAsSteamUrl(str));
 	}
 
@@ -1450,7 +1450,7 @@ public final class SteamId {
 	/**
 	 * Create a {@code SteamId} instance and initialize it from interface-friendly CS:GO friend code.
 	 *
-	 * <p>Wraps {@link SteamId#setAsCsgoFriendCode(String)}.
+	 * <p>Wraps {@link SteamId#setAsCsgoCode(String)}.
 	 *
 	 * <p>Possible failure exceptions:
 	 * <ul>
@@ -1462,8 +1462,8 @@ public final class SteamId {
 	 * @return			new {@code SteamId} instance
 	 * 					that wrapped in {@link Try}
 	 */
-	public static Try<SteamId> fromCsgoFriendCode(String code) {
-		return new SteamId().setAsCsgoFriendCode(code);
+	public static Try<SteamId> fromCsgoCode(String code) {
+		return new SteamId().setAsCsgoCode(code);
 	}
 
 	/**
@@ -1605,13 +1605,13 @@ public final class SteamId {
 	/**
 	 * Create a {@code SteamId} instance and initialize it from interface-friendly CS:GO friend code.
 	 *
-	 * <p>Wraps {@link SteamId#setAsCsgoFriendCode(String)}.
+	 * <p>Wraps {@link SteamId#setAsCsgoCode(String)}.
 	 *
 	 * @param code		string value of the interface-friendly CS:GO friend code
 	 * @return			new {@code SteamId} instance or null
 	 */
-	public static SteamId fromCsgoFriendCodeRaw(String code) {
-		return fromCsgoFriendCode(code).getOrNull();
+	public static SteamId fromCsgoCodeRaw(String code) {
+		return fromCsgoCode(code).getOrNull();
 	}
 
 	/**
