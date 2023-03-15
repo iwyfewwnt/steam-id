@@ -28,6 +28,7 @@ import io.github.u004.steamid.types.ESteamAccount;
 import io.github.u004.steamid.types.ESteamInstance;
 import io.github.u004.steamid.types.ESteamUniverse;
 
+import java.math.BigInteger;
 import java.util.NoSuchElementException;
 import java.util.regex.Matcher;
 
@@ -192,27 +193,26 @@ public final class SteamId {
 	 * <p>Possible failure exceptions:
 	 * <ul>
 	 *     <li>{@link InvalidSteamIdStateException}
+	 *     <li>{@link ArithmeticException}
 	 * </ul>
 	 *
 	 * @return		long value of the static account key
 	 * 				that wrapped in {@link Try}
-	 *
-	 * @throws UnsupportedOperationException	always, method is not implemented
 	 */
 	public Try<Long> getAsStaticKey() {
-		throw new UnsupportedOperationException();
-//
-//		if (!this.isValid()) {
-//			return Try.failure(new InvalidSteamIdStateException());
-//		}
-//
-//		long universe = this.getRawUniverseValue();
-//		long account = this.getRawAccountValue();
-//
-//		return Try.success(this.xuid << USteamBit.ACCOUNT_ID_OFFSET
-//				+ universe << ESteamUniverse.OFFSET
-//				+ account << ESteamAccount.OFFSET
-//		);
+		if (!this.isValid()) {
+			return Try.failure(new InvalidSteamIdStateException());
+		}
+
+		long xuid = this.getXuidRaw();
+		long universe = this.getUniverseValueRaw();
+		long account = this.getAccountValueRaw();
+
+		return Try.of(() -> BigInteger.valueOf(xuid)
+				.add(BigInteger.valueOf(universe << ESteamUniverse.OFFSET))
+				.add(BigInteger.valueOf(account << ESteamUniverse.OFFSET))
+				.longValueExact()
+		);
 	}
 
 	/**
