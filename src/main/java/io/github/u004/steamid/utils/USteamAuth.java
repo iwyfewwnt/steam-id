@@ -22,8 +22,6 @@ package io.github.u004.steamid.utils;
  * <p>{@code USteamAuth} is the utility class
  * for all types of Steam authentication
  * that contain their IDs.
- *
- * @since 0.1.0
  */
 public final class USteamAuth {
 

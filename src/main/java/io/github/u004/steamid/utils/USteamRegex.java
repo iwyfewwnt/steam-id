@@ -24,8 +24,6 @@ import static java.lang.String.format;
  * <p>{@code USteamRegex} is the utility class
  * for regular expressions that were used in
  * this project for pattern matching.
- *
- * @since 0.1.0
  */
 @SuppressWarnings("unused")
 public final class USteamRegex {

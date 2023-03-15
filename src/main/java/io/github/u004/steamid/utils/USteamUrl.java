@@ -23,8 +23,6 @@ import static java.lang.String.format;
  *
  * <p>{@code USteamUrl} is the utility class
  * for Steam URLs that were used in this project.
- *
- * @since 0.1.0
  */
 public final class USteamUrl {
 

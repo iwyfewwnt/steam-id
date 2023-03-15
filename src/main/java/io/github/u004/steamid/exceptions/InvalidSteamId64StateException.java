@@ -21,8 +21,6 @@ package io.github.u004.steamid.exceptions;
  *
  * <p>Describes that the Steam ID64 is invalid.
  * <b>Stands for illegal state usage.</b>
- *
- * @since 0.1.0
  */
 public final class InvalidSteamId64StateException extends IllegalStateException {
 

@@ -28,8 +28,6 @@ import java.util.Map;
  * A Steam account type enums.
  *
  * <p>Wraps {@link USteamAccount}.
- *
- * @since 0.1.0
  */
 @SuppressWarnings("unused")
 public enum ESteamAccount {

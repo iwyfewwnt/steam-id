@@ -23,8 +23,6 @@ import java.util.regex.Pattern;
  *
  * <p>{@code USteamPattern} is the utility class
  * for compiled {@link USteamRegex}'s regular expressions.
- *
- * @since 0.1.0
  */
 public final class USteamPattern {
 

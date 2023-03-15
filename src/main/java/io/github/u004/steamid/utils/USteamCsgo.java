@@ -34,8 +34,6 @@ import java.nio.ByteOrder;
  *
  * @see <a href="https://vk.cc/ch6eMh">De- and encoding CS:GO friend codes on UnKnoWnCheaTs</a>
  * @see <a href="https://vk.cc/ch6eOT">go-csgofriendcode by emily33901 on GitHub</a>
- *
- * @since 0.1.0
  */
 @SuppressWarnings("unused")
 public final class USteamCsgo {

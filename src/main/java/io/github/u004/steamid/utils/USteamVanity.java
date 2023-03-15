@@ -22,8 +22,6 @@ package io.github.u004.steamid.utils;
  * <p>{@code USteamVanity} is the utility class
  * for all types of vanity URLs that contain
  * their IDs.
- *
- * @since 0.1.0
  */
 @SuppressWarnings("unused")
 public final class USteamVanity {

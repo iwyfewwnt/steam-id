@@ -21,8 +21,6 @@ package io.github.u004.steamid.utils;
  *
  * <p>{@code USteamDomain} is the utility class
  * for Steam's domains that were used in this project.
- *
- * @since 0.1.0
  */
 public final class USteamDomain {
 

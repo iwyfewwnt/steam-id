@@ -24,8 +24,6 @@ package io.github.u004.steamid.utils;
  * that contain their IDs.
  *
  * @see <a href="https://vk.cc/ch6lh5">Steam Account Universe Types</a>
- *
- * @since 0.1.0
  */
 @SuppressWarnings("unused")
 public final class USteamUniverse {

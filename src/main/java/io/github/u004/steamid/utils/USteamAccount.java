@@ -24,8 +24,6 @@ package io.github.u004.steamid.utils;
  * type IDs and chars associated with these IDs.
  *
  * @see <a href="https://vk.cc/ch6ljb">Steam Account Types</a>
- *
- * @since 0.1.0
  */
 @SuppressWarnings("unused")
 public final class USteamAccount {

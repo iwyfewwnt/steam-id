@@ -26,8 +26,6 @@ import io.github.u004.steamid.exceptions.InvalidSteamInviteCodeStateException;
  *
  * <p>{@code USteamInvite} is the utility class to make
  * conversions between {@code SteamId}'s xuid and Steam invite code.
- *
- * @since 0.1.0
  */
 @SuppressWarnings("unused")
 public final class USteamInvite {

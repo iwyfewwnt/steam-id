@@ -26,8 +26,6 @@ import io.github.u004.bits.BitVar;
  * bit vector.
  *
  * @see <a href="https://vk.cc/ch6gId">bits by u004 on GitHub</a>
- *
- * @since 0.1.0
  */
 public final class USteamBit {
 

@@ -27,8 +27,6 @@ import java.util.Map;
  * A Steam authentication type enums.
  *
  * <p>Wraps {@link USteamAuth}.
- *
- * @since 0.1.0
  */
 @SuppressWarnings("unused")
 public enum ESteamAuth {
