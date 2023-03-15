@@ -31,16 +31,16 @@ public final class USteamPattern {
 	/**
 	 * A Steam ID2 pattern.
 	 *
-	 * <p>Wraps {@link USteamRegex#STEAM_2}.
+	 * <p>Wraps {@link USteamRegex#ID2}.
 	 */
-	public static final Pattern STEAM_2 = Pattern.compile(USteamRegex.STEAM_2);
+	public static final Pattern ID2 = Pattern.compile(USteamRegex.ID2);
 
 	/**
 	 * A Steam ID3 pattern.
 	 *
-	 * <p>Wraps {@link USteamRegex#STEAM_3}.
+	 * <p>Wraps {@link USteamRegex#ID3}.
 	 */
-	public static final Pattern STEAM_3 = Pattern.compile(USteamRegex.STEAM_3);
+	public static final Pattern ID3 = Pattern.compile(USteamRegex.ID3);
 
 	/**
 	 * A Steam profile url pattern.

@@ -81,7 +81,7 @@ public final class USteamRegex {
 	 *     <li>{@code USteamRegex.Group.ID}
 	 * </ul>
 	 */
-	public static final String STEAM_2 = format("^STEAM_(?<%s>[%s-%s]):(?<%s>[%s-%s]):(?<%s>\\d+)$",
+	public static final String ID2 = format("^STEAM_(?<%s>[%s-%s]):(?<%s>[%s-%s]):(?<%s>\\d+)$",
 			Group.UNIVERSE, USteamUniverse.BASE, USteamUniverse.MAX,
 			Group.AUTH, USteamAuth.MIN, USteamAuth.MAX,
 			Group.ID
@@ -98,7 +98,7 @@ public final class USteamRegex {
 	 *     <li>{@code USteamRegex.Group.INSTANCE}
 	 * </ul>
 	 */
-	public static final String STEAM_3 = format("^\\[?(?<%s>[%s]){1}:(?<%s>[%s-%s]):(?<%s>\\d+)(:(?<%s>\\d+))?]?$",
+	public static final String ID3 = format("^\\[?(?<%s>[%s]){1}:(?<%s>[%s-%s]):(?<%s>\\d+)(:(?<%s>\\d+))?]?$",
 			Group.ACCOUNT, USteamAccount.CHAR_BASE,
 			Group.UNIVERSE, USteamUniverse.BASE, USteamUniverse.MAX,
 			Group.ID,
@@ -108,7 +108,7 @@ public final class USteamRegex {
 	/**
 	 * A Steam ID64 regular expression.
 	 */
-	public static final String STEAM_64 = "^[0-9]{17}$";
+	public static final String ID64 = "^[0-9]{17}$";
 
 	/**
 	 * A Steam vanity ID regular expression.

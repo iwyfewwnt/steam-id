@@ -507,7 +507,7 @@ public final class SteamId {
 	public Try<SteamId> setAsSteam64(String id64) {
 		id64 = StringUtils.trimToEmpty(id64);
 
-		if (id64.matches(USteamRegex.STEAM_64)) {
+		if (id64.matches(USteamRegex.ID64)) {
 			try {
 				return this.setAsSteam64(Long.parseUnsignedLong(id64));
 			} catch (NumberFormatException ignored) {
@@ -533,7 +533,7 @@ public final class SteamId {
 	public Try<SteamId> setAsSteam2(String id2) {
 		id2 = StringUtils.trimToEmpty(id2);
 
-		Matcher m = USteamPattern.STEAM_2.matcher(id2);
+		Matcher m = USteamPattern.ID2.matcher(id2);
 
 		if (m.matches()) {
 			try {
@@ -564,7 +564,7 @@ public final class SteamId {
 	public Try<SteamId> setAsSteam3(String id3) {
 		id3 = StringUtils.trimToEmpty(id3);
 
-		Matcher m = USteamPattern.STEAM_3.matcher(id3);
+		Matcher m = USteamPattern.ID3.matcher(id3);
 
 		if (m.matches()) {
 			try {
@@ -1293,7 +1293,7 @@ public final class SteamId {
 	public static boolean isSteamId64Valid(String id64) {
 		id64 = ObjectUtils.defaultIfNull(id64, "");
 
-		if (id64.matches(USteamRegex.STEAM_64)) {
+		if (id64.matches(USteamRegex.ID64)) {
 			String finalId64 = id64;
 
 			Long id = Try.of(() -> Long.parseUnsignedLong(finalId64))
@@ -1314,7 +1314,7 @@ public final class SteamId {
 	public static boolean isSteamId2Valid(String id2) {
 		id2 = ObjectUtils.defaultIfNull(id2, "");
 
-		Matcher m = USteamPattern.STEAM_2.matcher(id2);
+		Matcher m = USteamPattern.ID2.matcher(id2);
 
 		if (m.matches()) {
 			Long xuid = Try.of(() -> {
@@ -1339,7 +1339,7 @@ public final class SteamId {
 	public static boolean isSteamId3Valid(String id3) {
 		id3 = ObjectUtils.defaultIfNull(id3, "");
 
-		Matcher m = USteamPattern.STEAM_3.matcher(id3);
+		Matcher m = USteamPattern.ID3.matcher(id3);
 
 		if (m.matches()) {
 			Long xuid = Try.of(() -> Long.parseUnsignedLong(m.group(USteamRegex.Group.ID)))
