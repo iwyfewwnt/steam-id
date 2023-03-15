@@ -6,7 +6,7 @@
 
     <groupId>io.github.iwyfewwnt</groupId>
     <artifactId>steam-id</artifactId>
-    <version>0.1.2</version>
+    <version>0.2.0-SNAPSHOT</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Safe, null- &amp; exception-free library for Steam ID representation</description>
