@@ -763,7 +763,7 @@ public final class SteamId {
 	 * @return			this {@code SteamId} instance
 	 * 					that wrapped in {@link Try}
 	 */
-	public Try<SteamId> setAsSteam(String str) {
+	public Try<SteamId> setAsSteamAny(String str) {
 		return this.setAsSteam64(str)
 				.recoverWith($ -> this.setAsSteam2(str))
 				.recoverWith($ -> this.setAsSteam3(str))
@@ -1526,7 +1526,7 @@ public final class SteamId {
 	/**
 	 * Create a {@code SteamId} instance and initialize it from Steam-like string.
 	 *
-	 * <p>Wraps {@link SteamId#setAsSteam(String)}.
+	 * <p>Wraps {@link SteamId#setAsSteamAny(String)}.
 	 *
 	 * <p>Possible failure exceptions:
 	 * <ul>
@@ -1538,8 +1538,8 @@ public final class SteamId {
 	 * @return			new {@code SteamId} instance
 	 * 					that wrapped in {@link Try}
 	 */
-	public static Try<SteamId> fromSteam(String str) {
-		return new SteamId().setAsSteam(str);
+	public static Try<SteamId> fromSteamAny(String str) {
+		return new SteamId().setAsSteamAny(str);
 	}
 
 	/**
@@ -1653,12 +1653,12 @@ public final class SteamId {
 	/**
 	 * Create a {@code SteamId} instance and initialize it from Steam-like string.
 	 *
-	 * <p>Wraps {@link SteamId#setAsSteam(String)}.
+	 * <p>Wraps {@link SteamId#setAsSteamAny(String)}.
 	 *
 	 * @param str		Steam-like string
 	 * @return			new {@code SteamId} instance or null
 	 */
-	public static SteamId fromSteamRaw(String str) {
-		return fromSteam(str).getOrNull();
+	public static SteamId fromSteamAnyRaw(String str) {
+		return fromSteamAny(str).getOrNull();
 	}
 }
