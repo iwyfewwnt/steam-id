@@ -370,7 +370,7 @@ public final class SteamId {
 	/**
 	 * Get this {@code SteamId} instance as a CS:GO friend code.
 	 *
-	 * <p>Wraps {@link USteamCsgo#toFriendCode(Long)}.
+	 * <p>Wraps {@link USteamCsgo#toCode(Long)}.
 	 *
 	 * <p>Possible failure exceptions:
 	 * <ul>
@@ -387,7 +387,7 @@ public final class SteamId {
 			return Try.failure(new InvalidSteamIdStateException());
 		}
 
-		return USteamCsgo.toFriendCode(this.getXuidRaw());
+		return USteamCsgo.toCode(this.getXuidRaw());
 	}
 
 	/**
@@ -450,7 +450,7 @@ public final class SteamId {
 	/**
 	 * Get this {@code SteamId} instance as a raw CS:GO friend code.
 	 *
-	 * <p>Wraps {@link USteamCsgo#toFriendCode(Long)}.
+	 * <p>Wraps {@link USteamCsgo#toCode(Long)}.
 	 *
 	 * @return		string value of the CS:GO friend code or null
 	 */
@@ -654,7 +654,7 @@ public final class SteamId {
 	 * 					that wrapped in {@link Try}
 	 */
 	public Try<SteamId> setAsCsgoFriendCode(String code) {
-		return USteamCsgo.fromFriendCode(code)
+		return USteamCsgo.fromCode(code)
 				.flatMap(this::setAsIndividual);
 	}
 

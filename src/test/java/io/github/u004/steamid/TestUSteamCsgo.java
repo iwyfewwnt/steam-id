@@ -28,15 +28,15 @@ public final class TestUSteamCsgo {
 
 	@ParameterizedTest
 	@CsvSource(value = {
-			USteamCsgo.MIN_FRIEND_CODE + " " + SteamId.MIN_XUID,
-			USteamCsgo.MAX_FRIEND_CODE + " " + SteamId.MAX_XUID
+			USteamCsgo.MIN_CODE + " " + SteamId.MIN_XUID,
+			USteamCsgo.MAX_CODE + " " + SteamId.MAX_XUID
 	}, delimiter = ' ')
 	void Test_FromFriendCode_ToFriendCode_MustBeCompatible(String code, long xuid) {
 		assertDoesNotThrow(() -> {
-			assertEquals(code, USteamCsgo.toFriendCode(xuid)
+			assertEquals(code, USteamCsgo.toCode(xuid)
 					.get());
 
-			assertEquals(xuid, USteamCsgo.fromFriendCode(code)
+			assertEquals(xuid, USteamCsgo.fromCode(code)
 					.get());
 		});
 	}
@@ -44,19 +44,19 @@ public final class TestUSteamCsgo {
 	@ParameterizedTest
 	@NullAndEmptySource
 	void Test_FromCode_ShouldFail_WhenPassedInvalidCode(String code) {
-		assertTrue(USteamCsgo.fromFriendCode(code).isFailure());
+		assertTrue(USteamCsgo.fromCode(code).isFailure());
 	}
 
 	@ParameterizedTest
 	@ValueSource(longs = { Long.MIN_VALUE, SteamId.MIN_XUID - 1, SteamId.BASE_XUID, SteamId.MAX_XUID + 1, Long.MAX_VALUE })
 	void Test_ToCode_ShouldFail_WhenPassedInvalidXuid(long xuid) {
-		assertTrue(USteamCsgo.toFriendCode(xuid).isFailure());
+		assertTrue(USteamCsgo.toCode(xuid).isFailure());
 	}
 
 	@ParameterizedTest
-	@ValueSource(strings = { USteamCsgo.MIN_FRIEND_CODE, USteamCsgo.MAX_FRIEND_CODE })
+	@ValueSource(strings = { USteamCsgo.MIN_CODE, USteamCsgo.MAX_CODE})
 	void Test_FromCode_ShouldSuccess_WhenPassedUntrimmedString(String code) {
-		assertTrue(USteamCsgo.fromFriendCode(" " + code + " ").isSuccess());
+		assertTrue(USteamCsgo.fromCode(" " + code + " ").isSuccess());
 	}
 
 	private TestUSteamCsgo() {

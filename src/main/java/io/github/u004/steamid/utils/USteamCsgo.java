@@ -43,12 +43,12 @@ public final class USteamCsgo {
 	/**
 	 * A minimum CS:GO friend code value.
 	 */
-	public static final String MIN_FRIEND_CODE = "AJJJS-ABAA";
+	public static final String MIN_CODE = "AJJJS-ABAA";
 
 	/**
 	 * A maximum CS:GO friend code value.
 	 */
-	public static final String MAX_FRIEND_CODE = "S9ZZR-9997";
+	public static final String MAX_CODE = "S9ZZR-9997";
 
 	/**
 	 * A CS:GO friend code base.
@@ -130,7 +130,7 @@ public final class USteamCsgo {
 	}
 
 	// Safe, but is still in need to check the parameters at a higher level.
-	private static Try<String> toExtendedFriendCode(long val) {
+	private static Try<String> toExtendedCode(long val) {
 		return Try.of(() -> {
 			long xuid = val;
 
@@ -154,7 +154,7 @@ public final class USteamCsgo {
 	}
 
 	// Safe, but is still in need to check the parameters at a higher level.
-	private static Try<Long> fromExtendedFriendCode(String code) {
+	private static Try<Long> fromExtendedCode(String code) {
 		return Try.of(() -> {
 			long val = base32(code);
 			long xuid = 0;
@@ -178,7 +178,7 @@ public final class USteamCsgo {
 	 * Convert unique Steam account identifier
 	 * to the interface-friendly CS:GO friend code.
 	 *
-	 * <p>Calls private static method {@code USteamCsgo#toExtendedFriendCode(long)}
+	 * <p>Calls private static method {@code USteamCsgo#toExtendedCode(long)}
 	 * and cuts {@value USteamCsgo#CODE_PREFIX} from the start of the code.
 	 *
 	 * <p>Possible failure exceptions:
@@ -207,12 +207,12 @@ public final class USteamCsgo {
 	 * @return		interface-friendly CS:GO friend code
 	 * 				that wrapped in {@link Try}
 	 */
-	public static Try<String> toFriendCode(Long xuid) {
+	public static Try<String> toCode(Long xuid) {
 		if (!SteamId.isSteamXuidValid(xuid)) {
 			return Try.failure(new IllegalArgumentException());
 		}
 
-		return toExtendedFriendCode(xuid)
+		return toExtendedCode(xuid)
 				.map(code -> code.substring(CODE_PREFIX.length()))
 				.filter(code -> code.matches(USteamRegex.CSGO_CODE), InvalidCsgoFriendCodeStateException::new);
 	}
@@ -222,7 +222,7 @@ public final class USteamCsgo {
 	 * to the unique Steam account identifier.
 	 *
 	 * <p>Adds {@value USteamCsgo#CODE_PREFIX} to the code and calls
-	 * private static method {@code USteamCsgo#fromExtendedFriendCode(String)}.
+	 * private static method {@code USteamCsgo#fromExtendedCode(String)}.
 	 *
 	 * <p>Possible failure exceptions:
 	 * <ul>
@@ -252,11 +252,11 @@ public final class USteamCsgo {
 	 * @return		{@code SteamId}'s xuid that wrapped
 	 * 				in {@link Try}
 	 */
-	public static Try<Long> fromFriendCode(String code) {
+	public static Try<Long> fromCode(String code) {
 		code = StringUtils.trimToEmpty(code);
 
 		if (code.matches(USteamRegex.CSGO_CODE)) {
-			return fromExtendedFriendCode(CODE_PREFIX + code);
+			return fromExtendedCode(CODE_PREFIX + code);
 		}
 
 		return Try.failure(new IllegalArgumentException());
@@ -266,7 +266,7 @@ public final class USteamCsgo {
 	 * Rawly convert unique Steam account identifier
 	 * to the interface-friendly CS:GO friend code.
 	 *
-	 * <p>Calls private static method {@code USteamCsgo#toExtendedFriendCode(long)}
+	 * <p>Calls private static method {@code USteamCsgo#toExtendedCode(long)}
 	 * and cuts {@value USteamCsgo#CODE_PREFIX} from the start of the code.
 	 *
 	 * <hr>
@@ -288,8 +288,8 @@ public final class USteamCsgo {
 	 * @param xuid	{@code SteamId}'s xuid
 	 * @return		interface-friendly CS:GO friend code or null
 	 */
-	public static String toFriendCodeRaw(Long xuid) {
-		return toFriendCode(xuid).getOrNull();
+	public static String toCodeRaw(Long xuid) {
+		return toCode(xuid).getOrNull();
 	}
 
 	/**
@@ -297,7 +297,7 @@ public final class USteamCsgo {
 	 * to the unique Steam account identifier.
 	 *
 	 * <p>Adds {@value USteamCsgo#CODE_PREFIX} to the code and calls
-	 * private static method {@code USteamCsgo#fromExtendedFriendCode(String)}.
+	 * private static method {@code USteamCsgo#fromExtendedCode(String)}.
 	 *
 	 * <hr>
 	 * <pre>{@code
@@ -321,8 +321,8 @@ public final class USteamCsgo {
 	 * @param code	interface-friendly CS:GO friend code
 	 * @return		{@code SteamId}'s xuid or null
 	 */
-	public static Long fromFriendCodeRaw(String code) {
-		return fromFriendCode(code).getOrNull();
+	public static Long fromCodeRaw(String code) {
+		return fromCode(code).getOrNull();
 	}
 
 	private USteamCsgo() {

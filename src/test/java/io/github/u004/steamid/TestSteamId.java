@@ -38,14 +38,14 @@ public final class TestSteamId {
 					+ " " + SteamId.MIN_ID64
 					+ " " + SteamId.MIN_ID2
 					+ " " + SteamId.MIN_ID3
-					+ " " + USteamCsgo.MIN_FRIEND_CODE
+					+ " " + USteamCsgo.MIN_CODE
 					+ " " + USteamInvite.MIN_CODE,
 
 			SteamId.MAX_XUID
 					+ " " + SteamId.MAX_ID64
 					+ " " + SteamId.MAX_ID2
 					+ " " + SteamId.MAX_ID3
-					+ " " + USteamCsgo.MAX_FRIEND_CODE
+					+ " " + USteamCsgo.MAX_CODE
 					+ " " + USteamInvite.MAX_CODE
 	}, delimiter = ' ')
 	void Test_SteamId_MustBeCompatible(long xuid, long id64, String id2, String id3, String csgoCode, String inviteCode) {
@@ -82,13 +82,13 @@ public final class TestSteamId {
 			steamId = defaultSteamId;
 
 			assertEquals(steamId.getAsCsgoFriendCode().get(),
-					USteamCsgo.toFriendCode(steamId.getXuid().get()).get());
+					USteamCsgo.toCode(steamId.getXuid().get()).get());
 
 			steamId = SteamId.fromCsgoFriendCode(csgoCode)
 					.get();
 
 			assertEquals(steamId.getXuid().get(),
-					USteamCsgo.fromFriendCode(csgoCode).get());
+					USteamCsgo.fromCode(csgoCode).get());
 		});
 	}
 
