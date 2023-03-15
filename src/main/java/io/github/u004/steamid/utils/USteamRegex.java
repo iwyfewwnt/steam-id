@@ -98,7 +98,7 @@ public final class USteamRegex {
 	 *     <li>{@code USteamRegex.Group.INSTANCE}
 	 * </ul>
 	 */
-	public static final String STEAM_3 = format("^\\[(?<%s>[%s]){1}:(?<%s>[%s-%s]):(?<%s>\\d+)(:(?<%s>\\d+))?]$",
+	public static final String STEAM_3 = format("^\\[?(?<%s>[%s]){1}:(?<%s>[%s-%s]):(?<%s>\\d+)(:(?<%s>\\d+))?]?$",
 			Group.ACCOUNT, USteamAccount.CHAR_BASE,
 			Group.UNIVERSE, USteamUniverse.BASE, USteamUniverse.MAX,
 			Group.ID,
