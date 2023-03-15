@@ -58,22 +58,22 @@ public final class TestSteamId {
 			assertEquals(id2, defaultSteamId.getAsSteam2().get());
 			assertEquals(id3, defaultSteamId.getAsSteam3().get());
 			assertEquals(csgoCode, defaultSteamId.getAsCsgoCode().get());
-			assertEquals(inviteCode, defaultSteamId.getAsSteamInviteCode().get());
+			assertEquals(inviteCode, defaultSteamId.getAsInviteCode().get());
 
 			// Instance Equals
 			assertEquals(defaultSteamId, SteamId.fromSteam64(id64).get());
 			assertEquals(defaultSteamId, SteamId.fromSteam2(id2).get());
 			assertEquals(defaultSteamId, SteamId.fromSteam3(id3).get());
 			assertEquals(defaultSteamId, SteamId.fromCsgoCode(csgoCode).get());
-			assertEquals(defaultSteamId, SteamId.fromSteamInviteCode(inviteCode).get());
+			assertEquals(defaultSteamId, SteamId.fromInviteCode(inviteCode).get());
 
 			// Invite Code Equals
 			SteamId steamId = defaultSteamId;
 
-			assertEquals(steamId.getAsSteamInviteCode().get(),
+			assertEquals(steamId.getAsInviteCode().get(),
 					USteamInvite.toCode(steamId.getXuid().get()).get());
 
-			steamId = SteamId.fromSteamInviteCode(inviteCode).get();
+			steamId = SteamId.fromInviteCode(inviteCode).get();
 
 			assertEquals(steamId.getXuid().get(),
 					USteamInvite.fromCode(inviteCode).get());

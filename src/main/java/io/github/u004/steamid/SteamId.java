@@ -359,7 +359,7 @@ public final class SteamId {
 	 * @return		string value of the Steam invite code
 	 * 				that wrapped in {@link Try}
 	 */
-	public Try<String> getAsSteamInviteCode() {
+	public Try<String> getAsInviteCode() {
 		if (!this.isValid()) {
 			return Try.failure(new InvalidSteamIdStateException());
 		}
@@ -443,8 +443,8 @@ public final class SteamId {
 	 *
 	 * @return		string value of the Steam invite code or null
 	 */
-	public String getAsSteamInviteCodeRaw() {
-		return this.getAsSteamInviteCode().getOrNull();
+	public String getAsInviteCodeRaw() {
+		return this.getAsInviteCode().getOrNull();
 	}
 
 	/**
@@ -635,7 +635,7 @@ public final class SteamId {
 	 * @return			this {@code SteamId} instance
 	 * 					that wrapped in {@link Try}
 	 */
-	public Try<SteamId> setAsSteamInviteCode(String code) {
+	public Try<SteamId> setAsInviteCode(String code) {
 		return USteamInvite.fromCode(code)
 				.flatMap(this::setAsIndividual);
 	}
@@ -710,7 +710,7 @@ public final class SteamId {
 
 		if (m.matches()) {
 			String code = m.group(USteamRegex.Group.ID);
-			return this.setAsSteamInviteCode(code);
+			return this.setAsInviteCode(code);
 		}
 
 		return Try.failure(new IllegalArgumentException());
@@ -748,7 +748,7 @@ public final class SteamId {
 	 *     <li>{@link SteamId#setAsSteam64(String)}
 	 *     <li>{@link SteamId#setAsSteam2(String)}
 	 *     <li>{@link SteamId#setAsSteam3(String)}
-	 *     <li>{@link SteamId#setAsSteamInviteCode(String)}
+	 *     <li>{@link SteamId#setAsInviteCode(String)}
 	 *     <li>{@link SteamId#setAsCsgoCode(String)}
 	 *     <li>{@link SteamId#setAsSteamUrl(String)}
 	 * </ul>
@@ -767,7 +767,7 @@ public final class SteamId {
 		return this.setAsSteam64(str)
 				.recoverWith($ -> this.setAsSteam2(str))
 				.recoverWith($ -> this.setAsSteam3(str))
-				.recoverWith($ -> this.setAsSteamInviteCode(str))
+				.recoverWith($ -> this.setAsInviteCode(str))
 				.recoverWith($ -> this.setAsCsgoCode(str))
 				.recoverWith($ -> this.setAsSteamUrl(str));
 	}
@@ -820,7 +820,7 @@ public final class SteamId {
 	 * 				that wrapped in {@link Try}
 	 */
 	public Try<String> getAsSteamUserUrl() {
-		return this.getAsSteamInviteCode()
+		return this.getAsInviteCode()
 				.map(code -> USteamUrl.USER + code);
 	}
 
@@ -838,7 +838,7 @@ public final class SteamId {
 	 * 				that wrapped in {@link Try}
 	 */
 	public Try<String> getAsSteamInviteUrl() {
-		return this.getAsSteamInviteCode()
+		return this.getAsInviteCode()
 				.map(code -> USteamUrl.INVITE + code);
 	}
 
@@ -1431,7 +1431,7 @@ public final class SteamId {
 	/**
 	 * Create a {@code SteamId} instance and initialize it from Steam invite code.
 	 *
-	 * <p>Wraps {@link SteamId#setAsSteamInviteCode(String)}.
+	 * <p>Wraps {@link SteamId#setAsInviteCode(String)}.
 	 *
 	 * <p>Possible failure exceptions:
 	 * <ul>
@@ -1443,8 +1443,8 @@ public final class SteamId {
 	 * @return			new {@code SteamId} instance
 	 * 					that wrapped in {@link Try}
 	 */
-	public static Try<SteamId> fromSteamInviteCode(String code) {
-		return new SteamId().setAsSteamInviteCode(code);
+	public static Try<SteamId> fromInviteCode(String code) {
+		return new SteamId().setAsInviteCode(code);
 	}
 
 	/**
@@ -1593,13 +1593,13 @@ public final class SteamId {
 	/**
 	 * Create a {@code SteamId} instance and initialize it from Steam invite code.
 	 *
-	 * <p>Wraps {@link SteamId#setAsSteamInviteCode(String)}.
+	 * <p>Wraps {@link SteamId#setAsInviteCode(String)}.
 	 *
 	 * @param code		string value of the Steam invite code
 	 * @return			new {@code SteamId} instance or null
 	 */
-	public static SteamId fromSteamInviteCodeRaw(String code) {
-		return fromSteamInviteCode(code).getOrNull();
+	public static SteamId fromInviteCodeRaw(String code) {
+		return fromInviteCode(code).getOrNull();
 	}
 
 	/**
