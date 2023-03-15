@@ -85,25 +85,20 @@
             <artifactId>bits</artifactId>
             <version>${bits.version}</version>
         </dependency>
-
-        <!-- Optional Depenendencies -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
-            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>${commons-codec.version}</version>
-            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>io.github.u004</groupId>
             <artifactId>uwutils</artifactId>
             <version>${uwutils.version}</version>
-            <optional>true</optional>
         </dependency>
 
         <!-- Test Dependencies -->
