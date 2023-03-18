@@ -117,12 +117,12 @@ public enum ESteamAccount {
 	 */
 	UNKNOWN(USteamAccount.UNKNOWN_ID, USteamAccount.UNKNOWN_CHAR);
 
-	/**
-	 * An account type offset in the bit vector.
-	 *
-	 * <p>Wraps {@link USteamBit#ACCOUNT_TYPE_OFFSET}.
-	 */
-	public static final int OFFSET = USteamBit.ACCOUNT_TYPE_OFFSET;
+//	/**
+//	 * An account type offset in the bit vector.
+//	 *
+//	 * <p>Wraps {@link USteamBit#ACCOUNT_TYPE_OFFSET}.
+//	 */
+//	public static final int OFFSET = USteamBit.ACCOUNT_TYPE_OFFSET;
 
 	// TODO: doc-comment
 	private static final Map<Integer, ESteamAccount> MAP_BY_VALUE = UwMap.newMapByFieldOrNull(

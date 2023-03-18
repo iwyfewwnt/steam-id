@@ -16,9 +16,6 @@
 
 package io.github.iwyfewwnt.steamid.types;
 
-//import io.github.u004.uwutils.UwArray;
-//import io.github.u004.uwutils.UwMap;
-//import io.vavr.control.Option;
 import io.github.iwyfewwnt.steamid.utils.USteamBit;
 import io.github.iwyfewwnt.steamid.utils.USteamUniverse;
 import io.github.iwyfewwnt.uwutils.UwMap;
@@ -75,12 +72,12 @@ public enum ESteamUniverse {
 	 */
 	RC(USteamUniverse.RC);
 
-	/**
-	 * An account universe offset in the bit vector.
-	 *
-	 * <p>Wraps {@link USteamBit#ACCOUNT_UNIVERSE_OFFSET}.
-	 */
-	public static final int OFFSET = USteamBit.ACCOUNT_UNIVERSE_OFFSET;
+//	/**
+//	 * An account universe offset in the bit vector.
+//	 *
+//	 * <p>Wraps {@link USteamBit#ACCOUNT_UNIVERSE_OFFSET}.
+//	 */
+//	public static final int OFFSET = USteamBit.ACCOUNT_UNIVERSE_OFFSET;
 
 	// TODO: doc-comment
 	private static final Map<Integer, ESteamUniverse> MAP_BY_VALUE = UwMap.newMapByFieldOrNull(
