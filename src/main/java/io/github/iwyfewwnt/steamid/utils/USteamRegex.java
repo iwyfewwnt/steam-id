@@ -16,8 +16,6 @@
 
 package io.github.iwyfewwnt.steamid.utils;
 
-import static java.lang.String.format;
-
 /**
  * A Steam regular expressions utility.
  *
@@ -77,7 +75,7 @@ public final class USteamRegex {
 	 *     <li>{@code USteamRegex.Group.ID}
 	 * </ul>
 	 */
-	public static final String ID2 = format("^STEAM_(?<%s>[%s-%s]):(?<%s>[%s-%s]):(?<%s>\\d+)$",
+	public static final String ID2 = String.format("^STEAM_(?<%s>[%s-%s]):(?<%s>[%s-%s]):(?<%s>\\d+)$",
 			Group.UNIVERSE, USteamUniverse.BASE, USteamUniverse.MAX,
 			Group.AUTH, USteamAuth.MIN, USteamAuth.MAX,
 			Group.ID
@@ -94,7 +92,7 @@ public final class USteamRegex {
 	 *     <li>{@code USteamRegex.Group.INSTANCE}
 	 * </ul>
 	 */
-	public static final String ID3 = format("^\\[?(?<%s>[%s]){1}:(?<%s>[%s-%s]):(?<%s>\\d+)(:(?<%s>[%s-%s]))?]?$",
+	public static final String ID3 = String.format("^\\[?(?<%s>[%s]){1}:(?<%s>[%s-%s]):(?<%s>\\d+)(:(?<%s>[%s-%s]))?]?$",
 			Group.ACCOUNT, USteamAccount.CHAR_BASE,
 			Group.UNIVERSE, USteamUniverse.BASE, USteamUniverse.MAX,
 			Group.ID,
@@ -114,14 +112,14 @@ public final class USteamRegex {
 	/**
 	 * A Steam invite code regular expression.
 	 */
-	public static final String INVITE_CODE = format("^[%s]+$",
+	public static final String INVITE_CODE = String.format("^[%s]+$",
 			USteamInvite.CODE_BASE + USteamInvite.CODE_DELIMITER
 	);
 
 	/**
 	 * A CS:GO friend code regular expression.
 	 */
-	public static final String CSGO_CODE = format("^[%s]{10}$",
+	public static final String CSGO_CODE = String.format("^[%s]{10}$",
 			USteamCsgo.CODE_BASE + USteamCsgo.CODE_DELIMITER
 	);
 
@@ -133,7 +131,7 @@ public final class USteamRegex {
 	 *     <li>{@code USteamRegex.Group.ID}
 	 * </ul>
 	 */
-	public static final String PROFILE_URL = format("^https?://(?:www\\.|(?!www))(?:my\\.steamchina|steamcommunity)\\.com/(profiles|gid)\\/(?<%s>.+?)(?:/|$)$",
+	public static final String PROFILE_URL = String.format("^https?://(?:www\\.|(?!www))(?:my\\.steamchina|steamcommunity)\\.com/(profiles|gid)\\/(?<%s>.+?)(?:/|$)$",
 			Group.ID
 	);
 
@@ -145,7 +143,7 @@ public final class USteamRegex {
 	 *     <li>{@code USteamRegex.Group.ID}
 	 * </ul>
 	 */
-	public static final String USER_URL = format("^https?://(?:www\\.|(?!www))(?:(?:my\\.steamchina|steamcommunity)\\.com/user|s\\.team/p)/(?<%s>[\\w-]+)(?:/|$)$",
+	public static final String USER_URL = String.format("^https?://(?:www\\.|(?!www))(?:(?:my\\.steamchina|steamcommunity)\\.com/user|s\\.team/p)/(?<%s>[\\w-]+)(?:/|$)$",
 			Group.ID
 	);
 
