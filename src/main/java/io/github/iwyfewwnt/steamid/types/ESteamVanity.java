@@ -16,13 +16,14 @@
 
 package io.github.iwyfewwnt.steamid.types;
 
-//import io.github.u004.uwutils.UwArray;
-//import io.github.u004.uwutils.UwMap;
-//import io.vavr.control.Option;
 import io.github.iwyfewwnt.steamid.utils.USteamVanity;
+import io.github.iwyfewwnt.uwutils.UwArray;
+import io.github.iwyfewwnt.uwutils.UwEnum;
 import io.github.iwyfewwnt.uwutils.UwMap;
+import io.github.iwyfewwnt.uwutils.UwObject;
 
 import java.util.Map;
+import java.util.function.Supplier;
 
 /**
  * A Steam vanity URL type enums.
@@ -53,73 +54,108 @@ public enum ESteamVanity {
 	 */
 	GAME_GROUP(USteamVanity.GAME_GROUP);
 
-	// TODO: doc-comment
-	private static final Map<Integer, ESteamVanity> MAP_BY_VALUE = UwMap.newMapByFieldOrNull(
-			entry -> entry.value, ESteamVanity.class
+	/**
+	 * An array of {@link ESteamVanity} instances.
+	 */
+	private static final ESteamVanity[] VALUES = UwEnum.values(ESteamVanity.class);
+
+	/**
+	 * A map of {@link ESteamVanity} instances by their identifier field.
+	 */
+	private static final Map<Integer, ESteamVanity> MAP_BY_ID = UwMap.newMapByFieldOrNull(
+			entry -> entry.id, ESteamVanity.class
 	);
 
 	/**
-	 * Vanity URL type ID.
+	 * A vanity URL type identifier.
 	 */
-	private final int value;
+	private final int id;
 
 	/**
-	 * Initialize an {@code ESteamVanity} instance.
+	 * Initialize an {@link ESteamVanity} instance.
 	 *
-	 * @param value		vanity url type ID
+	 * @param id	vanity URL type identifier
 	 */
-	ESteamVanity(int value) {
-		this.value = value;
+	ESteamVanity(int id) {
+		this.id = id;
 	}
 
 	/**
-	 * Get this vanity URL type ID.
+	 * Get this vanity URL type identifier.
 	 *
-	 * @return		vanity URL type ID
+	 * @return	vanity URL type identifier
 	 */
-	public int getValue() {
-		return this.value;
+	public int getId() {
+		return this.id;
 	}
 
-//	/**
-//	 * Get the {@code ESteamVanity} instance by its type ID.
-//	 *
-//	 * @param value		vanity URL type ID
-//	 * @return			{@code ESteamVanity} instance
-//	 *					that wrapped in {@link Option}
-//	 */
-//	public static Option<ESteamVanity> fromValue(Integer value) {
-//		return UwMap.get(value, MAP_BY_VALUE);
-//	}
+	/**
+	 * Get a {@link ESteamVanity} instance by its vanity URL type identifier
+	 * or return a default value if failed.
+	 *
+	 * @param id			vanity URL type identifier
+	 * @param defaultValue	default value to return on failure
+	 * @return				associated {@link ESteamVanity} instance or the default value
+	 */
+	public static ESteamVanity fromIdOrElse(Integer id, ESteamVanity defaultValue) {
+		return UwMap.getOrElse(id, MAP_BY_ID, defaultValue);
+	}
 
-//	/**
-//	 * Get the {@code ESteamVanity} instance by its index.
-//	 *
-//	 * @param index		{@code ESteamVanity} instance index
-//	 * @return			{@code ESteamVanity} instance
-//	 * 					that wrapped in {@link Option}
-//	 */
-//	public static Option<ESteamVanity> fromIndex(Integer index) {
-//		return UwArray.get(index, values());
-//	}
+	/**
+	 * Get a {@link ESteamVanity} instance by its vanity URL type identifier
+	 * or return a default value if failed.
+	 *
+	 * @param id					vanity URL type identifier
+	 * @param defaultValueSupplier	supplier from which get the default value
+	 * @return						associated {@link ESteamVanity} instance or the defualt value
+	 */
+	public static ESteamVanity fromIdOrElse(Integer id, Supplier<ESteamVanity> defaultValueSupplier) {
+		return UwObject.getIfNull(fromIdOrNull(id), defaultValueSupplier);
+	}
 
-//	/**
-//	 * Get the {@code ESteamVanity} instance by its type ID.
-//	 *
-//	 * @param value		vanity URL type ID
-//	 * @return			{@code ESteamVanity} instance or null
-//	 */
-//	public static ESteamVanity fromValueRaw(Integer value) {
-//		return fromValue(value).getOrNull();
-//	}
+	/**
+	 * Get a {@link ESteamVanity} instance by its vanity URL type identifier
+	 * or return {@code null} if failed.
+	 *
+	 * @param id	vanity URL type identifier
+	 * @return		associated {@link ESteamVanity} instance or {@code null}
+	 */
+	public static ESteamVanity fromIdOrNull(Integer id) {
+		return fromIdOrElse(id, (ESteamVanity) null);
+	}
 
-//	/**
-//	 * Get the {@code ESteamVanity} instance by its index.
-//	 *
-//	 * @param index		{@code ESteamVanity} instance index
-//	 * @return			{@code ESteamVanity} instance or null
-//	 */
-//	public static ESteamVanity fromIndexRaw(Integer index) {
-//		return fromIndex(index).getOrNull();
-//	}
+	/**
+	 * Get a {@link ESteamVanity} instance by its index
+	 * or return a default value if failed.
+	 *
+	 * @param index			index of the instance
+	 * @param defaultValue	default value to return on failure
+	 * @return				associated {@link ESteamVanity} instance or the default value
+	 */
+	public static ESteamVanity fromIndexOrElse(Integer index, ESteamVanity defaultValue) {
+		return UwArray.getOrElse(index, VALUES, defaultValue);
+	}
+
+	/**
+	 * Get a {@link ESteamVanity} instance by its index
+	 * or return a default value if failed.
+	 *
+	 * @param index					index of the instance
+	 * @param defaultValueSupplier	supplier from which get the default value
+	 * @return						associated {@link ESteamVanity} instance or the default value
+	 */
+	public static ESteamVanity fromIndexOrElse(Integer index, Supplier<ESteamVanity> defaultValueSupplier) {
+		return UwObject.getIfNull(fromIndexOrNull(index), defaultValueSupplier);
+	}
+
+	/**
+	 * Get a {@link ESteamVanity} instance by its index
+	 * or return {@code null} if failed.
+	 *
+	 * @param index		index of the instance
+	 * @return			associated {@link ESteamVanity} instance or {@code null}
+	 */
+	public static ESteamVanity fromIndexOrNull(Integer index) {
+		return fromIndexOrElse(index, (ESteamVanity) null);
+	}
 }
