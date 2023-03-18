@@ -16,6 +16,7 @@
 
 package io.github.iwyfewwnt.steamid.types;
 
+//import io.github.iwyfewwnt.steamid.utils.USteamBit;
 import io.github.iwyfewwnt.steamid.utils.USteamUniverse;
 import io.github.iwyfewwnt.uwutils.UwArray;
 import io.github.iwyfewwnt.uwutils.UwEnum;
