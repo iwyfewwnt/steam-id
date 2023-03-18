@@ -22,7 +22,7 @@ import io.github.u004.bits.BitVar;
  * A Steam Id bits utility.
  *
  * <p>{@code USteamBit} is the utility class
- * for all offsets and masks of the Steam Id
+ * for all offsets and masks of the Steam ID
  * bit vector.
  *
  * @see <a href="https://vk.cc/ch6gId">bits by u004 on GitHub</a>
@@ -69,33 +69,77 @@ public final class USteamBit {
 	 */
 	public static final long ACCOUNT_UNIVERSE_MASK = 0x000000FFL;
 
-	/**
-	 * An account ID bit variable.
-	 *
-	 * <p>Wraps {@link USteamBit#ACCOUNT_ID_OFFSET} and {@link USteamBit#ACCOUNT_ID_MASK}.
-	 */
-	public static final BitVar ACCOUNT_ID = new BitVar(ACCOUNT_ID_OFFSET, ACCOUNT_ID_MASK);
+//	/**
+//	 * An account ID bit variable.
+//	 *
+//	 * <p>Wraps {@link USteamBit#ACCOUNT_ID_OFFSET} and {@link USteamBit#ACCOUNT_ID_MASK}.
+//	 */
+//	public static final BitVar ACCOUNT_ID = new BitVar(ACCOUNT_ID_OFFSET, ACCOUNT_ID_MASK);
+//
+//	/**
+//	 * An account instance bit variable.
+//	 *
+//	 * <p>Wraps {@link USteamBit#ACCOUNT_INSTANCE_OFFSET} and {@link USteamBit#ACCOUNT_INSTANCE_MASK}.
+//	 */
+//	public static final BitVar ACCOUNT_INSTANCE = new BitVar(ACCOUNT_INSTANCE_OFFSET, ACCOUNT_INSTANCE_MASK);
+//
+//	/**
+//	 * An account type bit variable.
+//	 *
+//	 * <p>Wraps {@link USteamBit#ACCOUNT_TYPE_OFFSET} and {@link USteamBit#ACCOUNT_TYPE_MASK}.
+//	 */
+//	public static final BitVar ACCOUNT_TYPE = new BitVar(ACCOUNT_TYPE_OFFSET, ACCOUNT_TYPE_MASK);
+//
+//	/**
+//	 * An account universe bit variable.
+//	 *
+//	 * <p>Wraps {@link USteamBit#ACCOUNT_UNIVERSE_OFFSET} and {@link USteamBit#ACCOUNT_UNIVERSE_MASK}.
+//	 */
+//	public static final BitVar ACCOUNT_UNIVERSE = new BitVar(ACCOUNT_UNIVERSE_OFFSET, ACCOUNT_UNIVERSE_MASK);
 
 	/**
-	 * An account instance bit variable.
+	 * Get a Steam type-32 account identifier
+	 * from a Steam type-64 account identifier.
 	 *
-	 * <p>Wraps {@link USteamBit#ACCOUNT_INSTANCE_OFFSET} and {@link USteamBit#ACCOUNT_INSTANCE_MASK}.
+	 * @param id64	Steam type-64 account identifier
+	 * @return		Steam type-32 account identifier
 	 */
-	public static final BitVar ACCOUNT_INSTANCE = new BitVar(ACCOUNT_INSTANCE_OFFSET, ACCOUNT_INSTANCE_MASK);
+	public static int getAccountId(long id64) {
+		return (int) BitVar.get(id64, ACCOUNT_ID_OFFSET, ACCOUNT_ID_MASK);
+	}
 
 	/**
-	 * An account type bit variable.
+	 * Get a Steam account instance type identifier
+	 * from a Steam type-64 account identifier.
 	 *
-	 * <p>Wraps {@link USteamBit#ACCOUNT_TYPE_OFFSET} and {@link USteamBit#ACCOUNT_TYPE_MASK}.
+	 * @param id64	Steam type-64 account identifier
+	 * @return		Steam account instance type identifier
 	 */
-	public static final BitVar ACCOUNT_TYPE = new BitVar(ACCOUNT_TYPE_OFFSET, ACCOUNT_TYPE_MASK);
+	public static int getAccountInstance(long id64) {
+		return (int) BitVar.get(id64, ACCOUNT_INSTANCE_OFFSET, ACCOUNT_INSTANCE_MASK);
+	}
 
 	/**
-	 * An account universe bit variable.
+	 * Get a Steam account type identifier
+	 * from a Steam type-64 account identifier.
 	 *
-	 * <p>Wraps {@link USteamBit#ACCOUNT_UNIVERSE_OFFSET} and {@link USteamBit#ACCOUNT_UNIVERSE_MASK}.
+	 * @param id64	Steam type-64 account identifier
+	 * @return		Steam account type identifier
 	 */
-	public static final BitVar ACCOUNT_UNIVERSE = new BitVar(ACCOUNT_UNIVERSE_OFFSET, ACCOUNT_UNIVERSE_MASK);
+	public static int getAccountType(long id64) {
+		return (int) BitVar.get(id64, ACCOUNT_TYPE_OFFSET, ACCOUNT_TYPE_MASK);
+	}
+
+	/**
+	 * Get a Steam account universe type identifier
+	 * from a Steam type-64 account identifier.
+	 *
+	 * @param id64	Steam type-64 account identifier
+	 * @return		Steam account universe type identifier
+	 */
+	public static int getAccountUniverse(long id64) {
+		return (int) BitVar.get(id64, ACCOUNT_UNIVERSE_OFFSET, ACCOUNT_UNIVERSE_MASK);
+	}
 
 	private USteamBit() {
 		throw new UnsupportedOperationException();
