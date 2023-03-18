@@ -90,7 +90,7 @@ public enum ESteamVanity {
 	}
 
 	/**
-	 * Get a {@link ESteamVanity} instance by its vanity URL type identifier
+	 * Get an {@link ESteamVanity} instance by its vanity URL type identifier
 	 * or return a default value if failed.
 	 *
 	 * @param id			vanity URL type identifier
@@ -102,7 +102,7 @@ public enum ESteamVanity {
 	}
 
 	/**
-	 * Get a {@link ESteamVanity} instance by its vanity URL type identifier
+	 * Get an {@link ESteamVanity} instance by its vanity URL type identifier
 	 * or return a default value if failed.
 	 *
 	 * @param id					vanity URL type identifier
@@ -114,7 +114,7 @@ public enum ESteamVanity {
 	}
 
 	/**
-	 * Get a {@link ESteamVanity} instance by its vanity URL type identifier
+	 * Get an {@link ESteamVanity} instance by its vanity URL type identifier
 	 * or return {@code null} if failed.
 	 *
 	 * @param id	vanity URL type identifier
@@ -125,7 +125,7 @@ public enum ESteamVanity {
 	}
 
 	/**
-	 * Get a {@link ESteamVanity} instance by its index
+	 * Get an {@link ESteamVanity} instance by its index
 	 * or return a default value if failed.
 	 *
 	 * @param index			index of the instance
@@ -137,7 +137,7 @@ public enum ESteamVanity {
 	}
 
 	/**
-	 * Get a {@link ESteamVanity} instance by its index
+	 * Get an {@link ESteamVanity} instance by its index
 	 * or return a default value if failed.
 	 *
 	 * @param index					index of the instance
@@ -149,7 +149,7 @@ public enum ESteamVanity {
 	}
 
 	/**
-	 * Get a {@link ESteamVanity} instance by its index
+	 * Get an {@link ESteamVanity} instance by its index
 	 * or return {@code null} if failed.
 	 *
 	 * @param index		index of the instance
