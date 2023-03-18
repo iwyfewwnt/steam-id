@@ -16,14 +16,14 @@
 
 package io.github.iwyfewwnt.steamid.types;
 
-//import io.github.u004.uwutils.UwArray;
-//import io.github.u004.uwutils.UwMap;
-//import io.vavr.control.Option;
 import io.github.iwyfewwnt.steamid.utils.USteamAccount;
-import io.github.iwyfewwnt.steamid.utils.USteamBit;
+import io.github.iwyfewwnt.uwutils.UwArray;
+import io.github.iwyfewwnt.uwutils.UwEnum;
 import io.github.iwyfewwnt.uwutils.UwMap;
+import io.github.iwyfewwnt.uwutils.UwObject;
 
 import java.util.Map;
+import java.util.function.Supplier;
 
 /**
  * A Steam account type enums.
@@ -124,115 +124,175 @@ public enum ESteamAccount {
 //	 */
 //	public static final int OFFSET = USteamBit.ACCOUNT_TYPE_OFFSET;
 
-	// TODO: doc-comment
-	private static final Map<Integer, ESteamAccount> MAP_BY_VALUE = UwMap.newMapByFieldOrNull(
-			entry -> entry.value, ESteamAccount.class
+	/**
+	 * An array of {@link ESteamAccount} instances.
+	 */
+	private static final ESteamAccount[] VALUES = UwEnum.values(ESteamAccount.class);
+
+	/**
+	 * A map of {@link ESteamAccount} instances by their identifier field.
+	 */
+	private static final Map<Integer, ESteamAccount> MAP_BY_ID = UwMap.newMapByFieldOrNull(
+			entry -> entry.id, ESteamAccount.class
 	);
 
-	// TODO: doc-comment
+	/**
+	 * A map of {@link ESteamAccount} instances by their character field.
+	 */
 	private static final Map<Character, ESteamAccount> MAP_BY_CHAR = UwMap.newMapByFieldOrNull(
 			entry -> entry.ch, ESteamAccount.class
 	);
 
 	/**
-	 * Account type ID.
+	 * An account type identifier.
 	 */
-	private final int value;
+	private final int id;
 
 	/**
-	 * Account type char.
+	 * An account type character.
 	 */
 	private final char ch;
 
 	/**
 	 * Initialize an {@link ESteamAccount} instance.
 	 *
-	 * @param value	account type ID
-	 * @param ch	account type char
+	 * @param id	account type identifier
+	 * @param ch	account type character
 	 */
-	ESteamAccount(int value, char ch) {
-		this.value = value;
+	ESteamAccount(int id, char ch) {
+		this.id = id;
 		this.ch = ch;
 	}
 
 	/**
-	 * Get this account type ID.
+	 * Get this account type identifier.
 	 *
-	 * @return	account type ID
+	 * @return	account type identifier
 	 */
-	public int getValue() {
-		return this.value;
+	public int getId() {
+		return this.id;
 	}
 
 	/**
-	 * Get this account type char.
+	 * Get this account type character.
 	 *
-	 * @return	account type char
+	 * @return	account type character
 	 */
 	public char getChar() {
 		return this.ch;
 	}
 
-//	/**
-//	 * Get the {@code ESteamAccount} instance by its type ID.
-//	 *
-//	 * @param value		account type ID
-//	 * @return			{@code ESteamAccount} instance
-//	 * 					that wrapped in {@link Option}
-//	 */
-//	public static Option<ESteamAccount> fromValue(Integer value) {
-//		return UwMap.get(value, MAP_BY_VALUE);
-//	}
+	/**
+	 * Get an {@link ESteamAccount} instance by its account type identifier
+	 * or return a default value if failed.
+	 *
+	 * @param id			account type identifier of the instance
+	 * @param defaultValue	default value to return on failure
+	 * @return				associated {@link ESteamAccount} instance or the default values
+	 */
+	public static ESteamAccount fromIdOrElse(Integer id, ESteamAccount defaultValue) {
+		return UwMap.getOrElse(id, MAP_BY_ID, defaultValue);
+	}
 
-//	/**
-//	 * Get the {@code ESteamAccount} instance by its type char.
-//	 *
-//	 * @param value		account type char
-//	 * @return			{@code ESteamAccount} instance
-//	 * 					that wrapped in {@link Option}
-//	 */
-//	public static Option<ESteamAccount> fromChar(Character value) {
-//		return UwMap.get(value, MAP_BY_CHAR);
-//	}
+	/**
+	 * Get an {@link ESteamAccount} instance by its account type identifier
+	 * or return a default value if failed.
+	 *
+	 * @param id					account type identifier of the instance
+	 * @param defaultValueSupplier	supplier from which get the default value
+	 * @return						associated {@link ESteamAccount} instance or the default values
+	 */
+	public static ESteamAccount fromIdOrElse(Integer id, Supplier<ESteamAccount> defaultValueSupplier) {
+		return UwObject.getIfNull(fromIdOrNull(id), defaultValueSupplier);
+	}
 
-//	/**
-//	 * Get the {@code ESteamAccount} instance by its index.
-//	 *
-//	 * @param index		{@code ESteamAccount} instance index
-//	 * @return			{@code ESteamAccount} instance
-//	 * 					that wrapped in {@link Option}
-//	 */
-//	public static Option<ESteamAccount> fromIndex(Integer index) {
-//		return UwArray.get(index, values());
-//	}
+	/**
+	 * Get an {@link ESteamAccount} instance by its account type identifier
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Wraps {@link ESteamAccount#fromIdOrElse(Integer, ESteamAccount)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param id	account type identifier of the instance
+	 * @return		associated {@link ESteamAccount} instance or {@code null}
+	 */
+	public static ESteamAccount fromIdOrNull(Integer id) {
+		return fromIdOrElse(id, (ESteamAccount) null);
+	}
 
-//	/**
-//	 * Get the {@code ESteamAccount} instance by its type ID.
-//	 *
-//	 * @param value		account type ID
-//	 * @return			{@code ESteamAccount} instance or null
-//	 */
-//	public static ESteamAccount fromValueRaw(Integer value) {
-//		return fromValue(value).getOrNull();
-//	}
+	/**
+	 * Get an {@link ESteamAccount} instance by its account type character
+	 * or return a default value if failed.
+	 *
+	 * @param ch			account type character of the instance
+	 * @param defaultValue	default value to return on failure
+	 * @return				associated {@link ESteamAccount} instance or the default value
+	 */
+	public static ESteamAccount fromCharOrElse(Character ch, ESteamAccount defaultValue) {
+		return UwMap.getOrElse(ch, MAP_BY_CHAR, defaultValue);
+	}
 
-//	/**
-//	 * Get the {@code ESteamAccount} instance by its type char.
-//	 *
-//	 * @param value		account type char
-//	 * @return			{@code ESteamAccount} instance or null
-//	 */
-//	public static ESteamAccount fromCharRaw(Character value) {
-//		return fromChar(value).getOrNull();
-//	}
+	/**
+	 * Get an {@link ESteamAccount} instance by its account type character
+	 * or return a default value if failed.
+	 *
+	 * @param ch					account type character of the instance
+	 * @param defaultValueSupplier	supplier from which get the default value
+	 * @return						associated {@link ESteamAccount} instance or the default value
+	 */
+	public static ESteamAccount fromCharOrElse(Character ch, Supplier<ESteamAccount> defaultValueSupplier) {
+		return UwObject.getIfNull(fromCharOrNull(ch), defaultValueSupplier);
+	}
 
-//	/**
-//	 * Get the {@code ESteamAccount} instance by its index.
-//	 *
-//	 * @param index		{@code ESteamAccount} instance index
-//	 * @return			{@code ESteamAccount} instance or null
-//	 */
-//	public static ESteamAccount fromIndexRaw(Integer index) {
-//		return fromIndex(index).getOrNull();
-//	}
+	/**
+	 * Get an {@link ESteamAccount} instance by its account type character
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Wraps {@link ESteamAccount#fromCharOrElse(Character, ESteamAccount)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param ch	account type character of the instance
+	 * @return		associated {@link ESteamAccount} instance or {@code null}
+	 */
+	public static ESteamAccount fromCharOrNull(Character ch) {
+		return fromCharOrElse(ch, (ESteamAccount) null);
+	}
+
+	/**
+	 * Get an {@link ESteamAccount} instance by its index
+	 * or return a default value if failed.
+	 *
+	 * @param index			index of the instance
+	 * @param defaultValue	default value to return on failure
+	 * @return				associated {@link ESteamAccount} instance or the default value
+	 */
+	public static ESteamAccount fromIndexOrElse(Integer index, ESteamAccount defaultValue) {
+		return UwArray.getOrElse(index, VALUES, defaultValue);
+	}
+
+	/**
+	 * Get an {@link ESteamAccount} instance by its index
+	 * or return a default value if failed.
+	 *
+	 * @param index					index of the instance
+	 * @param defaultValueSupplier	supplier from which get the default value
+	 * @return						associated {@link ESteamAccount} instance or the default value
+	 */
+	public static ESteamAccount fromIndexOrElse(Integer index, Supplier<ESteamAccount> defaultValueSupplier) {
+		return UwObject.getIfNull(fromIndexOrNull(index), defaultValueSupplier);
+	}
+
+	/**
+	 * Get an {@link ESteamAccount} instance by its index
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Wraps {@link ESteamAccount#fromIndexOrElse(Integer, ESteamAccount)}
+	 * w/ {@code null} as the default alue.
+	 *
+	 * @param index		index of the instance
+	 * @return			associated {@link ESteamAccount} instance or {@code null}
+	 */
+	public static ESteamAccount fromIndexOrNull(Integer index) {
+		return fromIndexOrElse(index, (ESteamAccount) null);
+	}
 }
