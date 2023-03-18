@@ -17,12 +17,13 @@
 package io.github.iwyfewwnt.steamid.types;
 
 import io.github.iwyfewwnt.steamid.utils.USteamDomain;
+import io.github.iwyfewwnt.uwutils.UwArray;
+import io.github.iwyfewwnt.uwutils.UwEnum;
 import io.github.iwyfewwnt.uwutils.UwMap;
-//import io.github.u004.uwutils.UwArray;
-//import io.github.u004.uwutils.UwMap;
-//import io.vavr.control.Option;
+import io.github.iwyfewwnt.uwutils.UwObject;
 
 import java.util.Map;
+import java.util.function.Supplier;
 
 /**
  * A Steam domain enums.
@@ -53,23 +54,30 @@ public enum ESteamDomain {
 	 */
 	CHINA(USteamDomain.CHINA);
 
-	// TODO: doc-comment
-	private static final Map<String, ESteamDomain> MAP_BY_VALUE = UwMap.newMapByFieldOrNull(
-			entry -> entry.value, ESteamDomain.class
+	/**
+	 * An array of {@link ESteamDomain} instances.
+	 */
+	private static final ESteamDomain[] VALUES = UwEnum.values(ESteamDomain.class);
+
+	/**
+	 * A map of {@link ESteamDomain} instances by their domain field.
+	 */
+	private static final Map<String, ESteamDomain> MAP_BY_DOMAIN = UwMap.newMapByFieldOrNull(
+			entry -> entry.domain, ESteamDomain.class
 	);
 
 	/**
-	 * Domain string.
+	 * A domain string.
 	 */
-	private final String value;
+	private final String domain;
 
 	/**
 	 * Initialize an {@link ESteamDomain} instance.
 	 *
-	 * @param value		domain string
+	 * @param domain	domain string
 	 */
-	ESteamDomain(String value) {
-		this.value = value;
+	ESteamDomain(String domain) {
+		this.domain = domain;
 	}
 
 	/**
@@ -77,49 +85,83 @@ public enum ESteamDomain {
 	 *
 	 * @return	domain string
 	 */
-	public String getValue() {
-		return this.value;
+	public String getDomain() {
+		return this.domain;
 	}
 
-//	/**
-//	 * Get the {@code ESteamDomain} instance by its domain string.
-//	 *
-//	 * @param value		domain string
-//	 * @return			{@code ESteamDomain} instance
-//	 * 					that wrapped in {@link Option}
-//	 */
-//	public static Option<ESteamDomain> fromValue(String value) {
-//		return UwMap.get(value, MAP_BY_VALUE);
-//	}
+	/**
+	 * Get an {@link ESteamDomain} instance by its domain string
+	 * or return a default value if failed.
+	 *
+	 * @param domain		domain string of the instance
+	 * @param defaultValue	default value to return on failure
+	 * @return				associated {@link ESteamDomain} instance or the default value
+	 */
+	public static ESteamDomain fromDomainOrElse(String domain, ESteamDomain defaultValue) {
+		return UwMap.getOrElse(domain, MAP_BY_DOMAIN, defaultValue);
+	}
 
-//	/**
-//	 * Get the {@code ESteamDomain} instance by its index.
-//	 *
-//	 * @param index		{@code ESteamDomain} instance index
-//	 * @return			{@code ESteamDomain} instance
-//	 * 					that wrapped in {@link Option}
-//	 */
-//	public static Option<ESteamDomain> fromIndex(Integer index) {
-//		return UwArray.get(index, values());
-//	}
+	/**
+	 * Get an {@link ESteamDomain} instance by its domain string
+	 * or return a default value if failed.
+	 *
+	 * @param domain				domain string of the instance
+	 * @param defaultValueSupplier	supplier from which get the default value
+	 * @return						associated {@link ESteamDomain} instance or the default value
+	 */
+	public static ESteamDomain fromDomainOrElse(String domain, Supplier<ESteamDomain> defaultValueSupplier) {
+		return UwObject.getIfNull(fromDomainOrNull(domain), defaultValueSupplier);
+	}
 
-//	/**
-//	 * Get the {@code ESteamDomain} instance by its domain string.
-//	 *
-//	 * @param value		domain string
-//	 * @return			{@code ESteamDomain} instance or null
-//	 */
-//	public static ESteamDomain fromValueRaw(String value) {
-//		return fromValue(value).getOrNull();
-//	}
+	/**
+	 * Get an {@link ESteamDomain} instance by its domain string
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Wraps {@link ESteamDomain#fromDomainOrElse(String, ESteamDomain)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param domain		domain string of the instance
+	 * @return				associated {@link ESteamDomain} instance or {@code null}
+	 */
+	public static ESteamDomain fromDomainOrNull(String domain) {
+		return fromDomainOrElse(domain, (ESteamDomain) null);
+	}
 
-//	/**
-//	 * Get the {@code ESteamDomain} instance by its index.
-//	 *
-//	 * @param index		{@code ESteamDomain} instance index
-//	 * @return			{@code ESteamDomain} instance or null
-//	 */
-//	public static ESteamDomain fromIndexRaw(Integer index) {
-//		return fromIndex(index).getOrNull();
-//	}
+	/**
+	 * Get an {@link ESteamDomain} instance by its index
+	 * or return a default value if failed.
+	 *
+	 * @param index			index of the instance
+	 * @param defaultValue	default value to return on failure
+	 * @return				associated {@link ESteamDomain} instance or the default value
+	 */
+	public static ESteamDomain fromIndexOrElse(Integer index, ESteamDomain defaultValue) {
+		return UwArray.getOrElse(index, VALUES, defaultValue);
+	}
+
+	/**
+	 * Get an {@link ESteamDomain} instance by its index
+	 * or return a default value if failed.
+	 *
+	 * @param index					index of the instance
+	 * @param defaultValueSupplier	supplier from which get the default value
+	 * @return						associated {@link ESteamDomain} instance or the default value
+	 */
+	public static ESteamDomain fromIndexOrElse(Integer index, Supplier<ESteamDomain> defaultValueSupplier) {
+		return UwObject.getIfNull(fromIndexOrNull(index), defaultValueSupplier);
+	}
+
+	/**
+	 * Get an {@link ESteamDomain} instance by its index
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Wraps {@link ESteamDomain#fromIndexOrElse(Integer, ESteamDomain)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param index		index of the instance
+	 * @return			associated {@link ESteamDomain} instance or {@code null}
+	 */
+	public static ESteamDomain fromIndexOrNull(Integer index) {
+		return fromIndexOrElse(index, (ESteamDomain) null);
+	}
 }
