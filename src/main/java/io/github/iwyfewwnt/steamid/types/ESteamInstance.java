@@ -191,6 +191,9 @@ public enum ESteamInstance {
 	 * Get an {@link ESteamInstance} instance by its index
 	 * or return {@code null} if failed.
 	 *
+	 * <p>Wraps {@link ESteamInstance#fromIndexOrElse(Integer, ESteamInstance)}
+	 * w/ {@code null} as the default value.
+	 *
 	 * @param index			index of the instance
 	 * @return				associated {@link ESteamInstance} instance or {@code null}
 	 */
