@@ -16,8 +16,6 @@
 
 package io.github.iwyfewwnt.steamid.utils;
 
-import static java.lang.String.format;
-
 /**
  * A Steam URLs utility.
  *
@@ -51,8 +49,32 @@ public final class USteamUrl {
 	 */
 	public static final String CHINA = url(USteamDomain.CHINA, USteamEndpoint.PROFILES);
 
+	/**
+	 * A Steam URL format string.
+	 *
+	 * <p>Arguments in order:
+	 * <ul>
+	 *     <li>String :: Steam domain value.
+	 *     <li>String :: Steam endpoint value.
+	 * </ul>
+	 */
+	private static final String URL_FMT = "https://%s/%s/";
+
+	/**
+	 * Make a Steam URL.
+	 *
+	 * @param domain		Steam domain to include in URL
+	 * @param endpoint		Steam endpoint to include in URL
+	 * @return				Steam URL pointing to the endpoint w/ specified domain
+	 *
+	 * @throws IllegalArgumentException	if domain is {@code null} or endpoint is {@code null}
+	 */
 	private static String url(String domain, String endpoint) {
-		return format("https://%s/%s/", domain, endpoint);
+		if (domain == null || endpoint == null) {
+			throw new IllegalArgumentException();
+		}
+
+		return String.format(URL_FMT, domain, endpoint);
 	}
 
 	private USteamUrl() {
