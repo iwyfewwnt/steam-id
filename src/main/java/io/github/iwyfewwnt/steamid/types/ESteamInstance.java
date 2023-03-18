@@ -16,14 +16,15 @@
 
 package io.github.iwyfewwnt.steamid.types;
 
-//import io.github.u004.uwutils.UwArray;
-//import io.github.u004.uwutils.UwMap;
-//import io.vavr.control.Option;
-import io.github.iwyfewwnt.steamid.utils.USteamBit;
+//import io.github.iwyfewwnt.steamid.utils.USteamBit;
 import io.github.iwyfewwnt.steamid.utils.USteamInstance;
+import io.github.iwyfewwnt.uwutils.UwArray;
+import io.github.iwyfewwnt.uwutils.UwEnum;
 import io.github.iwyfewwnt.uwutils.UwMap;
+import io.github.iwyfewwnt.uwutils.UwObject;
 
 import java.util.Map;
+import java.util.function.Supplier;
 
 /**
  * A Steam account instance type enums.
@@ -89,73 +90,111 @@ public enum ESteamInstance {
 //	 */
 //	public static final int OFFSET = USteamBit.ACCOUNT_INSTANCE_OFFSET;
 
-	// TODO: doc-comment
-	private static final Map<Integer, ESteamInstance> MAP_BY_VALUE = UwMap.newMapByFieldOrNull(
-			entry -> entry.value, ESteamInstance.class
+	/**
+	 * An array of {@link ESteamInstance} instances.
+	 */
+	private static final ESteamInstance[] VALUES = UwEnum.values(ESteamInstance.class);
+
+	/**
+	 * A map of {@link ESteamInstance} instances by their identifier field.
+	 */
+	private static final Map<Integer, ESteamInstance> MAP_BY_ID = UwMap.newMapByFieldOrNull(
+			entry -> entry.id, ESteamInstance.class
 	);
 
 	/**
-	 * Account instance type ID.
+	 * An account instance type identifier.
 	 */
-	private final int value;
+	private final int id;
 
 	/**
 	 * Initialize a {@code ESteamInstance} instance.
 	 *
-	 * @param value		account instance type ID
+	 * @param id	account instance type identifier
 	 */
-	ESteamInstance(int value) {
-		this.value = value;
+	ESteamInstance(int id) {
+		this.id = id;
 	}
 
 	/**
-	 * Get this account instance type ID.
+	 * Get this account instance type identifeir.
 	 *
-	 * @return	account instance type ID
+	 * @return	account instance type identifier
 	 */
-	public int getValue() {
-		return this.value;
+	public int getId() {
+		return this.id;
 	}
 
-//	/**
-//	 * Get the {@code ESteamInstance} instance by its type ID.
-//	 *
-//	 * @param value		account instance type ID
-//	 * @return			{@code ESteamInstance} instance
-//	 * 					that wrapped in {@link Option}
-//	 */
-//	public static Option<ESteamInstance> fromValue(Integer value) {
-//		return UwMap.get(value, MAP_BY_VALUE);
-//	}
+	/**
+	 * Get an {@link ESteamInstance} instance by its account instance type identifier
+	 * or return a default value if failed.
+	 *
+	 * @param id			account instance type identifier of the instance
+	 * @param defaultValue	default value to return of failure
+	 * @return				associated {@link ESteamInstance} instance or the default value
+	 */
+	public static ESteamInstance fromIdOrElse(Integer id, ESteamInstance defaultValue) {
+		return UwMap.getOrElse(id, MAP_BY_ID, defaultValue);
+	}
 
-//	/**
-//	 * Get the {@code ESteamInstance} instance by its index.
-//	 *
-//	 * @param index		{@code ESteamInstance} instance index
-//	 * @return			{@code ESteamInstance} instance
-//	 * 					that wrapped in {@link Option}
-//	 */
-//	public static Option<ESteamInstance> fromIndex(Integer index) {
-//		return UwArray.get(index, values());
-//	}
+	/**
+	 * Get an {@link ESteamInstance} instance by its account instance type identifier
+	 * or return a default value if failed.
+	 *
+	 * @param id					account instance type identifier of the instance
+	 * @param defaultValueSupplier	supplier from which get the default value
+	 * @return						associated {@link ESteamInstance} instance or the default value
+	 */
+	public static ESteamInstance fromIdOrElse(Integer id, Supplier<ESteamInstance> defaultValueSupplier) {
+		return UwObject.getIfNull(fromIdOrNull(id), defaultValueSupplier);
+	}
 
-//	/**
-//	 * Get the {@code ESteamInstance} instance by its type ID.
-//	 *
-//	 * @param value		account instance type ID
-//	 * @return			{@code ESteamInstance} instance or null
-//	 */
-//	public static ESteamInstance fromValueRaw(Integer value) {
-//		return fromValue(value).getOrNull();
-//	}
+	/**
+	 * Get an {@link ESteamInstance} instance by its account instance type identifier
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Wraps {@link ESteamInstance#fromIdOrElse(Integer, ESteamInstance)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param id			account instance type identifier of the instance
+	 * @return				associated {@link ESteamInstance} instance or {@code null}
+	 */
+	public static ESteamInstance fromIdOrNull(Integer id) {
+		return fromIdOrElse(id, (ESteamInstance) null);
+	}
 
-//	/**
-//	 * Get the {@code ESteamInstance} instance by its index.
-//	 *
-//	 * @param index		{@code ESteamInstance} instance index
-//	 * @return			{@code ESteamInstance} instance or null
-//	 */
-//	public static ESteamInstance fromIndexRaw(Integer index) {
-//		return fromIndex(index).getOrNull();
-//	}
+	/**
+	 * Get an {@link ESteamInstance} instance by its index
+	 * or return a default value if failed.
+	 *
+	 * @param index			index of the instance
+	 * @param defaultValue	default value to return of failure
+	 * @return				associated {@link ESteamInstance} instance or the default value
+	 */
+	public static ESteamInstance fromIndexOrElse(Integer index, ESteamInstance defaultValue) {
+		return UwArray.getOrElse(index, VALUES, defaultValue);
+	}
+
+	/**
+	 * Get an {@link ESteamInstance} instance by its index
+	 * or return a default value if failed.
+	 *
+	 * @param index					index of the instance
+	 * @param defaultValueSupplier	suppleir from which get the default value
+	 * @return						associated {@link ESteamInstance} instance or the defualt value
+	 */
+	public static ESteamInstance fromIndexOrElse(Integer index, Supplier<ESteamInstance> defaultValueSupplier) {
+		return UwObject.getIfNull(fromIndexOrNull(index), defaultValueSupplier);
+	}
+
+	/**
+	 * Get an {@link ESteamInstance} instance by its index
+	 * or return {@code null} if failed.
+	 *
+	 * @param index			index of the instance
+	 * @return				associated {@link ESteamInstance} instance or {@code null}
+	 */
+	public static ESteamInstance fromIndexOrNull(Integer index) {
+		return fromIndexOrElse(index, (ESteamInstance) null);
+	}
 }
