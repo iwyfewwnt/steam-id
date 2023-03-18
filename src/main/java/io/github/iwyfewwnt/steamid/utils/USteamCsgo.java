@@ -20,10 +20,6 @@ import io.github.iwyfewwnt.steamid.SteamId;
 import io.github.iwyfewwnt.uwutils.UwObject;
 import io.github.iwyfewwnt.uwutils.UwString;
 import io.github.u004.bits.utils.UBitMask;
-//import io.vavr.control.Try;
-//import org.apache.commons.codec.digest.DigestUtils;
-//import org.apache.commons.lang3.StringUtils;
-//import io.github.iwyfewwnt.steamid.exceptions.InvalidCsgoCodeStateException;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -35,7 +31,7 @@ import java.util.function.Supplier;
  * A Steam CS:GO utility.
  *
  * <p>{@code USteamCsgo} is the utility class to make conversions
- * between {@code SteamId}'s xuid and CS:GO friend code.
+ * between the Steam unique account identifier and the CS:GO friend code.
  *
  * @see <a href="https://vk.cc/ch6eMh">De- and encoding CS:GO friend codes on UnKnoWnCheaTs</a>
  * @see <a href="https://vk.cc/ch6eOT">go-csgofriendcode by emily33901 on GitHub</a>
@@ -88,60 +84,42 @@ public final class USteamCsgo {
 	 */
 	private static final long HASH_MASK = 0x4353474F00000000L;
 
-	private static final MessageDigest MD5 = initMd5MessageDigest();
+	/**
+	 * A message digest utility class instance.
+	 */
+	private static final MessageDigest MD5 = initMessageDigest("MD5");
 
-	private static MessageDigest initMd5MessageDigest() {
-		try {
-			return MessageDigest.getInstance("MD5");
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
-
-		return null;
-	}
-
-	private static String base32(long val) {
-		val = Long.reverseBytes(val);
-
-		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < CODE_LENGTH; i++, val >>= 5) {
-			sb.append(CODE_BASE.charAt((int) (val & 0x1F)));
-		}
-
-		for (int i = 0; i < CODE_POINTS.length; i++) {
-			sb.insert(CODE_POINTS[i] + i, CODE_DELIMITER);
-		}
-
-		return sb.toString();
-	}
-
-	private static long base32(String val) {
-		val = val.replace(CODE_DELIMITER, "");
-
-		long res = 0;
-		for (int i = 0; i < CODE_LENGTH; i++) {
-			res |= (long) CODE_BASE.indexOf(val.charAt(i)) << (5 * i);
-		}
-
-		return Long.reverseBytes(res);
-	}
-
-	private static long hash(long xuid) {
-		xuid |= HASH_MASK;
-
-		byte[] bytes = ByteBuffer.allocate(Long.BYTES)
-				.order(ByteOrder.LITTLE_ENDIAN)
-				.putLong(xuid)
-				.array();
-
-		//noinspection ConstantConditions
-		bytes = MD5.digest(bytes); MD5.reset();
-
-		return ByteBuffer.wrap(bytes)
-				.order(ByteOrder.LITTLE_ENDIAN)
-				.getLong();
-	}
-
+	/**
+	 * Convert unique Steam account identifier
+	 * to the interface-friendly CS:GO friend code
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>Steam account identifier isn't valid.
+	 *     <li>{@link USteamCsgo#MD5} is {@code null}.
+	 * </ul>
+	 *
+	 * <hr>
+	 * <pre>{@code
+	 *     // (String) defaultValue
+	 *     USteamCsgo.fromXuidOrElse(0L, <defaultValue>);
+	 *
+	 *     // (String) defaultValue
+	 *     USteamCsgo.fromXuidOrElse(Long.MAX_VALUE, <defaultValue>);
+	 *
+	 *     // (String) "AJJJS-ABAA"
+	 *     USteamCsgo.fromXuidOrElse(1L, <defaultValue>);
+	 *
+	 *     // (String) "AEVDG-WQTQ"
+	 *     USteamCsgo.fromXuidOrElse(1266042636L, <defaultValue>);
+	 * }</pre>
+	 * <hr>
+	 *
+	 * @param xuid			Steam account identifier
+	 * @param defaultValue 	default value to return on failure
+	 * @return				interface-friendly CS:GO friend code or the default value
+	 */
 	public static String fromXuidOrElse(Long xuid, String defaultValue) {
 		if (!SteamId.isSteamXuidValid(xuid) || MD5 == null) {
 			return defaultValue;
@@ -170,19 +148,149 @@ public final class USteamCsgo {
 		return code;
 	}
 
+	/**
+	 * Convert a unique Steam account identifier
+	 * to the interface-friendly CS:GO friend code
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>Steam account identifier isn't valid.
+	 *     <li>{@link USteamCsgo#MD5} is {@code null}.
+	 * </ul>
+	 *
+	 * <hr>
+	 * <pre>{@code
+	 *     // (String) defaultValue
+	 *     USteamCsgo.fromXuidOrElse(0L, <defaultValueSupplier>);
+	 *
+	 *     // (String) defaultValue
+	 *     USteamCsgo.fromXuidOrElse(Long.MAX_VALUE, <defaultValueSupplier>);
+	 *
+	 *     // (String) "AJJJS-ABAA"
+	 *     USteamCsgo.fromXuidOrElse(1L, <defaultValueSupplier>);
+	 *
+	 *     // (String) "AEVDG-WQTQ"
+	 *     USteamCsgo.fromXuidOrElse(1266042636L, <defaultValueSupplier>);
+	 * }</pre>
+	 * <hr>
+	 *
+	 * @param xuid					Steam account identifier
+	 * @param defaultValueSupplier 	supplier from which get the defualt value
+	 * @return						interface-friendly CS:GO friend code or the default value
+	 */
 	public static String fromXuidOrElse(Long xuid, Supplier<String> defaultValueSupplier) {
 		return UwObject.getIfNull(fromXuidOrNull(xuid), defaultValueSupplier);
 	}
 
+	/**
+	 * Convert a unique Steam account identifier
+	 * to the interface-friendly CS:GO friend code
+	 * or return an empty string if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>Steam account identifier isn't valid.
+	 *     <li>{@link USteamCsgo#MD5} is {@code null}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link USteamCsgo#fromXuidOrElse(Long, String)}
+	 * w/ {@link UwString#EMPTY} as the default value.
+	 *
+	 * <hr>
+	 * <pre>{@code
+	 *     // (String) ""
+	 *     USteamCsgo.fromXuidOrEmpty(0L);
+	 *
+	 *     // (String) ""
+	 *     USteamCsgo.fromXuidOrEmpty(Long.MAX_VALUE);
+	 *
+	 *     // (String) "AJJJS-ABAA"
+	 *     USteamCsgo.fromXuidOrEmpty(1L);
+	 *
+	 *     // (String) "AEVDG-WQTQ"
+	 *     USteamCsgo.fromXuidOrEmpty(1266042636L);
+	 * }</pre>
+	 * <hr>
+	 *
+	 * @param xuid			Steam account identifier
+	 * @return				interface-friendly CS:GO friend code or the empty string
+	 */
 	public static String fromXuidOrEmpty(Long xuid) {
 		return fromXuidOrElse(xuid, UwString.EMPTY);
 	}
 
+	/**
+	 * Convert a unique Steam account identifier
+	 * to the interface-friendly CS:GO friend code
+	 * or return {@code null}.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>Steam account identifier isn't valid.
+	 *     <li>{@link USteamCsgo#MD5} is {@code null}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link USteamCsgo#fromXuidOrElse(Long, String)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * <hr>
+	 * <pre>{@code
+	 *     // (String) null
+	 *     USteamCsgo.fromXuidOrNull(0L);
+	 *
+	 *     // (String) null
+	 *     USteamCsgo.fromXuidOrNull(Long.MAX_VALUE);
+	 *
+	 *     // (String) "AJJJS-ABAA"
+	 *     USteamCsgo.fromXuidOrNull(1L);
+	 *
+	 *     // (String) "AEVDG-WQTQ"
+	 *     USteamCsgo.fromXuidOrNull(1266042636L);
+	 * }</pre>
+	 * <hr>
+	 *
+	 * @param xuid			Steam account identifier
+	 * @return				interface-friendly CS:GO friend code or {@code null}
+	 */
 	public static String fromXuidOrNull(Long xuid) {
 		return fromXuidOrElse(xuid, (String) null);
 	}
 
-
+	/**
+	 * Convert an interface-friendly CS:GO friend code
+	 * to a unique Steam account identifier
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>CS:GO friend code is {@code null}.
+	 *     <li>CS:GO friend code doesn't match w/ the {@link USteamRegex#CSGO_CODE}.
+	 * </ul>
+	 *
+	 * <hr>
+	 * <pre>{@code
+	 *     // (Long) defualtValue
+	 *     USteamCsgo.toXuidOrElse(null, <defaultValue>);
+	 *
+	 *     // (Long) defaultValue
+	 *     USteamCsgo.toXuidOrElse("", <defaultValue>);
+	 *
+	 *     // (Long) 1
+	 *     USteamCsgo.toXuidOrElse("AJJJS-ABAA", <defaultValue>);
+	 *
+	 *     // (Long) 1
+	 *     USteamCsgo.toXuidOrElse("  AJJJS-ABAA  ", <defaultValue>);
+	 *
+	 *     // (Long) 1266042636
+	 *     USteamCsgo.toXuidOrElse("AEVDG-WQTQ", <defaultValue>);
+	 * }</pre>
+	 * <hr>
+	 *
+	 * @param code			interface-friendly CS:GO friend code
+	 * @param defaultValue 	default value to return on failure
+	 * @return				Steam unique account identifier or the default value
+	 */
 	public static Long toXuidOrElse(String code, Long defaultValue) {
 		if (code == null) {
 			return defaultValue;
@@ -207,211 +315,180 @@ public final class USteamCsgo {
 		return xuid;
 	}
 
+	/**
+	 * Convert an interface-friendly CS:GO friend code
+	 * to a unique Steam account identifier
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>CS:GO friend code is {@code null}.
+	 *     <li>CS:GO friend code doesn't match w/ the {@link USteamRegex#CSGO_CODE}.
+	 * </ul>
+	 *
+	 * <hr>
+	 * <pre>{@code
+	 *     // (Long) defualtValue
+	 *     USteamCsgo.toXuidOrElse(null, <defaultValueSupplier>);
+	 *
+	 *     // (Long) defaultValue
+	 *     USteamCsgo.toXuidOrElse("", <defaultValueSupplier>);
+	 *
+	 *     // (Long) 1
+	 *     USteamCsgo.toXuidOrElse("AJJJS-ABAA", <defaultValueSupplier>);
+	 *
+	 *     // (Long) 1
+	 *     USteamCsgo.toXuidOrElse("  AJJJS-ABAA  ", <defaultValueSupplier>);
+	 *
+	 *     // (Long) 1266042636
+	 *     USteamCsgo.toXuidOrElse("AEVDG-WQTQ", <defaultValueSupplier>);
+	 * }</pre>
+	 * <hr>
+	 *
+	 * @param code					interface-friendly CS:GO friend code
+	 * @param defaultValueSupplier 	supplier from which get the default value
+	 * @return						Steam unique account identifier or the default value
+	 */
 	public static Long toXuidOrElse(String code, Supplier<Long> defaultValueSupplier) {
 		return UwObject.getIfNull(toXuidOrNull(code), defaultValueSupplier);
 	}
 
+	/**
+	 * Convert an interface-friendly CS:GO friend code
+	 * to a unique Steam account identifier
+	 * or return a zero value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>CS:GO friend code is {@code null}.
+	 *     <li>CS:GO friend code doesn't match w/ the {@link USteamRegex#CSGO_CODE}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link USteamCsgo#toXuidOrElse(String, Long)}
+	 * w/ {@code 0L} as the default value.
+	 *
+	 * <hr>
+	 * <pre>{@code
+	 *     // (Long) 0
+	 *     USteamCsgo.toXuidOrZero(null);
+	 *
+	 *     // (Long) 0
+	 *     USteamCsgo.toXuidOrZero("");
+	 *
+	 *     // (Long) 1
+	 *     USteamCsgo.toXuidOrZero("AJJJS-ABAA");
+	 *
+	 *     // (Long) 1
+	 *     USteamCsgo.toXuidOrZero("  AJJJS-ABAA  ");
+	 *
+	 *     // (Long) 1266042636
+	 *     USteamCsgo.toXuidOrZero("AEVDG-WQTQ");
+	 * }</pre>
+	 * <hr>
+	 *
+	 * @param code	interface-friendly CS:GO friend code
+	 * @return		Steam unique account identifier or the {@code 0L} value
+	 */
 	public static Long toXuidOrZero(String code) {
 		return toXuidOrElse(code, 0L);
 	}
 
+	/**
+	 * Convert an interface-friendly CS:GO friend code
+	 * to a unique Steam account identifier
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>CS:GO friend code is {@code null}.
+	 *     <li>CS:GO friend code doesn't match w/ the {@link USteamRegex#CSGO_CODE}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link USteamCsgo#toXuidOrElse(String, Long)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * <hr>
+	 * <pre>{@code
+	 *     // (Long) null
+	 *     USteamCsgo.toXuidOrNull(null);
+	 *
+	 *     // (Long) null
+	 *     USteamCsgo.toXuidOrNull("");
+	 *
+	 *     // (Long) 1
+	 *     USteamCsgo.toXuidOrNull("AJJJS-ABAA");
+	 *
+	 *     // (Long) 1
+	 *     USteamCsgo.toXuidOrNull("  AJJJS-ABAA  ");
+	 *
+	 *     // (Long) 1266042636
+	 *     USteamCsgo.toXuidOrNull("AEVDG-WQTQ");
+	 * }</pre>
+	 * <hr>
+	 *
+	 * @param code	interface-friendly CS:GO friend code
+	 * @return		Steam unique account identifier or {@code null}
+	 */
 	public static Long toXuidOrNull(String code) {
 		return toXuidOrElse(code, (Long) null);
 	}
 
-//	private static Try<String> toExtendedCode(long val) {
-//		return Try.of(() -> {
-//			long xuid = val;
-//
-//			long hash = hash(xuid);
-//			long res = 0;
-//
-//			for (int i = 0; i < 8; i++) {
-//				byte idNibble = (byte) (xuid & UBitMask.UINT4);
-//				byte hashNibble = (byte) ((hash >> i) & 1);
-//
-//				long a = ((res << 4) & UBitMask.UINT32) | idNibble;
-//
-//				res = (res >> 28) << 32 | (a & UBitMask.UINT16);
-//				res = (res >> 31) << 32 | (a << 1 | hashNibble);
-//
-//				xuid >>= 4;
-//			}
-//
-//			return base32(res);
-//		});
-//	}
+	private static long hash(long xuid) {
+		xuid |= HASH_MASK;
 
-//	private static Try<Long> fromExtendedCode(String code) {
-//		return Try.of(() -> {
-//			long val = base32(code);
-//			long xuid = 0;
-//
-//			for (int i = 0; i < 8; i++) {
-//				val >>= 1;
-//
-//				long idNibble = val & UBitMask.UINT4;
-//
-//				xuid <<= 4;
-//				xuid |= idNibble;
-//
-//				val >>= 4;
-//			}
-//
-//			return xuid;
-//		});
-//	}
+		byte[] bytes = ByteBuffer.allocate(Long.BYTES)
+				.order(ByteOrder.LITTLE_ENDIAN)
+				.putLong(xuid)
+				.array();
 
-//	/**
-//	 * Convert unique Steam account identifier
-//	 * to the interface-friendly CS:GO friend code.
-//	 *
-//	 * <p>Calls private static method {@code USteamCsgo#toExtendedCode(long)}
-//	 * and cuts {@value USteamCsgo#CODE_PREFIX} from the start of the code.
-//	 *
-//	 * <p>Possible failure exceptions:
-//	 * <ul>
-//	 *     <li>{@link IllegalArgumentException}
-//	 *     <li>{@link InvalidCsgoCodeStateException}
-//	 * </ul>
-//	 *
-//	 * <hr>
-//	 * <pre>{@code
-//	 *     // Try.failure(new IllegalArgumentException())
-//	 *     USteamCsgo.toFriendCode(0);
-//	 *
-//	 *     // Try.failure(new IllegalArgumentException())
-//	 *     USteamCsgo.toFriendCode(Long.MAX_VALUE);
-//	 *
-//	 *     // Try.succes("AJJJS-ABAA")
-//	 *     USteamCsgo.toFriendCode(1);
-//	 *
-//	 *     // Try.succes("AEVDG-WQTQ")
-//	 *     USteamCsgo.toFriendCode(1266042636);
-//	 * }</pre>
-//	 * <hr>
-//	 *
-//	 * @param xuid	{@code SteamId}'s xuid
-//	 * @return		interface-friendly CS:GO friend code
-//	 * 				that wrapped in {@link Try}
-//	 */
-//	public static Try<String> toCode(Long xuid) {
-//		if (!SteamId.isSteamXuidValid(xuid)) {
-//			return Try.failure(new IllegalArgumentException());
-//		}
-//
-//		return toExtendedCode(xuid)
-//				.map(code -> code.substring(CODE_PREFIX.length()))
-//				.filter(code -> code.matches(USteamRegex.CSGO_CODE), InvalidCsgoCodeStateException::new);
-//	}
+		//noinspection ConstantConditions
+		bytes = MD5.digest(bytes); MD5.reset();
 
-//	/**
-//	 * Convert interface-friendly CS:GO friend code
-//	 * to the unique Steam account identifier.
-//	 *
-//	 * <p>Adds {@value USteamCsgo#CODE_PREFIX} to the code and calls
-//	 * private static method {@code USteamCsgo#fromExtendedCode(String)}.
-//	 *
-//	 * <p>Possible failure exceptions:
-//	 * <ul>
-//	 *     <li>{@link IllegalArgumentException}
-//	 * </ul>
-//	 *
-//	 * <hr>
-//	 * <pre>{@code
-//	 *     // Try.failure(new IllegalArgumentException())
-//	 *     USteamCsgo.fromFriendCode(null);
-//	 *
-//	 *     // Try.failure(new IllegalArgumentException())
-//	 *     USteamCsgo.fromFriendCode("");
-//	 *
-//	 *     // Try.success(1)
-//	 *     USteamCsgo.fromFriendCode("AJJJS-ABAA");
-//	 *
-//	 *     // Try.success(1)
-//	 *     USteamCsgo.fromFriendCode("  AJJJS-ABAA  ");
-//	 *
-//	 *     // Try.success(1266042636)
-//	 *     USteamCsgo.fromFriendCode("AEVDG-WQTQ");
-//	 * }</pre>
-//	 * <hr>
-//	 *
-//	 * @param code	interface-friendly CS:GO friend code
-//	 * @return		{@code SteamId}'s xuid that wrapped
-//	 * 				in {@link Try}
-//	 */
-//	public static Try<Long> fromCode(String code) {
-//		code = StringUtils.trimToEmpty(code);
-//
-//		if (code.matches(USteamRegex.CSGO_CODE)) {
-//			return fromExtendedCode(CODE_PREFIX + code);
-//		}
-//
-//		return Try.failure(new IllegalArgumentException());
-//	}
+		return ByteBuffer.wrap(bytes)
+				.order(ByteOrder.LITTLE_ENDIAN)
+				.getLong();
+	}
 
-//	/**
-//	 * Rawly convert unique Steam account identifier
-//	 * to the interface-friendly CS:GO friend code.
-//	 *
-//	 * <p>Calls private static method {@code USteamCsgo#toExtendedCode(long)}
-//	 * and cuts {@value USteamCsgo#CODE_PREFIX} from the start of the code.
-//	 *
-//	 * <hr>
-//	 * <pre>{@code
-//	 *     // null
-//	 *     USteamCsgo.toFriendCodeRaw(0);
-//	 *
-//	 *     // null
-//	 *     USteamCsgo.toFriendCodeRaw(Long.MAX_VALUE);
-//	 *
-//	 *     // "AJJJS-ABAA"
-//	 *     USteamCsgo.toFriendCodeRaw(1);
-//	 *
-//	 *     // "AEVDG-WQTQ"
-//	 *     USteamCsgo.toFriendCodeRaw(1266042636);
-//	 * }</pre>
-//	 * <hr>
-//	 *
-//	 * @param xuid	{@code SteamId}'s xuid
-//	 * @return		interface-friendly CS:GO friend code or null
-//	 */
-//	public static String toCodeRaw(Long xuid) {
-//		return toCode(xuid).getOrNull();
-//	}
+	private static String base32(long val) {
+		val = Long.reverseBytes(val);
 
-//	/**
-//	 * Rawly convert interface-friendly CS:GO friend code
-//	 * to the unique Steam account identifier.
-//	 *
-//	 * <p>Adds {@value USteamCsgo#CODE_PREFIX} to the code and calls
-//	 * private static method {@code USteamCsgo#fromExtendedCode(String)}.
-//	 *
-//	 * <hr>
-//	 * <pre>{@code
-//	 *     // null
-//	 *     USteamCsgo.fromFriendCodeRaw(null);
-//	 *
-//	 *     // null
-//	 *     USteamCsgo.fromFriendCodeRaw("");
-//	 *
-//	 *     // 1
-//	 *     USteamCsgo.fromFriendCodeRaw("AJJJS-ABAA");
-//	 *
-//	 *     // 1
-//	 *     USteamCsgo.fromFriendCodeRaw("  AJJJS-ABAA  ");
-//	 *
-//	 *     // 1266042636
-//	 *     USteamCsgo.fromFriendCodeRaw("AEVDG-WQTQ");
-//	 * }</pre>
-//	 * <hr>
-//	 *
-//	 * @param code	interface-friendly CS:GO friend code
-//	 * @return		{@code SteamId}'s xuid or null
-//	 */
-//	public static Long fromCodeRaw(String code) {
-//		return fromCode(code).getOrNull();
-//	}
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < CODE_LENGTH; i++, val >>= 5) {
+			sb.append(CODE_BASE.charAt((int) (val & 0x1F)));
+		}
+
+		for (int i = 0; i < CODE_POINTS.length; i++) {
+			sb.insert(CODE_POINTS[i] + i, CODE_DELIMITER);
+		}
+
+		return sb.toString();
+	}
+
+	private static long base32(String val) {
+		val = val.replace(CODE_DELIMITER, "");
+
+		long res = 0;
+		for (int i = 0; i < CODE_LENGTH; i++) {
+			res |= (long) CODE_BASE.indexOf(val.charAt(i)) << (5 * i);
+		}
+
+		return Long.reverseBytes(res);
+	}
+
+	@SuppressWarnings("SameParameterValue")
+	private static MessageDigest initMessageDigest(String algorithm) {
+		if (algorithm == null) {
+			throw new IllegalArgumentException();
+		}
+
+		try {
+			return MessageDigest.getInstance(algorithm);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
 
 	private USteamCsgo() {
 		throw new UnsupportedOperationException();
