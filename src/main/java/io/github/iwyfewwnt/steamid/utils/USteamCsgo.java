@@ -188,7 +188,12 @@ public final class USteamCsgo {
 			return defaultValue;
 		}
 
-		long val = base32(code.trim());
+		code = code.trim();
+		if (!code.matches(USteamRegex.CSGO_CODE)) {
+			return defaultValue;
+		}
+
+		long val = base32(code);
 		long xuid = 0;
 
 		for (int i = 0; i < 8; i++, val >>= 4) {
