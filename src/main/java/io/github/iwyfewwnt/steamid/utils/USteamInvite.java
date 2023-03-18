@@ -42,7 +42,7 @@ public final class USteamInvite {
 	public static final String MAX_CODE = "wwww-wwww";
 
 	/**
-	 * A Steam xuid base.
+	 * A Steam unique account identifier base.
 	 */
 	public static final String XUID_BASE = "0123456789abcdef";
 
