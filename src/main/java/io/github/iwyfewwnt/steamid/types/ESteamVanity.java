@@ -93,7 +93,7 @@ public enum ESteamVanity {
 	 * Get an {@link ESteamVanity} instance by its vanity URL type identifier
 	 * or return a default value if failed.
 	 *
-	 * @param id			vanity URL type identifier
+	 * @param id			vanity URL type identifier of the instance
 	 * @param defaultValue	default value to return on failure
 	 * @return				associated {@link ESteamVanity} instance or the default value
 	 */
@@ -105,7 +105,7 @@ public enum ESteamVanity {
 	 * Get an {@link ESteamVanity} instance by its vanity URL type identifier
 	 * or return a default value if failed.
 	 *
-	 * @param id					vanity URL type identifier
+	 * @param id					vanity URL type identifier of the instance
 	 * @param defaultValueSupplier	supplier from which get the default value
 	 * @return						associated {@link ESteamVanity} instance or the defualt value
 	 */
@@ -120,7 +120,7 @@ public enum ESteamVanity {
 	 * <p>Wraps {@link ESteamVanity#fromIdOrElse(Integer, ESteamVanity)}
 	 * w/ {@code null} as the default value.
 	 *
-	 * @param id	vanity URL type identifier
+	 * @param id	vanity URL type identifier of the instance
 	 * @return		associated {@link ESteamVanity} instance or {@code null}
 	 */
 	public static ESteamVanity fromIdOrNull(Integer id) {
