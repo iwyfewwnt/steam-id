@@ -104,6 +104,7 @@ public final class USteamBit {
 	 * @param id64	Steam type-64 account identifier
 	 * @return		Steam type-32 account identifier
 	 */
+	@SuppressWarnings("unused")
 	public static int getAccountId(long id64) {
 		return (int) BitVar.get(id64, ACCOUNT_ID_OFFSET, ACCOUNT_ID_MASK);
 	}
@@ -115,6 +116,7 @@ public final class USteamBit {
 	 * @param id64	Steam type-64 account identifier
 	 * @return		Steam account instance type identifier
 	 */
+	@SuppressWarnings("unused")
 	public static int getAccountInstance(long id64) {
 		return (int) BitVar.get(id64, ACCOUNT_INSTANCE_OFFSET, ACCOUNT_INSTANCE_MASK);
 	}
@@ -126,6 +128,7 @@ public final class USteamBit {
 	 * @param id64	Steam type-64 account identifier
 	 * @return		Steam account type identifier
 	 */
+	@SuppressWarnings("unused")
 	public static int getAccountType(long id64) {
 		return (int) BitVar.get(id64, ACCOUNT_TYPE_OFFSET, ACCOUNT_TYPE_MASK);
 	}
@@ -137,6 +140,7 @@ public final class USteamBit {
 	 * @param id64	Steam type-64 account identifier
 	 * @return		Steam account universe type identifier
 	 */
+	@SuppressWarnings("unused")
 	public static int getAccountUniverse(long id64) {
 		return (int) BitVar.get(id64, ACCOUNT_UNIVERSE_OFFSET, ACCOUNT_UNIVERSE_MASK);
 	}
