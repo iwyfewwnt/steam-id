@@ -103,7 +103,7 @@ public final class USteamCsgo {
 	 * <hr>
 	 * <pre>{@code
 	 *     // (String) defaultValue
-	 *     USteamCsgo.fromXuidOrElse(0L, <defaultValue>);
+	 *     USteamCsgo.fromXuidOrElse(0, <defaultValue>);
 	 *
 	 *     // (String) defaultValue
 	 *     USteamCsgo.fromXuidOrElse(Long.MAX_VALUE, <defaultValue>);
@@ -120,8 +120,8 @@ public final class USteamCsgo {
 	 * @param defaultValue 	default value to return on failure
 	 * @return				interface-friendly CS:GO friend code or the default value
 	 */
-	public static String fromXuidOrElse(Long xuid, String defaultValue) {
-		if (!SteamId.isSteamXuidValid(xuid) || MD5 == null) {
+	public static String fromXuidOrElse(Integer xuid, String defaultValue) {
+		if (SteamId.isSteamXuidInvalid(xuid) || MD5 == null) {
 			return defaultValue;
 		}
 
@@ -137,15 +137,8 @@ public final class USteamCsgo {
 			xuid >>= 4;
 		}
 
-		//noinspection UnnecessaryLocalVariable
-		String code = base32(res)
+		return base32(res)
 				.substring(CODE_PREFIX.length());
-
-//		if (!code.matches(USteamRegex.CSGO_CODE)) {
-//			return defaultValue;
-//		}
-
-		return code;
 	}
 
 	/**
@@ -162,7 +155,7 @@ public final class USteamCsgo {
 	 * <hr>
 	 * <pre>{@code
 	 *     // (String) defaultValue
-	 *     USteamCsgo.fromXuidOrElse(0L, <defaultValueSupplier>);
+	 *     USteamCsgo.fromXuidOrElse(0, <defaultValueSupplier>);
 	 *
 	 *     // (String) defaultValue
 	 *     USteamCsgo.fromXuidOrElse(Long.MAX_VALUE, <defaultValueSupplier>);
@@ -179,7 +172,7 @@ public final class USteamCsgo {
 	 * @param defaultValueSupplier 	supplier from which get the defualt value
 	 * @return						interface-friendly CS:GO friend code or the default value
 	 */
-	public static String fromXuidOrElse(Long xuid, Supplier<String> defaultValueSupplier) {
+	public static String fromXuidOrElse(Integer xuid, Supplier<String> defaultValueSupplier) {
 		return UwObject.getIfNull(fromXuidOrNull(xuid), defaultValueSupplier);
 	}
 
@@ -194,13 +187,13 @@ public final class USteamCsgo {
 	 *     <li>{@link USteamCsgo#MD5} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link USteamCsgo#fromXuidOrElse(Long, String)}
+	 * <p>Wraps {@link USteamCsgo#fromXuidOrElse(Integer, String)}
 	 * w/ {@link UwString#EMPTY} as the default value.
 	 *
 	 * <hr>
 	 * <pre>{@code
 	 *     // (String) ""
-	 *     USteamCsgo.fromXuidOrEmpty(0L);
+	 *     USteamCsgo.fromXuidOrEmpty(0);
 	 *
 	 *     // (String) ""
 	 *     USteamCsgo.fromXuidOrEmpty(Long.MAX_VALUE);
@@ -216,7 +209,7 @@ public final class USteamCsgo {
 	 * @param xuid			Steam account identifier to convert
 	 * @return				interface-friendly CS:GO friend code or the empty string
 	 */
-	public static String fromXuidOrEmpty(Long xuid) {
+	public static String fromXuidOrEmpty(Integer xuid) {
 		return fromXuidOrElse(xuid, UwString.EMPTY);
 	}
 
@@ -231,13 +224,13 @@ public final class USteamCsgo {
 	 *     <li>{@link USteamCsgo#MD5} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link USteamCsgo#fromXuidOrElse(Long, String)}
+	 * <p>Wraps {@link USteamCsgo#fromXuidOrElse(Integer, String)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * <hr>
 	 * <pre>{@code
 	 *     // (String) null
-	 *     USteamCsgo.fromXuidOrNull(0L);
+	 *     USteamCsgo.fromXuidOrNull(0);
 	 *
 	 *     // (String) null
 	 *     USteamCsgo.fromXuidOrNull(Long.MAX_VALUE);
@@ -253,7 +246,7 @@ public final class USteamCsgo {
 	 * @param xuid			Steam account identifier to convert
 	 * @return				interface-friendly CS:GO friend code or {@code null}
 	 */
-	public static String fromXuidOrNull(Long xuid) {
+	public static String fromXuidOrNull(Integer xuid) {
 		return fromXuidOrElse(xuid, (String) null);
 	}
 
@@ -270,19 +263,19 @@ public final class USteamCsgo {
 	 *
 	 * <hr>
 	 * <pre>{@code
-	 *     // (Long) defualtValue
+	 *     // (Integer) defualtValue
 	 *     USteamCsgo.toXuidOrElse(null, <defaultValue>);
 	 *
-	 *     // (Long) defaultValue
+	 *     // (Integer) defaultValue
 	 *     USteamCsgo.toXuidOrElse("", <defaultValue>);
 	 *
-	 *     // (Long) 1
+	 *     // (Integer) 1
 	 *     USteamCsgo.toXuidOrElse("AJJJS-ABAA", <defaultValue>);
 	 *
-	 *     // (Long) 1
+	 *     // (Integer) 1
 	 *     USteamCsgo.toXuidOrElse("  AJJJS-ABAA  ", <defaultValue>);
 	 *
-	 *     // (Long) 1266042636
+	 *     // (Integer) 1266042636
 	 *     USteamCsgo.toXuidOrElse("AEVDG-WQTQ", <defaultValue>);
 	 * }</pre>
 	 * <hr>
@@ -291,7 +284,7 @@ public final class USteamCsgo {
 	 * @param defaultValue 	default value to return on failure
 	 * @return				Steam unique account identifier or the default value
 	 */
-	public static Long toXuidOrElse(String code, Long defaultValue) {
+	public static Integer toXuidOrElse(String code, Integer defaultValue) {
 		if (code == null) {
 			return defaultValue;
 		}
@@ -308,11 +301,7 @@ public final class USteamCsgo {
 			xuid = xuid << 4 | (val >>= 1) & UBitMask.UINT4;
 		}
 
-//		if (!SteamId.isSteamXuidValid(xuid)) {
-//			return defaultValue;
-//		}
-
-		return xuid;
+		return (int) xuid;
 	}
 
 	/**
@@ -328,19 +317,19 @@ public final class USteamCsgo {
 	 *
 	 * <hr>
 	 * <pre>{@code
-	 *     // (Long) defualtValue
+	 *     // (Integer) defualtValue
 	 *     USteamCsgo.toXuidOrElse(null, <defaultValueSupplier>);
 	 *
-	 *     // (Long) defaultValue
+	 *     // (Integer) defaultValue
 	 *     USteamCsgo.toXuidOrElse("", <defaultValueSupplier>);
 	 *
-	 *     // (Long) 1
+	 *     // (Integer) 1
 	 *     USteamCsgo.toXuidOrElse("AJJJS-ABAA", <defaultValueSupplier>);
 	 *
-	 *     // (Long) 1
+	 *     // (Integer) 1
 	 *     USteamCsgo.toXuidOrElse("  AJJJS-ABAA  ", <defaultValueSupplier>);
 	 *
-	 *     // (Long) 1266042636
+	 *     // (Integer) 1266042636
 	 *     USteamCsgo.toXuidOrElse("AEVDG-WQTQ", <defaultValueSupplier>);
 	 * }</pre>
 	 * <hr>
@@ -349,7 +338,7 @@ public final class USteamCsgo {
 	 * @param defaultValueSupplier 	supplier from which get the default value
 	 * @return						Steam unique account identifier or the default value
 	 */
-	public static Long toXuidOrElse(String code, Supplier<Long> defaultValueSupplier) {
+	public static Integer toXuidOrElse(String code, Supplier<Integer> defaultValueSupplier) {
 		return UwObject.getIfNull(toXuidOrNull(code), defaultValueSupplier);
 	}
 
@@ -364,33 +353,33 @@ public final class USteamCsgo {
 	 *     <li>CS:GO friend code doesn't match w/ the {@link USteamRegex#CSGO_CODE}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link USteamCsgo#toXuidOrElse(String, Long)}
-	 * w/ {@code 0L} as the default value.
+	 * <p>Wraps {@link USteamCsgo#toXuidOrElse(String, Integer)}
+	 * w/ {@code 0} as the default value.
 	 *
 	 * <hr>
 	 * <pre>{@code
-	 *     // (Long) 0
+	 *     // (Integer) 0
 	 *     USteamCsgo.toXuidOrZero(null);
 	 *
-	 *     // (Long) 0
+	 *     // (Integer) 0
 	 *     USteamCsgo.toXuidOrZero("");
 	 *
-	 *     // (Long) 1
+	 *     // (Integer) 1
 	 *     USteamCsgo.toXuidOrZero("AJJJS-ABAA");
 	 *
-	 *     // (Long) 1
+	 *     // (Integer) 1
 	 *     USteamCsgo.toXuidOrZero("  AJJJS-ABAA  ");
 	 *
-	 *     // (Long) 1266042636
+	 *     // (Integer) 1266042636
 	 *     USteamCsgo.toXuidOrZero("AEVDG-WQTQ");
 	 * }</pre>
 	 * <hr>
 	 *
 	 * @param code	interface-friendly CS:GO friend code to convert
-	 * @return		Steam unique account identifier or the {@code 0L} value
+	 * @return		Steam unique account identifier or the {@code 0} value
 	 */
-	public static Long toXuidOrZero(String code) {
-		return toXuidOrElse(code, 0L);
+	public static Integer toXuidOrZero(String code) {
+		return toXuidOrElse(code, 0);
 	}
 
 	/**
@@ -404,24 +393,24 @@ public final class USteamCsgo {
 	 *     <li>CS:GO friend code doesn't match w/ the {@link USteamRegex#CSGO_CODE}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link USteamCsgo#toXuidOrElse(String, Long)}
+	 * <p>Wraps {@link USteamCsgo#toXuidOrElse(String, Integer)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * <hr>
 	 * <pre>{@code
-	 *     // (Long) null
+	 *     // (Integer) null
 	 *     USteamCsgo.toXuidOrNull(null);
 	 *
-	 *     // (Long) null
+	 *     // (Integer) null
 	 *     USteamCsgo.toXuidOrNull("");
 	 *
-	 *     // (Long) 1
+	 *     // (Integer) 1
 	 *     USteamCsgo.toXuidOrNull("AJJJS-ABAA");
 	 *
-	 *     // (Long) 1
+	 *     // (Integer) 1
 	 *     USteamCsgo.toXuidOrNull("  AJJJS-ABAA  ");
 	 *
-	 *     // (Long) 1266042636
+	 *     // (Integer) 1266042636
 	 *     USteamCsgo.toXuidOrNull("AEVDG-WQTQ");
 	 * }</pre>
 	 * <hr>
@@ -429,8 +418,8 @@ public final class USteamCsgo {
 	 * @param code	interface-friendly CS:GO friend code to convert
 	 * @return		Steam unique account identifier or {@code null}
 	 */
-	public static Long toXuidOrNull(String code) {
-		return toXuidOrElse(code, (Long) null);
+	public static Integer toXuidOrNull(String code) {
+		return toXuidOrElse(code, (Integer) null);
 	}
 
 	private static long hash(long xuid) {

@@ -73,7 +73,7 @@ public final class USteamInvite {
 	 * <hr>
 	 * <pre>{@code
 	 *     // (String) defualtValue
-	 *     USteamInvite.fromXuidOrElse(0L, <defaultValue>);
+	 *     USteamInvite.fromXuidOrElse(0, <defaultValue>);
 	 *
 	 *     // (String) defaultValue
 	 *     USteamInvite.fromXuidOrElse(Long.MAX_VALUE, <defaultValue>);
@@ -90,12 +90,13 @@ public final class USteamInvite {
 	 * @param defaultValue	default value to return on failure
 	 * @return				Steam invite code or the default value
 	 */
-	public static String fromXuidOrElse(Long xuid, String defaultValue) {
-		if (SteamId.isSteamXuidValid(xuid)) {
+	public static String fromXuidOrElse(Integer xuid, String defaultValue) {
+		if (SteamId.isSteamXuidInvalid(xuid)) {
 			return defaultValue;
 		}
 
-		String code = UwString.toBaseOrNull(Long.toHexString(xuid), XUID_BASE, CODE_BASE);
+		String code = Long.toHexString(xuid);
+		code = UwString.toBaseOrNull(code, XUID_BASE, CODE_BASE);
 
 		if (code == null) {
 			return defaultValue;
@@ -108,10 +109,6 @@ public final class USteamInvite {
 					+ CODE_DELIMITER
 					+ code.substring(idx);
 		}
-
-//		if (!code.matches(USteamRegex.INVITE_CODE)) {
-//			return defaultValue;
-//		}
 
 		return code;
 	}
@@ -133,7 +130,7 @@ public final class USteamInvite {
 	 * <hr>
 	 * <pre>{@code
 	 *     // (String) defualtValue
-	 *     USteamInvite.fromXuidOrElse(0L, <defaultValueSupplier>);
+	 *     USteamInvite.fromXuidOrElse(0, <defaultValueSupplier>);
 	 *
 	 *     // (String) defaultValue
 	 *     USteamInvite.fromXuidOrElse(Long.MAX_VALUE, <defaultValueSupplier>);
@@ -150,7 +147,7 @@ public final class USteamInvite {
 	 * @param defaultValueSupplier	supplie from which get the default value
 	 * @return						Steam invite code or the default value
 	 */
-	public static String fromXuidOrElse(Long xuid, Supplier<String> defaultValueSupplier) {
+	public static String fromXuidOrElse(Integer xuid, Supplier<String> defaultValueSupplier) {
 		return UwObject.getIfNull(fromXuidOrNull(xuid), defaultValueSupplier);
 	}
 
@@ -168,13 +165,13 @@ public final class USteamInvite {
 	 *     <li>Steam unique account identifier isn't valid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link USteamInvite#fromXuidOrElse(Long, String)}
+	 * <p>Wraps {@link USteamInvite#fromXuidOrElse(Integer, String)}
 	 * w/ {@link UwString#EMPTY} as the default value.
 	 *
 	 * <hr>
 	 * <pre>{@code
 	 *     // (String) ""
-	 *     USteamInvite.fromXuidOrEmpty(0L);
+	 *     USteamInvite.fromXuidOrEmpty(0);
 	 *
 	 *     // (String) ""
 	 *     USteamInvite.fromXuidOrEmpty(Long.MAX_VALUE);
@@ -190,7 +187,7 @@ public final class USteamInvite {
 	 * @param xuid	Steam unique account identifier to convert
 	 * @return		Steam invite code or the empty string
 	 */
-	public static String fromXuidOrEmpty(Long xuid) {
+	public static String fromXuidOrEmpty(Integer xuid) {
 		return fromXuidOrElse(xuid, UwString.EMPTY);
 	}
 
@@ -208,13 +205,13 @@ public final class USteamInvite {
 	 *     <li>Steam unique account identifier isn't valid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link USteamInvite#fromXuidOrElse(Long, String)}
+	 * <p>Wraps {@link USteamInvite#fromXuidOrElse(Integer, String)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * <hr>
 	 * <pre>{@code
 	 *     // (String) null
-	 *     USteamInvite.fromXuidOrNull(0L);
+	 *     USteamInvite.fromXuidOrNull(0);
 	 *
 	 *     // (String) null
 	 *     USteamInvite.fromXuidOrNull(Long.MAX_VALUE);
@@ -230,7 +227,7 @@ public final class USteamInvite {
 	 * @param xuid	Steam unique account identifier to convert
 	 * @return		Steam invite code or the default value
 	 */
-	public static String fromXuidOrNull(Long xuid) {
+	public static String fromXuidOrNull(Integer xuid) {
 		return fromXuidOrElse(xuid, (String) null);
 	}
 
@@ -250,19 +247,19 @@ public final class USteamInvite {
 	 *
 	 * <hr>
 	 * <pre>{@code
-	 *     // (Long) defaultValue
+	 *     // (Integer) defaultValue
 	 *     USteamInvite.toXuidOrElse(null, <defaultValue>);
 	 *
-	 *     // (Long) defaultValue
+	 *     // (Integer) defaultValue
 	 *     USteamInvite.toXuidOrElse("", <defaultValue>);
 	 *
-	 *     // (Long) 1
+	 *     // (Integer) 1
 	 *     USteamInvite.toXuidOrElse("c", <defaultValue>);
 	 *
-	 *     // (Long) 1
+	 *     // (Integer) 1
 	 *     USteamInvite.toXuidOrElse("  c  ", <defaultValue>);
 	 *
-	 *     // (Long) 1266042636
+	 *     // (Integer) 1266042636
 	 *     USteamInvite.toXuidOrElse("gqkj-gkbr", <defaultValue>);
 	 * }</pre>
 	 * <hr>
@@ -271,13 +268,12 @@ public final class USteamInvite {
 	 * @param defaultValue 	default value to return on failure
 	 * @return				Steam unique account identifier or the default value
 	 */
-	public static Long toXuidOrElse(String code, Long defaultValue) {
+	public static Integer toXuidOrElse(String code, Integer defaultValue) {
 		if (code == null) {
 			return defaultValue;
 		}
 
 		code = code.trim();
-
 		if (!code.matches(USteamRegex.INVITE_CODE)) {
 			return defaultValue;
 		}
@@ -290,7 +286,7 @@ public final class USteamInvite {
 		}
 
 		try {
-			return Long.parseUnsignedLong(code, 16);
+			return Integer.parseUnsignedInt(code, 16);
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
@@ -314,19 +310,19 @@ public final class USteamInvite {
 	 *
 	 * <hr>
 	 * <pre>{@code
-	 *     // (Long) defaultValue
+	 *     // (Integer) defaultValue
 	 *     USteamInvite.toXuidOrElse(null, <defaultValueSupplier>);
 	 *
-	 *     // (Long) defaultValue
+	 *     // (Integer) defaultValue
 	 *     USteamInvite.toXuidOrElse("", <defaultValueSupplier>);
 	 *
-	 *     // (Long) 1
+	 *     // (Integer) 1
 	 *     USteamInvite.toXuidOrElse("c", <defaultValueSupplier>);
 	 *
-	 *     // (Long) 1
+	 *     // (Integer) 1
 	 *     USteamInvite.toXuidOrElse("  c  ", <defaultValueSupplier>);
 	 *
-	 *     // (Long) 1266042636
+	 *     // (Integer) 1266042636
 	 *     USteamInvite.toXuidOrElse("gqkj-gkbr", <defaultValueSupplier>);
 	 * }</pre>
 	 * <hr>
@@ -335,13 +331,13 @@ public final class USteamInvite {
 	 * @param defualtValueSupplier 	supplier from which get the default value
 	 * @return						Steam unique account identifier or the default value
 	 */
-	public static Long toXuidOrElse(String code, Supplier<Long> defualtValueSupplier) {
+	public static Integer toXuidOrElse(String code, Supplier<Integer> defualtValueSupplier) {
 		return UwObject.getIfNull(toXuidOrNull(code), defualtValueSupplier);
 	}
 
 	/**
 	 * Convert a Steam invite code to a unique Steam account identifier
-	 * or return {@code 0L} value if failed.
+	 * or return {@code 0} value if failed.
 	 *
 	 * <p>Removes {@value USteamInvite#CODE_DELIMITER} and replaces characters using two
 	 * bases in order - {@value USteamInvite#CODE_BASE} and {@value USteamInvite#XUID_BASE}.
@@ -353,33 +349,33 @@ public final class USteamInvite {
 	 *     <li>Steam invite code doesn't match w/ {@link USteamRegex#INVITE_CODE}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link USteamInvite#toXuidOrElse(String, Long)}
-	 * w/ {@code 0L} as the default value.
+	 * <p>Wraps {@link USteamInvite#toXuidOrElse(String, Integer)}
+	 * w/ {@code 0} as the default value.
 	 *
 	 * <hr>
 	 * <pre>{@code
-	 *     // (Long) 0
+	 *     // (Integer) 0
 	 *     USteamInvite.toXuidOrZero(null);
 	 *
-	 *     // (Long) 0
+	 *     // (Integer) 0
 	 *     USteamInvite.toXuidOrZero("");
 	 *
-	 *     // (Long) 1
+	 *     // (Integer) 1
 	 *     USteamInvite.toXuidOrZero("c");
 	 *
-	 *     // (Long) 1
+	 *     // (Integer) 1
 	 *     USteamInvite.toXuidOrZero("  c  ");
 	 *
-	 *     // (Long) 1266042636
+	 *     // (Integer) 1266042636
 	 *     USteamInvite.toXuidOrZero("gqkj-gkbr");
 	 * }</pre>
 	 * <hr>
 	 *
 	 * @param code			Steam invite code to convert
-	 * @return				Steam unique account identifier or {@code 0L} value
+	 * @return				Steam unique account identifier or {@code 0} value
 	 */
-	public static Long toXuidOrZero(String code) {
-		return toXuidOrElse(code, 0L);
+	public static Integer toXuidOrZero(String code) {
+		return toXuidOrElse(code, 0);
 	}
 
 	/**
@@ -396,24 +392,24 @@ public final class USteamInvite {
 	 *     <li>Steam invite code doesn't match w/ {@link USteamRegex#INVITE_CODE}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link USteamInvite#toXuidOrElse(String, Long)}
+	 * <p>Wraps {@link USteamInvite#toXuidOrElse(String, Integer)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * <hr>
 	 * <pre>{@code
-	 *     // (Long) null
+	 *     // (Integer) null
 	 *     USteamInvite.toXuidOrNull(null);
 	 *
-	 *     // (Long) null
+	 *     // (Integer) null
 	 *     USteamInvite.toXuidOrNull("");
 	 *
-	 *     // (Long) 1
+	 *     // (Integer) 1
 	 *     USteamInvite.toXuidOrNull("c");
 	 *
-	 *     // (Long) 1
+	 *     // (Integer) 1
 	 *     USteamInvite.toXuidOrNull("  c  ");
 	 *
-	 *     // (Long) 1266042636
+	 *     // (Integer) 1266042636
 	 *     USteamInvite.toXuidOrNull("gqkj-gkbr");
 	 * }</pre>
 	 * <hr>
@@ -421,8 +417,8 @@ public final class USteamInvite {
 	 * @param code			Steam invite code to convert
 	 * @return				Steam unique account identifier or {@code null}
 	 */
-	public static Long toXuidOrNull(String code) {
-		return toXuidOrElse(code, (Long) null);
+	public static Integer toXuidOrNull(String code) {
+		return toXuidOrElse(code, (Integer) null);
 	}
 
 	private USteamInvite() {
