@@ -17,12 +17,13 @@
 package io.github.iwyfewwnt.steamid.types;
 
 import io.github.iwyfewwnt.steamid.utils.USteamEndpoint;
+import io.github.iwyfewwnt.uwutils.UwArray;
+import io.github.iwyfewwnt.uwutils.UwEnum;
 import io.github.iwyfewwnt.uwutils.UwMap;
-//import io.github.u004.uwutils.UwArray;
-//import io.github.u004.uwutils.UwMap;
-//import io.vavr.control.Option;
+import io.github.iwyfewwnt.uwutils.UwObject;
 
 import java.util.Map;
+import java.util.function.Supplier;
 
 /**
  * A Steam endpoint enums.
@@ -60,23 +61,30 @@ public enum ESteamEndpoint {
 	 */
 	P(USteamEndpoint.P);
 
-	// TODO: doc-comment
-	private static final Map<String, ESteamEndpoint> MAP_BY_VALUE = UwMap.newMapByFieldOrNull(
-			entry -> entry.value, ESteamEndpoint.class
+	/**
+	 * An array of {@link ESteamEndpoint} instances.
+	 */
+	private static final ESteamEndpoint[] VALUES = UwEnum.values(ESteamEndpoint.class);
+
+	/**
+	 * A map of {@link ESteamEndpoint} instances by their endpoint field.
+	 */
+	private static final Map<String, ESteamEndpoint> MAP_BY_ENDPOINT = UwMap.newMapByFieldOrNull(
+			entry -> entry.endpoint, ESteamEndpoint.class
 	);
 
 	/**
-	 * Endpoint string.
+	 * An endpoint string.
 	 */
-	private final String value;
+	private final String endpoint;
 
 	/**
 	 * Initialize an {@link ESteamEndpoint} instance.
 	 *
-	 * @param value		endpoint string
+	 * @param endpoint	endpoint string
 	 */
-	ESteamEndpoint(String value) {
-		this.value = value;
+	ESteamEndpoint(String endpoint) {
+		this.endpoint = endpoint;
 	}
 
 	/**
@@ -84,49 +92,83 @@ public enum ESteamEndpoint {
 	 *
 	 * @return	endpoint string
 	 */
-	public String getValue() {
-		return this.value;
+	public String getEndpoint() {
+		return this.endpoint;
 	}
 
-//	/**
-//	 * Get the {@code ESteamEndpoint} instance by its endpoint string.
-//	 *
-//	 * @param value		endpoint string
-//	 * @return			{@code ESteamEndpoint} instance
-//	 * 					that wrapped in {@link Option}
-//	 */
-//	public static Option<ESteamEndpoint> fromValue(String value) {
-//		return UwMap.get(value, MAP_BY_VALUE);
-//	}
+	/**
+	 * Get an {@link ESteamEndpoint} instance by its endpoint string
+	 * or return a default value if failed.
+	 *
+	 * @param endpoint		endpoint string of the instance
+	 * @param defaultValue	default value to return on failure
+	 * @return				associated {@link ESteamEndpoint} instance or the default value
+	 */
+	public static ESteamEndpoint fromEndpointOrElse(String endpoint, ESteamEndpoint defaultValue) {
+		return UwMap.getOrElse(endpoint, MAP_BY_ENDPOINT, defaultValue);
+	}
 
-//	/**
-//	 * Get the {@code ESteamEndpoint} instance by its index.
-//	 *
-//	 * @param index		{@code ESteamEndpoint} instance index
-//	 * @return			{@code ESteamEndpoint} instance
-//	 * 					that wrapped in {@link Option}
-//	 */
-//	public static Option<ESteamEndpoint> fromIndex(Integer index) {
-//		return UwArray.get(index, values());
-//	}
+	/**
+	 * Get an {@link ESteamEndpoint} instance by its endpoint string
+	 * or return a default value if failed.
+	 *
+	 * @param endpoint				endpoint string of the instance
+	 * @param defaultValueSupplier	supplier from which get the default value
+	 * @return						associated {@link ESteamEndpoint} instance or the default value
+	 */
+	public static ESteamEndpoint fromEndpointOrElse(String endpoint, Supplier<ESteamEndpoint> defaultValueSupplier) {
+		return UwObject.getIfNull(fromEndpointOrNull(endpoint), defaultValueSupplier);
+	}
 
-//	/**
-//	 * Get the {@code ESteamEndpoint} instance by its endpoint string.
-//	 *
-//	 * @param value		endpoint string
-//	 * @return			{@code ESteamEndpoint} instance or null
-//	 */
-//	public static ESteamEndpoint fromValueRaw(String value) {
-//		return fromValue(value).getOrNull();
-//	}
+	/**
+	 * Get an {@link ESteamEndpoint} instance by its endpoint string
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Wraps {@link ESteamEndpoint#fromEndpointOrElse(String, ESteamEndpoint)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param endpoint		endpoint string of the instance
+	 * @return				associated {@link ESteamEndpoint} instance or {@code null}
+	 */
+	public static ESteamEndpoint fromEndpointOrNull(String endpoint) {
+		return fromEndpointOrElse(endpoint, (ESteamEndpoint) null);
+	}
 
-//	/**
-//	 * Get the {@code ESteamEndpoint} instance by its index.
-//	 *
-//	 * @param index		{@code ESteamEndpoint} instance index
-//	 * @return			{@code ESteamEndpoint} instance or null
-//	 */
-//	public static ESteamEndpoint fromIndexRaw(Integer index) {
-//		return fromIndex(index).getOrNull();
-//	}
+	/**
+	 * Get an {@link ESteamEndpoint} instance by its endpoint string
+	 * or return a default value if failed.
+	 *
+	 * @param index			index of the instance
+	 * @param defaultValue	default value to return on failure
+	 * @return				associated {@link ESteamEndpoint} instance or the default value
+	 */
+	public static ESteamEndpoint fromIndexOrElse(Integer index, ESteamEndpoint defaultValue) {
+		return UwArray.getOrElse(index, VALUES, defaultValue);
+	}
+
+	/**
+	 * Get an {@link ESteamEndpoint} instance by its endpoint string
+	 * or return a default value if failed.
+	 *
+	 * @param index					index of the instance
+	 * @param defaultValueSupplier	supplier from which get the default value
+	 * @return						associated {@link ESteamEndpoint} instance or the default value
+	 */
+	public static ESteamEndpoint fromIndexOrElse(Integer index, Supplier<ESteamEndpoint> defaultValueSupplier) {
+		return UwObject.getIfNull(fromIndexOrNull(index), defaultValueSupplier);
+	}
+
+	/**
+	 * Get an {@link ESteamEndpoint} instance by its endpoint string
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Wraps {@link ESteamEndpoint#fromIndexOrElse(Integer, ESteamEndpoint)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param index		index of the instance
+	 * @return			associated {@link ESteamEndpoint} instance or {@code null}
+	 */
+	public static ESteamEndpoint fromIndexOrNull(Integer index) {
+		return fromIndexOrElse(index, (ESteamEndpoint) null);
+	}
 }
