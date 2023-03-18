@@ -116,7 +116,7 @@ public final class USteamCsgo {
 	 * }</pre>
 	 * <hr>
 	 *
-	 * @param xuid			Steam account identifier
+	 * @param xuid			Steam account identifier to convert
 	 * @param defaultValue 	default value to return on failure
 	 * @return				interface-friendly CS:GO friend code or the default value
 	 */
@@ -175,7 +175,7 @@ public final class USteamCsgo {
 	 * }</pre>
 	 * <hr>
 	 *
-	 * @param xuid					Steam account identifier
+	 * @param xuid					Steam account identifier to convert
 	 * @param defaultValueSupplier 	supplier from which get the defualt value
 	 * @return						interface-friendly CS:GO friend code or the default value
 	 */
@@ -213,7 +213,7 @@ public final class USteamCsgo {
 	 * }</pre>
 	 * <hr>
 	 *
-	 * @param xuid			Steam account identifier
+	 * @param xuid			Steam account identifier to convert
 	 * @return				interface-friendly CS:GO friend code or the empty string
 	 */
 	public static String fromXuidOrEmpty(Long xuid) {
@@ -250,7 +250,7 @@ public final class USteamCsgo {
 	 * }</pre>
 	 * <hr>
 	 *
-	 * @param xuid			Steam account identifier
+	 * @param xuid			Steam account identifier to convert
 	 * @return				interface-friendly CS:GO friend code or {@code null}
 	 */
 	public static String fromXuidOrNull(Long xuid) {
@@ -287,7 +287,7 @@ public final class USteamCsgo {
 	 * }</pre>
 	 * <hr>
 	 *
-	 * @param code			interface-friendly CS:GO friend code
+	 * @param code			interface-friendly CS:GO friend code to convert
 	 * @param defaultValue 	default value to return on failure
 	 * @return				Steam unique account identifier or the default value
 	 */
@@ -345,7 +345,7 @@ public final class USteamCsgo {
 	 * }</pre>
 	 * <hr>
 	 *
-	 * @param code					interface-friendly CS:GO friend code
+	 * @param code					interface-friendly CS:GO friend code to convert
 	 * @param defaultValueSupplier 	supplier from which get the default value
 	 * @return						Steam unique account identifier or the default value
 	 */
@@ -386,7 +386,7 @@ public final class USteamCsgo {
 	 * }</pre>
 	 * <hr>
 	 *
-	 * @param code	interface-friendly CS:GO friend code
+	 * @param code	interface-friendly CS:GO friend code to convert
 	 * @return		Steam unique account identifier or the {@code 0L} value
 	 */
 	public static Long toXuidOrZero(String code) {
@@ -426,7 +426,7 @@ public final class USteamCsgo {
 	 * }</pre>
 	 * <hr>
 	 *
-	 * @param code	interface-friendly CS:GO friend code
+	 * @param code	interface-friendly CS:GO friend code to convert
 	 * @return		Steam unique account identifier or {@code null}
 	 */
 	public static Long toXuidOrNull(String code) {
