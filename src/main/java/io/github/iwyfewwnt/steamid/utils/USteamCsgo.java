@@ -47,7 +47,7 @@ public final class USteamCsgo {
 	/**
 	 * A maximum CS:GO friend code value.
 	 */
-	public static final String MAX_CODE = "S9ZZR-9997";
+	public static final String MAX_CODE = "S5999-9988";
 
 	/**
 	 * A CS:GO friend code base.
@@ -294,7 +294,7 @@ public final class USteamCsgo {
 			return defaultValue;
 		}
 
-		long val = base32(code);
+		long val = base32(CODE_PREFIX + code);
 		long xuid = 0;
 
 		for (int i = 0; i < 8; i++, val >>= 4) {
