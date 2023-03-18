@@ -70,9 +70,9 @@ public final class USteamRegex {
 	 *
 	 * <p>Possible matching group names:
 	 * <ul>
-	 *     <li>{@code USteamRegex.Group.UNIVERSE}
-	 *     <li>{@code USteamRegex.Group.AUTH}
-	 *     <li>{@code USteamRegex.Group.ID}
+	 *     <li>{@value USteamRegex.Group#UNIVERSE}.
+	 *     <li>{@value USteamRegex.Group#AUTH}.
+	 *     <li>{@value USteamRegex.Group#ID}.
 	 * </ul>
 	 */
 	public static final String ID2 = String.format("^STEAM_(?<%s>[%s-%s]):(?<%s>[%s-%s]):(?<%s>\\d+)$",
@@ -86,10 +86,10 @@ public final class USteamRegex {
 	 *
 	 * <p>Possible matching group names:
 	 * <ul>
-	 *     <li>{@code USteamRegex.Group.ACCOUNT}
-	 *     <li>{@code USteamRegex.Group.UNIVERSE}
-	 *     <li>{@code USteamRegex.Group.ID}
-	 *     <li>{@code USteamRegex.Group.INSTANCE}
+	 *     <li>{@value USteamRegex.Group#ACCOUNT}.
+	 *     <li>{@value USteamRegex.Group#UNIVERSE}.
+	 *     <li>{@value USteamRegex.Group#ID}.
+	 *     <li>{@value USteamRegex.Group#INSTANCE}.
 	 * </ul>
 	 */
 	public static final String ID3 = String.format("^\\[?(?<%s>[%s]){1}:(?<%s>[%s-%s]):(?<%s>\\d+)(:(?<%s>[%s-%s]))?]?$",
@@ -128,7 +128,7 @@ public final class USteamRegex {
 	 *
 	 * <p>Possible matching group names:
 	 * <ul>
-	 *     <li>{@code USteamRegex.Group.ID}
+	 *     <li>{@value USteamRegex.Group#ID}.
 	 * </ul>
 	 */
 	public static final String PROFILE_URL = String.format("^https?://(?:www\\.|(?!www))(?:my\\.steamchina|steamcommunity)\\.com/(profiles|gid)\\/(?<%s>.+?)(?:/|$)$",
@@ -140,7 +140,7 @@ public final class USteamRegex {
 	 *
 	 * <p>Possible matching group names:
 	 * <ul>
-	 *     <li>{@code USteamRegex.Group.ID}
+	 *     <li>{@value USteamRegex.Group#ID}.
 	 * </ul>
 	 */
 	public static final String USER_URL = String.format("^https?://(?:www\\.|(?!www))(?:(?:my\\.steamchina|steamcommunity)\\.com/user|s\\.team/p)/(?<%s>[\\w-]+)(?:/|$)$",
