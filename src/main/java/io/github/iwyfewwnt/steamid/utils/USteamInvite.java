@@ -17,9 +17,6 @@
 package io.github.iwyfewwnt.steamid.utils;
 
 import io.github.iwyfewwnt.steamid.SteamId;
-//import io.vavr.control.Try;
-//import org.apache.commons.lang3.StringUtils;
-//import io.github.iwyfewwnt.steamid.exceptions.InvalidSteamInviteCodeStateException;
 import io.github.iwyfewwnt.uwutils.UwObject;
 import io.github.iwyfewwnt.uwutils.UwString;
 
@@ -59,6 +56,40 @@ public final class USteamInvite {
 	 */
 	public static final String CODE_DELIMITER = "-";
 
+	/**
+	 * Convert a unique Steam account identifier to a Steam invite code
+	 * or return a default value if failed.
+	 *
+	 * <p>Converts a unique account identifier to hex string and replaces characters using two
+	 * bases in order - {@value USteamInvite#XUID_BASE} and {@value USteamInvite#CODE_BASE}.
+	 * Then places {@value USteamInvite#CODE_DELIMITER} if the length of the resulting
+	 * code is greater than three.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>Steam unique account identifier isn't valid.
+	 * </ul>
+	 *
+	 * <hr>
+	 * <pre>{@code
+	 *     // (String) defualtValue
+	 *     USteamInvite.fromXuidOrElse(0L, <defaultValue>);
+	 *
+	 *     // (String) defaultValue
+	 *     USteamInvite.fromXuidOrElse(Long.MAX_VALUE, <defaultValue>);
+	 *
+	 *     // (String) "c"
+	 *     USteamInvite.fromXuidOrElse(1L, <defaultValue>);
+	 *
+	 *     // (String) "gqkj-gkbr"
+	 *     USteamInvite.fromXuidOrElse(1266042636L, <defaultValue>);
+	 * }</pre>
+	 * <hr>
+	 *
+	 * @param xuid			Steam unique account identifier to convert
+	 * @param defaultValue	default value to return on failure
+	 * @return				Steam invite code or the default value
+	 */
 	public static String fromXuidOrElse(Long xuid, String defaultValue) {
 		if (SteamId.isSteamXuidValid(xuid)) {
 			return defaultValue;
@@ -85,75 +116,161 @@ public final class USteamInvite {
 		return code;
 	}
 
+	/**
+	 * Convert a unique Steam account identifier to a Steam invite code
+	 * or return a default value if failed.
+	 *
+	 * <p>Converts a unique account identifier to hex string and replaces characters using two
+	 * bases in order - {@value USteamInvite#XUID_BASE} and {@value USteamInvite#CODE_BASE}.
+	 * Then places {@value USteamInvite#CODE_DELIMITER} if the length of the resulting
+	 * code is greater than three.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>Steam unique account identifier isn't valid.
+	 * </ul>
+	 *
+	 * <hr>
+	 * <pre>{@code
+	 *     // (String) defualtValue
+	 *     USteamInvite.fromXuidOrElse(0L, <defaultValueSupplier>);
+	 *
+	 *     // (String) defaultValue
+	 *     USteamInvite.fromXuidOrElse(Long.MAX_VALUE, <defaultValueSupplier>);
+	 *
+	 *     // (String) "c"
+	 *     USteamInvite.fromXuidOrElse(1L, <defaultValueSupplier>);
+	 *
+	 *     // (String) "gqkj-gkbr"
+	 *     USteamInvite.fromXuidOrElse(1266042636L, <defaultValueSupplier>);
+	 * }</pre>
+	 * <hr>
+	 *
+	 * @param xuid					Steam unique account identifier to convert
+	 * @param defaultValueSupplier	supplie from which get the default value
+	 * @return						Steam invite code or the default value
+	 */
 	public static String fromXuidOrElse(Long xuid, Supplier<String> defaultValueSupplier) {
 		return UwObject.getIfNull(fromXuidOrNull(xuid), defaultValueSupplier);
 	}
 
+	/**
+	 * Convert a unique Steam account identifier to a Steam invite code
+	 * or return an empty string if failed.
+	 *
+	 * <p>Converts a unique account identifier to hex string and replaces characters using two
+	 * bases in order - {@value USteamInvite#XUID_BASE} and {@value USteamInvite#CODE_BASE}.
+	 * Then places {@value USteamInvite#CODE_DELIMITER} if the length of the resulting
+	 * code is greater than three.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>Steam unique account identifier isn't valid.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link USteamInvite#fromXuidOrElse(Long, String)}
+	 * w/ {@link UwString#EMPTY} as the default value.
+	 *
+	 * <hr>
+	 * <pre>{@code
+	 *     // (String) ""
+	 *     USteamInvite.fromXuidOrEmpty(0L);
+	 *
+	 *     // (String) ""
+	 *     USteamInvite.fromXuidOrEmpty(Long.MAX_VALUE);
+	 *
+	 *     // (String) "c"
+	 *     USteamInvite.fromXuidOrEmpty(1L);
+	 *
+	 *     // (String) "gqkj-gkbr"
+	 *     USteamInvite.fromXuidOrEmpty(1266042636L);
+	 * }</pre>
+	 * <hr>
+	 *
+	 * @param xuid	Steam unique account identifier to convert
+	 * @return		Steam invite code or the empty string
+	 */
 	public static String fromXuidOrEmpty(Long xuid) {
 		return fromXuidOrElse(xuid, UwString.EMPTY);
 	}
 
+	/**
+	 * Convert a unique Steam account identifier to a Steam invite code
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Converts a unique account identifier to hex string and replaces characters using two
+	 * bases in order - {@value USteamInvite#XUID_BASE} and {@value USteamInvite#CODE_BASE}.
+	 * Then places {@value USteamInvite#CODE_DELIMITER} if the length of the resulting
+	 * code is greater than three.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>Steam unique account identifier isn't valid.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link USteamInvite#fromXuidOrElse(Long, String)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * <hr>
+	 * <pre>{@code
+	 *     // (String) null
+	 *     USteamInvite.fromXuidOrNull(0L);
+	 *
+	 *     // (String) null
+	 *     USteamInvite.fromXuidOrNull(Long.MAX_VALUE);
+	 *
+	 *     // (String) "c"
+	 *     USteamInvite.fromXuidOrNull(1L);
+	 *
+	 *     // (String) "gqkj-gkbr"
+	 *     USteamInvite.fromXuidOrNull(1266042636L);
+	 * }</pre>
+	 * <hr>
+	 *
+	 * @param xuid	Steam unique account identifier to convert
+	 * @return		Steam invite code or the default value
+	 */
 	public static String fromXuidOrNull(Long xuid) {
 		return fromXuidOrElse(xuid, (String) null);
 	}
 
-//	/**
-//	 * Convert unique Steam account identifier to the Steam invite code.
-//	 *
-//	 * <p>Converts unique account identifier to hex string and replaces characters using two
-//	 * bases in order - {@value USteamInvite#XUID_BASE} and {@value USteamInvite#CODE_BASE}.
-//	 * Then places {@value USteamInvite#CODE_DELIMITER} if the length of the resulting
-//	 * code is greater than three.
-//	 *
-//	 * <p>Possible failure exceptions:
-//	 * <ul>
-//	 *     <li>{@link IllegalArgumentException}
-//	 *     <li>{@link InvalidSteamInviteCodeStateException}
-//	 * </ul>
-//	 *
-//	 * <hr>
-//	 * <pre>{@code
-//	 *     // Try.failure(new IllegalArgumentException())
-//	 *     USteamInvite.toCode(0);
-//	 *
-//	 *     // Try.failure(new IllegalArgumentException())
-//	 *     USteamInvite.toCode(Long.MAX_VALUE);
-//	 *
-//	 *     // Try.success("c")
-//	 *     USteamInvite.toCode(1);
-//	 *
-//	 *     // Try.success("gqkj-gkbr")
-//	 *     USteamInvite.toCode(1266042636);
-//	 * }</pre>
-//	 * <hr>
-//	 *
-//	 * @param xuid	{@code SteamId}'s xuid
-//	 * @return		Steam invite code that
-//	 * 				wrapped in {@link Try}
-//	 */
-//	public static Try<String> toCode(Long xuid) {
-//		if (!SteamId.isSteamXuidValid(xuid)) {
-//			return Try.failure(new IllegalArgumentException());
-//		}
-//
-//		String code = Long.toHexString(xuid);
-//		code = StringUtils.replaceChars(code, XUID_BASE, CODE_BASE);
-//
-//		int idx = code.length() / 2;
-//
-//		if (idx > 1) {
-//			code = code.substring(0, idx)
-//					+ USteamInvite.CODE_DELIMITER
-//					+ code.substring(idx);
-//		}
-//
-//		if (!code.matches(USteamRegex.INVITE_CODE)) {
-//			return Try.failure(new InvalidSteamInviteCodeStateException());
-//		}
-//
-//		return Try.success(code);
-//	}
-
+	/**
+	 * Convert a Steam invite code to a unique Steam account identifier
+	 * or return a default value if failed.
+	 *
+	 * <p>Removes {@value USteamInvite#CODE_DELIMITER} and replaces characters using two
+	 * bases in order - {@value USteamInvite#CODE_BASE} and {@value USteamInvite#XUID_BASE}.
+	 * Then parses the resulting code to an unsigned 64-bit integer.
+	 *
+	 * <p>Possible failure exceptions:
+	 * <ul>
+	 *     <li>Steam invite code is {@code null}.
+	 *     <li>Steam invite code doesn't match w/ {@link USteamRegex#INVITE_CODE}.
+	 * </ul>
+	 *
+	 * <hr>
+	 * <pre>{@code
+	 *     // (Long) defaultValue
+	 *     USteamInvite.toXuidOrElse(null, <defaultValue>);
+	 *
+	 *     // (Long) defaultValue
+	 *     USteamInvite.toXuidOrElse("", <defaultValue>);
+	 *
+	 *     // (Long) 1
+	 *     USteamInvite.toXuidOrElse("c", <defaultValue>);
+	 *
+	 *     // (Long) 1
+	 *     USteamInvite.toXuidOrElse("  c  ", <defaultValue>);
+	 *
+	 *     // (Long) 1266042636
+	 *     USteamInvite.toXuidOrElse("gqkj-gkbr", <defaultValue>);
+	 * }</pre>
+	 * <hr>
+	 *
+	 * @param code			Steam invite code to convert
+	 * @param defaultValue 	default value to return on failure
+	 * @return				Steam unique account identifier or the default value
+	 */
 	public static Long toXuidOrElse(String code, Long defaultValue) {
 		if (code == null) {
 			return defaultValue;
@@ -165,7 +282,8 @@ public final class USteamInvite {
 			return defaultValue;
 		}
 
-		code = UwString.toBaseOrNull(code.replace(CODE_DELIMITER, ""), CODE_BASE, XUID_BASE);
+		code = code.replace(CODE_DELIMITER, "");
+		code = UwString.toBaseOrNull(code, CODE_BASE, XUID_BASE);
 
 		if (code == null) {
 			return defaultValue;
@@ -180,132 +298,132 @@ public final class USteamInvite {
 		return defaultValue;
 	}
 
+	/**
+	 * Convert a Steam invite code to a unique Steam account identifier
+	 * or return a default value if failed.
+	 *
+	 * <p>Removes {@value USteamInvite#CODE_DELIMITER} and replaces characters using two
+	 * bases in order - {@value USteamInvite#CODE_BASE} and {@value USteamInvite#XUID_BASE}.
+	 * Then parses the resulting code to an unsigned 64-bit integer.
+	 *
+	 * <p>Possible failure exceptions:
+	 * <ul>
+	 *     <li>Steam invite code is {@code null}.
+	 *     <li>Steam invite code doesn't match w/ {@link USteamRegex#INVITE_CODE}.
+	 * </ul>
+	 *
+	 * <hr>
+	 * <pre>{@code
+	 *     // (Long) defaultValue
+	 *     USteamInvite.toXuidOrElse(null, <defaultValueSupplier>);
+	 *
+	 *     // (Long) defaultValue
+	 *     USteamInvite.toXuidOrElse("", <defaultValueSupplier>);
+	 *
+	 *     // (Long) 1
+	 *     USteamInvite.toXuidOrElse("c", <defaultValueSupplier>);
+	 *
+	 *     // (Long) 1
+	 *     USteamInvite.toXuidOrElse("  c  ", <defaultValueSupplier>);
+	 *
+	 *     // (Long) 1266042636
+	 *     USteamInvite.toXuidOrElse("gqkj-gkbr", <defaultValueSupplier>);
+	 * }</pre>
+	 * <hr>
+	 *
+	 * @param code					Steam invite code to convert
+	 * @param defualtValueSupplier 	supplier from which get the default value
+	 * @return						Steam unique account identifier or the default value
+	 */
 	public static Long toXuidOrElse(String code, Supplier<Long> defualtValueSupplier) {
 		return UwObject.getIfNull(toXuidOrNull(code), defualtValueSupplier);
 	}
 
+	/**
+	 * Convert a Steam invite code to a unique Steam account identifier
+	 * or return {@code 0L} value if failed.
+	 *
+	 * <p>Removes {@value USteamInvite#CODE_DELIMITER} and replaces characters using two
+	 * bases in order - {@value USteamInvite#CODE_BASE} and {@value USteamInvite#XUID_BASE}.
+	 * Then parses the resulting code to an unsigned 64-bit integer.
+	 *
+	 * <p>Possible failure exceptions:
+	 * <ul>
+	 *     <li>Steam invite code is {@code null}.
+	 *     <li>Steam invite code doesn't match w/ {@link USteamRegex#INVITE_CODE}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link USteamInvite#toXuidOrElse(String, Long)}
+	 * w/ {@code 0L} as the default value.
+	 *
+	 * <hr>
+	 * <pre>{@code
+	 *     // (Long) 0
+	 *     USteamInvite.toXuidOrZero(null);
+	 *
+	 *     // (Long) 0
+	 *     USteamInvite.toXuidOrZero("");
+	 *
+	 *     // (Long) 1
+	 *     USteamInvite.toXuidOrZero("c");
+	 *
+	 *     // (Long) 1
+	 *     USteamInvite.toXuidOrZero("  c  ");
+	 *
+	 *     // (Long) 1266042636
+	 *     USteamInvite.toXuidOrZero("gqkj-gkbr");
+	 * }</pre>
+	 * <hr>
+	 *
+	 * @param code			Steam invite code to convert
+	 * @return				Steam unique account identifier or {@code 0L} value
+	 */
 	public static Long toXuidOrZero(String code) {
 		return toXuidOrElse(code, 0L);
 	}
 
+	/**
+	 * Convert a Steam invite code to a unique Steam account identifier
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Removes {@value USteamInvite#CODE_DELIMITER} and replaces characters using two
+	 * bases in order - {@value USteamInvite#CODE_BASE} and {@value USteamInvite#XUID_BASE}.
+	 * Then parses the resulting code to an unsigned 64-bit integer.
+	 *
+	 * <p>Possible failure exceptions:
+	 * <ul>
+	 *     <li>Steam invite code is {@code null}.
+	 *     <li>Steam invite code doesn't match w/ {@link USteamRegex#INVITE_CODE}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link USteamInvite#toXuidOrElse(String, Long)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * <hr>
+	 * <pre>{@code
+	 *     // (Long) null
+	 *     USteamInvite.toXuidOrNull(null);
+	 *
+	 *     // (Long) null
+	 *     USteamInvite.toXuidOrNull("");
+	 *
+	 *     // (Long) 1
+	 *     USteamInvite.toXuidOrNull("c");
+	 *
+	 *     // (Long) 1
+	 *     USteamInvite.toXuidOrNull("  c  ");
+	 *
+	 *     // (Long) 1266042636
+	 *     USteamInvite.toXuidOrNull("gqkj-gkbr");
+	 * }</pre>
+	 * <hr>
+	 *
+	 * @param code			Steam invite code to convert
+	 * @return				Steam unique account identifier or {@code null}
+	 */
 	public static Long toXuidOrNull(String code) {
 		return toXuidOrElse(code, (Long) null);
 	}
-
-//	/**
-//	 * Convert Steam invite code to the unique Steam account identifier.
-//	 *
-//	 * <p>Removes {@value USteamInvite#CODE_DELIMITER} and replaces characters using two
-//	 * bases in order - {@value USteamInvite#CODE_BASE} and {@value USteamInvite#XUID_BASE}.
-//	 * Then parses the resulting code to an unsigned 64-bit integer.
-//	 *
-//	 * <p>Possible failure exceptions:
-//	 * <ul>
-//	 *     <li>{@link IllegalArgumentException}
-//	 * </ul>
-//	 *
-//	 * <hr>
-//	 * <pre>{@code
-//	 *     // Try.failure(new IllegalArgumentException())
-//	 *     USteamInvite.fromCode(null);
-//	 *
-//	 *     // Try.failure(new IllegalArgumentException())
-//	 *     USteamInvite.fromCode("");
-//	 *
-//	 *     // Try.success(1)
-//	 *     USteamInvite.fromCode("c");
-//	 *
-//	 *     // Try.success(1)
-//	 *     USteamInvite.fromCode("  c  ");
-//	 *
-//	 *     // Try.success(1266042636)
-//	 *     USteamInvite.fromCode("gqkj-gkbr");
-//	 * }</pre>
-//	 * <hr>
-//	 *
-//	 * @param code	Steam invite code
-//	 * @return		{@code SteamId}'s xuid that
-//	 * 				wrapped in {@link Try}
-//	 */
-//	public static Try<Long> fromCode(String code) {
-//		code = StringUtils.trimToEmpty(code);
-//
-//		if (code.matches(USteamRegex.INVITE_CODE)) {
-//			code = code.replace(CODE_DELIMITER, "");
-//			code = StringUtils.replaceChars(code, CODE_BASE, XUID_BASE);
-//
-//			try {
-//				return Try.success(Long.parseUnsignedLong(code, 16));
-//			} catch (NumberFormatException ignored) {
-//			}
-//		}
-//
-//		return Try.failure(new IllegalArgumentException());
-//	}
-
-//	/**
-//	 * Rawly convert unique Steam account identifier to the Steam invite code.
-//	 *
-//	 * <p>Converts unique account identifier to hex string and replaces characters using two
-//	 * bases in order - {@value USteamInvite#XUID_BASE} and {@value USteamInvite#CODE_BASE}.
-//	 * Then places {@value USteamInvite#CODE_DELIMITER} if the length of the resulting
-//	 * code is greater than three.
-//	 *
-//	 * <hr>
-//	 * <pre>{@code
-//	 *     // null
-//	 *     USteamInvite.toCodeRaw(0);
-//	 *
-//	 *     // null
-//	 *     USteamInvite.toCodeRaw(Long.MAX_VALUE);
-//	 *
-//	 *     // "c"
-//	 *     USteamInvite.toCodeRaw(1);
-//	 *
-//	 *     // "gqkj-gkbr"
-//	 *     USteamInvite.toCodeRaw(1266042636);
-//	 * }</pre>
-//	 * <hr>
-//	 *
-//	 * @param xuid	{@code SteamId}'s xuid
-//	 * @return		Steam invite code or null
-//	 */
-//	public static String toCodeRaw(Long xuid) {
-//		return toCode(xuid).getOrNull();
-//	}
-
-//	/**
-//	 * Rawly convert Steam invite code to the unique Steam account identifier.
-//	 *
-//	 * <p>Removes {@value USteamInvite#CODE_DELIMITER} and replaces characters using two
-//	 * bases in order - {@value USteamInvite#CODE_BASE} and {@value USteamInvite#XUID_BASE}.
-//	 * Then parses the resulting code to an unsigned 64-bit integer.
-//	 *
-//	 * <hr>
-//	 * <pre>{@code
-//	 *     // null
-//	 *     USteamInvite.fromCodeRaw(null);
-//	 *
-//	 *     // null
-//	 *     USteamInvite.fromCodeRaw("");
-//	 *
-//	 *     // 1
-//	 *     USteamInvite.fromCodeRaw("c");
-//	 *
-//	 *     // 1
-//	 *     USteamInvite.fromCodeRaw("  c  ");
-//	 *
-//	 *     // 1266042636
-//	 *     USteamInvite.fromCodeRaw("gqkj-gkbr");
-//	 * }</pre>
-//	 * <hr>
-//	 *
-//	 * @param code	Steam invite code
-//	 * @return		{@code SteamId}'s xuid or null
-//	 */
-//	public static Long fromCodeRaw(String code) {
-//		return fromCode(code).getOrNull();
-//	}
 
 	private USteamInvite() {
 		throw new UnsupportedOperationException();
