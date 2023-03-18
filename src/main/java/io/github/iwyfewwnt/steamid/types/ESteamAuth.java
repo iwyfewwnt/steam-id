@@ -16,13 +16,14 @@
 
 package io.github.iwyfewwnt.steamid.types;
 
-//import io.github.u004.uwutils.UwArray;
-//import io.github.u004.uwutils.UwMap;
-//import io.vavr.control.Option;
 import io.github.iwyfewwnt.steamid.utils.USteamAuth;
+import io.github.iwyfewwnt.uwutils.UwArray;
+import io.github.iwyfewwnt.uwutils.UwEnum;
 import io.github.iwyfewwnt.uwutils.UwMap;
+import io.github.iwyfewwnt.uwutils.UwObject;
 
 import java.util.Map;
+import java.util.function.Supplier;
 
 /**
  * A Steam authentication type enums.
@@ -46,73 +47,114 @@ public enum ESteamAuth {
 	 */
 	YES(USteamAuth.YES);
 
-	// TODO: doc-comment
-	private static final Map<Integer, ESteamAuth> MAP_BY_VALUE = UwMap.newMapByFieldOrNull(
-			entry -> entry.value, ESteamAuth.class
+	/**
+	 * An array of {@link ESteamAuth} instances.
+	 */
+	private static final ESteamAuth[] VALUES = UwEnum.values(ESteamAuth.class);
+
+	/**
+	 * A map of {@link ESteamAuth} instances by their identifier field.
+	 */
+	private static final Map<Integer, ESteamAuth> MAP_BY_ID = UwMap.newMapByFieldOrNull(
+			entry -> entry.id, ESteamAuth.class
 	);
 
 	/**
-	 * Authentication type ID.
+	 * An account authentication type identifier.
 	 */
-	private final int value;
+	private final int id;
 
 	/**
-	 * Initialize a {@link ESteamAuth} instance.
+	 * Initialize an {@link ESteamAuth} instance.
 	 *
-	 * @param value	authentication type ID
+	 * @param id	account authentication type indentifier
 	 */
-	ESteamAuth(int value) {
-		this.value = value;
+	ESteamAuth(int id) {
+		this.id = id;
 	}
 
 	/**
-	 * Get this authentication type ID.
+	 * Get this account authentication type identifier.
 	 *
-	 * @return	authentication type ID
+	 * @return	account authentication type identifier
 	 */
-	public int getValue() {
-		return this.value;
+	public int getId() {
+		return this.id;
 	}
 
-//	/**
-//	 * Get the {@code ESteamAuth} instance by its type ID.
-//	 *
-//	 * @param value		authentication type ID
-//	 * @return			{@code ESteamAuth} instance
-//	 * 					that wrapped in {@link Option}
-//	 */
-//	public static Option<ESteamAuth> fromValue(Integer value) {
-//		return UwMap.get(value, MAP_BY_VALUE);
-//	}
+	/**
+	 * Get an {@link ESteamAuth} instance by its account authentication type identifier
+	 * or return a default value if failed.
+	 *
+	 * @param id			account authentication type identifier of the instance
+	 * @param defaultValue	default value to return on failure
+	 * @return				associated {@link ESteamAuth} instance or the default value
+	 */
+	public static ESteamAuth fromIdOrElse(Integer id, ESteamAuth defaultValue) {
+		return UwMap.getOrElse(id, MAP_BY_ID, defaultValue);
+	}
 
-//	/**
-//	 * Get the {@code ESteamAuth} instance by its index.
-//	 *
-//	 * @param index		{@code ESteamAuth} instance index
-//	 * @return			{@code ESteamAuth} instance
-//	 * 					that wrapped in {@link Option}
-//	 */
-//	public static Option<ESteamAuth> fromIndex(Integer index) {
-//		return UwArray.get(index, values());
-//	}
+	/**
+	 * Get an {@link ESteamAuth} instance by its account authentication type identifier
+	 * or return a default value if failed.
+	 *
+	 * @param id					account authentication type identifier of the instance
+	 * @param defaultValueSupplier	supplier from which get the default value
+	 * @return						associated {@link ESteamAuth} instance or the default value
+	 */
+	public static ESteamAuth fromIdOrElse(Integer id, Supplier<ESteamAuth> defaultValueSupplier) {
+		return UwObject.getIfNull(fromIdOrNull(id), defaultValueSupplier);
+	}
 
-//	/**
-//	 * Get the {@code ESteamAuth} instance by its type ID.
-//	 *
-//	 * @param value		authentication type ID
-//	 * @return			{@code ESteamAuth} instance or null
-//	 */
-//	public static ESteamAuth fromValueRaw(Integer value) {
-//		return fromValue(value).getOrNull();
-//	}
+	/**
+	 * Get an {@link ESteamAuth} instance by its account authentication type identifier
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Wraps {@link ESteamAuth#fromIdOrElse(Integer, ESteamAuth)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param id	account authentication type identifier of the instance
+	 * @return		associated {@link ESteamAuth} instance or {@code null}
+	 */
+	public static ESteamAuth fromIdOrNull(Integer id) {
+		return fromIdOrElse(id, (ESteamAuth) null);
+	}
 
-//	/**
-//	 * Get the {@code ESteamAuth} instance by its index.
-//	 *
-//	 * @param index		{@code ESteamAuth} instance index
-//	 * @return			{@code ESteamAuth} instance or null
-//	 */
-//	public static ESteamAuth fromIndexRaw(Integer index) {
-//		return fromIndex(index).getOrNull();
-//	}
+	/**
+	 * Get an {@link ESteamAuth} instance by its index
+	 * or return a default value if failed.
+	 *
+	 * @param index			index of the instance
+	 * @param defaultValue	default value to return on failure
+	 * @return				associated {@link ESteamAuth} instance or the default value
+	 */
+	public static ESteamAuth fromIndexOrElse(Integer index, ESteamAuth defaultValue) {
+		return UwArray.getOrElse(index, VALUES, defaultValue);
+	}
+
+	/**
+	 * Get an {@link ESteamAuth} instance by its index
+	 * or return a default value if failed.
+	 *
+	 * @param index					index of the instance
+	 * @param defaultValueSupplier	supplier from which get the default value
+	 * @return						associated {@link ESteamAuth} instance or the default value
+	 */
+	public static ESteamAuth fromIndexOrElse(Integer index, Supplier<ESteamAuth> defaultValueSupplier) {
+		return UwObject.getIfNull(fromIndexOrNull(index), defaultValueSupplier);
+	}
+
+	/**
+	 * Get an {@link ESteamAuth} instance by its index
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Wrapas {@link ESteamAuth#fromIndexOrElse(Integer, ESteamAuth)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param index		index of the instance
+	 * @return			associated {@link ESteamAuth} instance or {@code null}
+	 */
+	public static ESteamAuth fromIndexOrNull(Integer index) {
+		return fromIndexOrElse(index, (ESteamAuth) null);
+	}
 }
