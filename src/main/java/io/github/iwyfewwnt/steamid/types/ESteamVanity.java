@@ -117,6 +117,9 @@ public enum ESteamVanity {
 	 * Get an {@link ESteamVanity} instance by its vanity URL type identifier
 	 * or return {@code null} if failed.
 	 *
+	 * <p>Wraps {@link ESteamVanity#fromIdOrElse(Integer, ESteamVanity)}
+	 * w/ {@code null} as the default value.
+	 *
 	 * @param id	vanity URL type identifier
 	 * @return		associated {@link ESteamVanity} instance or {@code null}
 	 */
@@ -151,6 +154,9 @@ public enum ESteamVanity {
 	/**
 	 * Get an {@link ESteamVanity} instance by its index
 	 * or return {@code null} if failed.
+	 *
+	 * <p>Wraps {@link ESteamVanity#fromIndexOrElse(Integer, ESteamVanity)}
+	 * w/ {@code null} as the default value.
 	 *
 	 * @param index		index of the instance
 	 * @return			associated {@link ESteamVanity} instance or {@code null}
