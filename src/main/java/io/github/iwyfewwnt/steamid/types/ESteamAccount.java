@@ -145,7 +145,7 @@ public enum ESteamAccount {
 	private final char ch;
 
 	/**
-	 * Initialize an {@code ESteamAccount} instance.
+	 * Initialize an {@link ESteamAccount} instance.
 	 *
 	 * @param value	account type ID
 	 * @param ch	account type char

@@ -71,7 +71,7 @@ public enum ESteamEndpoint {
 	private final String value;
 
 	/**
-	 * Initialize an {@code ESteamEndpoint} instance.
+	 * Initialize an {@link ESteamEndpoint} instance.
 	 *
 	 * @param value		endpoint string
 	 */

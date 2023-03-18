@@ -108,7 +108,7 @@ public enum ESteamInstance {
 	private final int id;
 
 	/**
-	 * Initialize a {@code ESteamInstance} instance.
+	 * Initialize a {@link ESteamInstance} instance.
 	 *
 	 * @param id	account instance type identifier
 	 */

@@ -57,7 +57,7 @@ public enum ESteamAuth {
 	private final int value;
 
 	/**
-	 * Initialize a {@code ESteamAuth} instance.
+	 * Initialize a {@link ESteamAuth} instance.
 	 *
 	 * @param value	authentication type ID
 	 */

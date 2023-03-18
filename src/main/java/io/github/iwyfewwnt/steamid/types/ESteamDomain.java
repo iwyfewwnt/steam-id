@@ -64,7 +64,7 @@ public enum ESteamDomain {
 	private final String value;
 
 	/**
-	 * Initialize an {@code ESteamDomain} instance.
+	 * Initialize an {@link ESteamDomain} instance.
 	 *
 	 * @param value		domain string
 	 */

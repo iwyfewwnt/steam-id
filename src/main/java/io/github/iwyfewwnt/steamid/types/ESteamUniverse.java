@@ -101,7 +101,7 @@ public enum ESteamUniverse {
 	private final int id;
 
 	/**
-	 * Initialize a {@code ESteamUniverse} instance.
+	 * Initialize a {@link ESteamUniverse} instance.
 	 *
 	 * @param id	account universe type identifier
 	 */

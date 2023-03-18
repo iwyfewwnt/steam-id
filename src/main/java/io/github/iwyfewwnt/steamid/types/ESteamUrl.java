@@ -86,7 +86,7 @@ public enum ESteamUrl {
 	private final String url;
 
 	/**
-	 * Initialize a {@link ESteamUrl} instance.
+	 * Initialize an {@link ESteamUrl} instance.
 	 *
 	 * @param url	URL string
 	 */
