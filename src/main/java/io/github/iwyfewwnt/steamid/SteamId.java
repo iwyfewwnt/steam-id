@@ -57,12 +57,12 @@ public final class SteamId {
 	/**
 	 * A minimum unique account identifier value.
 	 */
-	public static final long MIN_XUID = 0x00000001L;
+	public static final int MIN_XUID = 0x00000001;
 
 	/**
 	 * A maximum unique account identifier value.
 	 */
-	public static final long MAX_XUID = 0xFFFFFFFFL;
+	public static final int MAX_XUID = 0xFFFFFFFF;
 
 //	/**
 //	 * A base Steam ID64 value.
@@ -82,31 +82,31 @@ public final class SteamId {
 	/**
 	 * A minimum Steam ID2 value.
 	 */
-	public static final long MIN_ID2 = 0x0L;
+	public static final int MIN_ID2 = 0x00000000;
 
 	/**
 	 * A maximum Steam ID2 value.
 	 */
-	public static final long MAX_ID2 = 0x3FFFFFFFL;
+	public static final int MAX_ID2 = 0x3FFFFFFF;
 
-//	/**
-//	 * Unique account identifier that wrapped in {@link Option}.
-//	 */
-	private Long xuid;
+	/**
+	 * A unique account type-32 identifier.
+	 */
+	private Integer xuid;
 
-//	/**
-//	 * Enum account universe type that wrapped in {@link Option}.
-//	 */
+	/**
+	 * An enum account universe type.
+	 */
 	private ESteamUniverse universe;
 
-//	/**
-//	 * Enum account instance type that wrapped in {@link Option}.
-//	 */
+	/**
+	 * An enum account instance type.
+	 */
 	private ESteamInstance instance;
 
-//	/**
-//	 * Enum account type that wrapped in {@link Option}.
-//	 */
+	/**
+	 * An enum account type.
+	 */
 	private ESteamAccount account;
 
 //	/**
@@ -144,7 +144,7 @@ public final class SteamId {
 //	 * @param account		enum account type
 //	 *                   	that wrapped in {@link Option}
 //	 */
-	private SteamId(Long xuid, ESteamUniverse universe, ESteamInstance instance, ESteamAccount account) {
+	private SteamId(Integer xuid, ESteamUniverse universe, ESteamInstance instance, ESteamAccount account) {
 		this.xuid = xuid;
 		this.universe = universe;
 		this.instance = instance;
