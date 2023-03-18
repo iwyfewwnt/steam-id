@@ -16,11 +16,14 @@
 
 package io.github.iwyfewwnt.steamid.types;
 
-import io.github.iwyfewwnt.steamid.utils.USteamBit;
 import io.github.iwyfewwnt.steamid.utils.USteamUniverse;
+import io.github.iwyfewwnt.uwutils.UwArray;
+import io.github.iwyfewwnt.uwutils.UwEnum;
 import io.github.iwyfewwnt.uwutils.UwMap;
+import io.github.iwyfewwnt.uwutils.UwObject;
 
 import java.util.Map;
+import java.util.function.Supplier;
 
 /**
  * A Steam account universe type enums.
@@ -79,73 +82,114 @@ public enum ESteamUniverse {
 //	 */
 //	public static final int OFFSET = USteamBit.ACCOUNT_UNIVERSE_OFFSET;
 
-	// TODO: doc-comment
-	private static final Map<Integer, ESteamUniverse> MAP_BY_VALUE = UwMap.newMapByFieldOrNull(
-			entry -> entry.value, ESteamUniverse.class
+	/**
+	 * An array of {@link ESteamUniverse} instances.
+	 */
+	private static final ESteamUniverse[] VALUES = UwEnum.values(ESteamUniverse.class);
+
+	/**
+	 * A map of {@link ESteamUniverse} instances by their identifier field.
+	 */
+	private static final Map<Integer, ESteamUniverse> MAP_BY_ID = UwMap.newMapByFieldOrNull(
+			entry -> entry.id, ESteamUniverse.class
 	);
 
 	/**
-	 * An account universe type ID.
+	 * An account universe type identifier.
 	 */
-	private final int value;
+	private final int id;
 
 	/**
 	 * Initialize a {@code ESteamUniverse} instance.
 	 *
-	 * @param value		account universe type ID
+	 * @param id	account universe type identifier
 	 */
-	ESteamUniverse(int value) {
-		this.value = value;
+	ESteamUniverse(int id) {
+		this.id = id;
 	}
 
 	/**
-	 * Get this account universe type ID.
+	 * Get this account universe type identifier.
 	 *
-	 * @return		account universe type ID
+	 * @return	account universe type identifeir
 	 */
-	public int getValue() {
-		return this.value;
+	public int getId() {
+		return this.id;
 	}
 
-//	/**
-//	 * Get the {@code ESteamUniverse} instance by its type ID.
-//	 *
-//	 * @param value		account universe type ID
-//	 * @return			{@code ESteamUniverse} instance
-//	 * 					that wrapped in {@link Option}
-//	 */
-//	public static Option<ESteamUniverse> fromValue(Integer value) {
-//		return UwMap.get(value, MAP_BY_VALUE);
-//	}
+	/**
+	 * Get an {@link ESteamUniverse} instance by its account universe type identifier
+	 * or return a default value if failed.
+	 *
+	 * @param id			account universe type identifier of the instance
+	 * @param defaultValue	default value to return on failure
+	 * @return				associated {@link ESteamUniverse} instance or the default value
+	 */
+	public static ESteamUniverse fromIdOrElse(Integer id, ESteamUniverse defaultValue) {
+		return UwMap.getOrElse(id, MAP_BY_ID, defaultValue);
+	}
 
-//	/**
-//	 * Get the {@code ESteamUniverse} instance by its index.
-//	 *
-//	 * @param index		{@code ESteamUniverse} instance index
-//	 * @return			{@code ESteamUniverse} instance
-//	 * 					that wrapped in {@link Option}
-//	 */
-//	public static Option<ESteamUniverse> fromIndex(Integer index) {
-//		return UwArray.get(index, values());
-//	}
+	/**
+	 * Get an {@link ESteamUniverse} instance by its account universe type identifier
+	 * or return a default value if failed.
+	 *
+	 * @param id					account universe type identifier of the instance
+	 * @param defaultValueSupplier	supplier from which get the default value
+	 * @return						associated {@link ESteamUniverse} instance or the default value
+	 */
+	public static ESteamUniverse fromIdOrElse(Integer id, Supplier<ESteamUniverse> defaultValueSupplier) {
+		return UwObject.getIfNull(fromIdOrNull(id), defaultValueSupplier);
+	}
 
-//	/**
-//	 * Get the {@code ESteamUniverse} instance by its type ID.
-//	 *
-//	 * @param value		account universe type ID
-//	 * @return			{@code ESteamUniverse} instance or null
-//	 */
-//	public static ESteamUniverse fromValueRaw(Integer value) {
-//		return fromValue(value).getOrNull();
-//	}
+	/**
+	 * Get an {@link ESteamUniverse} instance by its account universe type identifier
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Wraps {@link ESteamUniverse#fromIdOrElse(Integer, ESteamUniverse)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param id			account universe type identifier of the instance
+	 * @return				associated {@link ESteamUniverse} instance or {@code null}
+	 */
+	public static ESteamUniverse fromIdOrNull(Integer id) {
+		return fromIdOrElse(id, (ESteamUniverse) null);
+	}
 
-//	/**
-//	 * Get the {@code ESteamUniverse} instance by its index.
-//	 *
-//	 * @param index		{@code ESteamUniverse} instance index
-//	 * @return			{@code ESteamUniverse} instance or null
-//	 */
-//	public static ESteamUniverse fromIndexRaw(Integer index) {
-//		return fromIndex(index).getOrNull();
-//	}
+	/**
+	 * Get an {@link ESteamUniverse} instance by its index
+	 * or return a default value if failed.
+	 *
+	 * @param index			index of the instance
+	 * @param defaultValue	default value to return on failure
+	 * @return				associated {@link ESteamUniverse} instance or the default value
+	 */
+	public static ESteamUniverse fromIndexOrElse(Integer index, ESteamUniverse defaultValue) {
+		return UwArray.getOrElse(index, VALUES, defaultValue);
+	}
+
+	/**
+	 * Get an {@link ESteamUniverse} instance by its index
+	 * or return a default value if failed.
+	 *
+	 * @param index					index of the instance
+	 * @param defaultValueSupplier	supplier from which get the default value
+	 * @return						associated {@link ESteamUniverse} instance or the default value
+	 */
+	public static ESteamUniverse fromIndexOrElse(Integer index, Supplier<ESteamUniverse> defaultValueSupplier) {
+		return UwObject.getIfNull(fromIndexOrNull(index), defaultValueSupplier);
+	}
+
+	/**
+	 * Get an {@link ESteamUniverse} instance by its index
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Wraps {@link ESteamUniverse#fromIndexOrElse(Integer, ESteamUniverse)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param index			index of the instance
+	 * @return				associated {@link ESteamUniverse} instance or {@code null}
+	 */
+	public static ESteamUniverse fromIndexOrNull(Integer index) {
+		return fromIndexOrElse(index, (ESteamUniverse) null);
+	}
 }
