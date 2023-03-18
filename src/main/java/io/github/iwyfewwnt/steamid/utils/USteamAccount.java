@@ -161,6 +161,9 @@ public final class USteamAccount {
 
 	/**
 	 * An account type char - Console User/P2P SuperSeeder.
+	 *
+	 * <p>There's no char variant for the {@link USteamAccount#CONSOLE_USER_ID}
+	 * so this value is equal to {@code 0}.
 	 */
 	public static final char CONSOLE_USER_CHAR = 0;
 
