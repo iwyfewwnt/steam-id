@@ -17,12 +17,13 @@
 package io.github.iwyfewwnt.steamid.types;
 
 import io.github.iwyfewwnt.steamid.utils.USteamUrl;
+import io.github.iwyfewwnt.uwutils.UwArray;
+import io.github.iwyfewwnt.uwutils.UwEnum;
 import io.github.iwyfewwnt.uwutils.UwMap;
-//import io.github.u004.uwutils.UwArray;
-//import io.github.u004.uwutils.UwMap;
-//import io.vavr.control.Option;
+import io.github.iwyfewwnt.uwutils.UwObject;
 
 import java.util.Map;
+import java.util.function.Supplier;
 
 /**
  * A Steam URL enums.
@@ -67,73 +68,114 @@ public enum ESteamUrl {
 	 */
 	CHINA(USteamUrl.CHINA);
 
-	// TODO: doc-comment
-	private static final Map<String, ESteamUrl> MAP_BY_VALUE = UwMap.newMapByFieldOrNull(
-			entry -> entry.value, ESteamUrl.class
+	/**
+	 * An array of {@link ESteamUrl} instances.
+	 */
+	private static final ESteamUrl[] VALUES = UwEnum.values(ESteamUrl.class);
+
+	/**
+	 * A map of {@link ESteamUrl} instances by their URL field.
+	 */
+	private static final Map<String, ESteamUrl> MAP_BY_URL = UwMap.newMapByFieldOrNull(
+			entry -> entry.url, ESteamUrl.class
 	);
 
 	/**
-	 * URL string.
+	 * An URL string.
 	 */
-	private final String value;
+	private final String url;
 
 	/**
-	 * Initialize a {@code ESteamUrl} instance.
+	 * Initialize a {@link ESteamUrl} instance.
 	 *
-	 * @param value		URL string
+	 * @param url	URL string
 	 */
-	ESteamUrl(String value) {
-		this.value = value;
+	ESteamUrl(String url) {
+		this.url = url;
 	}
 
 	/**
 	 * Get this URL string.
 	 *
-	 * @return		URL string
+	 * @return	URL string
 	 */
-	public String getValue() {
-		return this.value;
+	public String getUrl() {
+		return this.url;
 	}
 
-//	/**
-//	 * Get the {@code ESteamUrl} instance by its URL string.
-//	 *
-//	 * @param value		URL string
-//	 * @return			{@code ESteamUrl} instance
-//	 * 					that wrapped in {@link Option}
-//	 */
-//	public static Option<ESteamUrl> fromValue(String value) {
-//		return UwMap.get(value, MAP_BY_VALUE);
-//	}
+	/**
+	 * Get an {@link ESteamUrl} instance by its URL string
+	 * or return a default if failed.
+	 *
+	 * @param url			URL string of the instance
+	 * @param defaultValue	default value to return on failure
+	 * @return				associated {@link ESteamUrl} instance or the default value
+	 */
+	public static ESteamUrl fromUrlOrElse(String url, ESteamUrl defaultValue) {
+		return UwMap.getOrElse(url, MAP_BY_URL, defaultValue);
+	}
 
-//	/**
-//	 * Get the {@code ESteamUrl} instance by its index.
-//	 *
-//	 * @param index		{@code ESteamUrl} instance index
-//	 * @return			{@code ESteamUrl} instance
-//	 * 					that wrapped in {@link Option}
-//	 */
-//	public static Option<ESteamUrl> fromIndex(Integer index) {
-//		return UwArray.get(index, values());
-//	}
+	/**
+	 * Get an {@link ESteamUrl} instance by its URL string
+	 * or return a default if failed.
+	 *
+	 * @param url					URL string of the instance
+	 * @param defaultValueSupplier	supplier from which get the default value
+	 * @return						associated {@link ESteamUrl} instance or the defualt value
+	 */
+	public static ESteamUrl fromUrlOrElse(String url, Supplier<ESteamUrl> defaultValueSupplier) {
+		return UwObject.getIfNull(fromUrlOrNull(url), defaultValueSupplier);
+	}
 
-//	/**
-//	 * Get the {@code ESteamUrl} instance by its URL string.
-//	 *
-//	 * @param value		URL string
-//	 * @return			{@code ESteamUrl} instance or null
-//	 */
-//	public static ESteamUrl fromValueRaw(String value) {
-//		return fromValue(value).getOrNull();
-//	}
+	/**
+	 * Get an {@link ESteamUrl} instance by its URL string
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Wraps {@link ESteamUrl#fromUrlOrElse(String, ESteamUrl)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param url	URL string of the instance
+	 * @return		associated {@link ESteamUrl} instance or {@code null}
+	 */
+	public static ESteamUrl fromUrlOrNull(String url) {
+		return fromUrlOrElse(url, (ESteamUrl) null);
+	}
 
-//	/**
-//	 * Get the {@code ESteamUrl} instance by its index.
-//	 *
-//	 * @param index		{@code ESteamUrl} instance index
-//	 * @return			{@code ESteamUrl} instance or null
-//	 */
-//	public static ESteamUrl fromIndexRaw(Integer index) {
-//		return fromIndex(index).getOrNull();
-//	}
+	/**
+	 * Get an {@link ESteamUrl} instance by its index
+	 * or return a default value if failed.
+	 *
+	 * @param index			index of the instance
+	 * @param defaultValue	default value to return on failure
+	 * @return				associated {@link ESteamUrl} instance or the default value
+	 */
+	public static ESteamUrl fromIndexOrElse(Integer index, ESteamUrl defaultValue) {
+		return UwArray.getOrElse(index, VALUES, defaultValue);
+	}
+
+	/**
+	 * Get an {@link ESteamUrl} instance by its index
+	 * or return a default value if failed.
+	 *
+	 * @param index					index of the instance
+	 * @param defaultValueSupplier	supplier from which get the default value
+	 * @return						associated {@link ESteamUrl} instance or the default value
+	 */
+	public static ESteamUrl fromIndexOrElse(Integer index, Supplier<ESteamUrl> defaultValueSupplier) {
+		return UwObject.getIfNull(fromIndexOrNull(index), defaultValueSupplier);
+	}
+
+	/**
+	 * Get an {@link ESteamUrl} instance by its index
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Wraps {@link ESteamUrl#fromIndexOrElse(Integer, ESteamUrl)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param index		index of the instance
+	 * @return			associated {@link ESteamUrl} instance or {@code null}
+	 */
+	public static ESteamUrl fromIndexOrNull(Integer index) {
+		return fromIndexOrElse(index, (ESteamUrl) null);
+	}
 }
