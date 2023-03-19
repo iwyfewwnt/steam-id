@@ -16,7 +16,6 @@
 
 package io.github.iwyfewwnt.steamid.types;
 
-//import io.github.iwyfewwnt.steamid.utils.USteamBit;
 import io.github.iwyfewwnt.steamid.utils.USteamUniverse;
 import io.github.iwyfewwnt.uwutils.UwArray;
 import io.github.iwyfewwnt.uwutils.UwEnum;
@@ -109,6 +108,63 @@ public enum ESteamUniverse {
 	 */
 	public int getId() {
 		return this.id;
+	}
+
+	/**
+	 * Get the account universe type identifier from the provided {@link ESteamUniverse} instance
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamUniverse} instance is {@code null}.
+	 * </ul>
+	 *
+	 * @param universe		enum value of the account universe type from which get the identifier
+	 * @param defaultValue 	default value to return on failure
+	 * @return				account universe type identifier or the default value
+	 */
+	public static Integer getIdOrElse(ESteamUniverse universe, Integer defaultValue) {
+		if (universe == null) {
+			return defaultValue;
+		}
+
+		return universe.getId();
+	}
+
+	/**
+	 * Get the account universe type identifier from the provided {@link ESteamUniverse} instance
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamUniverse} instance is {@code null}.
+	 * </ul>
+	 *
+	 * @param universe				enum value of the account universe type from which get the identifier
+	 * @param defaultValueSupplier 	supplier from which get the default value
+	 * @return						account universe type identifier or the default value
+	 */
+	public static Integer getIdOrElse(ESteamUniverse universe, Supplier<Integer> defaultValueSupplier) {
+		return UwObject.getIfNull(getIdOrNull(universe), defaultValueSupplier);
+	}
+
+	/**
+	 * Get the account universe type identifier from the provided {@link ESteamUniverse} instance
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamUniverse} instance is {@code null}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link ESteamUniverse#getIdOrElse(ESteamUniverse, Integer)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param universe	enum value of the account universe type from which get the identifier
+	 * @return			account universe type identifier or {@code null}
+	 */
+	public static Integer getIdOrNull(ESteamUniverse universe) {
+		return getIdOrElse(universe, (Integer) null);
 	}
 
 	/**
