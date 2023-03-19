@@ -91,9 +91,9 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Arguments in order:
 	 * <ul>
-	 *     <li>Decimal :: Account universe type identifier.
-	 *     <li>Decimal :: Account authentication type identifier.
-	 *     <li>Decimal :: Account type-2 identifier.
+	 *     <li>Integer :: Account universe type identifier.
+	 *     <li>Integer :: Account authentication type identifier.
+	 *     <li>Integer :: Account type-2 identifier.
 	 * </ul>
 	 *
 	 * @see <a href="https://vk.cc/ch9ea2">Steam ID2 as Represented in Computer Programs</a>
@@ -106,8 +106,8 @@ public final class SteamId implements Serializable, Cloneable {
 	 * <p>Arguments in order:
 	 * <ul>
 	 *     <li>Character :: Account type character.
-	 *     <li>Decimal :: Account universe type identifier.
-	 *     <li>Decimal :: Account type-32 identifier.
+	 *     <li>Integer :: Account universe type identifier.
+	 *     <li>Integer :: Account type-32 identifier.
 	 *     <li>String :: Account instance string.
 	 * </ul>
 	 */
