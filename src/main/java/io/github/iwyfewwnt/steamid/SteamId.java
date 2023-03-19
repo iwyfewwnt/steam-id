@@ -228,6 +228,18 @@ public final class SteamId implements Serializable, Cloneable {
 	}
 
 	/**
+	 * Intialize a {@link SteamId} instance.
+	 *
+	 * <p>Wraps {@link SteamId#SteamId(Integer, ESteamUniverse, ESteamInstance, ESteamAccount)}
+	 * w/ {@link ESteamUniverse#PUBLIC}, {@link ESteamInstance#DESKTOP}, and {@link ESteamAccount#INDIVIDUAL}.
+	 *
+	 * @param xuid		integer value of the account type-32 identifier
+	 */
+	private SteamId(Integer xuid) {
+		this(xuid, ESteamUniverse.PUBLIC, ESteamInstance.DESKTOP, ESteamAccount.INDIVIDUAL);
+	}
+
+	/**
 	 * Initialize a {@link SteamId} instance.
 	 *
 	 * <p>Defines a copy consutrctor.
@@ -248,18 +260,6 @@ public final class SteamId implements Serializable, Cloneable {
 		this.userUrlCache = that.userUrlCache;
 		this.inviteUrlCache = that.inviteUrlCache;
 		this.chinaUrlCache = that.chinaUrlCache;
-	}
-
-	/**
-	 * Intialize a {@link SteamId} instance.
-	 *
-	 * <p>Wraps {@link SteamId#SteamId(Integer, ESteamUniverse, ESteamInstance, ESteamAccount)}
-	 * w/ {@link ESteamUniverse#PUBLIC}, {@link ESteamInstance#DESKTOP}, and {@link ESteamAccount#INDIVIDUAL}.
-	 *
-	 * @param xuid		integer value of the account type-32 identifier
-	 */
-	private SteamId(Integer xuid) {
-		this(xuid, ESteamUniverse.PUBLIC, ESteamInstance.DESKTOP, ESteamAccount.INDIVIDUAL);
 	}
 
 	/**
