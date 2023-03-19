@@ -17,10 +17,7 @@
 package io.github.iwyfewwnt.steamid.types;
 
 import io.github.iwyfewwnt.steamid.utils.USteamVanity;
-import io.github.iwyfewwnt.uwutils.UwArray;
-import io.github.iwyfewwnt.uwutils.UwEnum;
-import io.github.iwyfewwnt.uwutils.UwMap;
-import io.github.iwyfewwnt.uwutils.UwObject;
+import io.github.iwyfewwnt.uwutils.*;
 
 import java.util.Map;
 import java.util.function.Supplier;
@@ -87,6 +84,63 @@ public enum ESteamVanity {
 	 */
 	public int getId() {
 		return this.id;
+	}
+
+	/**
+	 * Get the vanity URL type identifier from the provided {@link ESteamVanity} instance
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamVanity} instance is {@code null}.
+	 * </ul>
+	 *
+	 * @param vanity		enum value of the vanity URL type from which get the identifier
+	 * @param defaultValue  default value to return on failure
+	 * @return				vanity URL type identifier or the defualt value
+	 */
+	public static Integer getIdOrElse(ESteamVanity vanity, Integer defaultValue) {
+		if (vanity == null) {
+			return defaultValue;
+		}
+
+		return vanity.getId();
+	}
+
+	/**
+	 * Get the vanity URL type identifier from the provided {@link ESteamVanity} instance
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamVanity} instance is {@code null}.
+	 * </ul>
+	 *
+	 * @param vanity				enum value of the vanity URL type from which get the identifier
+	 * @param defaultValueSupplier  supplier from which get the default value
+	 * @return						vanity URL type identifier or the defualt value
+	 */
+	public static Integer getIdOrElse(ESteamVanity vanity, Supplier<Integer> defaultValueSupplier) {
+		return UwObject.getIfNull(getIdOrNull(vanity), defaultValueSupplier);
+	}
+
+	/**
+	 * Get the vanity URL type identifier from the provided {@link ESteamVanity} instance
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamVanity} instance is {@code null}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link ESteamVanity#getIdOrElse(ESteamVanity, Integer)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param vanity		enum value of the vanity URL type from which get the identifier
+	 * @return				vanity URL type identifier or {@code null}
+	 */
+	public static Integer getIdOrNull(ESteamVanity vanity) {
+		return getIdOrElse(vanity, (Integer) null);
 	}
 
 	/**
