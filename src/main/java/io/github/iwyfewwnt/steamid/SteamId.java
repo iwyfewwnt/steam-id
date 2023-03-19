@@ -191,19 +191,12 @@ public final class SteamId implements Serializable, Cloneable {
 	/**
 	 * Intialize a {@link SteamId} instance.
 	 *
-	 * <p>Defines a copy constructor.
-	 *
 	 * @param xuid		integer value of the account type-32 identifier
 	 * @param universe	enum value of the account universe type
 	 * @param instance	enum value of the account instance type
 	 * @param account	enum value of the account type
 	 */
-	private SteamId(
-			Integer xuid,
-			ESteamUniverse universe,
-			ESteamInstance instance,
-			ESteamAccount account
-	) {
+	private SteamId(Integer xuid, ESteamUniverse universe, ESteamInstance instance, ESteamAccount account) {
 		this.xuid = xuid;
 		this.universe = universe;
 		this.instance = instance;
@@ -211,62 +204,7 @@ public final class SteamId implements Serializable, Cloneable {
 	}
 
 	/**
-	 * Initialize a {@link SteamId} instance.
-	 *
-	 * <p>Defines a copy constructor.
-	 *
-	 * @param xuid				integer value of the account type-32 identifier
-	 * @param universe			enum value of the account universe type
-	 * @param instance			enum value of the account instance type
-	 * @param account			enum value of the account type
-	 * @param staticKeyCache	cache of the conversion to a static account key
-	 * @param id64Cache			cache of the conversion to an account type-64 identifier
-	 * @param id2Cache			cache of the conversion to an account type-2 identifier
-	 * @param id3Cache			cache of the conversion to an account type-3 identifier
-	 * @param inviteCodeCache	cache of the conversion to a Steam invite code
-	 * @param csgoCodeCache		cache of the conversion to a CS:GO friend code
-	 * @param id64UrlCache		cache of the conversion to a /profiles/%id-64% URL
-	 * @param id3UrlCache		cache of the conversion to a /profiles/%id-3% URL
-	 * @param userUrlCache		cache of the conversion to a /user/%invite-code% URL
-	 * @param inviteUrlCache	cache of the conversion to a /p/%invite-code% URL
-	 * @param chinaUrlCache		cache of the conversion to a Chine /profiles/%id-64% URL
-	 */
-	private SteamId(
-			Integer xuid,
-			ESteamUniverse universe,
-			ESteamInstance instance,
-			ESteamAccount account,
-			Long staticKeyCache,
-			Long id64Cache,
-			String id2Cache,
-			String id3Cache,
-			String inviteCodeCache,
-			String csgoCodeCache,
-			String id64UrlCache,
-			String id3UrlCache,
-			String userUrlCache,
-			String inviteUrlCache,
-			String chinaUrlCache
-	) {
-		this(xuid, universe, instance, account);
-
-		this.staticKeyCache = staticKeyCache;
-		this.id64Cache = id64Cache;
-		this.id2Cache = id2Cache;
-		this.id3Cache = id3Cache;
-		this.inviteCodeCache = inviteCodeCache;
-		this.csgoCodeCache = csgoCodeCache;
-		this.id64UrlCache = id64UrlCache;
-		this.id3UrlCache = id3UrlCache;
-		this.userUrlCache = userUrlCache;
-		this.inviteUrlCache = inviteUrlCache;
-		this.chinaUrlCache = chinaUrlCache;
-	}
-
-	/**
 	 * Intialize a {@link SteamId} instance.
-	 *
-	 * <p>Defines a copy constructor.
 	 *
 	 * @param xuid		integer value of the account type-32 identifier
 	 * @param universe	integer value of the account universe type
@@ -278,128 +216,38 @@ public final class SteamId implements Serializable, Cloneable {
 	}
 
 	/**
-	 * Initialize a {@link SteamId} instance.
-	 *
-	 * <p>Defines a copy constructor.
-	 *
-	 * @param xuid				integer value of the account type-32 identifier
-	 * @param universe			integer value of the account universe type
-	 * @param instance			integer value of the account instance type
-	 * @param account			integer value of the account type
-	 * @param staticKeyCache	cache of the conversion to a static account key
-	 * @param id64Cache			cache of the conversion to an account type-64 identifier
-	 * @param id2Cache			cache of the conversion to an account type-2 identifier
-	 * @param id3Cache			cache of the conversion to an account type-3 identifier
-	 * @param inviteCodeCache	cache of the conversion to a Steam invite code
-	 * @param csgoCodeCache		cache of the conversion to a CS:GO friend code
-	 * @param id64UrlCache		cache of the conversion to a /profiles/%id-64% URL
-	 * @param id3UrlCache		cache of the conversion to a /profiles/%id-3% URL
-	 * @param userUrlCache		cache of the conversion to a /user/%invite-code% URL
-	 * @param inviteUrlCache	cache of the conversion to a /p/%invite-code% URL
-	 * @param chinaUrlCache		cache of the conversion to a Chine /profiles/%id-64% URL
-	 */
-	private SteamId(
-			Integer xuid,
-			Integer universe,
-			Integer instance,
-			Integer account,
-			Long staticKeyCache,
-			Long id64Cache,
-			String id2Cache,
-			String id3Cache,
-			String inviteCodeCache,
-			String csgoCodeCache,
-			String id64UrlCache,
-			String id3UrlCache,
-			String userUrlCache,
-			String inviteUrlCache,
-			String chinaUrlCache
-	) {
-		this(xuid, universe, instance, account);
-
-		this.staticKeyCache = staticKeyCache;
-		this.id64Cache = id64Cache;
-		this.id2Cache = id2Cache;
-		this.id3Cache = id3Cache;
-		this.inviteCodeCache = inviteCodeCache;
-		this.csgoCodeCache = csgoCodeCache;
-		this.id64UrlCache = id64UrlCache;
-		this.id3UrlCache = id3UrlCache;
-		this.userUrlCache = userUrlCache;
-		this.inviteUrlCache = inviteUrlCache;
-		this.chinaUrlCache = chinaUrlCache;
-	}
-
-	/**
 	 * Intialize a {@link SteamId} instance.
-	 *
-	 * <p>Defines a copy constructor.
 	 *
 	 * @param xuid		integer value of the account type-32 identifier
 	 * @param universe	integer value of the account universe type
 	 * @param instance	integer value of the account instance type
 	 * @param account	character value of the account type
 	 */
-	private SteamId(
-			Integer xuid,
-			Integer universe,
-			Integer instance,
-			Character account
-	) {
+	private SteamId(Integer xuid, Integer universe, Integer instance, Character account) {
 		this(xuid, ESteamUniverse.fromIdOrNull(universe), ESteamInstance.fromIdOrNull(instance), ESteamAccount.fromCharOrNull(account));
 	}
 
 	/**
 	 * Initialize a {@link SteamId} instance.
 	 *
-	 * <p>Defines a copy constructor.
+	 * <p>Defines a copy consutrctor.
 	 *
-	 * @param xuid				integer value of the account type-32 identifier
-	 * @param universe			integer value of the account universe type
-	 * @param instance			integer value of the account instance type
-	 * @param account			chracter value of the account type
-	 * @param staticKeyCache	cache of the conversion to a static account key
-	 * @param id64Cache			cache of the conversion to an account type-64 identifier
-	 * @param id2Cache			cache of the conversion to an account type-2 identifier
-	 * @param id3Cache			cache of the conversion to an account type-3 identifier
-	 * @param inviteCodeCache	cache of the conversion to a Steam invite code
-	 * @param csgoCodeCache		cache of the conversion to a CS:GO friend code
-	 * @param id64UrlCache		cache of the conversion to a /profiles/%id-64% URL
-	 * @param id3UrlCache		cache of the conversion to a /profiles/%id-3% URL
-	 * @param userUrlCache		cache of the conversion to a /user/%invite-code% URL
-	 * @param inviteUrlCache	cache of the conversion to a /p/%invite-code% URL
-	 * @param chinaUrlCache		cache of the conversion to a Chine /profiles/%id-64% URL
+	 * @param that	instance to copy field values from
 	 */
-	private SteamId(
-			Integer xuid,
-			Integer universe,
-			Integer instance,
-			Character account,
-			Long staticKeyCache,
-			Long id64Cache,
-			String id2Cache,
-			String id3Cache,
-			String inviteCodeCache,
-			String csgoCodeCache,
-			String id64UrlCache,
-			String id3UrlCache,
-			String userUrlCache,
-			String inviteUrlCache,
-			String chinaUrlCache
-	) {
-		this(xuid, universe, instance, account);
+	private SteamId(SteamId that) {
+		this(that.xuid, that.universe, that.instance, that.account);
 
-		this.staticKeyCache = staticKeyCache;
-		this.id64Cache = id64Cache;
-		this.id2Cache = id2Cache;
-		this.id3Cache = id3Cache;
-		this.inviteCodeCache = inviteCodeCache;
-		this.csgoCodeCache = csgoCodeCache;
-		this.id64UrlCache = id64UrlCache;
-		this.id3UrlCache = id3UrlCache;
-		this.userUrlCache = userUrlCache;
-		this.inviteUrlCache = inviteUrlCache;
-		this.chinaUrlCache = chinaUrlCache;
+		this.staticKeyCache = that.staticKeyCache;
+		this.id64Cache = that.id64Cache;
+		this.id2Cache = that.id2Cache;
+		this.id3Cache = that.id3Cache;
+		this.inviteCodeCache = that.inviteCodeCache;
+		this.csgoCodeCache = that.csgoCodeCache;
+		this.id64UrlCache = that.id64UrlCache;
+		this.id3UrlCache = that.id3UrlCache;
+		this.userUrlCache = that.userUrlCache;
+		this.inviteUrlCache = that.inviteUrlCache;
+		this.chinaUrlCache = that.chinaUrlCache;
 	}
 
 	/**
@@ -2030,31 +1878,6 @@ public final class SteamId implements Serializable, Cloneable {
 	}
 
 	/**
-	 * Copy this {@link SteamId} instance.
-	 *
-	 * @return	new {@link SteamId} instance w/ the same field values
-	 */
-	public SteamId copy() {
-		return new SteamId(
-				this.xuid,
-				this.universe,
-				this.instance,
-				this.account,
-				this.staticKeyCache,
-				this.id64Cache,
-				this.id2Cache,
-				this.id3Cache,
-				this.inviteCodeCache,
-				this.csgoCodeCache,
-				this.id64UrlCache,
-				this.id3UrlCache,
-				this.userUrlCache,
-				this.inviteUrlCache,
-				this.chinaUrlCache
-		);
-	}
-
-	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -2100,13 +1923,13 @@ public final class SteamId implements Serializable, Cloneable {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Object clone() {
+	public SteamId clone() {
 		try {
-			return super.clone();
+			return (SteamId) super.clone();
 		} catch (CloneNotSupportedException ignored) {
 		}
 
-		return this.copy();
+		return new SteamId(this);
 	}
 
 	/**
@@ -3296,33 +3119,17 @@ public final class SteamId implements Serializable, Cloneable {
 		 *
 		 * <p>Defines a copy constructor.
 		 *
-		 * @param xuid			integer value of the unique account type-32 identifier
-		 * @param eUniverse		enum value of the account universe type
-		 * @param eInstance		enum value of the account instance type
-		 * @param eAccount		enum value of the account type
-		 * @param iUniverse		integer value of the account universe type
-		 * @param iInstance		integer value of the account instance type
-		 * @param iAccount		integer value of the account type
-		 * @param cAccount		character value of the account type
+		 * @param that	instance to copy filed values from
 		 */
-		private Builder(
-				Integer xuid,
-				ESteamUniverse eUniverse,
-				ESteamInstance eInstance,
-				ESteamAccount eAccount,
-				Integer iUniverse,
-				Integer iInstance,
-				Integer iAccount,
-				Character cAccount
-		) {
-			this.xuid = xuid;
-			this.eUniverse = eUniverse;
-			this.eInstance = eInstance;
-			this.eAccount = eAccount;
-			this.iUniverse = iUniverse;
-			this.iInstance = iInstance;
-			this.iAccount = iAccount;
-			this.cAccount = cAccount;
+		private Builder(Builder that) {
+			this.xuid = that.xuid;
+			this.eUniverse = that.eUniverse;
+			this.eInstance = that.eInstance;
+			this.eAccount = that.eAccount;
+			this.iUniverse = that.iUniverse;
+			this.iInstance = that.iInstance;
+			this.iAccount = that.iAccount;
+			this.cAccount = that.cAccount;
 		}
 
 		/**
@@ -3530,7 +3337,7 @@ public final class SteamId implements Serializable, Cloneable {
 				return this;
 			}
 
-			return this.copy().setXuid(xuid);
+			return this.clone().setXuid(xuid);
 		}
 
 		/**
@@ -3544,7 +3351,7 @@ public final class SteamId implements Serializable, Cloneable {
 				return this;
 			}
 
-			return this.copy().setUniverse(universe);
+			return this.clone().setUniverse(universe);
 		}
 
 		/**
@@ -3558,7 +3365,7 @@ public final class SteamId implements Serializable, Cloneable {
 				return this;
 			}
 
-			return this.copy().setUniverse(universe);
+			return this.clone().setUniverse(universe);
 		}
 
 		/**
@@ -3572,7 +3379,7 @@ public final class SteamId implements Serializable, Cloneable {
 				return this;
 			}
 
-			return this.copy().setInstance(instance);
+			return this.clone().setInstance(instance);
 		}
 
 		/**
@@ -3586,7 +3393,7 @@ public final class SteamId implements Serializable, Cloneable {
 				return this;
 			}
 
-			return this.copy().setInstance(instance);
+			return this.clone().setInstance(instance);
 		}
 
 		/**
@@ -3600,7 +3407,7 @@ public final class SteamId implements Serializable, Cloneable {
 				return this;
 			}
 
-			return this.copy().setAccount(account);
+			return this.clone().setAccount(account);
 		}
 
 		/**
@@ -3614,7 +3421,7 @@ public final class SteamId implements Serializable, Cloneable {
 				return this;
 			}
 
-			return this.copy().setAccount(account);
+			return this.clone().setAccount(account);
 		}
 
 		/**
@@ -3628,25 +3435,7 @@ public final class SteamId implements Serializable, Cloneable {
 				return this;
 			}
 
-			return this.copy().setAccount(account);
-		}
-
-		/**
-		 * Copy this {@link SteamId.Builder} instance.
-		 *
-		 * @return	new {@link SteamId.Builder} instance w/ the same filed values
-		 */
-		public Builder copy() {
-			return new Builder(
-					this.xuid,
-					this.eUniverse,
-					this.eInstance,
-					this.eAccount,
-					this.iUniverse,
-					this.iInstance,
-					this.iAccount,
-					this.cAccount
-			);
+			return this.clone().setAccount(account);
 		}
 
 		/**
@@ -3711,13 +3500,13 @@ public final class SteamId implements Serializable, Cloneable {
 		 * {@inheritDoc}
 		 */
 		@Override
-		public Object clone() {
+		public Builder clone() {
 			try {
-				return super.clone();
+				return (Builder) super.clone();
 			} catch (CloneNotSupportedException ignored) {
 			}
 
-			return this.copy();
+			return new Builder(this);
 		}
 	}
 }
