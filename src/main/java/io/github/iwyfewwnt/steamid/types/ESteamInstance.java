@@ -83,13 +83,6 @@ public enum ESteamInstance {
 	 */
 	MM_LOBBY(USteamInstance.MM_LOBBY);
 
-//	/**
-//	 * An account instance offset in the bit vector.
-//	 *
-//	 * <p>Wraps {@link USteamBit#ACCOUNT_INSTANCE_OFFSET}.
-//	 */
-//	public static final int OFFSET = USteamBit.ACCOUNT_INSTANCE_OFFSET;
-
 	/**
 	 * An array of {@link ESteamInstance} instances.
 	 */

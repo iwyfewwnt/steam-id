@@ -76,13 +76,6 @@ public enum ESteamUniverse {
 	 */
 	RC(USteamUniverse.RC);
 
-//	/**
-//	 * An account universe offset in the bit vector.
-//	 *
-//	 * <p>Wraps {@link USteamBit#ACCOUNT_UNIVERSE_OFFSET}.
-//	 */
-//	public static final int OFFSET = USteamBit.ACCOUNT_UNIVERSE_OFFSET;
-
 	/**
 	 * An array of {@link ESteamUniverse} instances.
 	 */
