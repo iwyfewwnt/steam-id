@@ -23,6 +23,7 @@ import io.github.iwyfewwnt.steamid.utils.*;
 import io.github.iwyfewwnt.uwutils.UwObject;
 import io.github.iwyfewwnt.uwutils.UwString;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Objects;
 import java.util.StringJoiner;
@@ -38,7 +39,7 @@ import java.util.regex.Matcher;
  * and parse to/from any Steam-like string.
  */
 @SuppressWarnings("unused")
-public final class SteamId {
+public final class SteamId implements Serializable, Cloneable {
 
 	/**
 	 * A base unique account type-32 identifier value.
@@ -1717,6 +1718,15 @@ public final class SteamId {
 	}
 
 	/**
+	 * Copy this {@link SteamId} instance.
+	 *
+	 * @return	new {@link SteamId} instance w/ the same field values
+	 */
+	public SteamId copy() {
+		return new SteamId(this.xuid, this.universe, this.instance, this.account);
+	}
+
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -1756,6 +1766,19 @@ public final class SteamId {
 				.add("instance=" + this.instance)
 				.add("account=" + this.account)
 				.toString();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Object clone() {
+		try {
+			return super.clone();
+		} catch (CloneNotSupportedException ignored) {
+		}
+
+		return this.copy();
 	}
 
 	/**
