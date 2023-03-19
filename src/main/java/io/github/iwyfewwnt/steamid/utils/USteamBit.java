@@ -22,8 +22,6 @@ package io.github.iwyfewwnt.steamid.utils;
  * <p>{@code USteamBit} is the utility class
  * for all offsets and masks of the Steam ID
  * bit vector.
- *
- * @see <a href="https://vk.cc/ch6gId">bits by u004 on GitHub</a>
  */
 public final class USteamBit {
 
