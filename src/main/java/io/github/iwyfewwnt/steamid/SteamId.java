@@ -1690,6 +1690,16 @@ public final class SteamId implements Serializable, Cloneable {
 	}
 
 	/**
+	 * Create a new {@link SteamId} instance w/ different {@link #universe} value.
+	 *
+	 * @param universe	new integer value of the account universe type
+	 * @return			new {@link SteamId} instance or this if universes are equal
+	 */
+	public SteamId withUniverse(Integer universe) {
+		return this.withUniverse(ESteamUniverse.fromIdOrNull(universe));
+	}
+
+	/**
 	 * Create a new {@link SteamId} instance w/ different {@link #instance} value.
 	 *
 	 * @param instance	new enum value of the account instance type
@@ -1704,6 +1714,16 @@ public final class SteamId implements Serializable, Cloneable {
 	}
 
 	/**
+	 * Create a new {@link SteamId} instance w/ different {@link #instance} value.
+	 *
+	 * @param instance	new integer value of the account instance type
+	 * @return			new {@link SteamId} instance or this if instances are equal
+	 */
+	public SteamId withInstance(Integer instance) {
+		return this.withInstance(ESteamInstance.fromIdOrNull(instance));
+	}
+
+	/**
 	 * Create a new {@link SteamId} instance w/ different {@link #account} value.
 	 *
 	 * @param account	new enum value of the account type
@@ -1715,6 +1735,26 @@ public final class SteamId implements Serializable, Cloneable {
 		}
 
 		return new SteamId(this.xuid, this.universe, this.instance, account);
+	}
+
+	/**
+	 * Create a new {@link SteamId} instance w/ different {@link #account} value.
+	 *
+	 * @param account	new integer value of the account type
+	 * @return			new {@link SteamId} instance or this if account types are equal
+	 */
+	public SteamId withAccount(Integer account) {
+		return this.withAccount(ESteamAccount.fromIdOrNull(account));
+	}
+
+	/**
+	 * Create a new {@link SteamId} instance w/ different {@link #account} value.
+	 *
+	 * @param account	new character value of the account type
+	 * @return			new {@link SteamId} instance or this if account types are equal
+	 */
+	public SteamId withAccount(Character account) {
+		return this.withAccount(ESteamAccount.fromCharOrNull(account));
 	}
 
 	/**
