@@ -3138,21 +3138,13 @@ public final class SteamId implements Serializable, Cloneable {
 		 * @return	new {@link SteamId} instance.
 		 */
 		public SteamId build() {
-			if (this.iUniverse != null) {
-				this.eUniverse = ESteamUniverse.fromIdOrNull(this.iUniverse);
-			}
+			ESteamUniverse universe = ESteamUniverse.fromIdOrElse(this.iUniverse, this.eUniverse);
+			ESteamInstance instance = ESteamInstance.fromIdOrElse(this.iInstance, this.eInstance);
 
-			if (this.iInstance != null) {
-				this.eInstance = ESteamInstance.fromIdOrNull(this.iInstance);
-			}
+			ESteamAccount account = ESteamAccount.fromIdOrElse(this.iAccount, this.eAccount);
+			account = ESteamAccount.fromCharOrElse(this.cAccount, account);
 
-			if (this.iAccount != null) {
-				this.eAccount = ESteamAccount.fromIdOrNull(this.iAccount);
-			} else if (this.cAccount != null) {
-				this.eAccount = ESteamAccount.fromCharOrNull(this.cAccount);
-			}
-
-			return new SteamId(this.xuid, this.eUniverse, this.eInstance, this.eAccount);
+			return new SteamId(this.xuid, universe, instance, account);
 		}
 
 		/**
