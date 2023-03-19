@@ -833,8 +833,7 @@ public final class SteamId implements Serializable, Cloneable {
 			return false;
 		}
 
-		//noinspection ConstantConditions
-		if (this.xuid < BASE_XUID && this.xuid > MAX_XUID) {
+		if (this.xuid < BASE_XUID/* && this.xuid > MAX_XUID*/) {
 			return false;
 		}
 
