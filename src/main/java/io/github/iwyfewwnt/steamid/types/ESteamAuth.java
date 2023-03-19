@@ -22,7 +22,9 @@ import io.github.iwyfewwnt.uwutils.UwEnum;
 import io.github.iwyfewwnt.uwutils.UwMap;
 import io.github.iwyfewwnt.uwutils.UwObject;
 
+import java.io.Serializable;
 import java.util.Map;
+import java.util.StringJoiner;
 import java.util.function.Supplier;
 
 /**
@@ -31,7 +33,7 @@ import java.util.function.Supplier;
  * <p>Wraps {@link USteamAuth}.
  */
 @SuppressWarnings("unused")
-public enum ESteamAuth {
+public enum ESteamAuth implements Serializable {
 
 	/**
 	 * An authentication type enum - No.
@@ -46,6 +48,11 @@ public enum ESteamAuth {
 	 * <p>Wraps {@link USteamAuth#YES}.
 	 */
 	YES(USteamAuth.YES);
+
+	/**
+	 * A simple name of this class.
+	 */
+	private static final String SIMPLE_NAME = ESteamAuth.class.getSimpleName();
 
 	/**
 	 * An array of {@link ESteamAuth} instances.
@@ -80,6 +87,16 @@ public enum ESteamAuth {
 	 */
 	public int getId() {
 		return this.id;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		return new StringJoiner(", ", SIMPLE_NAME + "[", "]")
+				.add("id=" + this.id)
+				.toString();
 	}
 
 	/**

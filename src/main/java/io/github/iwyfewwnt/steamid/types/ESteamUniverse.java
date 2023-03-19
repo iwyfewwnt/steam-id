@@ -22,7 +22,9 @@ import io.github.iwyfewwnt.uwutils.UwEnum;
 import io.github.iwyfewwnt.uwutils.UwMap;
 import io.github.iwyfewwnt.uwutils.UwObject;
 
+import java.io.Serializable;
 import java.util.Map;
+import java.util.StringJoiner;
 import java.util.function.Supplier;
 
 /**
@@ -31,7 +33,7 @@ import java.util.function.Supplier;
  * <p>Wraps {@link USteamUniverse}.
  */
 @SuppressWarnings("unused")
-public enum ESteamUniverse {
+public enum ESteamUniverse implements Serializable {
 
 	/**
 	 * An account universe type enum - Invalid.
@@ -76,6 +78,11 @@ public enum ESteamUniverse {
 	RC(USteamUniverse.RC);
 
 	/**
+	 * A simple name of this class.
+	 */
+	private static final String SIMPLE_NAME = ESteamUniverse.class.getSimpleName();
+
+	/**
 	 * An array of {@link ESteamUniverse} instances.
 	 */
 	private static final ESteamUniverse[] VALUES = UwEnum.values(ESteamUniverse.class);
@@ -108,6 +115,16 @@ public enum ESteamUniverse {
 	 */
 	public int getId() {
 		return this.id;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		return new StringJoiner(", ", SIMPLE_NAME + "[", "]")
+				.add("id=" + this.id)
+				.toString();
 	}
 
 	/**

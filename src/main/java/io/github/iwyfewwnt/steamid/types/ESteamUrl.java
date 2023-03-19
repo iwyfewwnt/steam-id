@@ -19,7 +19,9 @@ package io.github.iwyfewwnt.steamid.types;
 import io.github.iwyfewwnt.steamid.utils.USteamUrl;
 import io.github.iwyfewwnt.uwutils.*;
 
+import java.io.Serializable;
 import java.util.Map;
+import java.util.StringJoiner;
 import java.util.function.Supplier;
 
 /**
@@ -28,7 +30,7 @@ import java.util.function.Supplier;
  * <p>Wraps {@link USteamUrl}.
  */
 @SuppressWarnings("unused")
-public enum ESteamUrl {
+public enum ESteamUrl implements Serializable {
 
 	/**
 	 * A Steam vanity /id/ URL enum.
@@ -66,6 +68,11 @@ public enum ESteamUrl {
 	CHINA(USteamUrl.CHINA);
 
 	/**
+	 * A simple name of this class.
+	 */
+	private static final String SIMPLE_NAME = ESteamUrl.class.getSimpleName();
+
+	/**
 	 * An array of {@link ESteamUrl} instances.
 	 */
 	private static final ESteamUrl[] VALUES = UwEnum.values(ESteamUrl.class);
@@ -98,6 +105,16 @@ public enum ESteamUrl {
 	 */
 	public String getUrl() {
 		return this.url;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		return new StringJoiner(", ", SIMPLE_NAME + "[", "]")
+				.add("url='" + this.url + "'")
+				.toString();
 	}
 
 	/**

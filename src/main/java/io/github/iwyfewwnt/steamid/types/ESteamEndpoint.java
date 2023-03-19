@@ -19,7 +19,9 @@ package io.github.iwyfewwnt.steamid.types;
 import io.github.iwyfewwnt.steamid.utils.USteamEndpoint;
 import io.github.iwyfewwnt.uwutils.*;
 
+import java.io.Serializable;
 import java.util.Map;
+import java.util.StringJoiner;
 import java.util.function.Supplier;
 
 /**
@@ -28,7 +30,7 @@ import java.util.function.Supplier;
  * <p>Wraps {@link USteamEndpoint}.
  */
 @SuppressWarnings("unused")
-public enum ESteamEndpoint {
+public enum ESteamEndpoint implements Serializable {
 
 	/**
 	 * An /id/ endpoint enum.
@@ -57,6 +59,11 @@ public enum ESteamEndpoint {
 	 * <p>Wraps {@link USteamEndpoint#P}.
 	 */
 	P(USteamEndpoint.P);
+
+	/**
+	 * A simple name of this class.
+	 */
+	private static final String SIMPLE_NAME = ESteamEndpoint.class.getSimpleName();
 
 	/**
 	 * An array of {@link ESteamEndpoint} instances.
@@ -91,6 +98,16 @@ public enum ESteamEndpoint {
 	 */
 	public String getEndpoint() {
 		return this.endpoint;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		return new StringJoiner(", ", SIMPLE_NAME + "[", "]")
+				.add("endpoint='" + this.endpoint + "'")
+				.toString();
 	}
 
 	/**

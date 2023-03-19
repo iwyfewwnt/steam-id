@@ -19,7 +19,9 @@ package io.github.iwyfewwnt.steamid.types;
 import io.github.iwyfewwnt.steamid.utils.USteamVanity;
 import io.github.iwyfewwnt.uwutils.*;
 
+import java.io.Serializable;
 import java.util.Map;
+import java.util.StringJoiner;
 import java.util.function.Supplier;
 
 /**
@@ -28,7 +30,7 @@ import java.util.function.Supplier;
  * <p>Wraps {@link USteamVanity}.
  */
 @SuppressWarnings("unused")
-public enum ESteamVanity {
+public enum ESteamVanity implements Serializable {
 
 	/**
 	 * A vanity URL type enum - Individual.
@@ -50,6 +52,11 @@ public enum ESteamVanity {
 	 * <p>Wraps {@link USteamVanity#GAME_GROUP}.
 	 */
 	GAME_GROUP(USteamVanity.GAME_GROUP);
+
+	/**
+	 * A simple name of this class.
+	 */
+	private static final String SIMPLE_NAME = ESteamVanity.class.getSimpleName();
 
 	/**
 	 * An array of {@link ESteamVanity} instances.
@@ -84,6 +91,16 @@ public enum ESteamVanity {
 	 */
 	public int getId() {
 		return this.id;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		return new StringJoiner(", ", SIMPLE_NAME + "[", "]")
+				.add("id=" + this.id)
+				.toString();
 	}
 
 	/**

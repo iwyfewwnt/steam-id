@@ -19,7 +19,9 @@ package io.github.iwyfewwnt.steamid.types;
 import io.github.iwyfewwnt.steamid.utils.USteamDomain;
 import io.github.iwyfewwnt.uwutils.*;
 
+import java.io.Serializable;
 import java.util.Map;
+import java.util.StringJoiner;
 import java.util.function.Supplier;
 
 /**
@@ -28,7 +30,7 @@ import java.util.function.Supplier;
  * <p>Wraps {@link USteamDomain}.
  */
 @SuppressWarnings("unused")
-public enum ESteamDomain {
+public enum ESteamDomain implements Serializable {
 
 	/**
 	 * A worldwide Steam community domain enum.
@@ -50,6 +52,11 @@ public enum ESteamDomain {
 	 * <p>Wraps {@link USteamDomain#CHINA}.
 	 */
 	CHINA(USteamDomain.CHINA);
+
+	/**
+	 * A simple name of this class.
+	 */
+	private static final String SIMPLE_NAME = ESteamDomain.class.getSimpleName();
 
 	/**
 	 * An array of {@link ESteamDomain} instances.
@@ -84,6 +91,16 @@ public enum ESteamDomain {
 	 */
 	public String getDomain() {
 		return this.domain;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		return new StringJoiner(", ", SIMPLE_NAME + "[", "]")
+				.add("domain='" + this.domain + "'")
+				.toString();
 	}
 
 	/**

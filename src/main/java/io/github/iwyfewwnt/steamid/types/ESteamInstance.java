@@ -19,7 +19,9 @@ package io.github.iwyfewwnt.steamid.types;
 import io.github.iwyfewwnt.steamid.utils.USteamInstance;
 import io.github.iwyfewwnt.uwutils.*;
 
+import java.io.Serializable;
 import java.util.Map;
+import java.util.StringJoiner;
 import java.util.function.Supplier;
 
 /**
@@ -28,7 +30,7 @@ import java.util.function.Supplier;
  * <p>Wraps {@link USteamInstance}.
  */
 @SuppressWarnings("unused")
-public enum ESteamInstance {
+public enum ESteamInstance implements Serializable {
 
 	/**
 	 * An account instance type enum - All.
@@ -80,6 +82,11 @@ public enum ESteamInstance {
 	MM_LOBBY(USteamInstance.MM_LOBBY);
 
 	/**
+	 * A simple name of this class.
+	 */
+	private static final String SIMPLE_NAME = ESteamInstance.class.getSimpleName();
+
+	/**
 	 * An array of {@link ESteamInstance} instances.
 	 */
 	private static final ESteamInstance[] VALUES = UwEnum.values(ESteamInstance.class);
@@ -112,6 +119,16 @@ public enum ESteamInstance {
 	 */
 	public int getId() {
 		return this.id;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		return new StringJoiner(", ", SIMPLE_NAME + "[", "]")
+				.add("id=" + this.id)
+				.toString();
 	}
 
 	/**
