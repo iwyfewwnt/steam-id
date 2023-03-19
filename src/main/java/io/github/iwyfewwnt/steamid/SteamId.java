@@ -1847,6 +1847,18 @@ public final class SteamId implements Serializable, Cloneable {
 	/**
 	 * Check if the provided account type-32 identifier is valid.
 	 *
+	 * @param xuid	long value of the account type-32 identifier
+	 * @return		boolean value that describes validity of the identifier
+	 */
+	public static boolean isSteamXuidValid(Long xuid) {
+		return xuid != null
+				&& xuid >= MIN_XUID
+				&& xuid <= MAX_XUID;
+	}
+
+	/**
+	 * Check if the provided account type-32 identifier is valid.
+	 *
 	 * @param xuid	string value of the account type-32 identifier
 	 * @return		boolean value that describes validity of the identifier
 	 */
@@ -1871,6 +1883,16 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return		boolean value that descibes invalidity of the identifier
 	 */
 	public static boolean isSteamXuidInvalid(Integer xuid) {
+		return !isSteamXuidValid(xuid);
+	}
+
+	/**
+	 * Check if the provided account type-32 identifier is invalid.
+	 *
+	 * @param xuid	long value of the account type-32 identifier
+	 * @return		boolean value that descibes invalidity of the identifier
+	 */
+	public static boolean isSteamXuidInvalid(Long xuid) {
 		return !isSteamXuidValid(xuid);
 	}
 
@@ -1951,6 +1973,18 @@ public final class SteamId implements Serializable, Cloneable {
 	/**
 	 * Check if the provided account type-2 identifier is valid.
 	 *
+	 * @param id2	long value of the type-2 identifier
+	 * @return		boolean value that describes validity of the identifier
+	 */
+	public static boolean isSteamId2Valid(Long id2) {
+		return id2 != null
+				&& id2 >= MIN_ID2
+				&& id2 <= MAX_ID2;
+	}
+
+	/**
+	 * Check if the provided account type-2 identifier is valid.
+	 *
 	 * @param id2	string value of the type-2 identifier
 	 * @return		boolean value that describes validity of the identifier
 	 */
@@ -1982,6 +2016,16 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return		boolean value that describes invalidity of the identifier
 	 */
 	public static boolean isSteamId2Invalid(Integer id2) {
+		return !isSteamId2Valid(id2);
+	}
+
+	/**
+	 * Check if the provided account type-2 identifier is invalid.
+	 *
+	 * @param id2	long value of the type-2 identifier
+	 * @return		boolean value that describes invalidity of the identifier
+	 */
+	public static boolean isSteamId2Invalid(Long id2) {
 		return !isSteamId2Valid(id2);
 	}
 
