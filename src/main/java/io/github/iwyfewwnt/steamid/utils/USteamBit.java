@@ -16,8 +16,6 @@
 
 package io.github.iwyfewwnt.steamid.utils;
 
-import io.github.u004.bits.BitVar;
-
 /**
  * A Steam ID bits utility.
  *
@@ -77,7 +75,7 @@ public final class USteamBit {
 	 * @return		Steam type-32 account identifier
 	 */
 	public static int getAccountXuid(long id64) {
-		return (int) BitVar.get(id64, ACCOUNT_ID_OFFSET, ACCOUNT_ID_MASK);
+		return get(id64, ACCOUNT_ID_OFFSET, ACCOUNT_ID_MASK);
 	}
 
 	/**
@@ -88,7 +86,7 @@ public final class USteamBit {
 	 * @return		Steam account instance type identifier
 	 */
 	public static int getAccountInstance(long id64) {
-		return (int) BitVar.get(id64, ACCOUNT_INSTANCE_OFFSET, ACCOUNT_INSTANCE_MASK);
+		return get(id64, ACCOUNT_INSTANCE_OFFSET, ACCOUNT_INSTANCE_MASK);
 	}
 
 	/**
@@ -99,7 +97,7 @@ public final class USteamBit {
 	 * @return		Steam account type identifier
 	 */
 	public static int getAccountType(long id64) {
-		return (int) BitVar.get(id64, ACCOUNT_TYPE_OFFSET, ACCOUNT_TYPE_MASK);
+		return get(id64, ACCOUNT_TYPE_OFFSET, ACCOUNT_TYPE_MASK);
 	}
 
 	/**
@@ -110,7 +108,19 @@ public final class USteamBit {
 	 * @return		Steam account universe type identifier
 	 */
 	public static int getAccountUniverse(long id64) {
-		return (int) BitVar.get(id64, ACCOUNT_UNIVERSE_OFFSET, ACCOUNT_UNIVERSE_MASK);
+		return get(id64, ACCOUNT_UNIVERSE_OFFSET, ACCOUNT_UNIVERSE_MASK);
+	}
+
+	/**
+	 * Get a value of the bit variable from the bit vector.
+	 *
+	 * @param vec		long value of the bit vector
+	 * @param offset	offset of the bit variable
+	 * @param mask		mask of the bit variable
+	 * @return			value of the bit variable
+	 */
+	private static int get(long vec, int offset, long mask) {
+		return (int) ((vec >> offset) & mask);
 	}
 
 	private USteamBit() {

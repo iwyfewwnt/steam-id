@@ -19,7 +19,6 @@ package io.github.iwyfewwnt.steamid.utils;
 import io.github.iwyfewwnt.steamid.SteamId;
 import io.github.iwyfewwnt.uwutils.UwObject;
 import io.github.iwyfewwnt.uwutils.UwString;
-import io.github.u004.bits.utils.UBitMask;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -129,9 +128,9 @@ public final class USteamCsgo {
 		long res = 0;
 
 		for (int i = 0; i < 8; i++) {
-			long a = ((res << 4) & UBitMask.UINT32) | (xuid & UBitMask.UINT4);
+			long a = ((res << 4) & 0xFFFFFFFFL) | (xuid & 0xF);
 
-			res = res >> 28 << 32 | a & UBitMask.UINT16;
+			res = res >> 28 << 32 | a & 0xFFFF;
 			res = res >> 31 << 32 | a << 1 | hash >> i & 1;
 
 			xuid >>= 4;
@@ -298,7 +297,7 @@ public final class USteamCsgo {
 		long xuid = 0;
 
 		for (int i = 0; i < 8; i++, val >>= 4) {
-			xuid = xuid << 4 | (val >>= 1) & UBitMask.UINT4;
+			xuid = xuid << 4 | (val >>= 1) & 0xF;
 		}
 
 		return (int) xuid;
