@@ -82,6 +82,11 @@ public final class SteamId implements Serializable, Cloneable {
 	public static final int MAX_ID2 = 0x3FFFFFFF;
 
 	/**
+	 * A simple name of this class.
+	 */
+	private static final String SIMPLE_NAME = SteamId.class.getSimpleName();
+
+	/**
 	 * A Steam ID2 format string.
 	 *
 	 * <p>Arguments in order:
@@ -1806,7 +1811,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 */
 	@Override
 	public String toString() {
-		return new StringJoiner(", ", this.getClass().getSimpleName() + "[", "]")
+		return new StringJoiner(", ", SIMPLE_NAME + "[", "]")
 				.add("xuid=" + this.xuid)
 				.add("universe=" + this.universe)
 				.add("instance=" + this.instance)
@@ -2914,6 +2919,11 @@ public final class SteamId implements Serializable, Cloneable {
 	public static final class Builder implements Serializable, Cloneable {
 
 		/**
+		 * A simple name of this class.
+		 */
+		private static final String SIMPLE_NAME = Builder.class.getSimpleName();
+
+		/**
 		 * A unique account type-32 identifier.
 		 */
 		private Integer xuid;
@@ -3364,7 +3374,7 @@ public final class SteamId implements Serializable, Cloneable {
 		 */
 		@Override
 		public String toString() {
-			return new StringJoiner(", ", this.getClass().getSimpleName() + "[", "]")
+			return new StringJoiner(", ", SIMPLE_NAME + "[", "]")
 					.add("xuid=" + this.xuid)
 					.add("eUniverse=" + this.eUniverse)
 					.add("eInstance=" + this.eInstance)
