@@ -17,16 +17,13 @@
 package io.github.iwyfewwnt.steamid.types;
 
 import io.github.iwyfewwnt.steamid.utils.USteamUrl;
-import io.github.iwyfewwnt.uwutils.UwArray;
-import io.github.iwyfewwnt.uwutils.UwEnum;
-import io.github.iwyfewwnt.uwutils.UwMap;
-import io.github.iwyfewwnt.uwutils.UwObject;
+import io.github.iwyfewwnt.uwutils.*;
 
 import java.util.Map;
 import java.util.function.Supplier;
 
 /**
- * A Steam URL enums.
+ * A Steam URL type enums.
  *
  * <p>Wraps {@link USteamUrl}.
  */
@@ -101,6 +98,82 @@ public enum ESteamUrl {
 	 */
 	public String getUrl() {
 		return this.url;
+	}
+
+	/**
+	 * Get the URL string from the provided {@link ESteamUrl} instance
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamUrl} instance is {@code null}.
+	 * </ul>
+	 *
+	 * @param url			enum value of the URL type from which get the string
+	 * @param defaultValue	default value to return on failure
+	 * @return				URL string or the default value
+	 */
+	public static String getUrlOrElse(ESteamUrl url, String defaultValue) {
+		if (url == null) {
+			return defaultValue;
+		}
+
+		return url.getUrl();
+	}
+
+	/**
+	 * Get the URL string from the provided {@link ESteamUrl} instance
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamUrl} instance is {@code null}.
+	 * </ul>
+	 *
+	 * @param url					enum value of the URL type from which get the string
+	 * @param defaultValueSupplier	supplier from which get the default value
+	 * @return						URL string or the default value
+	 */
+	public static String getUrlOrElse(ESteamUrl url, Supplier<String> defaultValueSupplier) {
+		return UwObject.getIfNull(getUrlOrNull(url), defaultValueSupplier);
+	}
+
+	/**
+	 * Get the URL string from the provided {@link ESteamUrl} instance
+	 * or return an empty string if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamUrl} instance is {@code null}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link ESteamUrl#getUrlOrElse(ESteamUrl, String)}
+	 * w/ {@link UwString#EMPTY} as the default value.
+	 *
+	 * @param url	enum value of the URL type from which get the string
+	 * @return		URL string or the empty one
+	 */
+	public static String getUrlOrEmpty(ESteamUrl url) {
+		return getUrlOrElse(url, UwString.EMPTY);
+	}
+
+	/**
+	 * Get the URL string from the provided {@link ESteamUrl} instance
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamUrl} instance is {@code null}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link ESteamUrl#getUrlOrElse(ESteamUrl, String)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param url	enum value of the URL type from which get the string
+	 * @return		URL string or {@code null}
+	 */
+	public static String getUrlOrNull(ESteamUrl url) {
+		return getUrlOrElse(url, (String) null);
 	}
 
 	/**
