@@ -150,6 +150,25 @@ public enum ESteamUniverse {
 
 	/**
 	 * Get the account universe type identifier from the provided {@link ESteamUniverse} instance
+	 * or return the {@value USteamUniverse#INVALID} if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamUniverse} instance is {@code null}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link ESteamUniverse#getIdOrElse(ESteamUniverse, Integer)}
+	 * w/ {@link USteamUniverse#INVALID} as the default value.
+	 *
+	 * @param universe	enum value of the account universe type from which get the identifier
+	 * @return			account universe type identifier or the {@value USteamUniverse#INVALID} value
+	 */
+	public static Integer getIdOrInvalid(ESteamUniverse universe) {
+		return getIdOrElse(universe, USteamUniverse.INVALID);
+	}
+
+	/**
+	 * Get the account universe type identifier from the provided {@link ESteamUniverse} instance
 	 * or return {@code null} if failed.
 	 *
 	 * <p>Possible failure cases:

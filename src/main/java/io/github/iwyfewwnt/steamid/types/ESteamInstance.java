@@ -154,6 +154,25 @@ public enum ESteamInstance {
 
 	/**
 	 * Get the account instance type identifier from the provided {@link ESteamInstance} instance
+	 * or return the {@value USteamInstance#ALL} value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamInstance} instance is {@code null}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link ESteamInstance#getIdOrElse(ESteamInstance, Integer)}
+	 * w/ {@link USteamInstance#ALL} as the default value.
+	 *
+	 * @param instance	enum value of the account instance type from which get the identifier
+	 * @return			account instance type identifier or the {@value USteamInstance#ALL} value
+	 */
+	public static Integer getIdOrAll(ESteamInstance instance) {
+		return getIdOrElse(instance, USteamInstance.ALL);
+	}
+
+	/**
+	 * Get the account instance type identifier from the provided {@link ESteamInstance} instance
 	 * or return {@code null} if failed.
 	 *
 	 * <p>Possible failure cases:

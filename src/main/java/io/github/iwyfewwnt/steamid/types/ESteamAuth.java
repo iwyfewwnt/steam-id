@@ -122,6 +122,25 @@ public enum ESteamAuth {
 
 	/**
 	 * Get the account authentication type identifier from the provided {@link ESteamAuth} instance
+	 * or return the {@value USteamAuth#NO} value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamAuth} instance is {@code null}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link ESteamAuth#getIdOrElse(ESteamAuth, Integer)}
+	 * w/ {@link USteamAuth#NO} as the default value.
+	 *
+	 * @param auth	enum value of the account authentication type from which get the identifier
+	 * @return		account authentication type identifier or the {@value USteamAuth#NO} value
+	 */
+	public static Integer getIdOrNo(ESteamAuth auth) {
+		return getIdOrElse(auth, USteamAuth.NO);
+	}
+
+	/**
+	 * Get the account authentication type identifier from the provided {@link ESteamAuth} instance
 	 * or return {@code null} if failed.
 	 *
 	 * <p>Possible failure cases:

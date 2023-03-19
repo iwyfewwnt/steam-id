@@ -215,6 +215,25 @@ public enum ESteamAccount {
 
 	/**
 	 * Get the account type identifier from the provided {@link ESteamAccount} instance
+	 * or return the {@value USteamAccount#INVALID_ID} value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamAccount} instance is {@code null}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link ESteamAccount#getIdOrElse(ESteamAccount, Integer)}
+	 * w/ {@link USteamAccount#INVALID_ID} as the default value.
+	 *
+	 * @param account	enum value of the account type from which get the identifier
+	 * @return			account type identifier or the {@value USteamAccount#INVALID_ID} value
+	 */
+	public static Integer getIdOrInvalid(ESteamAccount account) {
+		return getIdOrElse(account, USteamAccount.INVALID_ID);
+	}
+
+	/**
+	 * Get the account type identifier from the provided {@link ESteamAccount} instance
 	 * or return {@code null} if failed.
 	 *
 	 * <p>Possible failure cases:
@@ -268,6 +287,25 @@ public enum ESteamAccount {
 	 */
 	public static Character getCharOrElse(ESteamAccount account, Supplier<Character> defaultValueSupplier) {
 		return UwObject.getIfNull(getCharOrNull(account), defaultValueSupplier);
+	}
+
+	/**
+	 * Get the account type character from the provided {@link ESteamAccount} instance
+	 * or return the {@value USteamAccount#INVALID_CHAR} value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamAccount} instance is {@code null}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link ESteamAccount#getIdOrElse(ESteamAccount, Integer)}
+	 * w/ {@link USteamAccount#INVALID_CHAR} as the default value.
+	 *
+	 * @param account	enum value of the account type from which get the character
+	 * @return			account type character or the {@value USteamAccount#INVALID_CHAR} value
+	 */
+	public static Character getCharOrInvalid(ESteamAccount account) {
+		return getCharOrElse(account, USteamAccount.INVALID_CHAR);
 	}
 
 	/**
