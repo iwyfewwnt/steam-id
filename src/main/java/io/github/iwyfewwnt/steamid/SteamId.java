@@ -69,7 +69,7 @@ public final class SteamId implements Serializable, Cloneable {
 	/**
 	 * A maximum unique account type-64 identifier value.
 	 */
-	public static final long MAX_ID64 = 0x01100001FFFFFFFFL;
+	public static final long MAX_ID64 = 0x011000017FFFFFFFL;
 
 	/**
 	 * A minimum unique account type-2 identifier value.
