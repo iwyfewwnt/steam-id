@@ -83,6 +83,63 @@ public enum ESteamAuth {
 	}
 
 	/**
+	 * Get the account authentication type identifier from the provided {@link ESteamAuth} instance
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamAuth} instance is {@code null}.
+	 * </ul>
+	 *
+	 * @param auth			enum value of the account authentication type from which get the identifier
+	 * @param defaultValue	default value to return on failure
+	 * @return				account authentication type identifier or the default value
+	 */
+	public static Integer getIdOrElse(ESteamAuth auth, Integer defaultValue) {
+		if (auth == null) {
+			return defaultValue;
+		}
+
+		return auth.getId();
+	}
+
+	/**
+	 * Get the account authentication type identifier from the provided {@link ESteamAuth} instance
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamAuth} instance is {@code null}.
+	 * </ul>
+	 *
+	 * @param auth					enum value of the account authentication type from which get the identifier
+	 * @param defaultValueSupplier	supplier from which get the default value
+	 * @return						account authentication type identifier or the default value
+	 */
+	public static Integer getIdOrElse(ESteamAuth auth, Supplier<Integer> defaultValueSupplier) {
+		return UwObject.getIfNull(getIdOrNull(auth), defaultValueSupplier);
+	}
+
+	/**
+	 * Get the account authentication type identifier from the provided {@link ESteamAuth} instance
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamAuth} instance is {@code null}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link ESteamAuth#getIdOrElse(ESteamAuth, Integer)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param auth	enum value of the account authentication type from which get the identifier
+	 * @return		account authentication type identifier or {@code null}
+	 */
+	public static Integer getIdOrNull(ESteamAuth auth) {
+		return getIdOrElse(auth, (Integer) null);
+	}
+
+	/**
 	 * Get an {@link ESteamAuth} instance by its account authentication type identifier
 	 * or return a default value if failed.
 	 *
