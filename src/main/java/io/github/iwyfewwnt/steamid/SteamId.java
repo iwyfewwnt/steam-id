@@ -855,9 +855,9 @@ public final class SteamId implements Serializable, Cloneable {
 	/**
 	 * Check if this instance is invalid.
 	 *
-	 * @return	boolean value that describes validity of this instance
+	 * @return	boolean value that describes invalidity of this instance
 	 */
-	public boolean isNotValid() {
+	public boolean isInvalid() {
 		return !this.isValid();
 	}
 
@@ -882,7 +882,7 @@ public final class SteamId implements Serializable, Cloneable {
 			return this.staticKeyCache;
 		}
 
-		if (this.isNotValid()) {
+		if (this.isInvalid()) {
 			return defaultValue;
 		}
 
@@ -984,7 +984,7 @@ public final class SteamId implements Serializable, Cloneable {
 			return this.id64Cache;
 		}
 
-		if (this.isNotValid()) {
+		if (this.isInvalid()) {
 			return defaultValue;
 		}
 
@@ -1074,7 +1074,7 @@ public final class SteamId implements Serializable, Cloneable {
 			return this.id2Cache;
 		}
 
-		if (this.isNotValid()) {
+		if (this.isInvalid()) {
 			return defaultValue;
 		}
 
@@ -1154,7 +1154,7 @@ public final class SteamId implements Serializable, Cloneable {
 			return this.id3Cache;
 		}
 
-		if (this.isNotValid()) {
+		if (this.isInvalid()) {
 			return defaultValue;
 		}
 
@@ -1256,7 +1256,7 @@ public final class SteamId implements Serializable, Cloneable {
 			return this.inviteCodeCache;
 		}
 
-		if (this.isNotValid()) {
+		if (this.isInvalid()) {
 			return defaultValue;
 		}
 
@@ -1332,7 +1332,7 @@ public final class SteamId implements Serializable, Cloneable {
 			return this.csgoCodeCache;
 		}
 
-		if (this.isNotValid()) {
+		if (this.isInvalid()) {
 			return defaultValue;
 		}
 
