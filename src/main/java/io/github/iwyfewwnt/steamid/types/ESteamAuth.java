@@ -184,6 +184,20 @@ public enum ESteamAuth {
 
 	/**
 	 * Get an {@link ESteamAuth} instance by its account authentication type identifier
+	 * or return the {@link ESteamAuth#NO} value if failed.
+	 *
+	 * <p>Wraps {@link ESteamAuth#fromIdOrElse(Integer, ESteamAuth)}
+	 * w/ {@link ESteamAuth#NO} as the default value.
+	 *
+	 * @param id	account authentication type identifier of the instance
+	 * @return		associated {@link ESteamAuth} instance or the {@link ESteamAuth#NO} value
+	 */
+	public static ESteamAuth fromIdOrNo(Integer id) {
+		return fromIdOrElse(id, NO);
+	}
+
+	/**
+	 * Get an {@link ESteamAuth} instance by its account authentication type identifier
 	 * or return {@code null} if failed.
 	 *
 	 * <p>Wraps {@link ESteamAuth#fromIdOrElse(Integer, ESteamAuth)}
@@ -218,6 +232,20 @@ public enum ESteamAuth {
 	 */
 	public static ESteamAuth fromIndexOrElse(Integer index, Supplier<ESteamAuth> defaultValueSupplier) {
 		return UwObject.getIfNull(fromIndexOrNull(index), defaultValueSupplier);
+	}
+
+	/**
+	 * Get an {@link ESteamAuth} instance by its index
+	 * or return the {@link ESteamAuth#NO} value if failed.
+	 *
+	 * <p>Wrapas {@link ESteamAuth#fromIndexOrElse(Integer, ESteamAuth)}
+	 * w/ {@link ESteamAuth#NO} as the default value.
+	 *
+	 * @param index		index of the instance
+	 * @return			associated {@link ESteamAuth} instance or the {@link ESteamAuth#NO} value
+	 */
+	public static ESteamAuth fromIndexOrNo(Integer index) {
+		return fromIndexOrElse(index, NO);
 	}
 
 	/**

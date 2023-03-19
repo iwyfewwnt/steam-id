@@ -212,13 +212,27 @@ public enum ESteamUniverse {
 
 	/**
 	 * Get an {@link ESteamUniverse} instance by its account universe type identifier
+	 * or return the invalid value if failed.
+	 *
+	 * <p>Wraps {@link ESteamUniverse#fromIdOrElse(Integer, ESteamUniverse)}
+	 * w/ {@link ESteamUniverse#INVALID} as the default value.
+	 *
+	 * @param id	account universe type identifier of the instance
+	 * @return		associated {@link ESteamUniverse} instance or the invalid value
+	 */
+	public static ESteamUniverse fromIdOrInvalid(Integer id) {
+		return fromIdOrElse(id, INVALID);
+	}
+
+	/**
+	 * Get an {@link ESteamUniverse} instance by its account universe type identifier
 	 * or return {@code null} if failed.
 	 *
 	 * <p>Wraps {@link ESteamUniverse#fromIdOrElse(Integer, ESteamUniverse)}
 	 * w/ {@code null} as the default value.
 	 *
-	 * @param id			account universe type identifier of the instance
-	 * @return				associated {@link ESteamUniverse} instance or {@code null}
+	 * @param id	account universe type identifier of the instance
+	 * @return		associated {@link ESteamUniverse} instance or {@code null}
 	 */
 	public static ESteamUniverse fromIdOrNull(Integer id) {
 		return fromIdOrElse(id, (ESteamUniverse) null);
@@ -246,6 +260,20 @@ public enum ESteamUniverse {
 	 */
 	public static ESteamUniverse fromIndexOrElse(Integer index, Supplier<ESteamUniverse> defaultValueSupplier) {
 		return UwObject.getIfNull(fromIndexOrNull(index), defaultValueSupplier);
+	}
+
+	/**
+	 * Get an {@link ESteamUniverse} instance by its index
+	 * or return the invalid value if failed.
+	 *
+	 * <p>Wraps {@link ESteamUniverse#fromIndexOrElse(Integer, ESteamUniverse)}
+	 * w/ {@link ESteamUniverse#INVALID} as the default value.
+	 *
+	 * @param index			index of the instance
+	 * @return				associated {@link ESteamUniverse} instance or the invalid value
+	 */
+	public static ESteamUniverse fromIndexOrInvalid(Integer index) {
+		return fromIndexOrElse(index, INVALID);
 	}
 
 	/**

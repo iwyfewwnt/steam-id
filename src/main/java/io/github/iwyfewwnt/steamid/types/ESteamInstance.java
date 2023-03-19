@@ -216,6 +216,20 @@ public enum ESteamInstance {
 
 	/**
 	 * Get an {@link ESteamInstance} instance by its account instance type identifier
+	 * or return the {@link ESteamInstance#ALL} value if failed.
+	 *
+	 * <p>Wraps {@link ESteamInstance#fromIdOrElse(Integer, ESteamInstance)}
+	 * w/ {@link ESteamInstance#ALL} as the default value.
+	 *
+	 * @param id			account instance type identifier of the instance
+	 * @return				associated {@link ESteamInstance} instance or the {@link ESteamInstance#ALL} value
+	 */
+	public static ESteamInstance fromIdOrAll(Integer id) {
+		return fromIdOrElse(id, ALL);
+	}
+
+	/**
+	 * Get an {@link ESteamInstance} instance by its account instance type identifier
 	 * or return {@code null} if failed.
 	 *
 	 * <p>Wraps {@link ESteamInstance#fromIdOrElse(Integer, ESteamInstance)}
@@ -250,6 +264,20 @@ public enum ESteamInstance {
 	 */
 	public static ESteamInstance fromIndexOrElse(Integer index, Supplier<ESteamInstance> defaultValueSupplier) {
 		return UwObject.getIfNull(fromIndexOrNull(index), defaultValueSupplier);
+	}
+
+	/**
+	 * Get an {@link ESteamInstance} instance by its index
+	 * or return the {@link ESteamInstance#ALL} value if failed.
+	 *
+	 * <p>Wraps {@link ESteamInstance#fromIndexOrElse(Integer, ESteamInstance)}
+	 * w/ {@link ESteamInstance#ALL} as the default value.
+	 *
+	 * @param index			index of the instance
+	 * @return				associated {@link ESteamInstance} instance or the {@link ESteamInstance#ALL} value
+	 */
+	public static ESteamInstance fromIndexOrAll(Integer index) {
+		return fromIndexOrElse(index, ALL);
 	}
 
 	/**

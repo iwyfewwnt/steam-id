@@ -353,6 +353,20 @@ public enum ESteamAccount {
 
 	/**
 	 * Get an {@link ESteamAccount} instance by its account type identifier
+	 * or return the invalid value if failed.
+	 *
+	 * <p>Wraps {@link ESteamAccount#fromIdOrElse(Integer, ESteamAccount)}
+	 * w/ {@link ESteamAccount#INVALID} as the default value.
+	 *
+	 * @param id	account type identifier of the instance
+	 * @return		associated {@link ESteamAccount} instance or the invalid value
+	 */
+	public static ESteamAccount fromIdOrInvalid(Integer id) {
+		return fromIdOrElse(id, INVALID);
+	}
+
+	/**
+	 * Get an {@link ESteamAccount} instance by its account type identifier
 	 * or return {@code null} if failed.
 	 *
 	 * <p>Wraps {@link ESteamAccount#fromIdOrElse(Integer, ESteamAccount)}
@@ -391,6 +405,20 @@ public enum ESteamAccount {
 
 	/**
 	 * Get an {@link ESteamAccount} instance by its account type character
+	 * or return the invalid value if failed.
+	 *
+	 * <p>Wraps {@link ESteamAccount#fromCharOrElse(Character, ESteamAccount)}
+	 * w/ {@link ESteamAccount#INVALID} as the default value.
+	 *
+	 * @param ch	account type character of the instance
+	 * @return		associated {@link ESteamAccount} instance or the invalid value
+	 */
+	public static ESteamAccount fromCharOrInvalid(Character ch) {
+		return fromCharOrElse(ch, INVALID);
+	}
+
+	/**
+	 * Get an {@link ESteamAccount} instance by its account type character
 	 * or return {@code null} if failed.
 	 *
 	 * <p>Wraps {@link ESteamAccount#fromCharOrElse(Character, ESteamAccount)}
@@ -425,6 +453,20 @@ public enum ESteamAccount {
 	 */
 	public static ESteamAccount fromIndexOrElse(Integer index, Supplier<ESteamAccount> defaultValueSupplier) {
 		return UwObject.getIfNull(fromIndexOrNull(index), defaultValueSupplier);
+	}
+
+	/**
+	 * Get an {@link ESteamAccount} instance by its index
+	 * or return the invalid value if failed.
+	 *
+	 * <p>Wraps {@link ESteamAccount#fromIndexOrElse(Integer, ESteamAccount)}
+	 * w/ {@link ESteamAccount#INVALID} as the default alue.
+	 *
+	 * @param index		index of the instance
+	 * @return			associated {@link ESteamAccount} instance or the invalid value
+	 */
+	public static ESteamAccount fromIndexOrInvalid(Integer index) {
+		return fromIndexOrElse(index, INVALID);
 	}
 
 	/**
