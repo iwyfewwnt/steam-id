@@ -16,12 +16,8 @@
 
 package io.github.iwyfewwnt.steamid.types;
 
-//import io.github.iwyfewwnt.steamid.utils.USteamBit;
 import io.github.iwyfewwnt.steamid.utils.USteamInstance;
-import io.github.iwyfewwnt.uwutils.UwArray;
-import io.github.iwyfewwnt.uwutils.UwEnum;
-import io.github.iwyfewwnt.uwutils.UwMap;
-import io.github.iwyfewwnt.uwutils.UwObject;
+import io.github.iwyfewwnt.uwutils.*;
 
 import java.util.Map;
 import java.util.function.Supplier;
@@ -116,6 +112,63 @@ public enum ESteamInstance {
 	 */
 	public int getId() {
 		return this.id;
+	}
+
+	/**
+	 * Get the account instance type identifier from the provided {@link ESteamInstance} instance
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamInstance} instance is {@code null}.
+	 * </ul>
+	 *
+	 * @param instance		enum value of the account instance type from which get the identifier
+	 * @param defaultValue	default value to return on failure
+	 * @return				account instance type identifier or the default value
+	 */
+	public static Integer getIdOrElse(ESteamInstance instance, Integer defaultValue) {
+		if (instance == null) {
+			return defaultValue;
+		}
+
+		return instance.getId();
+	}
+
+	/**
+	 * Get the account instance type identifier from the provided {@link ESteamInstance} instance
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamInstance} instance is {@code null}.
+	 * </ul>
+	 *
+	 * @param instance				enum value of the account instance type from which get the identifier
+	 * @param defaultValueSupplier 	supplier from which get the default value
+	 * @return						account instance type identifier or the default value
+	 */
+	public static Integer getIdOrElse(ESteamInstance instance, Supplier<Integer> defaultValueSupplier) {
+		return UwObject.getIfNull(getIdOrNull(instance), defaultValueSupplier);
+	}
+
+	/**
+	 * Get the account instance type identifier from the provided {@link ESteamInstance} instance
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamInstance} instance is {@code null}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link ESteamInstance#getIdOrElse(ESteamInstance, Integer)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param instance	enum value of the account instance type from which get the identifier
+	 * @return			account instance type identifier or {@code null}
+	 */
+	public static Integer getIdOrNull(ESteamInstance instance) {
+		return getIdOrElse(instance, (Integer) null);
 	}
 
 	/**
