@@ -17,10 +17,7 @@
 package io.github.iwyfewwnt.steamid.types;
 
 import io.github.iwyfewwnt.steamid.utils.USteamDomain;
-import io.github.iwyfewwnt.uwutils.UwArray;
-import io.github.iwyfewwnt.uwutils.UwEnum;
-import io.github.iwyfewwnt.uwutils.UwMap;
-import io.github.iwyfewwnt.uwutils.UwObject;
+import io.github.iwyfewwnt.uwutils.*;
 
 import java.util.Map;
 import java.util.function.Supplier;
@@ -87,6 +84,82 @@ public enum ESteamDomain {
 	 */
 	public String getDomain() {
 		return this.domain;
+	}
+
+	/**
+	 * Get the domain string from the provided {@link ESteamDomain} instance
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamDomain} instance is {@code null}.
+	 * </ul>
+	 *
+	 * @param domain		enum value of the domain type from which get the string
+	 * @param defaultValue	default value to return on failure
+	 * @return				domain string or the default value
+	 */
+	public static String getDomainOrElse(ESteamDomain domain, String defaultValue) {
+		if (domain == null) {
+			return defaultValue;
+		}
+
+		return domain.getDomain();
+	}
+
+	/**
+	 * Get the domain string from the provided {@link ESteamDomain} instance
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamDomain} instance is {@code null}.
+	 * </ul>
+	 *
+	 * @param domain				enum value of the domain type from which get the string
+	 * @param defaultValueSupplier	supplier from which get the default value
+	 * @return						domain string or the default value
+	 */
+	public static String getDomainOrElse(ESteamDomain domain, Supplier<String> defaultValueSupplier) {
+		return UwObject.getIfNull(getDomainOrNull(domain), defaultValueSupplier);
+	}
+
+	/**
+	 * Get the domain string from the provided {@link ESteamDomain} instance
+	 * or return an empty string if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamDomain} instance is {@code null}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link ESteamDomain#getDomainOrElse(ESteamDomain, String)}
+	 * w/ {@link UwString#EMPTY} as the default value.
+	 *
+	 * @param domain	enum value of the domain type from which get the string
+	 * @return			domain string or the empty one
+	 */
+	public static String getDomainOrEmpty(ESteamDomain domain) {
+		return getDomainOrElse(domain, UwString.EMPTY);
+	}
+
+	/**
+	 * Get the domain string from the provided {@link ESteamDomain} instance
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamDomain} instance is {@code null}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link ESteamDomain#getDomainOrElse(ESteamDomain, String)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param domain	enum value of the domain type from which get the string
+	 * @return			domain string or {@code null}
+	 */
+	public static String getDomainOrNull(ESteamDomain domain) {
+		return getDomainOrElse(domain, (String) null);
 	}
 
 	/**
