@@ -30,23 +30,22 @@ public final class USteamRegex {
 	 * A {@code USteamRegex}'s groups utility class.
 	 *
 	 * <p>{@code USteamRegex.Group} is the utility class
-	 * for all group names that were used in this project
-	 * for pattern matching.
+	 * for all group names that were used in regular expressions.
 	 */
 	public static final class Group {
 
 		/**
-		 * An authentication server group name.
+		 * A Steam authentication type group name.
 		 */
 		public static final String AUTH = "auth";
 
 		/**
-		 * A Steam account universe group name.
+		 * A Steam account universe type group name.
 		 */
 		public static final String UNIVERSE = "universe";
 
 		/**
-		 * A Steam ID group name.
+		 * A Steam account identifier group name.
 		 */
 		public static final String ID = "id";
 
