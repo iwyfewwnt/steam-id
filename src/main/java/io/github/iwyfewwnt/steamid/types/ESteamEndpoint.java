@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 /**
- * A Steam endpoint enums.
+ * A Steam endpoint type enums.
  *
  * <p>Wraps {@link USteamEndpoint}.
  */

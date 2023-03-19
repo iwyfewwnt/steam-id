@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 /**
- * A Steam domain enums.
+ * A Steam domain type enums.
  *
  * <p>Wraps {@link USteamDomain}.
  */
