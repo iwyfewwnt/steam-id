@@ -176,6 +176,120 @@ public enum ESteamAccount {
 	}
 
 	/**
+	 * Get the account type identifier from the provided {@link ESteamAccount} instance
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamAccount} instance is {@code null}.
+	 * </ul>
+	 *
+	 * @param account		enum value of the account type from which get the identifier
+	 * @param defualtValue	default value to return on failure
+	 * @return				account type identifier or the default value
+	 */
+	public static Integer getIdOrElse(ESteamAccount account, Integer defualtValue) {
+		if (account == null) {
+			return defualtValue;
+		}
+
+		return account.getId();
+	}
+
+	/**
+	 * Get the account type identifier from the provided {@link ESteamAccount} instance
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamAccount} instance is {@code null}.
+	 * </ul>
+	 *
+	 * @param account				enum value of the account type from which get the identifier
+	 * @param defaultValueSupplier	supplier from which get the default value
+	 * @return						account type identifier or the default value
+	 */
+	public static Integer getIdOrElse(ESteamAccount account, Supplier<Integer> defaultValueSupplier) {
+		return UwObject.getIfNull(getIdOrNull(account), defaultValueSupplier);
+	}
+
+	/**
+	 * Get the account type identifier from the provided {@link ESteamAccount} instance
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamAccount} instance is {@code null}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link ESteamAccount#getIdOrElse(ESteamAccount, Integer)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param account	enum value of the account type from which get the identifier
+	 * @return			account type identifier or {@code null}
+	 */
+	public static Integer getIdOrNull(ESteamAccount account) {
+		return getIdOrElse(account, (Integer) null);
+	}
+
+	/**
+	 * Get the account type character from the provided {@link ESteamAccount} instance
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamAccount} instance is {@code null}.
+	 * </ul>
+	 *
+	 * @param account		enum value of the account type from which get the character
+	 * @param defaultValue	default value to return on failure
+	 * @return				account type character or the default value
+	 */
+	public static Character getCharOrElse(ESteamAccount account, Character defaultValue) {
+		if (account == null) {
+			return defaultValue;
+		}
+
+		return account.getChar();
+	}
+
+	/**
+	 * Get the account type character from the provided {@link ESteamAccount} instance
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamAccount} instance is {@code null}.
+	 * </ul>
+	 *
+	 * @param account				enum value of the account type from which get the character
+	 * @param defaultValueSupplier	supplier from which get the default value
+	 * @return						account type character or the default value
+	 */
+	public static Character getCharOrElse(ESteamAccount account, Supplier<Character> defaultValueSupplier) {
+		return UwObject.getIfNull(getCharOrNull(account), defaultValueSupplier);
+	}
+
+	/**
+	 * Get the account type character from the provided {@link ESteamAccount} instance
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamAccount} instance is {@code null}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link ESteamAccount#getCharOrElse(ESteamAccount, Character)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param account	enum value of the account type from which get the character
+	 * @return			account type character or {@code null}
+	 */
+	public static Character getCharOrNull(ESteamAccount account) {
+		return getCharOrElse(account, (Character) null);
+	}
+
+	/**
 	 * Get an {@link ESteamAccount} instance by its account type identifier
 	 * or return a default value if failed.
 	 *
