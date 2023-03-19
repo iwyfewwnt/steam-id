@@ -131,6 +131,8 @@ public final class SteamId implements Serializable, Cloneable {
 	/**
 	 * Intialize a {@link SteamId} instance.
 	 *
+	 * <p>Defines a copy constructor.
+	 *
 	 * @param xuid		integer value of the account type-32 identifier
 	 * @param universe	enum value of the account universe type
 	 * @param instance	enum value of the account instance type
@@ -146,6 +148,8 @@ public final class SteamId implements Serializable, Cloneable {
 	/**
 	 * Intialize a {@link SteamId} instance.
 	 *
+	 * <p>Defines a copy constructor.
+	 *
 	 * @param xuid		integer value of the account type-32 identifier
 	 * @param universe	integer value of the account universe type
 	 * @param instance	integer value of the account instance type
@@ -157,6 +161,8 @@ public final class SteamId implements Serializable, Cloneable {
 
 	/**
 	 * Intialize a {@link SteamId} instance.
+	 *
+	 * <p>Defines a copy constructor.
 	 *
 	 * @param xuid		integer value of the account type-32 identifier
 	 * @param universe	integer value of the account universe type
@@ -2957,6 +2963,8 @@ public final class SteamId implements Serializable, Cloneable {
 		/**
 		 * Initialize a {@link SteamId.Builder} instance.
 		 *
+		 * <p>Defines a copy constructor.
+		 *
 		 * @param xuid			integer value of the unique account type-32 identifier
 		 * @param eUniverse		enum value of the account universe type
 		 * @param eInstance		enum value of the account instance type
@@ -3008,6 +3016,78 @@ public final class SteamId implements Serializable, Cloneable {
 			}
 
 			return new SteamId(this.xuid, this.eUniverse, this.eInstance, this.eAccount);
+		}
+
+		/**
+		 * Get this unique account type-32 identifier
+		 *
+		 * @return	unique account type-32 identifier
+		 */
+		public Integer getXuid() {
+			return this.xuid;
+		}
+
+		/**
+		 * Get this enum universe type
+		 *
+		 * @return	enum universe type
+		 */
+		public ESteamUniverse getUniverse() {
+			return this.eUniverse;
+		}
+
+		/**
+		 * Get this enum instance type
+		 *
+		 * @return	enum instance type
+		 */
+		public ESteamInstance getInstance() {
+			return this.eInstance;
+		}
+
+		/**
+		 * Get this enum account type
+		 *
+		 * @return	enum account type
+		 */
+		public ESteamAccount getAccount() {
+			return this.eAccount;
+		}
+
+		/**
+		 * Get this universe type identifier
+		 *
+		 * @return	universe type identifier
+		 */
+		public Integer getUniverseId() {
+			return this.iUniverse;
+		}
+
+		/**
+		 * Get this instance type identifier
+		 *
+		 * @return	instance type identifier
+		 */
+		public Integer getInstanceId() {
+			return this.iInstance;
+		}
+
+		/**
+		 * Get this account type identifier
+		 *
+		 * @return	account type identifier
+		 */
+		public Integer getAccountId() {
+			return this.iAccount;
+		}
+
+		/**
+		 * Get this account type character
+		 *
+		 * @return	account type character
+		 */
+		public Character getAccountChar() {
+			return this.cAccount;
 		}
 
 		/**
