@@ -26,7 +26,8 @@ import java.util.function.Supplier;
  * A Steam invite utility.
  *
  * <p>{@code USteamInvite} is the utility class to make
- * conversions between {@code SteamId}'s xuid and Steam invite code.
+ * conversions between the Steam account type-32 identifier
+ * and the Steam invite code.
  */
 @SuppressWarnings("unused")
 public final class USteamInvite {

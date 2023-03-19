@@ -20,10 +20,9 @@ package io.github.iwyfewwnt.steamid.utils;
  * A Steam account types utility.
  *
  * <p>{@code USteamAccount} is the utility class
- * for all types of Steam accounts that contain account
- * type IDs and chars associated with these IDs.
+ * for all Steam account type identifiers {@literal &} characters.
  *
- * @see <a href="https://vk.cc/ch6ljb">Steam Account Types</a>
+ * @see <a href="https://vk.cc/ch6ljb">Steam Account Types on Valve Developer Community</a>
  */
 @SuppressWarnings("unused")
 public final class USteamAccount {

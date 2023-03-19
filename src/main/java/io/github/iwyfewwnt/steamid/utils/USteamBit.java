@@ -20,8 +20,8 @@ package io.github.iwyfewwnt.steamid.utils;
  * A Steam ID bits utility.
  *
  * <p>{@code USteamBit} is the utility class
- * for all offsets and masks of the Steam ID
- * bit vector.
+ * for all Steam account type-64 identifier
+ * offsets and masks for its bit vector.
  */
 public final class USteamBit {
 

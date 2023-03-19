@@ -20,8 +20,7 @@ package io.github.iwyfewwnt.steamid.utils;
  * A Steam authentication types utility.
  *
  * <p>{@code USteamAuth} is the utility class
- * for all types of Steam authentication
- * that contain their IDs.
+ * for all Steam authentication type identifiers.
  */
 public final class USteamAuth {
 

@@ -20,7 +20,7 @@ package io.github.iwyfewwnt.steamid.utils;
  * A Steam domains utility.
  *
  * <p>{@code USteamDomain} is the utility class
- * for Steam's domains that were used in this project.
+ * for Steam related domain strings.
  */
 public final class USteamDomain {
 

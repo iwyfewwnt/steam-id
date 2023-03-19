@@ -20,10 +20,9 @@ package io.github.iwyfewwnt.steamid.utils;
  * A Steam universe types utility.
  *
  * <p>{@code USteamUniverse} is the utility class
- * for all types of Steam account universes
- * that contain their IDs.
+ * for all Steam account universe type identifiers.
  *
- * @see <a href="https://vk.cc/ch6lh5">Steam Account Universe Types</a>
+ * @see <a href="https://vk.cc/ch6lh5">Steam Account Universe Types on Valve Developer Community</a>
  */
 @SuppressWarnings("unused")
 public final class USteamUniverse {

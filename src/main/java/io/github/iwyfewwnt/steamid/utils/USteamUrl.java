@@ -20,7 +20,7 @@ package io.github.iwyfewwnt.steamid.utils;
  * A Steam URLs utility.
  *
  * <p>{@code USteamUrl} is the utility class
- * for Steam URLs that were used in this project.
+ * for Steam related URLs.
  */
 public final class USteamUrl {
 

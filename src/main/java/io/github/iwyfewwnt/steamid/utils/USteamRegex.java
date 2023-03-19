@@ -20,8 +20,7 @@ package io.github.iwyfewwnt.steamid.utils;
  * A Steam regular expressions utility.
  *
  * <p>{@code USteamRegex} is the utility class
- * for regular expressions that were used in
- * this project for pattern matching.
+ * for Steam related regular expressions.
  */
 @SuppressWarnings("unused")
 public final class USteamRegex {

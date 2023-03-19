@@ -20,8 +20,7 @@ package io.github.iwyfewwnt.steamid.utils;
  * A Steam instance types utility.
  *
  * <p>{@code USteamInstance} is the utility class
- * for all types of Steam account instances
- * that contain their IDs.
+ * for all Steam instance type identifiers.
  */
 @SuppressWarnings("unused")
 public final class USteamInstance {

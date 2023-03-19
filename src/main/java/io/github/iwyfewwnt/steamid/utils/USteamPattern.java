@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
  * A Steam patterns utility.
  *
  * <p>{@code USteamPattern} is the utility class
- * for compiled {@link USteamRegex}'s regular expressions.
+ * for compiled Steam related regular expressions.
  */
 public final class USteamPattern {
 

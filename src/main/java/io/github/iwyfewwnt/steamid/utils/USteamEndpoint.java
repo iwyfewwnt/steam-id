@@ -20,7 +20,7 @@ package io.github.iwyfewwnt.steamid.utils;
  * A Steam endpoints utility.
  *
  * <p>{@code USteamEndpoint} is the utility class
- * for Steam's endpoints that were used in this project.
+ * for Steam related endpoint strings.
  */
 public final class USteamEndpoint {
 

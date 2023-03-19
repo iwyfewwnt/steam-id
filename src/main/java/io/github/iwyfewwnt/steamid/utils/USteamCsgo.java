@@ -30,7 +30,7 @@ import java.util.function.Supplier;
  * A Steam CS:GO utility.
  *
  * <p>{@code USteamCsgo} is the utility class to make conversions
- * between the Steam unique account identifier and the CS:GO friend code.
+ * between the Steam account type-32 identifier and the CS:GO friend code.
  *
  * @see <a href="https://vk.cc/ch6eMh">De- and encoding CS:GO friend codes on UnKnoWnCheaTs</a>
  * @see <a href="https://vk.cc/ch6eOT">go-csgofriendcode by emily33901 on GitHub</a>

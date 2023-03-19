@@ -20,8 +20,7 @@ package io.github.iwyfewwnt.steamid.utils;
  * A Steam vanity URL types utility.
  *
  * <p>{@code USteamVanity} is the utility class
- * for all types of vanity URLs that contain
- * their IDs.
+ * for all Steam vanity URL type identifiers.
  */
 @SuppressWarnings("unused")
 public final class USteamVanity {
