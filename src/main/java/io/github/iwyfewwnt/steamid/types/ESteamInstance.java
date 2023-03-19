@@ -82,6 +82,20 @@ public enum ESteamInstance implements Serializable {
 	MM_LOBBY(USteamInstance.MM_LOBBY);
 
 	/**
+	 * A minimum account instance type according to its utility alternative.
+	 *
+	 * @see USteamInstance#MIN
+	 */
+	public static final ESteamInstance MIN = ALL;
+
+	/**
+	 * A maximum account instance type according to its utility alternative.
+	 *
+	 * @see USteamInstance#MAX
+	 */
+	public static final ESteamInstance MAX = WEB;
+
+	/**
 	 * A simple name of this class.
 	 */
 	private static final String SIMPLE_NAME = ESteamInstance.class.getSimpleName();

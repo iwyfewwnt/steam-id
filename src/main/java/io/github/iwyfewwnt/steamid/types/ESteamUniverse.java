@@ -78,6 +78,27 @@ public enum ESteamUniverse implements Serializable {
 	RC(USteamUniverse.RC);
 
 	/**
+	 * A base account universe type according to its utility alternative.
+	 *
+	 * @see USteamUniverse#BASE
+	 */
+	public static final ESteamUniverse BASE = INVALID;
+
+	/**
+	 * A minimum account universe type according to its utility alternative.
+	 *
+	 * @see USteamUniverse#MIN
+	 */
+	public static final ESteamUniverse MIN = PUBLIC;
+
+	/**
+	 * A maximum account universe type according ot its utility alternative.
+	 *
+	 * @see USteamUniverse#MAX
+	 */
+	public static final ESteamUniverse MAX = RC;
+
+	/**
 	 * A simple name of this class.
 	 */
 	private static final String SIMPLE_NAME = ESteamUniverse.class.getSimpleName();

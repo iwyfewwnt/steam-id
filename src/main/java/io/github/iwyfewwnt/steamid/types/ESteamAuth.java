@@ -50,6 +50,20 @@ public enum ESteamAuth implements Serializable {
 	YES(USteamAuth.YES);
 
 	/**
+	 * A minimum authentication type according to its utility alternative.
+	 *
+	 * @see USteamAuth#MIN
+	 */
+	public static final ESteamAuth MIN = NO;
+
+	/**
+	 * A maximum authentication type according to its utility alternative.
+	 *
+	 * @see USteamAuth#MAX
+	 */
+	public static final ESteamAuth MAX = YES;
+
+	/**
 	 * A simple name of this class.
 	 */
 	private static final String SIMPLE_NAME = ESteamAuth.class.getSimpleName();

@@ -120,6 +120,27 @@ public enum ESteamAccount implements Serializable {
 	UNKNOWN(USteamAccount.UNKNOWN_ID, USteamAccount.UNKNOWN_CHAR);
 
 	/**
+	 * A base account type accoring to its utility alternative.
+	 *
+	 * @see USteamAccount#BASE
+	 */
+	public static ESteamAccount BASE = INVALID;
+
+	/**
+	 * A minimum account type according to its utility alternative.
+	 *
+	 * @see USteamAccount#MIN
+	 */
+	public static ESteamAccount MIN = INDIVIDUAL;
+
+	/**
+	 * A maximum account type according to its utility alternative.
+	 *
+	 * @see USteamAccount#MAX
+	 */
+	public static ESteamAccount MAX = UNKNOWN;
+
+	/**
 	 * A simple name of this class.
 	 */
 	private static final String SIMPLE_NAME = ESteamAccount.class.getSimpleName();

@@ -54,6 +54,20 @@ public enum ESteamVanity implements Serializable {
 	GAME_GROUP(USteamVanity.GAME_GROUP);
 
 	/**
+	 * A minimum vanity URL type according to its utility alternative.
+	 *
+	 * @see USteamVanity#MIN
+	 */
+	public static final ESteamVanity MIN = INDIVIDUAL;
+
+	/**
+	 * A maximum vanity URL type according to its utility alternative.
+	 *
+	 * @see USteamVanity#MAX
+	 */
+	public static final ESteamVanity MAX = GAME_GROUP;
+
+	/**
 	 * A simple name of this class.
 	 */
 	private static final String SIMPLE_NAME = ESteamVanity.class.getSimpleName();
