@@ -17,10 +17,7 @@
 package io.github.iwyfewwnt.steamid.types;
 
 import io.github.iwyfewwnt.steamid.utils.USteamEndpoint;
-import io.github.iwyfewwnt.uwutils.UwArray;
-import io.github.iwyfewwnt.uwutils.UwEnum;
-import io.github.iwyfewwnt.uwutils.UwMap;
-import io.github.iwyfewwnt.uwutils.UwObject;
+import io.github.iwyfewwnt.uwutils.*;
 
 import java.util.Map;
 import java.util.function.Supplier;
@@ -94,6 +91,82 @@ public enum ESteamEndpoint {
 	 */
 	public String getEndpoint() {
 		return this.endpoint;
+	}
+
+	/**
+	 * Get the endpoint string from the provided {@link ESteamEndpoint} instance
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamEndpoint} instance is {@code null}.
+	 * </ul>
+	 *
+	 * @param endpoint		enum value of the endpoint type from which get the string
+	 * @param defaultValue  default value to return on failure
+	 * @return				endpoint string or the default value
+	 */
+	public static String getEndpointOrElse(ESteamEndpoint endpoint, String defaultValue) {
+		if (endpoint == null) {
+			return defaultValue;
+		}
+
+		return endpoint.getEndpoint();
+	}
+
+	/**
+	 * Get the endpoint string from the provided {@link ESteamEndpoint} instance
+	 * or return a default value if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamEndpoint} instance is {@code null}.
+	 * </ul>
+	 *
+	 * @param endpoint				enum value of the endpoint type from which get the string
+	 * @param defaultValueSupplier 	supplier from which get the default value
+	 * @return						endpoint string or the default value
+	 */
+	public static String getEndpointOrElse(ESteamEndpoint endpoint, Supplier<String> defaultValueSupplier) {
+		return UwObject.getIfNull(getEndpintOrNull(endpoint), defaultValueSupplier);
+	}
+
+	/**
+	 * Get the endpoint string from the provided {@link ESteamEndpoint} instance
+	 * or return an empty string if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamEndpoint} instance is {@code null}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link ESteamEndpoint#getEndpointOrElse(ESteamEndpoint, String)}
+	 * w/ {@link UwString#EMPTY} as the default value.
+	 *
+	 * @param endpoint	enum value of the endpoint type from which get the string
+	 * @return			endpoint string or the empty one
+	 */
+	public static String getEndpointOrEmpty(ESteamEndpoint endpoint) {
+		return getEndpointOrElse(endpoint, UwString.EMPTY);
+	}
+
+	/**
+	 * Get the endpoint string from the provided {@link ESteamEndpoint} instance
+	 * or return {@code null} if failed.
+	 *
+	 * <p>Possible failure cases:
+	 * <ul>
+	 *     <li>{@link ESteamEndpoint} instance is {@code null}.
+	 * </ul>
+	 *
+	 * <p>Wraps {@link ESteamEndpoint#getEndpointOrElse(ESteamEndpoint, String)}
+	 * w/ {@code null} as the default value.
+	 *
+	 * @param endpoint	enum value of the endpoint type from which get the string
+	 * @return			endpoint string or {@code null}
+	 */
+	public static String getEndpintOrNull(ESteamEndpoint endpoint) {
+		return getEndpointOrElse(endpoint, (String) null);
 	}
 
 	/**
