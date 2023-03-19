@@ -1664,7 +1664,7 @@ public final class SteamId implements Serializable, Cloneable {
 	/**
 	 * Create a new {@link SteamId} instance w/ different {@link #xuid} value.
 	 *
-	 * @param xuid	new value of the unique account type-32 identifier
+	 * @param xuid	new integer value of the unique account type-32 identifier
 	 * @return		new {@link SteamId} instance or this if xuids are equal
 	 */
 	public SteamId withXuid(Integer xuid) {
@@ -1678,8 +1678,8 @@ public final class SteamId implements Serializable, Cloneable {
 	/**
 	 * Create a new {@link SteamId} instance w/ different {@link #universe} value.
 	 *
-	 * @param universe	new value of the account universe enum type
-	 * @return			new {@link SteamId} instance or this if universes are equal
+	 * @param universe	new enum value of the account universe type
+	 * @return			new {@link SteamId} instance or this if enum universes are equal
 	 */
 	public SteamId withUniverse(ESteamUniverse universe) {
 		if (this.universe == universe) {
@@ -1692,8 +1692,8 @@ public final class SteamId implements Serializable, Cloneable {
 	/**
 	 * Create a new {@link SteamId} instance w/ different {@link #instance} value.
 	 *
-	 * @param instance	new value of the account instance enum type
-	 * @return			new {@link SteamId} instance or this if instances are equal
+	 * @param instance	new enum value of the account instance type
+	 * @return			new {@link SteamId} instance or this if enum instances are equal
 	 */
 	public SteamId withInstance(ESteamInstance instance) {
 		if (this.instance == instance) {
@@ -1706,8 +1706,8 @@ public final class SteamId implements Serializable, Cloneable {
 	/**
 	 * Create a new {@link SteamId} instance w/ different {@link #account} value.
 	 *
-	 * @param account	new value of the account type enum type
-	 * @return			new {@link SteamId} instance or this if account types are equal
+	 * @param account	new enum value of the account type
+	 * @return			new {@link SteamId} instance or this if enum account types are equal
 	 */
 	public SteamId withAccount(ESteamAccount account) {
 		if (this.account == account) {
@@ -2860,5 +2860,413 @@ public final class SteamId implements Serializable, Cloneable {
 	 */
 	public static SteamId fromSteamAnyOrNull(Object obj) {
 		return fromSteamAnyOrElse(obj, (SteamId) null);
+	}
+
+	/**
+	 * A builder class for the {@link SteamId} creation.
+	 */
+	public static final class Builder implements Serializable, Cloneable {
+
+		/**
+		 * A unique account type-32 identifier.
+		 */
+		private Integer xuid;
+
+		/**
+		 * An enum account universe type.
+		 */
+		private ESteamUniverse eUniverse;
+
+		/**
+		 * An enum account instance type.
+		 */
+		private ESteamInstance eInstance;
+
+		/**
+		 * An enum account type.
+		 */
+		private ESteamAccount eAccount;
+
+		/**
+		 * An account universe type identifier.
+		 */
+		private Integer iUniverse;
+
+		/**
+		 * An account instance type identifier.
+		 */
+		private Integer iInstance;
+
+		/**
+		 * An account type identifier.
+		 */
+		private Integer iAccount;
+
+		/**
+		 * An account type character.
+		 */
+		private Character cAccount;
+
+		/**
+		 * Initialize a {@link SteamId.Builder} instance
+		 * w/ all fields beaing assigned to {@code null}.
+		 */
+		public Builder() {
+		}
+
+		/**
+		 * Initialize a {@link SteamId.Builder} instance.
+		 *
+		 * @param xuid			integer value of the unique account type-32 identifier
+		 * @param eUniverse		enum value of the account universe type
+		 * @param eInstance		enum value of the account instance type
+		 * @param eAccount		enum value of the account type
+		 * @param iUniverse		integer value of the account universe type
+		 * @param iInstance		integer value of the account instance type
+		 * @param iAccount		integer value of the account type
+		 * @param cAccount		character value of the account type
+		 */
+		private Builder(
+				Integer xuid,
+				ESteamUniverse eUniverse,
+				ESteamInstance eInstance,
+				ESteamAccount eAccount,
+				Integer iUniverse,
+				Integer iInstance,
+				Integer iAccount,
+				Character cAccount
+		) {
+			this.xuid = xuid;
+			this.eUniverse = eUniverse;
+			this.eInstance = eInstance;
+			this.eAccount = eAccount;
+			this.iUniverse = iUniverse;
+			this.iInstance = iInstance;
+			this.iAccount = iAccount;
+			this.cAccount = cAccount;
+		}
+
+		/**
+		 * Create a new {@link SteamId} instance
+		 * w/ pre-setted field values.
+		 *
+		 * @return	new {@link SteamId} instance.
+		 */
+		public SteamId build() {
+			if (this.iUniverse != null) {
+				this.eUniverse = ESteamUniverse.fromIdOrNull(this.iUniverse);
+			}
+
+			if (this.iInstance != null) {
+				this.eInstance = ESteamInstance.fromIdOrNull(this.iInstance);
+			}
+
+			if (this.iAccount != null) {
+				this.eAccount = ESteamAccount.fromIdOrNull(this.iAccount);
+			} else if (this.cAccount != null) {
+				this.eAccount = ESteamAccount.fromCharOrNull(this.cAccount);
+			}
+
+			return new SteamId(this.xuid, this.eUniverse, this.eInstance, this.eAccount);
+		}
+
+		/**
+		 * Set this unique account type-32 identifier.
+		 *
+		 * @param xuid	integer value of the unique account type-32 identifier
+		 * @return		this {@link SteamId.Builder} instance
+		 */
+		public Builder setXuid(Integer xuid) {
+			this.xuid = xuid;
+			return this;
+		}
+
+		/**
+		 * Set this account universe type.
+		 *
+		 * @param universe	enum value of the account universe type
+		 * @return			this {@link SteamId.Builder} instance
+		 */
+		public Builder setUniverse(ESteamUniverse universe) {
+			this.eUniverse = universe;
+			this.iUniverse = null;
+			return this;
+		}
+
+		/**
+		 * Set this account universe type.
+		 *
+		 * @param universe	integer value of the account universe type
+		 * @return			this {@link SteamId.Builder} instance
+		 */
+		public Builder setUniverse(Integer universe) {
+			this.iUniverse = universe;
+			this.eUniverse = null;
+			return this;
+		}
+
+		/**
+		 * Set this account instance type.
+		 *
+		 * @param instance	enum value of the account instance type
+		 * @return			this {@link SteamId.Builder} instance
+		 */
+		public Builder setInstance(ESteamInstance instance) {
+			this.eInstance = instance;
+			this.iUniverse = null;
+			return this;
+		}
+
+		/**
+		 * Set this account instance type.
+		 *
+		 * @param instance	integer value of the account instance type
+		 * @return			this {@link SteamId.Builder} instance
+		 */
+		public Builder setInstance(Integer instance) {
+			this.iInstance = instance;
+			this.eInstance = null;
+			return this;
+		}
+
+		/**
+		 * Set this account type.
+		 *
+		 * @param account	enum value of the account type
+		 * @return			this {@link SteamId.Builder} instance
+		 */
+		public Builder setAccount(ESteamAccount account) {
+			this.eAccount = account;
+			this.iAccount = null;
+			this.cAccount = null;
+			return this;
+		}
+
+		/**
+		 * Set this account type.
+		 *
+		 * @param account	integer value of the account type
+		 * @return			this {@link SteamId.Builder} instance
+		 */
+		public Builder setAccount(Integer account) {
+			this.iAccount = account;
+			this.eAccount = null;
+			this.cAccount = null;
+			return this;
+		}
+
+		/**
+		 * Set this account type.
+		 *
+		 * @param account	character value of the account type
+		 * @return			this {@link SteamId.Builder} instance
+		 */
+		public Builder setAccount(Character account) {
+			this.cAccount = account;
+			this.eAccount = null;
+			this.iAccount = null;
+			return this;
+		}
+
+		/**
+		 * Create a new {@link SteamId.Builder} instance w/ different {@link #xuid} value.
+		 *
+		 * @param xuid	new integer value of the unique account type-32 identifier
+		 * @return		new {@link SteamId.Builder} instance or this if xuids are equal
+		 */
+		public Builder withXuid(Integer xuid) {
+			if (Objects.equals(this.xuid, xuid)) {
+				return this;
+			}
+
+			return this.copy().setXuid(xuid);
+		}
+
+		/**
+		 * Create a new {@link SteamId.Builder} instance w/ different {@link #eUniverse} value.
+		 *
+		 * @param universe	new enum value of the account universe type
+		 * @return			new {@link SteamId.Builder} instance or this if enum universes are equal
+		 */
+		public Builder withUniverse(ESteamUniverse universe) {
+			if (this.eUniverse == universe) {
+				return this;
+			}
+
+			return this.copy().setUniverse(universe);
+		}
+
+		/**
+		 * Create a new {@link SteamId.Builder} instance w/ different {@link #iUniverse} value.
+		 *
+		 * @param universe	new integer value of the account universe type
+		 * @return			new {@link SteamId.Builder} instance or this if integer universes are equal
+		 */
+		public Builder withUniverse(Integer universe) {
+			if (Objects.equals(this.iUniverse, universe)) {
+				return this;
+			}
+
+			return this.copy().setUniverse(universe);
+		}
+
+		/**
+		 * Create a new {@link SteamId.Builder} instance w/ different {@link #eInstance} value.
+		 *
+		 * @param instance	new enum value of the account instance type
+		 * @return			new {@link SteamId.Builder} instance or this if enum instances are equal
+		 */
+		public Builder withInstance(ESteamInstance instance) {
+			if (this.eInstance == instance) {
+				return this;
+			}
+
+			return this.copy().setInstance(instance);
+		}
+
+		/**
+		 * Create a new {@link SteamId.Builder} instance w/ different {@link #iInstance} value.
+		 *
+		 * @param instance	new integer value of the account instance type
+		 * @return			new {@link SteamId.Builder} instance or this if integer instances are equal
+		 */
+		public Builder withInstance(Integer instance) {
+			if (Objects.equals(this.iInstance, instance)) {
+				return this;
+			}
+
+			return this.copy().setInstance(instance);
+		}
+
+		/**
+		 * Create a new {@link SteamId.Builder} instance w/ different {@link #eAccount} value.
+		 *
+		 * @param account	new enum value of the account type
+		 * @return			new {@link SteamId.Builder} instance or this if enum account types are equal
+		 */
+		public Builder withAccount(ESteamAccount account) {
+			if (this.eAccount == account) {
+				return this;
+			}
+
+			return this.copy().setAccount(account);
+		}
+
+		/**
+		 * Create a new {@link SteamId.Builder} instance w/ different {@link #iAccount} value.
+		 *
+		 * @param account	new integer value of the account type
+		 * @return			new {@link SteamId.Builder} instance or this if integer account types are equal
+		 */
+		public Builder withAccount(Integer account) {
+			if (Objects.equals(this.iAccount, account)) {
+				return this;
+			}
+
+			return this.copy().setAccount(account);
+		}
+
+		/**
+		 * Create a new {@link SteamId.Builder} instance w/ different {@link #cAccount} value.
+		 *
+		 * @param account	new character value of the account type
+		 * @return			new {@link SteamId.Builder} instance or this if character account types are equal
+		 */
+		public Builder withAccount(Character account) {
+			if (Objects.equals(this.cAccount, account)) {
+				return this;
+			}
+
+			return this.copy().setAccount(account);
+		}
+
+		/**
+		 * Copy this {@link SteamId.Builder} instance.
+		 *
+		 * @return	new {@link SteamId.Builder} instance w/ the same filed values
+		 */
+		public Builder copy() {
+			return new Builder(
+					this.xuid,
+					this.eUniverse,
+					this.eInstance,
+					this.eAccount,
+					this.iUniverse,
+					this.iInstance,
+					this.iAccount,
+					this.cAccount
+			);
+		}
+
+		/**
+		 * {@inheritDoc}
+		 */
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj) {
+				return true;
+			}
+
+			if (obj == null || this.getClass() != obj.getClass()) {
+				return false;
+			}
+
+			Builder that = (Builder) obj;
+			return Objects.equals(this.xuid, that.xuid)
+					&& this.eUniverse == that.eUniverse
+					&& this.eInstance == that.eInstance
+					&& this.eAccount == that.eAccount
+					&& Objects.equals(this.iUniverse, that.iUniverse)
+					&& Objects.equals(this.iInstance, that.iInstance)
+					&& Objects.equals(this.iAccount, that.iAccount)
+					&& Objects.equals(this.cAccount, that.cAccount);
+		}
+
+		/**
+		 * {@inheritDoc}
+		 */
+		@Override
+		public int hashCode() {
+			return Objects.hash(
+					this.xuid,
+					this.eUniverse,
+					this.eInstance,
+					this.eAccount,
+					this.iUniverse,
+					this.iInstance,
+					this.iAccount,
+					this.cAccount
+			);
+		}
+
+		/**
+		 * {@inheritDoc}
+		 */
+		@Override
+		public String toString() {
+			return new StringJoiner(", ", this.getClass().getSimpleName() + "[", "]")
+					.add("xuid=" + this.xuid)
+					.add("eUniverse=" + this.eUniverse)
+					.add("eInstance=" + this.eInstance)
+					.add("eAccount=" + this.eAccount)
+					.add("iUniverse=" + this.iUniverse)
+					.add("iInstance=" + this.iInstance)
+					.add("iAccount=" + this.iAccount)
+					.add("cAccount=" + this.cAccount)
+					.toString();
+		}
+
+		/**
+		 * {@inheritDoc}
+		 */
+		@Override
+		public Object clone() {
+			try {
+				return super.clone();
+			} catch (CloneNotSupportedException ignored) {
+			}
+
+			return this.copy();
+		}
 	}
 }
