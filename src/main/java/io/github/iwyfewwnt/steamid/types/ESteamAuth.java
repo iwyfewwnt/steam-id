@@ -108,7 +108,7 @@ public enum ESteamAuth implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return new StringJoiner(", ", SIMPLE_NAME + "[", "]")
+		return new StringJoiner(", ", SIMPLE_NAME + "::" + this.name() + "[", "]")
 				.add("id=" + this.id)
 				.toString();
 	}

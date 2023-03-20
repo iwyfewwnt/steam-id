@@ -112,8 +112,8 @@ public enum ESteamUrl implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return new StringJoiner(", ", SIMPLE_NAME + "[", "]")
-				.add("url='" + this.url + "'")
+		return new StringJoiner(", ", SIMPLE_NAME + "::" + this.name() + "[", "]")
+				.add("url=\"" + this.url + "\"")
 				.toString();
 	}
 

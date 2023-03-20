@@ -105,8 +105,8 @@ public enum ESteamEndpoint implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return new StringJoiner(", ", SIMPLE_NAME + "[", "]")
-				.add("endpoint='" + this.endpoint + "'")
+		return new StringJoiner(", ", SIMPLE_NAME + "::" + this.name() + "[", "]")
+				.add("endpoint=\"" + this.endpoint + "\"")
 				.toString();
 	}
 

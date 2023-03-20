@@ -98,8 +98,8 @@ public enum ESteamDomain implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return new StringJoiner(", ", SIMPLE_NAME + "[", "]")
-				.add("domain='" + this.domain + "'")
+		return new StringJoiner(", ", SIMPLE_NAME + "::" + this.name() + "[", "]")
+				.add("domain=\"" + this.domain + "\"")
 				.toString();
 	}
 
