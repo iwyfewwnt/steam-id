@@ -36,7 +36,7 @@ import java.util.regex.Matcher;
  * <p>{@code SteamId} is the class that
  * represents Steam ID as an entity and
  * includes a lot of methods to convert
- * and parse to/from any Steam-like string.
+ * and parse to/from any Steam related data.
  */
 @SuppressWarnings("unused")
 public final class SteamId implements Serializable, Cloneable {
