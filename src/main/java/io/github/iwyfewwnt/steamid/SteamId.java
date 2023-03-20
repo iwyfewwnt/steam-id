@@ -342,7 +342,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @param defaultValue	default value to return on failure
 	 * @return				account universe enum type instance or the default value
 	 */
-	public ESteamUniverse getUniverseOrElse(ESteamUniverse defaultValue) {
+	public ESteamUniverse getUniverseTypeOrElse(ESteamUniverse defaultValue) {
 		return UwObject.getIfNull(this.universe, defaultValue);
 	}
 
@@ -358,8 +358,8 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @param defaultValueSupplier	supplier from which get the default value
 	 * @return						account universe enum type instance or the default value
 	 */
-	public ESteamUniverse getUniverseOrElse(Supplier<ESteamUniverse> defaultValueSupplier) {
-		return UwObject.getIfNull(this.getUniverseOrNull(), defaultValueSupplier);
+	public ESteamUniverse getUniverseTypeOrElse(Supplier<ESteamUniverse> defaultValueSupplier) {
+		return UwObject.getIfNull(this.getUniverseTypeOrNull(), defaultValueSupplier);
 	}
 
 	/**
@@ -371,13 +371,13 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>{@link SteamId#universe} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#getUniverseOrElse(ESteamUniverse)}
+	 * <p>Wraps {@link SteamId#getUniverseTypeOrElse(ESteamUniverse)}
 	 * w/ {@link ESteamUniverse#INVALID} as the default value.
 	 *
 	 * @return	account universe enum type instance
 	 */
-	public ESteamUniverse getUniverseOrInvalid() {
-		return this.getUniverseOrElse(ESteamUniverse.INVALID);
+	public ESteamUniverse getUniverseTypeOrInvalid() {
+		return this.getUniverseTypeOrElse(ESteamUniverse.INVALID);
 	}
 
 	/**
@@ -389,13 +389,13 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>{@link SteamId#universe} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#getUniverseOrElse(ESteamUniverse)}
+	 * <p>Wraps {@link SteamId#getUniverseTypeOrElse(ESteamUniverse)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @return	account universe enum type instance or {@code null}
 	 */
-	public ESteamUniverse getUniverseOrNull() {
-		return this.getUniverseOrElse((ESteamUniverse) null);
+	public ESteamUniverse getUniverseTypeOrNull() {
+		return this.getUniverseTypeOrElse((ESteamUniverse) null);
 	}
 
 	/**
@@ -412,7 +412,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @param defaultValue	default value to return on failure
 	 * @return				account universe type identifier or the default value
 	 */
-	public Integer getUniverseIdOrElse(Integer defaultValue) {
+	public Integer getUniverseTypeIdOrElse(Integer defaultValue) {
 		return ESteamUniverse.getIdOrElse(this.universe, defaultValue);
 	}
 
@@ -430,7 +430,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @param defaultValueSupplier	supplier from which get the default value
 	 * @return						account universe type identifier or the default value
 	 */
-	public Integer getUniverseIdOrElse(Supplier<Integer> defaultValueSupplier) {
+	public Integer getUniverseTypeIdOrElse(Supplier<Integer> defaultValueSupplier) {
 		return ESteamUniverse.getIdOrElse(this.universe, defaultValueSupplier);
 	}
 
@@ -447,7 +447,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * @return	account universe type identifier
 	 */
-	public Integer getUniverseIdOrInvalid() {
+	public Integer getUniverseTypeIdOrInvalid() {
 		return ESteamUniverse.getIdOrInvalid(this.universe);
 	}
 
@@ -464,7 +464,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * @return	account universe type identifier or {@code null}
 	 */
-	public Integer getUniverseIdOrNull() {
+	public Integer getUniverseTypeIdOrNull() {
 		return ESteamUniverse.getIdOrNull(this.universe);
 	}
 
@@ -480,7 +480,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @param defaultValue	default value to return on failure
 	 * @return				account instance enum type or the default value
 	 */
-	public ESteamInstance getInstanceOrElse(ESteamInstance defaultValue) {
+	public ESteamInstance getInstanceTypeOrElse(ESteamInstance defaultValue) {
 		return UwObject.getIfNull(this.instance, defaultValue);
 	}
 
@@ -496,8 +496,8 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @param defaultValueSupplier	supplier from which get the default value
 	 * @return						account instance enum type or the default value
 	 */
-	public ESteamInstance getInstanceOrElse(Supplier<ESteamInstance> defaultValueSupplier) {
-		return UwObject.getIfNull(this.getInstanceOrNull(), defaultValueSupplier);
+	public ESteamInstance getInstanceTypeOrElse(Supplier<ESteamInstance> defaultValueSupplier) {
+		return UwObject.getIfNull(this.getInstanceTypeOrNull(), defaultValueSupplier);
 	}
 
 	/**
@@ -509,13 +509,13 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>{@link SteamId#instance} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#getInstanceOrElse(ESteamInstance)}
+	 * <p>Wraps {@link SteamId#getInstanceTypeOrElse(ESteamInstance)}
 	 * w/ {@link ESteamInstance#ALL} as the default value.
 	 *
 	 * @return	account instance enum type
 	 */
-	public ESteamInstance getInstanceOrAll() {
-		return this.getInstanceOrElse(ESteamInstance.ALL);
+	public ESteamInstance getInstanceTypeOrAll() {
+		return this.getInstanceTypeOrElse(ESteamInstance.ALL);
 	}
 
 	/**
@@ -527,13 +527,13 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>{@link SteamId#instance} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#getInstanceOrElse(ESteamInstance)}
+	 * <p>Wraps {@link SteamId#getInstanceTypeOrElse(ESteamInstance)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @return	account instance enum type or {@code null}
 	 */
-	public ESteamInstance getInstanceOrNull() {
-		return this.getInstanceOrElse((ESteamInstance) null);
+	public ESteamInstance getInstanceTypeOrNull() {
+		return this.getInstanceTypeOrElse((ESteamInstance) null);
 	}
 
 	/**
@@ -550,7 +550,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @param defaultValue	default value to return on failure
 	 * @return				account instance type identifier or the default value
 	 */
-	public Integer getInstanceIdOrElse(Integer defaultValue) {
+	public Integer getInstanceTypeIdOrElse(Integer defaultValue) {
 		return ESteamInstance.getIdOrElse(this.instance, defaultValue);
 	}
 
@@ -568,7 +568,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @param defaultValueSupplier	supplier from which get the default value
 	 * @return						account instance type identifier or the default value
 	 */
-	public Integer getInstanceIdOrElse(Supplier<Integer> defaultValueSupplier) {
+	public Integer getInstanceTypeIdOrElse(Supplier<Integer> defaultValueSupplier) {
 		return ESteamInstance.getIdOrElse(this.instance, defaultValueSupplier);
 	}
 
@@ -585,7 +585,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * @return	account instance type identifier
 	 */
-	public Integer getInstanceIdOrAll() {
+	public Integer getInstanceTypeIdOrAll() {
 		return ESteamInstance.getIdOrAll(this.instance);
 	}
 
@@ -602,7 +602,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * @return	account instance type identifier or {@code null}
 	 */
-	public Integer getInstanceIdOrNull() {
+	public Integer getInstanceTypeIdOrNull() {
 		return ESteamInstance.getIdOrNull(this.instance);
 	}
 
@@ -1792,7 +1792,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @param universe	new enum value of the account universe type
 	 * @return			new {@link SteamId} instance or this if enum universes are equal
 	 */
-	public SteamId withUniverse(ESteamUniverse universe) {
+	public SteamId withUniverseType(ESteamUniverse universe) {
 		if (this.universe == universe) {
 			return this;
 		}
@@ -1806,8 +1806,8 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @param universe	new integer value of the account universe type
 	 * @return			new {@link SteamId} instance or this if universes are equal
 	 */
-	public SteamId withUniverse(Integer universe) {
-		return this.withUniverse(ESteamUniverse.fromIdOrNull(universe));
+	public SteamId withUniverseType(Integer universe) {
+		return this.withUniverseType(ESteamUniverse.fromIdOrNull(universe));
 	}
 
 	/**
@@ -1816,7 +1816,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @param instance	new enum value of the account instance type
 	 * @return			new {@link SteamId} instance or this if enum instances are equal
 	 */
-	public SteamId withInstance(ESteamInstance instance) {
+	public SteamId withInstanceType(ESteamInstance instance) {
 		if (this.instance == instance) {
 			return this;
 		}
@@ -1830,8 +1830,8 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @param instance	new integer value of the account instance type
 	 * @return			new {@link SteamId} instance or this if instances are equal
 	 */
-	public SteamId withInstance(Integer instance) {
-		return this.withInstance(ESteamInstance.fromIdOrNull(instance));
+	public SteamId withInstanceType(Integer instance) {
+		return this.withInstanceType(ESteamInstance.fromIdOrNull(instance));
 	}
 
 	/**
@@ -1840,7 +1840,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @param account	new enum value of the account type
 	 * @return			new {@link SteamId} instance or this if enum account types are equal
 	 */
-	public SteamId withAccount(ESteamAccount account) {
+	public SteamId withAccountType(ESteamAccount account) {
 		if (this.account == account) {
 			return this;
 		}
@@ -1854,8 +1854,8 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @param account	new integer value of the account type
 	 * @return			new {@link SteamId} instance or this if account types are equal
 	 */
-	public SteamId withAccount(Integer account) {
-		return this.withAccount(ESteamAccount.fromIdOrNull(account));
+	public SteamId withAccountType(Integer account) {
+		return this.withAccountType(ESteamAccount.fromIdOrNull(account));
 	}
 
 	/**
@@ -1864,8 +1864,8 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @param account	new character value of the account type
 	 * @return			new {@link SteamId} instance or this if account types are equal
 	 */
-	public SteamId withAccount(Character account) {
-		return this.withAccount(ESteamAccount.fromCharOrNull(account));
+	public SteamId withAccountType(Character account) {
+		return this.withAccountType(ESteamAccount.fromCharOrNull(account));
 	}
 
 	/**
@@ -3153,7 +3153,7 @@ public final class SteamId implements Serializable, Cloneable {
 		 *
 		 * @return	enum universe type
 		 */
-		public ESteamUniverse getUniverse() {
+		public ESteamUniverse getUniverseType() {
 			return this.eUniverse;
 		}
 
@@ -3162,7 +3162,7 @@ public final class SteamId implements Serializable, Cloneable {
 		 *
 		 * @return	enum instance type
 		 */
-		public ESteamInstance getInstance() {
+		public ESteamInstance getInstanceType() {
 			return this.eInstance;
 		}
 
@@ -3171,7 +3171,7 @@ public final class SteamId implements Serializable, Cloneable {
 		 *
 		 * @return	enum account type
 		 */
-		public ESteamAccount getAccount() {
+		public ESteamAccount getAccountType() {
 			return this.eAccount;
 		}
 
@@ -3180,7 +3180,7 @@ public final class SteamId implements Serializable, Cloneable {
 		 *
 		 * @return	universe type identifier
 		 */
-		public Integer getUniverseId() {
+		public Integer getUniverseTypeId() {
 			return this.iUniverse;
 		}
 
@@ -3189,7 +3189,7 @@ public final class SteamId implements Serializable, Cloneable {
 		 *
 		 * @return	instance type identifier
 		 */
-		public Integer getInstanceId() {
+		public Integer getInstanceTypeId() {
 			return this.iInstance;
 		}
 
@@ -3198,7 +3198,7 @@ public final class SteamId implements Serializable, Cloneable {
 		 *
 		 * @return	account type identifier
 		 */
-		public Integer getAccountId() {
+		public Integer getAccountTypeId() {
 			return this.iAccount;
 		}
 
@@ -3207,7 +3207,7 @@ public final class SteamId implements Serializable, Cloneable {
 		 *
 		 * @return	account type character
 		 */
-		public Character getAccountChar() {
+		public Character getAccountTypeChar() {
 			return this.cAccount;
 		}
 
@@ -3228,7 +3228,7 @@ public final class SteamId implements Serializable, Cloneable {
 		 * @param universe	enum value of the account universe type
 		 * @return			this {@link SteamId.Builder} instance
 		 */
-		public Builder setUniverse(ESteamUniverse universe) {
+		public Builder setUniverseType(ESteamUniverse universe) {
 			this.eUniverse = universe;
 			this.iUniverse = null;
 			return this;
@@ -3240,7 +3240,7 @@ public final class SteamId implements Serializable, Cloneable {
 		 * @param universe	integer value of the account universe type
 		 * @return			this {@link SteamId.Builder} instance
 		 */
-		public Builder setUniverse(Integer universe) {
+		public Builder setUniverseType(Integer universe) {
 			this.iUniverse = universe;
 			this.eUniverse = null;
 			return this;
@@ -3252,7 +3252,7 @@ public final class SteamId implements Serializable, Cloneable {
 		 * @param instance	enum value of the account instance type
 		 * @return			this {@link SteamId.Builder} instance
 		 */
-		public Builder setInstance(ESteamInstance instance) {
+		public Builder setInstanceType(ESteamInstance instance) {
 			this.eInstance = instance;
 			this.iUniverse = null;
 			return this;
@@ -3264,7 +3264,7 @@ public final class SteamId implements Serializable, Cloneable {
 		 * @param instance	integer value of the account instance type
 		 * @return			this {@link SteamId.Builder} instance
 		 */
-		public Builder setInstance(Integer instance) {
+		public Builder setInstanceType(Integer instance) {
 			this.iInstance = instance;
 			this.eInstance = null;
 			return this;
@@ -3276,7 +3276,7 @@ public final class SteamId implements Serializable, Cloneable {
 		 * @param account	enum value of the account type
 		 * @return			this {@link SteamId.Builder} instance
 		 */
-		public Builder setAccount(ESteamAccount account) {
+		public Builder setAccountType(ESteamAccount account) {
 			this.eAccount = account;
 			this.iAccount = null;
 			this.cAccount = null;
@@ -3289,7 +3289,7 @@ public final class SteamId implements Serializable, Cloneable {
 		 * @param account	integer value of the account type
 		 * @return			this {@link SteamId.Builder} instance
 		 */
-		public Builder setAccount(Integer account) {
+		public Builder setAccountType(Integer account) {
 			this.iAccount = account;
 			this.eAccount = null;
 			this.cAccount = null;
@@ -3302,7 +3302,7 @@ public final class SteamId implements Serializable, Cloneable {
 		 * @param account	character value of the account type
 		 * @return			this {@link SteamId.Builder} instance
 		 */
-		public Builder setAccount(Character account) {
+		public Builder setAccountType(Character account) {
 			this.cAccount = account;
 			this.eAccount = null;
 			this.iAccount = null;
@@ -3329,12 +3329,12 @@ public final class SteamId implements Serializable, Cloneable {
 		 * @param universe	new enum value of the account universe type
 		 * @return			new {@link SteamId.Builder} instance or this if enum universes are equal
 		 */
-		public Builder withUniverse(ESteamUniverse universe) {
+		public Builder withUniverseType(ESteamUniverse universe) {
 			if (this.eUniverse == universe) {
 				return this;
 			}
 
-			return this.clone().setUniverse(universe);
+			return this.clone().setUniverseType(universe);
 		}
 
 		/**
@@ -3343,12 +3343,12 @@ public final class SteamId implements Serializable, Cloneable {
 		 * @param universe	new integer value of the account universe type
 		 * @return			new {@link SteamId.Builder} instance or this if integer universes are equal
 		 */
-		public Builder withUniverse(Integer universe) {
+		public Builder withUniverseType(Integer universe) {
 			if (Objects.equals(this.iUniverse, universe)) {
 				return this;
 			}
 
-			return this.clone().setUniverse(universe);
+			return this.clone().setUniverseType(universe);
 		}
 
 		/**
@@ -3357,12 +3357,12 @@ public final class SteamId implements Serializable, Cloneable {
 		 * @param instance	new enum value of the account instance type
 		 * @return			new {@link SteamId.Builder} instance or this if enum instances are equal
 		 */
-		public Builder withInstance(ESteamInstance instance) {
+		public Builder withInstanceType(ESteamInstance instance) {
 			if (this.eInstance == instance) {
 				return this;
 			}
 
-			return this.clone().setInstance(instance);
+			return this.clone().setInstanceType(instance);
 		}
 
 		/**
@@ -3371,12 +3371,12 @@ public final class SteamId implements Serializable, Cloneable {
 		 * @param instance	new integer value of the account instance type
 		 * @return			new {@link SteamId.Builder} instance or this if integer instances are equal
 		 */
-		public Builder withInstance(Integer instance) {
+		public Builder withInstanceType(Integer instance) {
 			if (Objects.equals(this.iInstance, instance)) {
 				return this;
 			}
 
-			return this.clone().setInstance(instance);
+			return this.clone().setInstanceType(instance);
 		}
 
 		/**
@@ -3385,12 +3385,12 @@ public final class SteamId implements Serializable, Cloneable {
 		 * @param account	new enum value of the account type
 		 * @return			new {@link SteamId.Builder} instance or this if enum account types are equal
 		 */
-		public Builder withAccount(ESteamAccount account) {
+		public Builder withAccountType(ESteamAccount account) {
 			if (this.eAccount == account) {
 				return this;
 			}
 
-			return this.clone().setAccount(account);
+			return this.clone().setAccountType(account);
 		}
 
 		/**
@@ -3399,12 +3399,12 @@ public final class SteamId implements Serializable, Cloneable {
 		 * @param account	new integer value of the account type
 		 * @return			new {@link SteamId.Builder} instance or this if integer account types are equal
 		 */
-		public Builder withAccount(Integer account) {
+		public Builder withAccountType(Integer account) {
 			if (Objects.equals(this.iAccount, account)) {
 				return this;
 			}
 
-			return this.clone().setAccount(account);
+			return this.clone().setAccountType(account);
 		}
 
 		/**
@@ -3413,12 +3413,12 @@ public final class SteamId implements Serializable, Cloneable {
 		 * @param account	new character value of the account type
 		 * @return			new {@link SteamId.Builder} instance or this if character account types are equal
 		 */
-		public Builder withAccount(Character account) {
+		public Builder withAccountType(Character account) {
 			if (Objects.equals(this.cAccount, account)) {
 				return this;
 			}
 
-			return this.clone().setAccount(account);
+			return this.clone().setAccountType(account);
 		}
 
 		/**
