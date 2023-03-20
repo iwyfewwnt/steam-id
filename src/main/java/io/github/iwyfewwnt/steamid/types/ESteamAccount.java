@@ -122,21 +122,21 @@ public enum ESteamAccount implements Serializable {
 	/**
 	 * A base account type accoring to its utility alternative.
 	 *
-	 * @see USteamAccount#BASE
+	 * @see USteamAccount#BASE_ID
 	 */
 	public static ESteamAccount BASE = INVALID;
 
 	/**
 	 * A minimum account type according to its utility alternative.
 	 *
-	 * @see USteamAccount#MIN
+	 * @see USteamAccount#MIN_ID
 	 */
 	public static ESteamAccount MIN = INDIVIDUAL;
 
 	/**
 	 * A maximum account type according to its utility alternative.
 	 *
-	 * @see USteamAccount#MAX
+	 * @see USteamAccount#MAX_ID
 	 */
 	public static ESteamAccount MAX = UNKNOWN;
 
@@ -254,7 +254,7 @@ public enum ESteamAccount implements Serializable {
 
 	/**
 	 * Get the account type identifier from the provided {@link ESteamAccount} instance
-	 * or return the {@value USteamAccount#INVALID_ID} value if failed.
+	 * or return the {@value USteamAccount#BASE_ID} value if failed.
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
@@ -262,13 +262,13 @@ public enum ESteamAccount implements Serializable {
 	 * </ul>
 	 *
 	 * <p>Wraps {@link ESteamAccount#getIdOrElse(ESteamAccount, Integer)}
-	 * w/ {@link USteamAccount#INVALID_ID} as the default value.
+	 * w/ {@link USteamAccount#BASE_ID} as the default value.
 	 *
 	 * @param account	enum value of the account type from which get the identifier
-	 * @return			account type identifier or the {@value USteamAccount#INVALID_ID} value
+	 * @return			account type identifier or the {@value USteamAccount#BASE_ID} value
 	 */
-	public static Integer getIdOrInvalid(ESteamAccount account) {
-		return getIdOrElse(account, USteamAccount.INVALID_ID);
+	public static Integer getIdOrBase(ESteamAccount account) {
+		return getIdOrElse(account, USteamAccount.BASE_ID);
 	}
 
 	/**
@@ -330,7 +330,7 @@ public enum ESteamAccount implements Serializable {
 
 	/**
 	 * Get the account type character from the provided {@link ESteamAccount} instance
-	 * or return the {@value USteamAccount#INVALID_CHAR} value if failed.
+	 * or return the {@value USteamAccount#BASE_CHAR} value if failed.
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
@@ -338,13 +338,13 @@ public enum ESteamAccount implements Serializable {
 	 * </ul>
 	 *
 	 * <p>Wraps {@link ESteamAccount#getIdOrElse(ESteamAccount, Integer)}
-	 * w/ {@link USteamAccount#INVALID_CHAR} as the default value.
+	 * w/ {@link USteamAccount#BASE_CHAR} as the default value.
 	 *
 	 * @param account	enum value of the account type from which get the character
-	 * @return			account type character or the {@value USteamAccount#INVALID_CHAR} value
+	 * @return			account type character or the {@value USteamAccount#BASE_CHAR} value
 	 */
-	public static Character getCharOrInvalid(ESteamAccount account) {
-		return getCharOrElse(account, USteamAccount.INVALID_CHAR);
+	public static Character getCharOrBase(ESteamAccount account) {
+		return getCharOrElse(account, USteamAccount.BASE_CHAR);
 	}
 
 	/**
@@ -395,13 +395,13 @@ public enum ESteamAccount implements Serializable {
 	 * or return the invalid value if failed.
 	 *
 	 * <p>Wraps {@link ESteamAccount#fromIdOrElse(Integer, ESteamAccount)}
-	 * w/ {@link ESteamAccount#INVALID} as the default value.
+	 * w/ {@link ESteamAccount#BASE} as the default value.
 	 *
 	 * @param id	account type identifier of the instance
 	 * @return		associated {@link ESteamAccount} instance or the invalid value
 	 */
-	public static ESteamAccount fromIdOrInvalid(Integer id) {
-		return fromIdOrElse(id, INVALID);
+	public static ESteamAccount fromIdOrBase(Integer id) {
+		return fromIdOrElse(id, BASE);
 	}
 
 	/**
@@ -447,13 +447,13 @@ public enum ESteamAccount implements Serializable {
 	 * or return the invalid value if failed.
 	 *
 	 * <p>Wraps {@link ESteamAccount#fromCharOrElse(Character, ESteamAccount)}
-	 * w/ {@link ESteamAccount#INVALID} as the default value.
+	 * w/ {@link ESteamAccount#BASE} as the default value.
 	 *
 	 * @param ch	account type character of the instance
 	 * @return		associated {@link ESteamAccount} instance or the invalid value
 	 */
-	public static ESteamAccount fromCharOrInvalid(Character ch) {
-		return fromCharOrElse(ch, INVALID);
+	public static ESteamAccount fromCharOrBase(Character ch) {
+		return fromCharOrElse(ch, BASE);
 	}
 
 	/**
@@ -499,13 +499,13 @@ public enum ESteamAccount implements Serializable {
 	 * or return the invalid value if failed.
 	 *
 	 * <p>Wraps {@link ESteamAccount#fromIndexOrElse(Integer, ESteamAccount)}
-	 * w/ {@link ESteamAccount#INVALID} as the default alue.
+	 * w/ {@link ESteamAccount#BASE} as the default alue.
 	 *
 	 * @param index		index of the instance
 	 * @return			associated {@link ESteamAccount} instance or the invalid value
 	 */
-	public static ESteamAccount fromIndexOrInvalid(Integer index) {
-		return fromIndexOrElse(index, INVALID);
+	public static ESteamAccount fromIndexOrBase(Integer index) {
+		return fromIndexOrElse(index, BASE);
 	}
 
 	/**

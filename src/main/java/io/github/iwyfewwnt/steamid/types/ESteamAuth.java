@@ -153,7 +153,7 @@ public enum ESteamAuth implements Serializable {
 
 	/**
 	 * Get the account authentication type identifier from the provided {@link ESteamAuth} instance
-	 * or return the {@value USteamAuth#NO} value if failed.
+	 * or return the {@value USteamAuth#MIN} value if failed.
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
@@ -161,13 +161,13 @@ public enum ESteamAuth implements Serializable {
 	 * </ul>
 	 *
 	 * <p>Wraps {@link ESteamAuth#getIdOrElse(ESteamAuth, Integer)}
-	 * w/ {@link USteamAuth#NO} as the default value.
+	 * w/ {@link USteamAuth#MIN} as the default value.
 	 *
 	 * @param auth	enum value of the account authentication type from which get the identifier
-	 * @return		account authentication type identifier or the {@value USteamAuth#NO} value
+	 * @return		account authentication type identifier or the {@value USteamAuth#MIN} value
 	 */
-	public static Integer getIdOrNo(ESteamAuth auth) {
-		return getIdOrElse(auth, USteamAuth.NO);
+	public static Integer getIdOrBase(ESteamAuth auth) {
+		return getIdOrElse(auth, USteamAuth.MIN);
 	}
 
 	/**
@@ -215,16 +215,16 @@ public enum ESteamAuth implements Serializable {
 
 	/**
 	 * Get an {@link ESteamAuth} instance by its account authentication type identifier
-	 * or return the {@link ESteamAuth#NO} value if failed.
+	 * or return the {@link ESteamAuth#MIN} value if failed.
 	 *
 	 * <p>Wraps {@link ESteamAuth#fromIdOrElse(Integer, ESteamAuth)}
-	 * w/ {@link ESteamAuth#NO} as the default value.
+	 * w/ {@link ESteamAuth#MIN} as the default value.
 	 *
 	 * @param id	account authentication type identifier of the instance
-	 * @return		associated {@link ESteamAuth} instance or the {@link ESteamAuth#NO} value
+	 * @return		associated {@link ESteamAuth} instance or the {@link ESteamAuth#MIN} value
 	 */
-	public static ESteamAuth fromIdOrNo(Integer id) {
-		return fromIdOrElse(id, NO);
+	public static ESteamAuth fromIdOrBase(Integer id) {
+		return fromIdOrElse(id, MIN);
 	}
 
 	/**
@@ -267,16 +267,16 @@ public enum ESteamAuth implements Serializable {
 
 	/**
 	 * Get an {@link ESteamAuth} instance by its index
-	 * or return the {@link ESteamAuth#NO} value if failed.
+	 * or return the {@link ESteamAuth#MIN} value if failed.
 	 *
 	 * <p>Wrapas {@link ESteamAuth#fromIndexOrElse(Integer, ESteamAuth)}
-	 * w/ {@link ESteamAuth#NO} as the default value.
+	 * w/ {@link ESteamAuth#MIN} as the default value.
 	 *
 	 * @param index		index of the instance
-	 * @return			associated {@link ESteamAuth} instance or the {@link ESteamAuth#NO} value
+	 * @return			associated {@link ESteamAuth} instance or the {@link ESteamAuth#MIN} value
 	 */
-	public static ESteamAuth fromIndexOrNo(Integer index) {
-		return fromIndexOrElse(index, NO);
+	public static ESteamAuth fromIndexOrBase(Integer index) {
+		return fromIndexOrElse(index, MIN);
 	}
 
 	/**

@@ -97,21 +97,21 @@ public final class USteamAccount {
 	 *
 	 * <p>Wraps {@link USteamAccount#INVALID_ID}.
 	 */
-	public static final int BASE = INVALID_ID;
+	public static final int BASE_ID = INVALID_ID;
 
 	/**
 	 * A minimum account type ID.
 	 *
 	 * <p>Wraps {@link USteamAccount#INDIVIDUAL_ID}.
 	 */
-	public static final int MIN = INDIVIDUAL_ID;
+	public static final int MIN_ID = INDIVIDUAL_ID;
 
 	/**
 	 * A maximum account type ID.
 	 *
 	 * <p>Wraps {@link USteamAccount#UNKNOWN_ID}.
 	 */
-	public static final int MAX = UNKNOWN_ID;
+	public static final int MAX_ID = UNKNOWN_ID;
 
 	/**
 	 * An account type char - Invalid.
@@ -185,6 +185,27 @@ public final class USteamAccount {
 	 * An account type char - Clan Chat.
 	 */
 	public static final char CLAN_CHAT_CHAR = 'c';
+
+	/**
+	 * A base account type char according to base account type ID.
+	 *
+	 * <p>Wraps {@link USteamAccount#INVALID_CHAR}.
+	 */
+	public static final char BASE_CHAR = INVALID_CHAR;
+
+	/**
+	 * A minimum account type char according to minimum account type ID.
+	 *
+	 * <p>Wraps {@link USteamAccount#INDIVIDUAL_CHAR}.
+	 */
+	public static final char MIN_CHAR = INDIVIDUAL_CHAR;
+
+	/**
+	 * A maximum account type char according to maximum account type ID.
+	 *
+	 * <p>Wraps {@link USteamAccount#UNKNOWN_CHAR}.
+	 */
+	public static final char MAX_CHAR = UNKNOWN_CHAR;
 
 	private USteamAccount() {
 		throw new UnsupportedOperationException();

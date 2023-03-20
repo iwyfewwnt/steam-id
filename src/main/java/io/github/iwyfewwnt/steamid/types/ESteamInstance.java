@@ -185,7 +185,7 @@ public enum ESteamInstance implements Serializable {
 
 	/**
 	 * Get the account instance type identifier from the provided {@link ESteamInstance} instance
-	 * or return the {@value USteamInstance#ALL} value if failed.
+	 * or return the {@value USteamInstance#MIN} value if failed.
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
@@ -193,13 +193,13 @@ public enum ESteamInstance implements Serializable {
 	 * </ul>
 	 *
 	 * <p>Wraps {@link ESteamInstance#getIdOrElse(ESteamInstance, Integer)}
-	 * w/ {@link USteamInstance#ALL} as the default value.
+	 * w/ {@link USteamInstance#MIN} as the default value.
 	 *
 	 * @param instance	enum value of the account instance type from which get the identifier
-	 * @return			account instance type identifier or the {@value USteamInstance#ALL} value
+	 * @return			account instance type identifier or the {@value USteamInstance#MIN} value
 	 */
-	public static Integer getIdOrAll(ESteamInstance instance) {
-		return getIdOrElse(instance, USteamInstance.ALL);
+	public static Integer getIdOrBase(ESteamInstance instance) {
+		return getIdOrElse(instance, USteamInstance.MIN);
 	}
 
 	/**
@@ -247,16 +247,16 @@ public enum ESteamInstance implements Serializable {
 
 	/**
 	 * Get an {@link ESteamInstance} instance by its account instance type identifier
-	 * or return the {@link ESteamInstance#ALL} value if failed.
+	 * or return the {@link ESteamInstance#MIN} value if failed.
 	 *
 	 * <p>Wraps {@link ESteamInstance#fromIdOrElse(Integer, ESteamInstance)}
-	 * w/ {@link ESteamInstance#ALL} as the default value.
+	 * w/ {@link ESteamInstance#MIN} as the default value.
 	 *
 	 * @param id			account instance type identifier of the instance
-	 * @return				associated {@link ESteamInstance} instance or the {@link ESteamInstance#ALL} value
+	 * @return				associated {@link ESteamInstance} instance or the {@link ESteamInstance#MIN} value
 	 */
-	public static ESteamInstance fromIdOrAll(Integer id) {
-		return fromIdOrElse(id, ALL);
+	public static ESteamInstance fromIdOrBase(Integer id) {
+		return fromIdOrElse(id, MIN);
 	}
 
 	/**
@@ -299,16 +299,16 @@ public enum ESteamInstance implements Serializable {
 
 	/**
 	 * Get an {@link ESteamInstance} instance by its index
-	 * or return the {@link ESteamInstance#ALL} value if failed.
+	 * or return the {@link ESteamInstance#MIN} value if failed.
 	 *
 	 * <p>Wraps {@link ESteamInstance#fromIndexOrElse(Integer, ESteamInstance)}
-	 * w/ {@link ESteamInstance#ALL} as the default value.
+	 * w/ {@link ESteamInstance#MIN} as the default value.
 	 *
 	 * @param index			index of the instance
-	 * @return				associated {@link ESteamInstance} instance or the {@link ESteamInstance#ALL} value
+	 * @return				associated {@link ESteamInstance} instance or the {@link ESteamInstance#MIN} value
 	 */
-	public static ESteamInstance fromIndexOrAll(Integer index) {
-		return fromIndexOrElse(index, ALL);
+	public static ESteamInstance fromIndexOrBase(Integer index) {
+		return fromIndexOrElse(index, MIN);
 	}
 
 	/**

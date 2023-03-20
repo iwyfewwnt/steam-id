@@ -364,7 +364,7 @@ public final class SteamId implements Serializable, Cloneable {
 
 	/**
 	 * Get this account universe enum type instance
-	 * or return an invalid value if failed.
+	 * or return the base value if failed.
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
@@ -372,12 +372,12 @@ public final class SteamId implements Serializable, Cloneable {
 	 * </ul>
 	 *
 	 * <p>Wraps {@link SteamId#getUniverseTypeOrElse(ESteamUniverse)}
-	 * w/ {@link ESteamUniverse#INVALID} as the default value.
+	 * w/ {@link ESteamUniverse#BASE} as the default value.
 	 *
 	 * @return	account universe enum type instance
 	 */
-	public ESteamUniverse getUniverseTypeOrInvalid() {
-		return this.getUniverseTypeOrElse(ESteamUniverse.INVALID);
+	public ESteamUniverse getUniverseTypeOrBase() {
+		return this.getUniverseTypeOrElse(ESteamUniverse.BASE);
 	}
 
 	/**
@@ -436,19 +436,19 @@ public final class SteamId implements Serializable, Cloneable {
 
 	/**
 	 * Get this account universe type identifier
-	 * or return an invalid value if failed.
+	 * or return the base value if failed.
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
 	 *     <li>{@link SteamId#universe} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Delegates {@link ESteamUniverse#getIdOrInvalid(ESteamUniverse)}.
+	 * <p>Delegates {@link ESteamUniverse#getIdOrBase(ESteamUniverse)}.
 	 *
 	 * @return	account universe type identifier
 	 */
-	public Integer getUniverseTypeIdOrInvalid() {
-		return ESteamUniverse.getIdOrInvalid(this.universe);
+	public Integer getUniverseTypeIdOrBase() {
+		return ESteamUniverse.getIdOrBase(this.universe);
 	}
 
 	/**
@@ -502,7 +502,7 @@ public final class SteamId implements Serializable, Cloneable {
 
 	/**
 	 * Get this account instance enum type
-	 * or return the {@link ESteamInstance#ALL} value if failed.
+	 * or return the base value if failed.
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
@@ -510,12 +510,12 @@ public final class SteamId implements Serializable, Cloneable {
 	 * </ul>
 	 *
 	 * <p>Wraps {@link SteamId#getInstanceTypeOrElse(ESteamInstance)}
-	 * w/ {@link ESteamInstance#ALL} as the default value.
+	 * w/ {@link ESteamInstance#MIN} as the default value.
 	 *
 	 * @return	account instance enum type
 	 */
-	public ESteamInstance getInstanceTypeOrAll() {
-		return this.getInstanceTypeOrElse(ESteamInstance.ALL);
+	public ESteamInstance getInstanceTypeOrBase() {
+		return this.getInstanceTypeOrElse(ESteamInstance.MIN);
 	}
 
 	/**
@@ -574,19 +574,19 @@ public final class SteamId implements Serializable, Cloneable {
 
 	/**
 	 * Get this account instance type identifier
-	 * or return the {@link USteamInstance#ALL} value if failed.
+	 * or return the base value if failed.
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
 	 *     <li>{@link SteamId#instance} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Delegates {@link ESteamInstance#getIdOrAll(ESteamInstance)}.
+	 * <p>Delegates {@link ESteamInstance#getIdOrBase(ESteamInstance)}.
 	 *
 	 * @return	account instance type identifier
 	 */
-	public Integer getInstanceTypeIdOrAll() {
-		return ESteamInstance.getIdOrAll(this.instance);
+	public Integer getInstanceTypeIdOrBase() {
+		return ESteamInstance.getIdOrBase(this.instance);
 	}
 
 	/**
@@ -640,7 +640,7 @@ public final class SteamId implements Serializable, Cloneable {
 
 	/**
 	 * Get this account type enum type
-	 * or return the {@link ESteamAccount#INVALID} value if failed.
+	 * or return the base value if failed.
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
@@ -648,12 +648,12 @@ public final class SteamId implements Serializable, Cloneable {
 	 * </ul>
 	 *
 	 * <p>Wraps {@link SteamId#getAccountTypeOrElse(ESteamAccount)}
-	 * w/ {@link ESteamAccount#INVALID} as the default value.
+	 * w/ {@link ESteamAccount#BASE} as the default value.
 	 *
 	 * @return	account type enum type
 	 */
-	public ESteamAccount getAccountTypeOrInvalid() {
-		return this.getAccountTypeOrElse(ESteamAccount.INVALID);
+	public ESteamAccount getAccountTypeOrBase() {
+		return this.getAccountTypeOrElse(ESteamAccount.BASE);
 	}
 
 	/**
@@ -712,19 +712,19 @@ public final class SteamId implements Serializable, Cloneable {
 
 	/**
 	 * Get this account type identifier
-	 * or return an invalid value if failed.
+	 * or return the base value if failed.
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
 	 *     <li>{@link SteamId#account} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Delegates {@link ESteamAccount#getIdOrInvalid(ESteamAccount)}.
+	 * <p>Delegates {@link ESteamAccount#getIdOrBase(ESteamAccount)}.
 	 *
 	 * @return	account type identifier
 	 */
-	public Integer getAccountTypeIdOrInvalid() {
-		return ESteamAccount.getIdOrInvalid(this.account);
+	public Integer getAccountTypeIdOrBase() {
+		return ESteamAccount.getIdOrBase(this.account);
 	}
 
 	/**
@@ -782,19 +782,19 @@ public final class SteamId implements Serializable, Cloneable {
 
 	/**
 	 * Get this account type character
-	 * or return an invalid value if failed.
+	 * or return the base value if failed.
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
 	 *     <li>{@link SteamId#account} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Delegates {@link ESteamAccount#getCharOrInvalid(ESteamAccount)}.
+	 * <p>Delegates {@link ESteamAccount#getCharOrBase(ESteamAccount)}.
 	 *
 	 * @return	account type character
 	 */
-	public Character getAccountTypeCharOrInvalid() {
-		return ESteamAccount.getCharOrInvalid(this.account);
+	public Character getAccountTypeCharOrBase() {
+		return ESteamAccount.getCharOrBase(this.account);
 	}
 
 	/**

@@ -188,7 +188,7 @@ public enum ESteamUniverse implements Serializable {
 
 	/**
 	 * Get the account universe type identifier from the provided {@link ESteamUniverse} instance
-	 * or return the {@value USteamUniverse#INVALID} if failed.
+	 * or return the base value if failed.
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
@@ -196,13 +196,13 @@ public enum ESteamUniverse implements Serializable {
 	 * </ul>
 	 *
 	 * <p>Wraps {@link ESteamUniverse#getIdOrElse(ESteamUniverse, Integer)}
-	 * w/ {@link USteamUniverse#INVALID} as the default value.
+	 * w/ {@link USteamUniverse#BASE} as the default value.
 	 *
 	 * @param universe	enum value of the account universe type from which get the identifier
-	 * @return			account universe type identifier or the {@value USteamUniverse#INVALID} value
+	 * @return			account universe type identifier or the {@value USteamUniverse#BASE} value
 	 */
-	public static Integer getIdOrInvalid(ESteamUniverse universe) {
-		return getIdOrElse(universe, USteamUniverse.INVALID);
+	public static Integer getIdOrBase(ESteamUniverse universe) {
+		return getIdOrElse(universe, USteamUniverse.BASE);
 	}
 
 	/**
@@ -250,16 +250,16 @@ public enum ESteamUniverse implements Serializable {
 
 	/**
 	 * Get an {@link ESteamUniverse} instance by its account universe type identifier
-	 * or return the invalid value if failed.
+	 * or return the base value if failed.
 	 *
 	 * <p>Wraps {@link ESteamUniverse#fromIdOrElse(Integer, ESteamUniverse)}
-	 * w/ {@link ESteamUniverse#INVALID} as the default value.
+	 * w/ {@link ESteamUniverse#BASE} as the default value.
 	 *
 	 * @param id	account universe type identifier of the instance
-	 * @return		associated {@link ESteamUniverse} instance or the invalid value
+	 * @return		associated {@link ESteamUniverse} instance or the base value
 	 */
-	public static ESteamUniverse fromIdOrInvalid(Integer id) {
-		return fromIdOrElse(id, INVALID);
+	public static ESteamUniverse fromIdOrBase(Integer id) {
+		return fromIdOrElse(id, BASE);
 	}
 
 	/**
@@ -302,16 +302,16 @@ public enum ESteamUniverse implements Serializable {
 
 	/**
 	 * Get an {@link ESteamUniverse} instance by its index
-	 * or return the invalid value if failed.
+	 * or return the base value if failed.
 	 *
 	 * <p>Wraps {@link ESteamUniverse#fromIndexOrElse(Integer, ESteamUniverse)}
-	 * w/ {@link ESteamUniverse#INVALID} as the default value.
+	 * w/ {@link ESteamUniverse#BASE} as the default value.
 	 *
 	 * @param index			index of the instance
-	 * @return				associated {@link ESteamUniverse} instance or the invalid value
+	 * @return				associated {@link ESteamUniverse} instance or the base value
 	 */
-	public static ESteamUniverse fromIndexOrInvalid(Integer index) {
-		return fromIndexOrElse(index, INVALID);
+	public static ESteamUniverse fromIndexOrBase(Integer index) {
+		return fromIndexOrElse(index, BASE);
 	}
 
 	/**
