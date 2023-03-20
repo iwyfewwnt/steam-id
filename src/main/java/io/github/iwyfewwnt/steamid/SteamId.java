@@ -3296,38 +3296,38 @@ public final class SteamId implements Serializable, Cloneable {
 		}
 
 		/**
-		 * Get this universe type identifier
+		 * Get this integer universe type
 		 *
-		 * @return	universe type identifier
+		 * @return	integer universe type
 		 */
-		public Integer getUniverseTypeId() {
+		public Integer getIntUniverseType() {
 			return this.iUniverse;
 		}
 
 		/**
-		 * Get this instance type identifier
+		 * Get this integer instance type
 		 *
-		 * @return	instance type identifier
+		 * @return	integer instance type
 		 */
-		public Integer getInstanceTypeId() {
+		public Integer getIntInstanceType() {
 			return this.iInstance;
 		}
 
 		/**
-		 * Get this account type identifier
+		 * Get this integer account type
 		 *
-		 * @return	account type identifier
+		 * @return	integer account type
 		 */
-		public Integer getAccountTypeId() {
+		public Integer getIntAccountType() {
 			return this.iAccount;
 		}
 
 		/**
-		 * Get this account type character
+		 * Get this character account type
 		 *
-		 * @return	account type character
+		 * @return	character account type
 		 */
-		public Character getAccountTypeChar() {
+		public Character getCharAccountType() {
 			return this.cAccount;
 		}
 
