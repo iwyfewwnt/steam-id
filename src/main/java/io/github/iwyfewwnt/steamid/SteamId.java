@@ -3595,7 +3595,7 @@ public final class SteamId implements Serializable, Cloneable {
 					.add("iUniverse=" + this.iUniverse)
 					.add("iInstance=" + this.iInstance)
 					.add("iAccount=" + this.iAccount)
-					.add("cAccount=" + this.cAccount)
+					.add("cAccount='" + this.cAccount + "'")
 					.toString();
 		}
 
