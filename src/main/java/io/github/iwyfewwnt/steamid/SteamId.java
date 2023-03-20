@@ -263,6 +263,46 @@ public final class SteamId implements Serializable, Cloneable {
 	}
 
 	/**
+	 * Check if this account type-32 identifier is not {@code null}.
+	 *
+	 * @return	{@code true} if not {@code null}
+	 * 			or {@code false} if {@code null}
+	 */
+	public boolean hasXuid() {
+		return this.xuid != null;
+	}
+
+	/**
+	 * Check if this account universe type is not {@code null}.
+	 *
+	 * @return	{@code true} if not {@code null}
+	 * 			or {@code false} if {@code null}
+	 */
+	public boolean hasUniverseType() {
+		return this.universe != null;
+	}
+
+	/**
+	 * Check if this account instance type is not {@code null}.
+	 *
+	 * @return	{@code true} if not {@code null}
+	 * 			or {@code false} if {@code null}
+	 */
+	public boolean hasInstanceType() {
+		return this.instance != null;
+	}
+
+	/**
+	 * Check if this account type is not {@code null}.
+	 *
+	 * @return	{@code true} if not {@code null}
+	 * 			or {@code false} if {@code null}
+	 */
+	public boolean hasAccountType() {
+		return this.account != null;
+	}
+
+	/**
 	 * Get this unique account type-32 identifier
 	 * or return a default value if failed.
 	 *
@@ -3137,6 +3177,86 @@ public final class SteamId implements Serializable, Cloneable {
 			account = ESteamAccount.fromCharOrElse(this.cAccount, account);
 
 			return new SteamId(this.xuid, universe, instance, account);
+		}
+
+		/**
+		 * Check if this account type-32 identifier is not {@code null}.
+		 *
+		 * @return	{@code true} if not {@code null}
+		 * 			or {@code false} if {@code null}
+		 */
+		public boolean hasXuid() {
+			return this.xuid != null;
+		}
+
+		/**
+		 * Check if this account universe type is not {@code null}.
+		 *
+		 * @return	{@code true} if not {@code null}
+		 * 			or {@code false} if {@code null}
+		 */
+		public boolean hasUniverseType() {
+			return this.eUniverse != null;
+		}
+
+		/**
+		 * Check if this account instance type is not {@code null}.
+		 *
+		 * @return	{@code true} if not {@code null}
+		 * 			or {@code false} if {@code null}
+		 */
+		public boolean hasInstanceType() {
+			return this.eInstance != null;
+		}
+
+		/**
+		 * Check if this account type is not {@code null}.
+		 *
+		 * @return	{@code true} if not {@code null}
+		 * 			or {@code false} if {@code null}
+		 */
+		public boolean hasAccountType() {
+			return this.eAccount != null;
+		}
+
+		/**
+		 * Check if this integer account universe type is not {@code null}.
+		 *
+		 * @return	{@code true} if not {@code null}
+		 * 			or {@code false} if {@code null}
+		 */
+		public boolean hasIntUniverseType() {
+			return this.iUniverse != null;
+		}
+
+		/**
+		 * Check if this integer account instance type is not {@code null}.
+		 *
+		 * @return	{@code true} if not {@code null}
+		 * 			or {@code false} if {@code null}
+		 */
+		public boolean hasIntInstanceType() {
+			return this.iInstance != null;
+		}
+
+		/**
+		 * Check if this integer account type is not {@code null}.
+		 *
+		 * @return	{@code true} if not {@code null}
+		 * 			or {@code false} if {@code null}
+		 */
+		public boolean hasIntAccountType() {
+			return this.iAccount != null;
+		}
+
+		/**
+		 * Check if this character account type is not {@code null}.
+		 *
+		 * @return	{@code true} if not {@code null}
+		 * 			or {@code false} if {@code null}
+		 */
+		public boolean hasCharAccountType() {
+			return this.cAccount != null ;
 		}
 
 		/**
