@@ -187,21 +187,21 @@ public final class USteamAccount {
 	public static final char CLAN_CHAT_CHAR = 'c';
 
 	/**
-	 * A base account type char according to base account type ID.
+	 * A base account type char according to the base account type ID.
 	 *
 	 * <p>Wraps {@link USteamAccount#INVALID_CHAR}.
 	 */
 	public static final char BASE_CHAR = INVALID_CHAR;
 
 	/**
-	 * A minimum account type char according to minimum account type ID.
+	 * A minimum account type char according to the minimum account type ID.
 	 *
 	 * <p>Wraps {@link USteamAccount#INDIVIDUAL_CHAR}.
 	 */
 	public static final char MIN_CHAR = INDIVIDUAL_CHAR;
 
 	/**
-	 * A maximum account type char according to maximum account type ID.
+	 * A maximum account type char according to the maximum account type ID.
 	 *
 	 * <p>Wraps {@link USteamAccount#UNKNOWN_CHAR}.
 	 */
