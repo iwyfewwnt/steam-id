@@ -407,15 +407,13 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>{@link SteamId#universe} is {@code null}.
 	 * </ul>
 	 *
+	 * <p>Delegates {@link ESteamUniverse#getIdOrElse(ESteamUniverse, Integer)}.
+	 *
 	 * @param defaultValue	default value to return on failure
 	 * @return				account universe type identifier or the default value
 	 */
 	public Integer getUniverseIdOrElse(Integer defaultValue) {
-		if (this.universe == null) {
-			return defaultValue;
-		}
-
-		return universe.getId();
+		return ESteamUniverse.getIdOrElse(this.universe, defaultValue);
 	}
 
 	/**
@@ -427,11 +425,13 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>{@link SteamId#universe} is {@code null}.
 	 * </ul>
 	 *
+	 * <p>Delegates {@link ESteamUniverse#getIdOrElse(ESteamUniverse, Supplier)}.
+	 *
 	 * @param defaultValueSupplier	supplier from which get the default value
 	 * @return						account universe type identifier or the default value
 	 */
 	public Integer getUniverseIdOrElse(Supplier<Integer> defaultValueSupplier) {
-		return UwObject.getIfNull(this.getUniverseIdOrNull(), defaultValueSupplier);
+		return ESteamUniverse.getIdOrElse(this.universe, defaultValueSupplier);
 	}
 
 	/**
@@ -443,13 +443,12 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>{@link SteamId#universe} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#getUniverseIdOrElse(Integer)}
-	 * w/ {@link USteamUniverse#INVALID} as the default value.
+	 * <p>Delegates {@link ESteamUniverse#getIdOrInvalid(ESteamUniverse)}.
 	 *
 	 * @return	account universe type identifier
 	 */
 	public Integer getUniverseIdOrInvalid() {
-		return this.getUniverseIdOrElse(USteamUniverse.INVALID);
+		return ESteamUniverse.getIdOrInvalid(this.universe);
 	}
 
 	/**
@@ -461,13 +460,12 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>{@link SteamId#universe} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#getUniverseIdOrElse(Integer)}
-	 * w/ {@code null} as the default value.
+	 * <p>Delegates {@link ESteamUniverse#getIdOrNull(ESteamUniverse)}.
 	 *
 	 * @return	account universe type identifier or {@code null}
 	 */
 	public Integer getUniverseIdOrNull() {
-		return this.getUniverseIdOrElse((Integer) null);
+		return ESteamUniverse.getIdOrNull(this.universe);
 	}
 
 	/**
@@ -547,15 +545,13 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>{@link SteamId#instance} is {@code null}.
 	 * </ul>
 	 *
+	 * <p>Delegates {@link ESteamInstance#getIdOrElse(ESteamInstance, Integer)}.
+	 *
 	 * @param defaultValue	default value to return on failure
 	 * @return				account instance type identifier or the default value
 	 */
 	public Integer getInstanceIdOrElse(Integer defaultValue) {
-		if (this.instance == null) {
-			return defaultValue;
-		}
-
-		return this.instance.getId();
+		return ESteamInstance.getIdOrElse(this.instance, defaultValue);
 	}
 
 	/**
@@ -567,11 +563,13 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>{@link SteamId#instance} is {@code null}.
 	 * </ul>
 	 *
+	 * <p>Delegates {@link ESteamInstance#getIdOrElse(ESteamInstance, Supplier)}.
+	 *
 	 * @param defaultValueSupplier	supplier from which get the default value
 	 * @return						account instance type identifier or the default value
 	 */
 	public Integer getInstanceIdOrElse(Supplier<Integer> defaultValueSupplier) {
-		return UwObject.getIfNull(this.getInstanceIdOrNull(), defaultValueSupplier);
+		return ESteamInstance.getIdOrElse(this.instance, defaultValueSupplier);
 	}
 
 	/**
@@ -583,13 +581,12 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>{@link SteamId#instance} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#getInstanceIdOrElse(Integer)}
-	 * w/ {@link USteamInstance#ALL} as the default value.
+	 * <p>Delegates {@link ESteamInstance#getIdOrAll(ESteamInstance)}.
 	 *
 	 * @return	account instance type identifier
 	 */
 	public Integer getInstanceIdOrAll() {
-		return this.getInstanceIdOrElse(USteamInstance.ALL);
+		return ESteamInstance.getIdOrAll(this.instance);
 	}
 
 	/**
@@ -601,13 +598,12 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>{@link SteamId#instance} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#getInstanceIdOrElse(Integer)}
-	 * w/ {@code null} as the default value.
+	 * <p>Delegates {@link ESteamInstance#getIdOrNull(ESteamInstance)}.
 	 *
 	 * @return	account instance type identifier or {@code null}
 	 */
 	public Integer getInstanceIdOrNull() {
-		return this.getInstanceIdOrElse((Integer) null);
+		return ESteamInstance.getIdOrNull(this.instance);
 	}
 
 	/**
@@ -687,15 +683,13 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>{@link SteamId#account} is {@code null}.
 	 * </ul>
 	 *
+	 * <p>Delegates {@link ESteamAccount#getIdOrElse(ESteamAccount, Integer)}.
+	 *
 	 * @param defaultValue	default value to return on failure
 	 * @return				account type identifier or the defualt value
 	 */
 	public Integer getAccountTypeIdOrElse(Integer defaultValue) {
-		if (this.account == null) {
-			return defaultValue;
-		}
-
-		return this.account.getId();
+		return ESteamAccount.getIdOrElse(this.account, defaultValue);
 	}
 
 	/**
@@ -706,12 +700,14 @@ public final class SteamId implements Serializable, Cloneable {
 	 * <ul>
 	 *     <li>{@link SteamId#account} is {@code null}.
 	 * </ul>
+	 *
+	 * <p>Delegates {@link ESteamAccount#getIdOrElse(ESteamAccount, Supplier)}.
 	 *
 	 * @param defaultValueSupplier	supplier from which get the default
 	 * @return						account type identifier or the defualt value
 	 */
 	public Integer getAccountTypeIdOrElse(Supplier<Integer> defaultValueSupplier) {
-		return UwObject.getIfNull(this.getAccountTypeIdOrNull(), defaultValueSupplier);
+		return ESteamAccount.getIdOrElse(this.account, defaultValueSupplier);
 	}
 
 	/**
@@ -723,13 +719,12 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>{@link SteamId#account} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#getAccountTypeIdOrElse(Integer)}
-	 * w/ {@link USteamAccount#INVALID_ID} as the default value.
+	 * <p>Delegates {@link ESteamAccount#getIdOrInvalid(ESteamAccount)}.
 	 *
 	 * @return	account type identifier
 	 */
 	public Integer getAccountTypeIdOrInvalid() {
-		return this.getAccountTypeIdOrElse(USteamAccount.INVALID_ID);
+		return ESteamAccount.getIdOrInvalid(this.account);
 	}
 
 	/**
@@ -741,13 +736,12 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>{@link SteamId#account} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#getAccountTypeIdOrElse(Integer)}
-	 * w/ {@code null} as the default value.
+	 * <p>Delegates {@link ESteamAccount#getIdOrNull(ESteamAccount)}.
 	 *
 	 * @return	account type identifier or {@code null}
 	 */
 	public Integer getAccountTypeIdOrNull() {
-		return this.getAccountTypeIdOrElse((Integer) null);
+		return ESteamAccount.getIdOrNull(this.account);
 	}
 
 	/**
@@ -758,16 +752,14 @@ public final class SteamId implements Serializable, Cloneable {
 	 * <ul>
 	 *     <li>{@link SteamId#account} is {@code null}.
 	 * </ul>
+	 *
+	 * <p>Delegates {@link ESteamAccount#getCharOrElse(ESteamAccount, Character)}.
 	 *
 	 * @param defaultValue	default value to return on failure
 	 * @return				account type character or the default value
 	 */
 	public Character getAccountTypeCharOrElse(Character defaultValue) {
-		if (this.account == null) {
-			return defaultValue;
-		}
-
-		return this.account.getChar();
+		return ESteamAccount.getCharOrElse(this.account, defaultValue);
 	}
 
 	/**
@@ -779,11 +771,13 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>{@link SteamId#account} is {@code null}.
 	 * </ul>
 	 *
+	 * <p>Delegates {@link ESteamAccount#getCharOrElse(ESteamAccount, Supplier)}.
+	 *
 	 * @param defaultValueSupplier	supplier from which get the default value
 	 * @return						account type character or the default value
 	 */
 	public Character getAccountTypeCharOrElse(Supplier<Character> defaultValueSupplier) {
-		return UwObject.getIfNull(this.getAccountTypeCharOrNull(), defaultValueSupplier);
+		return ESteamAccount.getCharOrElse(this.account, defaultValueSupplier);
 	}
 
 	/**
@@ -795,13 +789,12 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>{@link SteamId#account} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#getAccountTypeCharOrElse(Character)}
-	 * w/ {@link USteamAccount#INVALID_CHAR} as the default value.
+	 * <p>Delegates {@link ESteamAccount#getCharOrInvalid(ESteamAccount)}.
 	 *
 	 * @return	account type character
 	 */
 	public Character getAccountTypeCharOrInvalid() {
-		return this.getAccountTypeCharOrElse(USteamAccount.INVALID_CHAR);
+		return ESteamAccount.getCharOrInvalid(this.account);
 	}
 
 	/**
@@ -813,13 +806,12 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>{@link SteamId#account} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#getAccountTypeCharOrElse(Character)}
-	 * w/ {@code null} as the default value.
+	 * <p>Delegates {@link ESteamAccount#getCharOrNull(ESteamAccount)}.
 	 *
 	 * @return	account type character or {@code null}
 	 */
 	public Character getAccountTypeCharOrNull() {
-		return this.getAccountTypeCharOrElse((Character) null);
+		return ESteamAccount.getCharOrNull(this.account);
 	}
 
 	/**
