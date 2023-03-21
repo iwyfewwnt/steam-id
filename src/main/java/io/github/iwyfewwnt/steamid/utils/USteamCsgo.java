@@ -120,7 +120,7 @@ public final class USteamCsgo {
 	 * @return				interface-friendly CS:GO friend code or the default value
 	 */
 	public static String fromXuidOrElse(Integer xuid, String defaultValue) {
-		if (SteamId.isSteamXuidInvalid(xuid) || MD5 == null) {
+		if (!SteamId.isSteamXuidValid(xuid) || MD5 == null) {
 			return defaultValue;
 		}
 

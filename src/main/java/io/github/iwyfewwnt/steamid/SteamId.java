@@ -859,6 +859,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * @return	boolean value that describes validity of this instance
 	 */
+	@SuppressWarnings("BooleanMethodIsAlwaysInverted")
 	public boolean isValid() {
 		if (this.xuid == null || this.universe == null
 				|| this.instance == null || this.account == null) {
@@ -884,16 +885,6 @@ public final class SteamId implements Serializable, Cloneable {
 	}
 
 	/**
-	 * Check if this instance is invalid.
-	 *
-	 * @return	boolean value that describes invalidity of this instance
-	 */
-	public boolean isInvalid() {
-		return !this.isValid();
-	}
-
-
-	/**
 	 * Get this instance as a static account key
 	 * or return a default value if failed.
 	 *
@@ -913,7 +904,7 @@ public final class SteamId implements Serializable, Cloneable {
 			return this.staticKeyCache;
 		}
 
-		if (this.isInvalid()) {
+		if (!this.isValid()) {
 			return defaultValue;
 		}
 
@@ -1015,7 +1006,7 @@ public final class SteamId implements Serializable, Cloneable {
 			return this.id64Cache;
 		}
 
-		if (this.isInvalid()) {
+		if (!this.isValid()) {
 			return defaultValue;
 		}
 
@@ -1105,7 +1096,7 @@ public final class SteamId implements Serializable, Cloneable {
 			return this.id2Cache;
 		}
 
-		if (this.isInvalid()) {
+		if (!this.isValid()) {
 			return defaultValue;
 		}
 
@@ -1185,7 +1176,7 @@ public final class SteamId implements Serializable, Cloneable {
 			return this.id3Cache;
 		}
 
-		if (this.isInvalid()) {
+		if (!this.isValid()) {
 			return defaultValue;
 		}
 
@@ -1287,7 +1278,7 @@ public final class SteamId implements Serializable, Cloneable {
 			return this.inviteCodeCache;
 		}
 
-		if (this.isInvalid()) {
+		if (!this.isValid()) {
 			return defaultValue;
 		}
 
@@ -1363,7 +1354,7 @@ public final class SteamId implements Serializable, Cloneable {
 			return this.csgoCodeCache;
 		}
 
-		if (this.isInvalid()) {
+		if (!this.isValid()) {
 			return defaultValue;
 		}
 
@@ -2008,36 +1999,6 @@ public final class SteamId implements Serializable, Cloneable {
 	}
 
 	/**
-	 * Check if the provided account type-32 identifier is invalid.
-	 *
-	 * @param xuid	integer value of the account type-32 identifier
-	 * @return		boolean value that descibes invalidity of the identifier
-	 */
-	public static boolean isSteamXuidInvalid(Integer xuid) {
-		return !isSteamXuidValid(xuid);
-	}
-
-	/**
-	 * Check if the provided account type-32 identifier is invalid.
-	 *
-	 * @param xuid	long value of the account type-32 identifier
-	 * @return		boolean value that descibes invalidity of the identifier
-	 */
-	public static boolean isSteamXuidInvalid(Long xuid) {
-		return !isSteamXuidValid(xuid);
-	}
-
-	/**
-	 * Check if the provided account type-32 identifier is invalid.
-	 *
-	 * @param xuid	string value of the account type-32 identifier
-	 * @return		booolean value that describes invalidity of the identifier
-	 */
-	public static boolean isSteamXuidInvalid(String xuid) {
-		return !isSteamXuidValid(xuid);
-	}
-
-	/**
 	 * Check if the provided account type-64 identifier is valid.
 	 *
 	 * @param id64	long value of the account type-64 identifier
@@ -2067,26 +2028,6 @@ public final class SteamId implements Serializable, Cloneable {
 		}
 
 		return false;
-	}
-
-	/**
-	 * Check if the provided account type-64 identifier is invalid.
-	 *
-	 * @param id64	long value of the account type-64 identifier
-	 * @return		boolean value that descibes invalidity of the identifier
-	 */
-	public static boolean isSteamId64Invalid(Long id64) {
-		return !isSteamId64Valid(id64);
-	}
-
-	/**
-	 * Check if the provided account type-64 identifier is invalid.
-	 *
-	 * @param id64	string value of the account type-64 identifier
-	 * @return		boolean value that descibes invalidity of the identifier
-	 */
-	public static boolean isSteamId64Invalid(String id64) {
-		return !isSteamId64Valid(id64);
 	}
 
 	/**
@@ -2141,36 +2082,6 @@ public final class SteamId implements Serializable, Cloneable {
 	}
 
 	/**
-	 * Check if the provided account type-2 identifier is invalid.
-	 *
-	 * @param id2	integer value of the type-2 identifier
-	 * @return		boolean value that describes invalidity of the identifier
-	 */
-	public static boolean isSteamId2Invalid(Integer id2) {
-		return !isSteamId2Valid(id2);
-	}
-
-	/**
-	 * Check if the provided account type-2 identifier is invalid.
-	 *
-	 * @param id2	long value of the type-2 identifier
-	 * @return		boolean value that describes invalidity of the identifier
-	 */
-	public static boolean isSteamId2Invalid(Long id2) {
-		return !isSteamId2Valid(id2);
-	}
-
-	/**
-	 * Check if the provided account type-2 identifier is invalid.
-	 *
-	 * @param id2	string value of the type-2 identifier
-	 * @return		boolean value that describes invalidity of the identifier
-	 */
-	public static boolean isSteamId2Invalid(String id2) {
-		return !isSteamId2Valid(id2);
-	}
-
-	/**
 	 * Check if the provided account type-3 identifier is valid.
 	 *
 	 * @param id3	string value of the account type-3 identifier
@@ -2198,16 +2109,6 @@ public final class SteamId implements Serializable, Cloneable {
 	}
 
 	/**
-	 * Check if the provided account type-3 identifier is invalid.
-	 *
-	 * @param id3	string value of the account type-3 identifier
-	 * @return		boolean value that describes invalidity of the identifier
-	 */
-	public static boolean isSteamId3Invalid(String id3) {
-		return !isSteamId3Valid(id3);
-	}
-
-	/**
 	 * Create a {@link SteamId} instance from the Steam account type-32 identifier
 	 * or return a default value if failed.
 	 *
@@ -2221,7 +2122,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return				new {@link SteamId} instance or the default value
 	 */
 	public static SteamId fromSteamXuidOrElse(Integer xuid, SteamId defaultValue) {
-		if (isSteamXuidInvalid(xuid)) {
+		if (!isSteamXuidValid(xuid)) {
 			return defaultValue;
 		}
 
@@ -2338,7 +2239,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return				new {@link SteamId} instance or the default value
 	 */
 	public static SteamId fromSteam64OrElse(Long id64, SteamId defaultValue) {
-		if (isSteamId64Invalid(id64)) {
+		if (!isSteamId64Valid(id64)) {
 			return defaultValue;
 		}
 

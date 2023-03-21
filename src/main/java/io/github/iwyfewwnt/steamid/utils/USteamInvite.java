@@ -92,7 +92,7 @@ public final class USteamInvite {
 	 * @return				Steam invite code or the default value
 	 */
 	public static String fromXuidOrElse(Integer xuid, String defaultValue) {
-		if (SteamId.isSteamXuidInvalid(xuid)) {
+		if (!SteamId.isSteamXuidValid(xuid)) {
 			return defaultValue;
 		}
 
