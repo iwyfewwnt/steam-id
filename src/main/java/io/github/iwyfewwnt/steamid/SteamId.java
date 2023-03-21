@@ -303,6 +303,116 @@ public final class SteamId implements Serializable, Cloneable {
 	}
 
 	/**
+	 * Check if this static key cached is not {@code null}.
+	 *
+	 * @return	{@code true} if not {@code null}
+	 * 			or {@code false} if {@code null}
+	 */
+	public boolean isStaticKeyCached() {
+		return this.staticKeyCache != null;
+	}
+
+	/**
+	 * Check if this account type-64 identifier cache is not {@code null}.
+	 *
+	 * @return	{@code true} if not {@code null}
+	 * 			or {@code false} if {@code null}
+	 */
+	public boolean isSteam64Cached() {
+		return this.id64Cache != null;
+	}
+
+	/**
+	 * Check if this account type-2 identifier cache is not {@code null}.
+	 *
+	 * @return	{@code true} if not {@code null}
+	 * 			or {@code false} if {@code null}
+	 */
+	public boolean isSteam2Cached() {
+		return this.id2Cache != null;
+	}
+
+	/**
+	 * Check if this account type-3 identifier cache is not {@code null}.
+	 *
+	 * @return	{@code true} if not {@code null}
+	 * 			or {@code false} if {@code null}
+	 */
+	public boolean isSteam3Cached() {
+		return this.id3Cache != null;
+	}
+
+	/**
+	 * Check if this invite code cache is not {@code null}.
+	 *
+	 * @return	{@code true} if not {@code null}
+	 * 			or {@code false} if {@code null}
+	 */
+	public boolean isInviteCodeCached() {
+		return this.inviteCodeCache != null;
+	}
+
+	/**
+	 * Check if this CS:GO friend code cache is not {@code null}.
+	 *
+	 * @return	{@code true} if not {@code null}
+	 * 			or {@code false} if {@code null}
+	 */
+	public boolean isCsgoCodeCached() {
+		return this.csgoCodeCache != null;
+	}
+
+	/**
+	 * Check if this /profiles/%id-64% URL cache is not {@code null}.
+	 *
+	 * @return	{@code true} if not {@code null}
+	 * 			or {@code false} if {@code null}
+	 */
+	public boolean isSteam64UrlCached() {
+		return this.id64UrlCache != null;
+	}
+
+	/**
+	 * Check if this /profiles/%id-3% URL cache is not {@code null}.
+	 *
+	 * @return	{@code true} if not {@code null}
+	 * 			or {@code false} if {@code null}
+	 */
+	public boolean isSteam3UrlCached() {
+		return this.id3UrlCache != null;
+	}
+
+	/**
+	 * Check if this /user/%invite-code% URL cache is not {@code null}.
+	 *
+	 * @return	{@code true} if not {@code null}
+	 * 			or {@code false} if {@code null}
+	 */
+	public boolean isSteamUserUrlCached() {
+		return this.userUrlCache != null;
+	}
+
+	/**
+	 * Check if this /p/%invite-code% URL cache is not {@code null}.
+	 *
+	 * @return	{@code true} if not {@code null}
+	 * 			or {@code false} if {@code null}
+	 */
+	public boolean isSteamInviteUrlCached() {
+		return this.inviteUrlCache != null;
+	}
+
+	/**
+	 * Check if this /profiles/%id-64% China URL cache is not {@code null}.
+	 *
+	 * @return	{@code true} if not {@code null}
+	 * 			or {@code false} if {@code null}
+	 */
+	public boolean isSteam64ChinaUrlCached() {
+		return this.chinaUrlCache != null;
+	}
+
+	/**
 	 * Get this unique account type-32 identifier
 	 * or return a default value if failed.
 	 *
