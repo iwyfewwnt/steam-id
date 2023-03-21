@@ -965,6 +965,105 @@ public final class SteamId implements Serializable, Cloneable {
 	}
 
 	/**
+	 * Get this static key cache.
+	 *
+	 * @return	static key cache
+	 */
+	public Long getStaticKeyCache() {
+		return this.staticKeyCache;
+	}
+
+	/**
+	 * Get this account type-64 identifier cache.
+	 *
+	 * @return	account type-64 identifier cache
+	 */
+	public Long getSteam64Cache() {
+		return this.id64Cache;
+	}
+
+	/**
+	 * Get this account type-2 identifier cache.
+	 *
+	 * @return	account type-2 identifier cache
+	 */
+	public String getSteam2Cache() {
+		return this.id2Cache;
+	}
+
+	/**
+	 * Get this account type-3 identifier cache.
+	 *
+	 * @return	account type-3 identifier cache
+	 */
+	public String getSteam3Cache() {
+		return this.id3Cache;
+	}
+
+	/**
+	 * Get this invite code cache.
+	 *
+	 * @return	invite code cache
+	 */
+	public String getInviteCodeCache() {
+		return this.inviteCodeCache;
+	}
+
+	/**
+	 * Get this CS:GO friend code cache.
+	 *
+	 * @return	CS:GO friend code cache
+	 */
+	public String getCsgoCodeCache() {
+		return this.csgoCodeCache;
+	}
+
+	/**
+	 * Get this /profiles/%id-64% URL cache.
+	 *
+	 * @return	/profiles/%id-64% URL cache
+	 */
+	public String getSteam64UrlCache() {
+		return this.id64UrlCache;
+	}
+
+	/**
+	 * Get this /profiles/%id-3% URL cache.
+	 *
+	 * @return	/profiles/%id-3% URL cache
+	 */
+	public String getSteam3UrlCache() {
+		return this.id3UrlCache;
+	}
+
+	/**
+	 * Get this /user/%invite-code% URL cache.
+	 *
+	 * @return	/user/%invite-code% URL cache
+	 */
+	public String getSteamUserUrlCache() {
+		return this.userUrlCache;
+	}
+
+	/**
+	 * Get this /p/%invite-code% URL cache.
+	 *
+	 * @return	/p/%invite-code% URL cache
+	 */
+	public String getSteamInviteUrlCache() {
+		return this.inviteUrlCache;
+	}
+
+	/**
+	 * Get this /profiles/%id-64% China URL cache.
+	 *
+	 * @return	/profiles/%id-64% China URL cache
+	 */
+	public String getStema64ChinaUrlCache() {
+		return this.chinaUrlCache;
+	}
+
+	/**
 	 * Check if this instance is valid.
 	 *
 	 * @return	boolean value that describes validity of this instance
