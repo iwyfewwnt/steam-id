@@ -55,8 +55,6 @@
 
         <uwutils.version>0.2.0-SNAPSHOT</uwutils.version>
 
-        <junit.version>5.9.1</junit.version>
-
         <javadoc.stylesheet.filePath>${project.basedir}/src/main/resources/javadoc-drakula.css</javadoc.stylesheet.filePath>
 
         <!-- Maven Plugin Versions -->
@@ -69,27 +67,10 @@
     </properties>
 
     <dependencies>
-        <!-- Main Dependencies -->
         <dependency>
             <groupId>io.github.iwyfewwnt</groupId>
             <artifactId>uwutils</artifactId>
             <version>${uwutils.version}</version>
-        </dependency>
-
-        <!-- Test Dependencies -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-            <optional>true</optional>
         </dependency>
     </dependencies>
 
