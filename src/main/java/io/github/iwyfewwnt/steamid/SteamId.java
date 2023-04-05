@@ -22,6 +22,7 @@ import io.github.iwyfewwnt.steamid.types.ESteamUniverse;
 import io.github.iwyfewwnt.steamid.utils.*;
 import io.github.iwyfewwnt.uwutils.UwObject;
 import io.github.iwyfewwnt.uwutils.UwString;
+import io.github.iwyfewwnt.uwutils.UwSystem;
 
 import java.io.Serializable;
 import java.math.BigInteger;
@@ -3084,6 +3085,8 @@ public final class SteamId implements Serializable, Cloneable {
 			return null;
 		}
 
+		UwSystem.disableErrorPrint();
+
 		if (obj instanceof Integer) {
 			return fromSteamXuidOrElse((Integer) obj, defaultValue);
 		}
@@ -3130,6 +3133,8 @@ public final class SteamId implements Serializable, Cloneable {
 				return val;
 			}
 		}
+
+		UwSystem.enableErrorPrint();
 
 		return defaultValue;
 	}
