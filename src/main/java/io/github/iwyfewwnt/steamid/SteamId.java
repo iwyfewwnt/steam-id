@@ -2806,7 +2806,7 @@ public final class SteamId implements Serializable, Cloneable {
 	public static SteamId fromCsgoCodeOrElse(String code, SteamId defaultValue) {
 		Integer xuid = USteamCsgo.toXuidOrNull(code);
 
-		if (code == null) {
+		if (xuid == null) {
 			return defaultValue;
 		}
 
