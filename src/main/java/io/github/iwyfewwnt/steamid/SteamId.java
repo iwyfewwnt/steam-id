@@ -3085,6 +3085,7 @@ public final class SteamId implements Serializable, Cloneable {
 			return null;
 		}
 
+		UwSystem.setupParallelErrorPrint();
 		UwSystem.disableErrorPrint();
 
 		if (obj instanceof Integer) {
@@ -3134,7 +3135,7 @@ public final class SteamId implements Serializable, Cloneable {
 			}
 		}
 
-		UwSystem.enableErrorPrint();
+		UwSystem.backupSystemErrorPrint();
 
 		return defaultValue;
 	}
