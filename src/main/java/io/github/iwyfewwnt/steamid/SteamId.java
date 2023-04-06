@@ -3081,12 +3081,42 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return				new {@link SteamId} instance or the default value
 	 */
 	public static SteamId fromSteamAnyOrElse(Object obj, SteamId defaultValue) {
-		if (obj == null) {
-			return null;
-		}
+		return UwSystem.disableErrorPrint(() -> {
+			return fromSteamAnyOrElse0(obj, defaultValue);
+		});
+	}
 
-		UwSystem.setupParallelErrorPrint();
-		UwSystem.disableErrorPrint();
+	/**
+	 * Create a {@link SteamId} instance from the Steam related object
+	 * or return a default value if failed.
+	 *
+	 * <p>Wraps all these methods in order:
+	 * <ul>
+	 *     <li>{@link SteamId#fromSteamXuidOrElse(Integer, SteamId)}
+	 *     <li>{@link SteamId#fromSteam64OrElse(Long, SteamId)}
+	 *     <li>{@link SteamId#fromSteamXuidOrElse(String, SteamId)}
+	 *     <li>{@link SteamId#fromSteam64OrElse(String, SteamId)}
+	 *     <li>{@link SteamId#fromSteam2OrElse(String, SteamId)}
+	 *     <li>{@link SteamId#fromSteam3OrElse(String, SteamId)}
+	 *     <li>{@link SteamId#fromInviteCodeOrElse(String, SteamId)}
+	 *     <li>{@link SteamId#fromCsgoCodeOrElse(String, SteamId)}
+	 *     <li>{@link SteamId#fromSteamUrlOrElse(String, SteamId)}
+	 * </ul>
+	 *
+	 * <p>Possible failure case:
+	 * <ul>
+	 *     <li>Object type doesn't match w/ Integer, Long, and String classes
+	 *     <li>Provided argument is invalid for the all implemented methods
+	 * </ul>
+	 *
+	 * @param obj			Steam related object
+	 * @param defaultValue 	default value to return on failure
+	 * @return				new {@link SteamId} instance or the default value
+	 */
+	private static SteamId fromSteamAnyOrElse0(Object obj, SteamId defaultValue) {
+		if (obj == null) {
+			return defaultValue;
+		}
 
 		if (obj instanceof Integer) {
 			return fromSteamXuidOrElse((Integer) obj, defaultValue);
@@ -3134,8 +3164,6 @@ public final class SteamId implements Serializable, Cloneable {
 				return val;
 			}
 		}
-
-		UwSystem.backupSystemErrorPrint();
 
 		return defaultValue;
 	}
