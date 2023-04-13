@@ -254,7 +254,7 @@ public enum ESteamAccount implements Serializable {
 
 	/**
 	 * Get the account type identifier from the provided {@link ESteamAccount} instance
-	 * or return the {@value USteamAccount#BASE_ID} value if failed.
+	 * or return the {@link USteamAccount#BASE_ID} value if failed.
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
@@ -265,7 +265,7 @@ public enum ESteamAccount implements Serializable {
 	 * w/ {@link USteamAccount#BASE_ID} as the default value.
 	 *
 	 * @param account	enum value of the account type from which get the identifier
-	 * @return			account type identifier or the {@value USteamAccount#BASE_ID} value
+	 * @return			account type identifier or the {@link USteamAccount#BASE_ID} value
 	 */
 	public static Integer getIdOrBase(ESteamAccount account) {
 		return getIdOrElse(account, USteamAccount.BASE_ID);
@@ -330,7 +330,7 @@ public enum ESteamAccount implements Serializable {
 
 	/**
 	 * Get the account type character from the provided {@link ESteamAccount} instance
-	 * or return the {@value USteamAccount#BASE_CHAR} value if failed.
+	 * or return the {@link USteamAccount#BASE_CHAR} value if failed.
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
@@ -341,7 +341,7 @@ public enum ESteamAccount implements Serializable {
 	 * w/ {@link USteamAccount#BASE_CHAR} as the default value.
 	 *
 	 * @param account	enum value of the account type from which get the character
-	 * @return			account type character or the {@value USteamAccount#BASE_CHAR} value
+	 * @return			account type character or the {@link USteamAccount#BASE_CHAR} value
 	 */
 	public static Character getCharOrBase(ESteamAccount account) {
 		return getCharOrElse(account, USteamAccount.BASE_CHAR);

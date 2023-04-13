@@ -185,7 +185,7 @@ public enum ESteamInstance implements Serializable {
 
 	/**
 	 * Get the account instance type identifier from the provided {@link ESteamInstance} instance
-	 * or return the {@value USteamInstance#MIN} value if failed.
+	 * or return the {@link USteamInstance#MIN} value if failed.
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
@@ -196,7 +196,7 @@ public enum ESteamInstance implements Serializable {
 	 * w/ {@link USteamInstance#MIN} as the default value.
 	 *
 	 * @param instance	enum value of the account instance type from which get the identifier
-	 * @return			account instance type identifier or the {@value USteamInstance#MIN} value
+	 * @return			account instance type identifier or the {@link USteamInstance#MIN} value
 	 */
 	public static Integer getIdOrBase(ESteamInstance instance) {
 		return getIdOrElse(instance, USteamInstance.MIN);

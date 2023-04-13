@@ -62,8 +62,8 @@ public final class USteamInvite {
 	 * or return a default value if failed.
 	 *
 	 * <p>Converts a unique account identifier to hex string and replaces characters using two
-	 * bases in order - {@value USteamInvite#XUID_BASE} and {@value USteamInvite#CODE_BASE}.
-	 * Then places {@value USteamInvite#CODE_DELIMITER} if the length of the resulting
+	 * bases in order - {@link USteamInvite#XUID_BASE} and {@link USteamInvite#CODE_BASE}.
+	 * Then places {@link USteamInvite#CODE_DELIMITER} if the length of the resulting
 	 * code is greater than three.
 	 *
 	 * <p>Possible failure cases:
@@ -119,8 +119,8 @@ public final class USteamInvite {
 	 * or return a default value if failed.
 	 *
 	 * <p>Converts a unique account identifier to hex string and replaces characters using two
-	 * bases in order - {@value USteamInvite#XUID_BASE} and {@value USteamInvite#CODE_BASE}.
-	 * Then places {@value USteamInvite#CODE_DELIMITER} if the length of the resulting
+	 * bases in order - {@link USteamInvite#XUID_BASE} and {@link USteamInvite#CODE_BASE}.
+	 * Then places {@link USteamInvite#CODE_DELIMITER} if the length of the resulting
 	 * code is greater than three.
 	 *
 	 * <p>Possible failure cases:
@@ -157,8 +157,8 @@ public final class USteamInvite {
 	 * or return an empty string if failed.
 	 *
 	 * <p>Converts a unique account identifier to hex string and replaces characters using two
-	 * bases in order - {@value USteamInvite#XUID_BASE} and {@value USteamInvite#CODE_BASE}.
-	 * Then places {@value USteamInvite#CODE_DELIMITER} if the length of the resulting
+	 * bases in order - {@link USteamInvite#XUID_BASE} and {@link USteamInvite#CODE_BASE}.
+	 * Then places {@link USteamInvite#CODE_DELIMITER} if the length of the resulting
 	 * code is greater than three.
 	 *
 	 * <p>Possible failure cases:
@@ -197,8 +197,8 @@ public final class USteamInvite {
 	 * or return {@code null} if failed.
 	 *
 	 * <p>Converts a unique account identifier to hex string and replaces characters using two
-	 * bases in order - {@value USteamInvite#XUID_BASE} and {@value USteamInvite#CODE_BASE}.
-	 * Then places {@value USteamInvite#CODE_DELIMITER} if the length of the resulting
+	 * bases in order - {@link USteamInvite#XUID_BASE} and {@link USteamInvite#CODE_BASE}.
+	 * Then places {@link USteamInvite#CODE_DELIMITER} if the length of the resulting
 	 * code is greater than three.
 	 *
 	 * <p>Possible failure cases:
@@ -236,8 +236,8 @@ public final class USteamInvite {
 	 * Convert a Steam invite code to a unique Steam account identifier
 	 * or return a default value if failed.
 	 *
-	 * <p>Removes {@value USteamInvite#CODE_DELIMITER} and replaces characters using two
-	 * bases in order - {@value USteamInvite#CODE_BASE} and {@value USteamInvite#XUID_BASE}.
+	 * <p>Removes {@link USteamInvite#CODE_DELIMITER} and replaces characters using two
+	 * bases in order - {@link USteamInvite#CODE_BASE} and {@link USteamInvite#XUID_BASE}.
 	 * Then parses the resulting code to an unsigned 64-bit integer.
 	 *
 	 * <p>Possible failure exceptions:
@@ -299,8 +299,8 @@ public final class USteamInvite {
 	 * Convert a Steam invite code to a unique Steam account identifier
 	 * or return a default value if failed.
 	 *
-	 * <p>Removes {@value USteamInvite#CODE_DELIMITER} and replaces characters using two
-	 * bases in order - {@value USteamInvite#CODE_BASE} and {@value USteamInvite#XUID_BASE}.
+	 * <p>Removes {@link USteamInvite#CODE_DELIMITER} and replaces characters using two
+	 * bases in order - {@link USteamInvite#CODE_BASE} and {@link USteamInvite#XUID_BASE}.
 	 * Then parses the resulting code to an unsigned 64-bit integer.
 	 *
 	 * <p>Possible failure exceptions:
@@ -340,8 +340,8 @@ public final class USteamInvite {
 	 * Convert a Steam invite code to a unique Steam account identifier
 	 * or return {@code 0} value if failed.
 	 *
-	 * <p>Removes {@value USteamInvite#CODE_DELIMITER} and replaces characters using two
-	 * bases in order - {@value USteamInvite#CODE_BASE} and {@value USteamInvite#XUID_BASE}.
+	 * <p>Removes {@link USteamInvite#CODE_DELIMITER} and replaces characters using two
+	 * bases in order - {@link USteamInvite#CODE_BASE} and {@link USteamInvite#XUID_BASE}.
 	 * Then parses the resulting code to an unsigned 64-bit integer.
 	 *
 	 * <p>Possible failure exceptions:
@@ -383,8 +383,8 @@ public final class USteamInvite {
 	 * Convert a Steam invite code to a unique Steam account identifier
 	 * or return {@code null} if failed.
 	 *
-	 * <p>Removes {@value USteamInvite#CODE_DELIMITER} and replaces characters using two
-	 * bases in order - {@value USteamInvite#CODE_BASE} and {@value USteamInvite#XUID_BASE}.
+	 * <p>Removes {@link USteamInvite#CODE_DELIMITER} and replaces characters using two
+	 * bases in order - {@link USteamInvite#CODE_BASE} and {@link USteamInvite#XUID_BASE}.
 	 * Then parses the resulting code to an unsigned 64-bit integer.
 	 *
 	 * <p>Possible failure exceptions:

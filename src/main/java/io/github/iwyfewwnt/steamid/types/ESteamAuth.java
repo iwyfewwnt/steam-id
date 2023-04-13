@@ -153,7 +153,7 @@ public enum ESteamAuth implements Serializable {
 
 	/**
 	 * Get the account authentication type identifier from the provided {@link ESteamAuth} instance
-	 * or return the {@value USteamAuth#MIN} value if failed.
+	 * or return the {@link USteamAuth#MIN} value if failed.
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
@@ -164,7 +164,7 @@ public enum ESteamAuth implements Serializable {
 	 * w/ {@link USteamAuth#MIN} as the default value.
 	 *
 	 * @param auth	enum value of the account authentication type from which get the identifier
-	 * @return		account authentication type identifier or the {@value USteamAuth#MIN} value
+	 * @return		account authentication type identifier or the {@link USteamAuth#MIN} value
 	 */
 	public static Integer getIdOrBase(ESteamAuth auth) {
 		return getIdOrElse(auth, USteamAuth.MIN);

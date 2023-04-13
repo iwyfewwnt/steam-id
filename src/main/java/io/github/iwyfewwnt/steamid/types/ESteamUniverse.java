@@ -199,7 +199,7 @@ public enum ESteamUniverse implements Serializable {
 	 * w/ {@link USteamUniverse#BASE} as the default value.
 	 *
 	 * @param universe	enum value of the account universe type from which get the identifier
-	 * @return			account universe type identifier or the {@value USteamUniverse#BASE} value
+	 * @return			account universe type identifier or the {@link USteamUniverse#BASE} value
 	 */
 	public static Integer getIdOrBase(ESteamUniverse universe) {
 		return getIdOrElse(universe, USteamUniverse.BASE);
