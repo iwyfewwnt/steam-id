@@ -24,7 +24,6 @@ import io.github.iwyfewwnt.uwutils.UwObject;
 
 import java.io.Serializable;
 import java.util.Map;
-import java.util.StringJoiner;
 import java.util.function.Supplier;
 
 /**
@@ -143,9 +142,9 @@ public enum ESteamUniverse implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return new StringJoiner(", ", SIMPLE_NAME + "::" + this.name() + "[", "]")
-				.add("id=" + this.id)
-				.toString();
+		return SIMPLE_NAME + "::" + this.name() + "["
+				+ "id=" + this.id
+				+ "]";
 	}
 
 	/**

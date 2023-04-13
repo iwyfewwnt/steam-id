@@ -21,7 +21,6 @@ import io.github.iwyfewwnt.uwutils.*;
 
 import java.io.Serializable;
 import java.util.Map;
-import java.util.StringJoiner;
 import java.util.function.Supplier;
 
 /**
@@ -105,9 +104,9 @@ public enum ESteamEndpoint implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return new StringJoiner(", ", SIMPLE_NAME + "::" + this.name() + "[", "]")
-				.add("endpoint=\"" + this.endpoint + "\"")
-				.toString();
+		return SIMPLE_NAME + "::" + this.name() + "["
+				+ "endpoint=\"" + this.endpoint + "\""
+				+ "]";
 	}
 
 	/**

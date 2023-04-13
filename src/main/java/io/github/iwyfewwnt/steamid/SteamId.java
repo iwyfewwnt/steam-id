@@ -27,7 +27,6 @@ import io.github.iwyfewwnt.uwutils.UwSystem;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Objects;
-import java.util.StringJoiner;
 import java.util.function.Supplier;
 import java.util.regex.Matcher;
 
@@ -2143,12 +2142,12 @@ public final class SteamId implements Serializable, Cloneable {
 	 */
 	@Override
 	public String toString() {
-		return new StringJoiner(", ", SIMPLE_NAME + "[", "]")
-				.add("xuid=" + this.xuid)
-				.add("universe=" + this.universe)
-				.add("instance=" + this.instance)
-				.add("account=" + this.account)
-				.toString();
+		return SIMPLE_NAME + "["
+				+ "xuid=" + this.xuid
+				+ ", universe=" + this.universe
+				+ ", instance=" + this.instance
+				+ ", account=" + this.account
+				+ "]";
 	}
 
 	/**
@@ -3699,6 +3698,7 @@ public final class SteamId implements Serializable, Cloneable {
 			}
 
 			Builder that = (Builder) obj;
+
 			return Objects.equals(this.xuid, that.xuid)
 					&& this.eUniverse == that.eUniverse
 					&& this.eInstance == that.eInstance
@@ -3731,16 +3731,16 @@ public final class SteamId implements Serializable, Cloneable {
 		 */
 		@Override
 		public String toString() {
-			return new StringJoiner(", ", SIMPLE_NAME + "[", "]")
-					.add("xuid=" + this.xuid)
-					.add("eUniverse=" + this.eUniverse)
-					.add("eInstance=" + this.eInstance)
-					.add("eAccount=" + this.eAccount)
-					.add("iUniverse=" + this.iUniverse)
-					.add("iInstance=" + this.iInstance)
-					.add("iAccount=" + this.iAccount)
-					.add("cAccount='" + this.cAccount + "'")
-					.toString();
+			return SIMPLE_NAME + "["
+					+ "xuid=" + this.xuid
+					+ ", eUniverse=" + this.eUniverse
+					+ ", eInstance=" + this.eInstance
+					+ ", eAccount=" + this.eAccount
+					+ ", iUniverse=" + this.iUniverse
+					+ ", iInstance=" + this.iInstance
+					+ ", iAccount=" + this.iAccount
+					+ ", cAccount='" + this.cAccount + "'"
+					+ "]";
 		}
 
 		/**
