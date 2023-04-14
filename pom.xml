@@ -30,7 +30,7 @@
     <scm>
         <connection>scm:git:git://github.com/iwyfewwnt/steam-id.git</connection>
         <developerConnection>scm:git:ssh://github.com:iwyfewwnt/steam-id.git</developerConnection>
-        <url>https://github.com/iwyfewwnt/steam-id/tree/master</url>
+        <url>https://github.com/iwyfewwnt/steam-id/tree/main</url>
     </scm>
 
     <distributionManagement>
