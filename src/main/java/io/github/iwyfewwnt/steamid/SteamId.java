@@ -38,7 +38,7 @@ import java.util.regex.Matcher;
  * includes a lot of methods to convert
  * and parse to/from any Steam related data.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "MethodDoesntCallSuperMethod"})
 public final class SteamId implements Serializable, Cloneable {
 
 	/**
@@ -2155,11 +2155,6 @@ public final class SteamId implements Serializable, Cloneable {
 	 */
 	@Override
 	public SteamId clone() {
-		try {
-			return (SteamId) super.clone();
-		} catch (CloneNotSupportedException ignored) {
-		}
-
 		return new SteamId(this);
 	}
 
@@ -3748,11 +3743,6 @@ public final class SteamId implements Serializable, Cloneable {
 		 */
 		@Override
 		public Builder clone() {
-			try {
-				return (Builder) super.clone();
-			} catch (CloneNotSupportedException ignored) {
-			}
-
 			return new Builder(this);
 		}
 	}
