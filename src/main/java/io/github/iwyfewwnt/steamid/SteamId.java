@@ -136,57 +136,57 @@ public final class SteamId implements Serializable, Cloneable {
 	/**
 	 * A cache of the conversion to a static account key.
 	 */
-	private Long staticKeyCache;
+	private transient Long staticKeyCache;
 
 	/**
 	 * A cache of the conversion to an account type-64 identifier.
 	 */
-	private Long id64Cache;
+	private transient Long id64Cache;
 
 	/**
 	 * A cache of the conversion to an account type-2 identifier.
 	 */
-	private String id2Cache;
+	private transient String id2Cache;
 
 	/**
 	 * A cache of the conversion to an account type-3 identifier.
 	 */
-	private String id3Cache;
+	private transient String id3Cache;
 
 	/**
 	 * A cache of the conversion to a Steam invite code.
 	 */
-	private String inviteCodeCache;
+	private transient String inviteCodeCache;
 
 	/**
 	 * A cache of the convertsion to a CS:GO friend code.
 	 */
-	private String csgoCodeCache;
+	private transient String csgoCodeCache;
 
 	/**
 	 * A cache of the conversion to a /profiles/%id-64% URL.
 	 */
-	private String id64UrlCache;
+	private transient String id64UrlCache;
 
 	/**
 	 * A cache of the conversion to a /profiles/%id-3%.
 	 */
-	private String id3UrlCache;
+	private transient String id3UrlCache;
 
 	/**
 	 * A cache of the conversion to a /user/%invite-code% URL.
 	 */
-	private String userUrlCache;
+	private transient String userUrlCache;
 
 	/**
 	 * A cache of the conversion to a /p/%invite-code% URL.
 	 */
-	private String inviteUrlCache;
+	private transient String inviteUrlCache;
 
 	/**
 	 * A cache of the conversion to a China /profiles/%id-64% URL.
 	 */
-	private String chinaUrlCache;
+	private transient String chinaUrlCache;
 
 	/**
 	 * Intialize a {@link SteamId} instance.
