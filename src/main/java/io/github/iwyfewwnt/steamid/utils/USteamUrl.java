@@ -70,8 +70,20 @@ public final class USteamUrl {
 	 * @throws IllegalArgumentException	if domain is {@code null} or endpoint is {@code null}
 	 */
 	private static String url(String domain, String endpoint) {
-		if (domain == null || endpoint == null) {
-			throw new IllegalArgumentException();
+		if (domain == null) {
+			throw new IllegalArgumentException("Domain mustn't be <null>");
+		}
+
+		if (domain.isEmpty()) {
+			throw new IllegalArgumentException("Domain mustn't be <empty>");
+		}
+
+		if (endpoint == null) {
+			throw new IllegalArgumentException("Endpoint mustn't be <null>");
+		}
+
+		if (endpoint.isEmpty()) {
+			throw new IllegalArgumentException("Endpoint mustn't be <empty>");
 		}
 
 		return String.format(URL_FMT, domain, endpoint);

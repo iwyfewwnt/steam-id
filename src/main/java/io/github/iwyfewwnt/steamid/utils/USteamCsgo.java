@@ -466,7 +466,11 @@ public final class USteamCsgo {
 	@SuppressWarnings("SameParameterValue")
 	private static MessageDigest initMessageDigest(String algorithm) {
 		if (algorithm == null) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Algorithm mustn't be <null>");
+		}
+
+		if (algorithm.isEmpty()) {
+			throw new IllegalArgumentException("Algorithm mustn't be <empty>");
 		}
 
 		try {
