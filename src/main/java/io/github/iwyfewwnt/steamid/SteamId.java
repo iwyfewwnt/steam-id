@@ -169,7 +169,7 @@ public final class SteamId implements Serializable, Cloneable {
 	private transient String id64UrlCache;
 
 	/**
-	 * A cache of the conversion to a /profiles/%id-3%.
+	 * A cache of the conversion to a /profiles/%id-3% URL.
 	 */
 	private transient String id3UrlCache;
 
