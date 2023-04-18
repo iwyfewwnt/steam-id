@@ -63,9 +63,9 @@ public final class USteamUrl {
 	/**
 	 * Make a Steam URL.
 	 *
-	 * @param domain		Steam domain to include in URL
-	 * @param endpoint		Steam endpoint to include in URL
-	 * @return				Steam URL pointing to the endpoint w/ specified domain
+	 * @param domain	Steam domain to include in URL
+	 * @param endpoint	Steam endpoint to include in URL
+	 * @return			Steam URL pointing to the endpoint w/ specified domain
 	 *
 	 * @throws IllegalArgumentException	if domain is {@code null} or endpoint is {@code null}
 	 */

@@ -233,7 +233,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * <p>Wraps {@link SteamId#SteamId(Integer, ESteamUniverse, ESteamInstance, ESteamAccount)}
 	 * w/ {@link ESteamUniverse#PUBLIC}, {@link ESteamInstance#DESKTOP}, and {@link ESteamAccount#INDIVIDUAL}.
 	 *
-	 * @param xuid		integer value of the account type-32 identifier
+	 * @param xuid	integer value of the account type-32 identifier
 	 */
 	private SteamId(Integer xuid) {
 		this(xuid, ESteamUniverse.PUBLIC, ESteamInstance.DESKTOP, ESteamAccount.INDIVIDUAL);
@@ -1344,7 +1344,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * <p>Wraps {@link SteamId#toSteam2OrElse(String)}
 	 * w/ {@link UwString#EMPTY} as the default value.
 	 *
-	 * @return				string value of the unique account type-2 identifier or the empty one
+	 * @return	string value of the unique account type-2 identifier or the empty one
 	 */
 	public String toSteam2OrEmpty() {
 		return this.toSteam2OrElse(UwString.EMPTY);
@@ -1362,7 +1362,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * <p>Wraps {@link SteamId#toSteam2OrElse(String)}
 	 * w/ {@code null} as the default value.
 	 *
-	 * @return				string value of the unique account type-2 identifier or {@code null}
+	 * @return	string value of the unique account type-2 identifier or {@code null}
 	 */
 	public String toSteam2OrNull() {
 		return this.toSteam2OrElse((String) null);
@@ -1522,7 +1522,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * <p>Wraps {@link SteamId#toInviteCodeOrElse(String)}
 	 * w/ {@link UwString#EMPTY} as the default value.
 	 *
-	 * @return				string value of the invite code or the empty one
+	 * @return	string value of the invite code or the empty one
 	 */
 	public String toInviteCodeOrEmpty() {
 		return this.toInviteCodeOrElse(UwString.EMPTY);
@@ -1540,7 +1540,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * <p>Wraps {@link SteamId#toInviteCodeOrElse(String)}
 	 * w/ {@code null} as the default value.
 	 *
-	 * @return				string value of the invite code or {@code null}
+	 * @return	string value of the invite code or {@code null}
 	 */
 	public String toInviteCodeOrNull() {
 		return this.toInviteCodeOrElse((String) null);
@@ -2718,8 +2718,8 @@ public final class SteamId implements Serializable, Cloneable {
 	 * <p>Wraps {@link SteamId#fromSteam3OrElse(String, SteamId)}
 	 * w/ {@code null} as the default value.
 	 *
-	 * @param id3			string value of the account type-3 identifier
-	 * @return				new {@link SteamId} instance or {@code null}
+	 * @param id3	string value of the account type-3 identifier
+	 * @return		new {@link SteamId} instance or {@code null}
 	 */
 	public static SteamId fromSteam3OrNull(String id3) {
 		return fromSteam3OrElse(id3, (SteamId) null);

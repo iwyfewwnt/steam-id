@@ -251,8 +251,8 @@ public enum ESteamInstance implements Serializable {
 	 * <p>Wraps {@link ESteamInstance#fromIdOrElse(Integer, ESteamInstance)}
 	 * w/ {@link ESteamInstance#MIN} as the default value.
 	 *
-	 * @param id			account instance type identifier of the instance
-	 * @return				associated {@link ESteamInstance} instance or the {@link ESteamInstance#MIN} value
+	 * @param id	account instance type identifier of the instance
+	 * @return		associated {@link ESteamInstance} instance or the {@link ESteamInstance#MIN} value
 	 */
 	public static ESteamInstance fromIdOrBase(Integer id) {
 		return fromIdOrElse(id, MIN);
@@ -265,8 +265,8 @@ public enum ESteamInstance implements Serializable {
 	 * <p>Wraps {@link ESteamInstance#fromIdOrElse(Integer, ESteamInstance)}
 	 * w/ {@code null} as the default value.
 	 *
-	 * @param id			account instance type identifier of the instance
-	 * @return				associated {@link ESteamInstance} instance or {@code null}
+	 * @param id	account instance type identifier of the instance
+	 * @return		associated {@link ESteamInstance} instance or {@code null}
 	 */
 	public static ESteamInstance fromIdOrNull(Integer id) {
 		return fromIdOrElse(id, (ESteamInstance) null);
@@ -303,8 +303,8 @@ public enum ESteamInstance implements Serializable {
 	 * <p>Wraps {@link ESteamInstance#fromIndexOrElse(Integer, ESteamInstance)}
 	 * w/ {@link ESteamInstance#MIN} as the default value.
 	 *
-	 * @param index			index of the instance
-	 * @return				associated {@link ESteamInstance} instance or the {@link ESteamInstance#MIN} value
+	 * @param index		index of the instance
+	 * @return			associated {@link ESteamInstance} instance or the {@link ESteamInstance#MIN} value
 	 */
 	public static ESteamInstance fromIndexOrBase(Integer index) {
 		return fromIndexOrElse(index, MIN);
@@ -317,8 +317,8 @@ public enum ESteamInstance implements Serializable {
 	 * <p>Wraps {@link ESteamInstance#fromIndexOrElse(Integer, ESteamInstance)}
 	 * w/ {@code null} as the default value.
 	 *
-	 * @param index			index of the instance
-	 * @return				associated {@link ESteamInstance} instance or {@code null}
+	 * @param index		index of the instance
+	 * @return			associated {@link ESteamInstance} instance or {@code null}
 	 */
 	public static ESteamInstance fromIndexOrNull(Integer index) {
 		return fromIndexOrElse(index, (ESteamInstance) null);

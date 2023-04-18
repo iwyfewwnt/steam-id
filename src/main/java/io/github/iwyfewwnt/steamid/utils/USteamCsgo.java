@@ -205,8 +205,8 @@ public final class USteamCsgo {
 	 * }</pre>
 	 * <hr>
 	 *
-	 * @param xuid			Steam account identifier to convert
-	 * @return				interface-friendly CS:GO friend code or the empty string
+	 * @param xuid	Steam account identifier to convert
+	 * @return		interface-friendly CS:GO friend code or the empty string
 	 */
 	public static String fromXuidOrEmpty(Integer xuid) {
 		return fromXuidOrElse(xuid, UwString.EMPTY);
@@ -242,8 +242,8 @@ public final class USteamCsgo {
 	 * }</pre>
 	 * <hr>
 	 *
-	 * @param xuid			Steam account identifier to convert
-	 * @return				interface-friendly CS:GO friend code or {@code null}
+	 * @param xuid	Steam account identifier to convert
+	 * @return		interface-friendly CS:GO friend code or {@code null}
 	 */
 	public static String fromXuidOrNull(Integer xuid) {
 		return fromXuidOrElse(xuid, (String) null);

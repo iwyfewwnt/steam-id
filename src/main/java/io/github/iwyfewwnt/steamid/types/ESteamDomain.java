@@ -209,8 +209,8 @@ public enum ESteamDomain implements Serializable {
 	 * <p>Wraps {@link ESteamDomain#fromDomainOrElse(String, ESteamDomain)}
 	 * w/ {@code null} as the default value.
 	 *
-	 * @param domain		domain string of the instance
-	 * @return				associated {@link ESteamDomain} instance or {@code null}
+	 * @param domain	domain string of the instance
+	 * @return			associated {@link ESteamDomain} instance or {@code null}
 	 */
 	public static ESteamDomain fromDomainOrNull(String domain) {
 		return fromDomainOrElse(domain, (ESteamDomain) null);

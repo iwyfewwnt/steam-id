@@ -166,8 +166,8 @@ public enum ESteamVanity implements Serializable {
 	 * <p>Wraps {@link ESteamVanity#getIdOrElse(ESteamVanity, Integer)}
 	 * w/ {@code null} as the default value.
 	 *
-	 * @param vanity		enum value of the vanity URL type from which get the identifier
-	 * @return				vanity URL type identifier or {@code null}
+	 * @param vanity	enum value of the vanity URL type from which get the identifier
+	 * @return			vanity URL type identifier or {@code null}
 	 */
 	public static Integer getIdOrNull(ESteamVanity vanity) {
 		return getIdOrElse(vanity, (Integer) null);

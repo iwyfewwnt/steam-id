@@ -216,8 +216,8 @@ public enum ESteamEndpoint implements Serializable {
 	 * <p>Wraps {@link ESteamEndpoint#fromEndpointOrElse(String, ESteamEndpoint)}
 	 * w/ {@code null} as the default value.
 	 *
-	 * @param endpoint		endpoint string of the instance
-	 * @return				associated {@link ESteamEndpoint} instance or {@code null}
+	 * @param endpoint	endpoint string of the instance
+	 * @return			associated {@link ESteamEndpoint} instance or {@code null}
 	 */
 	public static ESteamEndpoint fromEndpointOrNull(String endpoint) {
 		return fromEndpointOrElse(endpoint, (ESteamEndpoint) null);

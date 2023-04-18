@@ -372,8 +372,8 @@ public final class USteamInvite {
 	 * }</pre>
 	 * <hr>
 	 *
-	 * @param code			Steam invite code to convert
-	 * @return				Steam unique account identifier or {@code 0} value
+	 * @param code	Steam invite code to convert
+	 * @return		Steam unique account identifier or {@code 0} value
 	 */
 	public static Integer toXuidOrZero(String code) {
 		return toXuidOrElse(code, 0);
@@ -415,8 +415,8 @@ public final class USteamInvite {
 	 * }</pre>
 	 * <hr>
 	 *
-	 * @param code			Steam invite code to convert
-	 * @return				Steam unique account identifier or {@code null}
+	 * @param code	Steam invite code to convert
+	 * @return		Steam unique account identifier or {@code null}
 	 */
 	public static Integer toXuidOrNull(String code) {
 		return toXuidOrElse(code, (Integer) null);

@@ -306,8 +306,8 @@ public enum ESteamUniverse implements Serializable {
 	 * <p>Wraps {@link ESteamUniverse#fromIndexOrElse(Integer, ESteamUniverse)}
 	 * w/ {@link ESteamUniverse#BASE} as the default value.
 	 *
-	 * @param index			index of the instance
-	 * @return				associated {@link ESteamUniverse} instance or the base value
+	 * @param index		index of the instance
+	 * @return			associated {@link ESteamUniverse} instance or the base value
 	 */
 	public static ESteamUniverse fromIndexOrBase(Integer index) {
 		return fromIndexOrElse(index, BASE);
@@ -320,8 +320,8 @@ public enum ESteamUniverse implements Serializable {
 	 * <p>Wraps {@link ESteamUniverse#fromIndexOrElse(Integer, ESteamUniverse)}
 	 * w/ {@code null} as the default value.
 	 *
-	 * @param index			index of the instance
-	 * @return				associated {@link ESteamUniverse} instance or {@code null}
+	 * @param index		index of the instance
+	 * @return			associated {@link ESteamUniverse} instance or {@code null}
 	 */
 	public static ESteamUniverse fromIndexOrNull(Integer index) {
 		return fromIndexOrElse(index, (ESteamUniverse) null);
