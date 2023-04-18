@@ -1080,7 +1080,7 @@ public final class SteamId implements Serializable, Cloneable {
 	}
 
 	/**
-	 * Get this string cahce.
+	 * Get this string cache.
 	 *
 	 * @return	string cache
 	 */
