@@ -120,6 +120,11 @@ public enum ESteamUniverse implements Serializable {
 	private final int id;
 
 	/**
+	 * A {@link ESteamUniverse#toString()} cache.
+	 */
+	private transient String stringCache;
+
+	/**
 	 * Initialize a {@link ESteamUniverse} instance.
 	 *
 	 * @param id	account universe type identifier
@@ -142,9 +147,13 @@ public enum ESteamUniverse implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return SIMPLE_NAME + "::" + this.name() + "["
+		if (this.stringCache != null) {
+			return this.stringCache;
+		}
+
+		return (this.stringCache = SIMPLE_NAME + "::" + this.name() + "["
 				+ "id=" + this.id
-				+ "]";
+				+ "]");
 	}
 
 	/**

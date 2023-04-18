@@ -85,6 +85,11 @@ public enum ESteamAuth implements Serializable {
 	private final int id;
 
 	/**
+	 * A {@link ESteamAuth#toString()} cache.
+	 */
+	private transient String stringCache;
+
+	/**
 	 * Initialize an {@link ESteamAuth} instance.
 	 *
 	 * @param id	account authentication type indentifier
@@ -107,9 +112,13 @@ public enum ESteamAuth implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return SIMPLE_NAME + "::" + this.name() + "["
+		if (this.stringCache != null) {
+			return this.stringCache;
+		}
+
+		return (this.stringCache = SIMPLE_NAME + "::" + this.name() + "["
 				+ "id=" + this.id
-				+ "]";
+				+ "]");
 	}
 
 	/**

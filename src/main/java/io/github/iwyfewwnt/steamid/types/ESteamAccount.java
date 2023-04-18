@@ -174,6 +174,11 @@ public enum ESteamAccount implements Serializable {
 	private final char ch;
 
 	/**
+	 * A {@link ESteamAccount#toString()} cache.
+	 */
+	private transient String stringCache;
+
+	/**
 	 * Initialize an {@link ESteamAccount} instance.
 	 *
 	 * @param id	account type identifier
@@ -207,10 +212,14 @@ public enum ESteamAccount implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return SIMPLE_NAME + "::" + this.name() + "["
+		if (this.stringCache != null) {
+			return this.stringCache;
+		}
+
+		return (this.stringCache = SIMPLE_NAME + "::" + this.name() + "["
 				+ "id=" + this.id
 				+ ", ch='" + this.ch + "'"
-				+ "]";
+				+ "]");
 	}
 
 	/**

@@ -89,6 +89,11 @@ public enum ESteamVanity implements Serializable {
 	private final int id;
 
 	/**
+	 * A {@link ESteamVanity#toString()} cache.
+	 */
+	private transient String stringCache;
+
+	/**
 	 * Initialize an {@link ESteamVanity} instance.
 	 *
 	 * @param id	vanity URL type identifier
@@ -111,9 +116,13 @@ public enum ESteamVanity implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return SIMPLE_NAME + "::" + this.name() + "["
+		if (this.stringCache != null) {
+			return this.stringCache;
+		}
+
+		return (this.stringCache = SIMPLE_NAME + "::" + this.name() + "["
 				+ "id=" + this.id
-				+ "]";
+				+ "]");
 	}
 
 	/**

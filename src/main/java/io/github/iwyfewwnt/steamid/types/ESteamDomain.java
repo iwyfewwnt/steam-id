@@ -75,6 +75,11 @@ public enum ESteamDomain implements Serializable {
 	private final String domain;
 
 	/**
+	 * A {@link ESteamDomain#toString()} cache.
+	 */
+	private transient String stringCache;
+
+	/**
 	 * Initialize an {@link ESteamDomain} instance.
 	 *
 	 * @param domain	domain string
@@ -97,9 +102,13 @@ public enum ESteamDomain implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return SIMPLE_NAME + "::" + this.name() + "["
+		if (this.stringCache != null) {
+			return this.stringCache;
+		}
+
+		return (this.stringCache = SIMPLE_NAME + "::" + this.name() + "["
 				+ "domain=\"" + this.domain + "\""
-				+ "]";
+				+ "]");
 	}
 
 	/**

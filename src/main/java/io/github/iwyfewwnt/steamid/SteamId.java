@@ -189,6 +189,11 @@ public final class SteamId implements Serializable, Cloneable {
 	private transient String chinaUrlCache;
 
 	/**
+	 * A cache of the conversion to a string.
+	 */
+	private transient String stringCache;
+
+	/**
 	 * Intialize a {@link SteamId} instance.
 	 *
 	 * @param xuid		integer value of the account type-32 identifier
@@ -260,6 +265,7 @@ public final class SteamId implements Serializable, Cloneable {
 		this.userUrlCache = that.userUrlCache;
 		this.inviteUrlCache = that.inviteUrlCache;
 		this.chinaUrlCache = that.chinaUrlCache;
+		this.stringCache = that.stringCache;
 	}
 
 	/**
@@ -410,6 +416,16 @@ public final class SteamId implements Serializable, Cloneable {
 	 */
 	public boolean isSteam64ChinaUrlCached() {
 		return this.chinaUrlCache != null;
+	}
+
+	/**
+	 * Check if this string cache is not {@code null};
+	 *
+	 * @return	{@code true} if not {@code null}
+	 * 			or {@code false} if not {@code null}
+	 */
+	public boolean isStringCached() {
+		return this.stringCache != null;
 	}
 
 	/**
@@ -1061,6 +1077,15 @@ public final class SteamId implements Serializable, Cloneable {
 	 */
 	public String getStema64ChinaUrlCache() {
 		return this.chinaUrlCache;
+	}
+
+	/**
+	 * Get this string cahce.
+	 *
+	 * @return	string cache
+	 */
+	public String getStringCache() {
+		return this.stringCache;
 	}
 
 	/**
@@ -2142,12 +2167,16 @@ public final class SteamId implements Serializable, Cloneable {
 	 */
 	@Override
 	public String toString() {
-		return SIMPLE_NAME + "["
+		if (this.stringCache != null) {
+			return this.stringCache;
+		}
+
+		return (this.stringCache = SIMPLE_NAME + "["
 				+ "xuid=" + this.xuid
 				+ ", universe=" + this.universe
 				+ ", instance=" + this.instance
 				+ ", account=" + this.account
-				+ "]";
+				+ "]");
 	}
 
 	/**

@@ -89,6 +89,11 @@ public enum ESteamUrl implements Serializable {
 	private final String url;
 
 	/**
+	 * A {@link ESteamUrl#toString()} cache.
+	 */
+	private transient String stringCache;
+
+	/**
 	 * Initialize an {@link ESteamUrl} instance.
 	 *
 	 * @param url	URL string
@@ -111,9 +116,13 @@ public enum ESteamUrl implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return SIMPLE_NAME + "::" + this.name() + "["
+		if (this.stringCache != null) {
+			return this.stringCache;
+		}
+
+		return (this.stringCache = SIMPLE_NAME + "::" + this.name() + "["
 				+ "url=\"" + this.url + "\""
-				+ "]";
+				+ "]");
 	}
 
 	/**
