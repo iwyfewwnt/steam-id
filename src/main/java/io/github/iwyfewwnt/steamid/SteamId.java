@@ -189,6 +189,11 @@ public final class SteamId implements Serializable, Cloneable {
 	private transient String chinaUrlCache;
 
 	/**
+	 * A cache of the coversion to a hash code.
+	 */
+	private transient Integer hashCodeCache;
+
+	/**
 	 * A cache of the conversion to a string.
 	 */
 	private transient String stringCache;
@@ -217,7 +222,12 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @param account	integer value of the account type
 	 */
 	private SteamId(Integer xuid, Integer universe, Integer instance, Integer account) {
-		this(xuid, ESteamUniverse.fromIdOrNull(universe), ESteamInstance.fromIdOrNull(instance), ESteamAccount.fromIdOrNull(account));
+		this(
+				xuid,
+				ESteamUniverse.fromIdOrNull(universe),
+				ESteamInstance.fromIdOrNull(instance),
+				ESteamAccount.fromIdOrNull(account)
+		);
 	}
 
 	/**
@@ -229,7 +239,12 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @param account	character value of the account type
 	 */
 	private SteamId(Integer xuid, Integer universe, Integer instance, Character account) {
-		this(xuid, ESteamUniverse.fromIdOrNull(universe), ESteamInstance.fromIdOrNull(instance), ESteamAccount.fromCharOrNull(account));
+		this(
+				xuid,
+				ESteamUniverse.fromIdOrNull(universe),
+				ESteamInstance.fromIdOrNull(instance),
+				ESteamAccount.fromCharOrNull(account)
+		);
 	}
 
 	/**
@@ -241,7 +256,12 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @param xuid	integer value of the account type-32 identifier
 	 */
 	private SteamId(Integer xuid) {
-		this(xuid, ESteamUniverse.PUBLIC, ESteamInstance.DESKTOP, ESteamAccount.INDIVIDUAL);
+		this(
+				xuid,
+				ESteamUniverse.PUBLIC,
+				ESteamInstance.DESKTOP,
+				ESteamAccount.INDIVIDUAL
+		);
 	}
 
 	/**
@@ -252,7 +272,12 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @param that	instance to copy field values from
 	 */
 	private SteamId(SteamId that) {
-		this(that.xuid, that.universe, that.instance, that.account);
+		this(
+				that.xuid,
+				that.universe,
+				that.instance,
+				that.account
+		);
 
 		this.staticKeyCache = that.staticKeyCache;
 		this.id64Cache = that.id64Cache;
@@ -265,6 +290,8 @@ public final class SteamId implements Serializable, Cloneable {
 		this.userUrlCache = that.userUrlCache;
 		this.inviteUrlCache = that.inviteUrlCache;
 		this.chinaUrlCache = that.chinaUrlCache;
+
+		this.hashCodeCache = that.hashCodeCache;
 		this.stringCache = that.stringCache;
 	}
 
@@ -419,10 +446,20 @@ public final class SteamId implements Serializable, Cloneable {
 	}
 
 	/**
-	 * Check if this string cache is not {@code null};
+	 * Check if this hash code cache is not {@code null}.
+	 *
+	 * @return  {@code true} if not {@code null}
+	 * 			or {@code false} if {@code null}
+	 */
+	public boolean isHashCodeCached() {
+		return this.hashCodeCache != null;
+	}
+
+	/**
+	 * Check if this string cache is not {@code null}.
 	 *
 	 * @return	{@code true} if not {@code null}
-	 * 			or {@code false} if not {@code null}
+	 * 			or {@code false} if {@code null}
 	 */
 	public boolean isStringCached() {
 		return this.stringCache != null;
@@ -1077,6 +1114,15 @@ public final class SteamId implements Serializable, Cloneable {
 	 */
 	public String getStema64ChinaUrlCache() {
 		return this.chinaUrlCache;
+	}
+
+	/**
+	 * Get this hash code cache.
+	 *
+	 * @return	hash code cache
+	 */
+	public Integer getHashCodeCache() {
+		return this.hashCodeCache;
 	}
 
 	/**
@@ -2159,7 +2205,18 @@ public final class SteamId implements Serializable, Cloneable {
 	 */
 	@Override
 	public int hashCode() {
-		return Objects.hash(this.xuid, this.universe, this.instance, this.account);
+		if (this.hashCodeCache != null) {
+			return this.hashCodeCache;
+		}
+
+		return (this.hashCodeCache
+				= Objects.hash(
+						this.xuid,
+						this.universe,
+						this.instance,
+						this.account
+				)
+		);
 	}
 
 	/**
