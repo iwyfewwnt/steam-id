@@ -3320,7 +3320,8 @@ public final class SteamId implements Serializable, Cloneable {
 		/**
 		 * A simple name of this class.
 		 */
-		private static final String SIMPLE_NAME = SteamId.SIMPLE_NAME + ":" + Builder.class.getSimpleName();
+		private static final String SIMPLE_NAME = SteamId.class.getSimpleName()
+				+ ":" + Builder.class.getSimpleName();
 
 		/**
 		 * A unique account type-32 identifier.
