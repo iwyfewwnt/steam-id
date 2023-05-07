@@ -191,7 +191,7 @@ public enum ESteamUniverse implements Serializable {
 	 * @return						account universe type identifier or the default value
 	 */
 	public static Integer getIdOrElse(ESteamUniverse universe, Supplier<Integer> defaultValueSupplier) {
-		return UwObject.getIfNull(getIdOrNull(universe), defaultValueSupplier);
+		return UwObject.ifNull(getIdOrNull(universe), defaultValueSupplier);
 	}
 
 	/**
@@ -253,7 +253,7 @@ public enum ESteamUniverse implements Serializable {
 	 * @return						associated {@link ESteamUniverse} instance or the default value
 	 */
 	public static ESteamUniverse fromIdOrElse(Integer id, Supplier<ESteamUniverse> defaultValueSupplier) {
-		return UwObject.getIfNull(fromIdOrNull(id), defaultValueSupplier);
+		return UwObject.ifNull(fromIdOrNull(id), defaultValueSupplier);
 	}
 
 	/**
@@ -305,7 +305,7 @@ public enum ESteamUniverse implements Serializable {
 	 * @return						associated {@link ESteamUniverse} instance or the default value
 	 */
 	public static ESteamUniverse fromIndexOrElse(Integer index, Supplier<ESteamUniverse> defaultValueSupplier) {
-		return UwObject.getIfNull(fromIndexOrNull(index), defaultValueSupplier);
+		return UwObject.ifNull(fromIndexOrNull(index), defaultValueSupplier);
 	}
 
 	/**

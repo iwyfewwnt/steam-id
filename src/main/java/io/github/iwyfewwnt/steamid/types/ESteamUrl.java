@@ -160,7 +160,7 @@ public enum ESteamUrl implements Serializable {
 	 * @return						URL string or the default value
 	 */
 	public static String getUrlOrElse(ESteamUrl url, Supplier<String> defaultValueSupplier) {
-		return UwObject.getIfNull(getUrlOrNull(url), defaultValueSupplier);
+		return UwObject.ifNull(getUrlOrNull(url), defaultValueSupplier);
 	}
 
 	/**
@@ -222,7 +222,7 @@ public enum ESteamUrl implements Serializable {
 	 * @return						associated {@link ESteamUrl} instance or the defualt value
 	 */
 	public static ESteamUrl fromUrlOrElse(String url, Supplier<ESteamUrl> defaultValueSupplier) {
-		return UwObject.getIfNull(fromUrlOrNull(url), defaultValueSupplier);
+		return UwObject.ifNull(fromUrlOrNull(url), defaultValueSupplier);
 	}
 
 	/**
@@ -260,7 +260,7 @@ public enum ESteamUrl implements Serializable {
 	 * @return						associated {@link ESteamUrl} instance or the default value
 	 */
 	public static ESteamUrl fromIndexOrElse(Integer index, Supplier<ESteamUrl> defaultValueSupplier) {
-		return UwObject.getIfNull(fromIndexOrNull(index), defaultValueSupplier);
+		return UwObject.ifNull(fromIndexOrNull(index), defaultValueSupplier);
 	}
 
 	/**

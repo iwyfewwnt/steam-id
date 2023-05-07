@@ -172,7 +172,7 @@ public final class USteamCsgo {
 	 * @return						interface-friendly CS:GO friend code or the default value
 	 */
 	public static String fromXuidOrElse(Integer xuid, Supplier<String> defaultValueSupplier) {
-		return UwObject.getIfNull(fromXuidOrNull(xuid), defaultValueSupplier);
+		return UwObject.ifNull(fromXuidOrNull(xuid), defaultValueSupplier);
 	}
 
 	/**
@@ -338,7 +338,7 @@ public final class USteamCsgo {
 	 * @return						Steam unique account identifier or the default value
 	 */
 	public static Integer toXuidOrElse(String code, Supplier<Integer> defaultValueSupplier) {
-		return UwObject.getIfNull(toXuidOrNull(code), defaultValueSupplier);
+		return UwObject.ifNull(toXuidOrNull(code), defaultValueSupplier);
 	}
 
 	/**

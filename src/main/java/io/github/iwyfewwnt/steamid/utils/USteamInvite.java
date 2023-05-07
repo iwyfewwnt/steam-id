@@ -149,7 +149,7 @@ public final class USteamInvite {
 	 * @return						Steam invite code or the default value
 	 */
 	public static String fromXuidOrElse(Integer xuid, Supplier<String> defaultValueSupplier) {
-		return UwObject.getIfNull(fromXuidOrNull(xuid), defaultValueSupplier);
+		return UwObject.ifNull(fromXuidOrNull(xuid), defaultValueSupplier);
 	}
 
 	/**
@@ -333,7 +333,7 @@ public final class USteamInvite {
 	 * @return						Steam unique account identifier or the default value
 	 */
 	public static Integer toXuidOrElse(String code, Supplier<Integer> defualtValueSupplier) {
-		return UwObject.getIfNull(toXuidOrNull(code), defualtValueSupplier);
+		return UwObject.ifNull(toXuidOrNull(code), defualtValueSupplier);
 	}
 
 	/**

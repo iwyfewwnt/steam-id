@@ -257,7 +257,7 @@ public enum ESteamAccount implements Serializable {
 	 * @return						account type identifier or the default value
 	 */
 	public static Integer getIdOrElse(ESteamAccount account, Supplier<Integer> defaultValueSupplier) {
-		return UwObject.getIfNull(getIdOrNull(account), defaultValueSupplier);
+		return UwObject.ifNull(getIdOrNull(account), defaultValueSupplier);
 	}
 
 	/**
@@ -333,7 +333,7 @@ public enum ESteamAccount implements Serializable {
 	 * @return						account type character or the default value
 	 */
 	public static Character getCharOrElse(ESteamAccount account, Supplier<Character> defaultValueSupplier) {
-		return UwObject.getIfNull(getCharOrNull(account), defaultValueSupplier);
+		return UwObject.ifNull(getCharOrNull(account), defaultValueSupplier);
 	}
 
 	/**
@@ -395,7 +395,7 @@ public enum ESteamAccount implements Serializable {
 	 * @return						associated {@link ESteamAccount} instance or the default values
 	 */
 	public static ESteamAccount fromIdOrElse(Integer id, Supplier<ESteamAccount> defaultValueSupplier) {
-		return UwObject.getIfNull(fromIdOrNull(id), defaultValueSupplier);
+		return UwObject.ifNull(fromIdOrNull(id), defaultValueSupplier);
 	}
 
 	/**
@@ -447,7 +447,7 @@ public enum ESteamAccount implements Serializable {
 	 * @return						associated {@link ESteamAccount} instance or the default value
 	 */
 	public static ESteamAccount fromCharOrElse(Character ch, Supplier<ESteamAccount> defaultValueSupplier) {
-		return UwObject.getIfNull(fromCharOrNull(ch), defaultValueSupplier);
+		return UwObject.ifNull(fromCharOrNull(ch), defaultValueSupplier);
 	}
 
 	/**
@@ -499,7 +499,7 @@ public enum ESteamAccount implements Serializable {
 	 * @return						associated {@link ESteamAccount} instance or the default value
 	 */
 	public static ESteamAccount fromIndexOrElse(Integer index, Supplier<ESteamAccount> defaultValueSupplier) {
-		return UwObject.getIfNull(fromIndexOrNull(index), defaultValueSupplier);
+		return UwObject.ifNull(fromIndexOrNull(index), defaultValueSupplier);
 	}
 
 	/**

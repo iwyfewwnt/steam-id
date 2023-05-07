@@ -153,7 +153,7 @@ public enum ESteamEndpoint implements Serializable {
 	 * @return						endpoint string or the default value
 	 */
 	public static String getEndpointOrElse(ESteamEndpoint endpoint, Supplier<String> defaultValueSupplier) {
-		return UwObject.getIfNull(getEndpintOrNull(endpoint), defaultValueSupplier);
+		return UwObject.ifNull(getEndpintOrNull(endpoint), defaultValueSupplier);
 	}
 
 	/**
@@ -215,7 +215,7 @@ public enum ESteamEndpoint implements Serializable {
 	 * @return						associated {@link ESteamEndpoint} instance or the default value
 	 */
 	public static ESteamEndpoint fromEndpointOrElse(String endpoint, Supplier<ESteamEndpoint> defaultValueSupplier) {
-		return UwObject.getIfNull(fromEndpointOrNull(endpoint), defaultValueSupplier);
+		return UwObject.ifNull(fromEndpointOrNull(endpoint), defaultValueSupplier);
 	}
 
 	/**
@@ -253,7 +253,7 @@ public enum ESteamEndpoint implements Serializable {
 	 * @return						associated {@link ESteamEndpoint} instance or the default value
 	 */
 	public static ESteamEndpoint fromIndexOrElse(Integer index, Supplier<ESteamEndpoint> defaultValueSupplier) {
-		return UwObject.getIfNull(fromIndexOrNull(index), defaultValueSupplier);
+		return UwObject.ifNull(fromIndexOrNull(index), defaultValueSupplier);
 	}
 
 	/**

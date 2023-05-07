@@ -188,7 +188,7 @@ public enum ESteamInstance implements Serializable {
 	 * @return						account instance type identifier or the default value
 	 */
 	public static Integer getIdOrElse(ESteamInstance instance, Supplier<Integer> defaultValueSupplier) {
-		return UwObject.getIfNull(getIdOrNull(instance), defaultValueSupplier);
+		return UwObject.ifNull(getIdOrNull(instance), defaultValueSupplier);
 	}
 
 	/**
@@ -250,7 +250,7 @@ public enum ESteamInstance implements Serializable {
 	 * @return						associated {@link ESteamInstance} instance or the default value
 	 */
 	public static ESteamInstance fromIdOrElse(Integer id, Supplier<ESteamInstance> defaultValueSupplier) {
-		return UwObject.getIfNull(fromIdOrNull(id), defaultValueSupplier);
+		return UwObject.ifNull(fromIdOrNull(id), defaultValueSupplier);
 	}
 
 	/**
@@ -302,7 +302,7 @@ public enum ESteamInstance implements Serializable {
 	 * @return						associated {@link ESteamInstance} instance or the defualt value
 	 */
 	public static ESteamInstance fromIndexOrElse(Integer index, Supplier<ESteamInstance> defaultValueSupplier) {
-		return UwObject.getIfNull(fromIndexOrNull(index), defaultValueSupplier);
+		return UwObject.ifNull(fromIndexOrNull(index), defaultValueSupplier);
 	}
 
 	/**

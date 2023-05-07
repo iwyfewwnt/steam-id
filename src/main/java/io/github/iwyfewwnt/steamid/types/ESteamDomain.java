@@ -146,7 +146,7 @@ public enum ESteamDomain implements Serializable {
 	 * @return						domain string or the default value
 	 */
 	public static String getDomainOrElse(ESteamDomain domain, Supplier<String> defaultValueSupplier) {
-		return UwObject.getIfNull(getDomainOrNull(domain), defaultValueSupplier);
+		return UwObject.ifNull(getDomainOrNull(domain), defaultValueSupplier);
 	}
 
 	/**
@@ -208,7 +208,7 @@ public enum ESteamDomain implements Serializable {
 	 * @return						associated {@link ESteamDomain} instance or the default value
 	 */
 	public static ESteamDomain fromDomainOrElse(String domain, Supplier<ESteamDomain> defaultValueSupplier) {
-		return UwObject.getIfNull(fromDomainOrNull(domain), defaultValueSupplier);
+		return UwObject.ifNull(fromDomainOrNull(domain), defaultValueSupplier);
 	}
 
 	/**
@@ -246,7 +246,7 @@ public enum ESteamDomain implements Serializable {
 	 * @return						associated {@link ESteamDomain} instance or the default value
 	 */
 	public static ESteamDomain fromIndexOrElse(Integer index, Supplier<ESteamDomain> defaultValueSupplier) {
-		return UwObject.getIfNull(fromIndexOrNull(index), defaultValueSupplier);
+		return UwObject.ifNull(fromIndexOrNull(index), defaultValueSupplier);
 	}
 
 	/**

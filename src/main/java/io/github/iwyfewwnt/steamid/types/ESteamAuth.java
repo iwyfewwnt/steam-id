@@ -156,7 +156,7 @@ public enum ESteamAuth implements Serializable {
 	 * @return						account authentication type identifier or the default value
 	 */
 	public static Integer getIdOrElse(ESteamAuth auth, Supplier<Integer> defaultValueSupplier) {
-		return UwObject.getIfNull(getIdOrNull(auth), defaultValueSupplier);
+		return UwObject.ifNull(getIdOrNull(auth), defaultValueSupplier);
 	}
 
 	/**
@@ -218,7 +218,7 @@ public enum ESteamAuth implements Serializable {
 	 * @return						associated {@link ESteamAuth} instance or the default value
 	 */
 	public static ESteamAuth fromIdOrElse(Integer id, Supplier<ESteamAuth> defaultValueSupplier) {
-		return UwObject.getIfNull(fromIdOrNull(id), defaultValueSupplier);
+		return UwObject.ifNull(fromIdOrNull(id), defaultValueSupplier);
 	}
 
 	/**
@@ -270,7 +270,7 @@ public enum ESteamAuth implements Serializable {
 	 * @return						associated {@link ESteamAuth} instance or the default value
 	 */
 	public static ESteamAuth fromIndexOrElse(Integer index, Supplier<ESteamAuth> defaultValueSupplier) {
-		return UwObject.getIfNull(fromIndexOrNull(index), defaultValueSupplier);
+		return UwObject.ifNull(fromIndexOrNull(index), defaultValueSupplier);
 	}
 
 	/**

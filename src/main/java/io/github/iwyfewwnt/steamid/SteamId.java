@@ -478,7 +478,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return				long value of the unique account type-32 identifier or the default value
 	 */
 	public Integer getXuidOrElse(Integer defaultValue) {
-		return UwObject.getIfNull(this.xuid, defaultValue);
+		return UwObject.ifNull(this.xuid, defaultValue);
 	}
 
 	/**
@@ -494,7 +494,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						long value of the unique account type-32 identifier or the default value
 	 */
 	public Integer getXuidOrElse(Supplier<Integer> defaultValueSupplier) {
-		return UwObject.getIfNull(this.getXuidOrNull(), defaultValueSupplier);
+		return UwObject.ifNull(this.getXuidOrNull(), defaultValueSupplier);
 	}
 
 	/**
@@ -546,7 +546,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return				account universe enum type instance or the default value
 	 */
 	public ESteamUniverse getUniverseTypeOrElse(ESteamUniverse defaultValue) {
-		return UwObject.getIfNull(this.universe, defaultValue);
+		return UwObject.ifNull(this.universe, defaultValue);
 	}
 
 	/**
@@ -562,7 +562,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						account universe enum type instance or the default value
 	 */
 	public ESteamUniverse getUniverseTypeOrElse(Supplier<ESteamUniverse> defaultValueSupplier) {
-		return UwObject.getIfNull(this.getUniverseTypeOrNull(), defaultValueSupplier);
+		return UwObject.ifNull(this.getUniverseTypeOrNull(), defaultValueSupplier);
 	}
 
 	/**
@@ -684,7 +684,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return				account instance enum type or the default value
 	 */
 	public ESteamInstance getInstanceTypeOrElse(ESteamInstance defaultValue) {
-		return UwObject.getIfNull(this.instance, defaultValue);
+		return UwObject.ifNull(this.instance, defaultValue);
 	}
 
 	/**
@@ -700,7 +700,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						account instance enum type or the default value
 	 */
 	public ESteamInstance getInstanceTypeOrElse(Supplier<ESteamInstance> defaultValueSupplier) {
-		return UwObject.getIfNull(this.getInstanceTypeOrNull(), defaultValueSupplier);
+		return UwObject.ifNull(this.getInstanceTypeOrNull(), defaultValueSupplier);
 	}
 
 	/**
@@ -822,7 +822,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return				account type enum type or the default value
 	 */
 	public ESteamAccount getAccountTypeOrElse(ESteamAccount defaultValue) {
-		return UwObject.getIfNull(this.account, defaultValue);
+		return UwObject.ifNull(this.account, defaultValue);
 	}
 
 	/**
@@ -838,7 +838,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						account type enum type or the default value
 	 */
 	public ESteamAccount getAccountTypeOrElse(Supplier<ESteamAccount> defaultValueSupplier) {
-		return UwObject.getIfNull(this.getAccountTypeOrNull(), defaultValueSupplier);
+		return UwObject.ifNull(this.getAccountTypeOrNull(), defaultValueSupplier);
 	}
 
 	/**
@@ -1222,7 +1222,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return 						long value of the static key or the default value
 	 */
 	public Long toStaticKeyOrElse(Supplier<Long> defaultValueSupplier) {
-		return UwObject.getIfNull(this.toStaticKeyOrNull(), defaultValueSupplier);
+		return UwObject.ifNull(this.toStaticKeyOrNull(), defaultValueSupplier);
 	}
 
 	/**
@@ -1316,7 +1316,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @see <a href="https://vk.cc/ch9dMy">Steam ID as a Steam Community ID for 64-bit Systems</a>
 	 */
 	public Long toSteam64OrElse(Supplier<Long> defaultValueSupplier) {
-		return UwObject.getIfNull(this.toSteam64OrNull(), defaultValueSupplier);
+		return UwObject.ifNull(this.toSteam64OrNull(), defaultValueSupplier);
 	}
 
 	/**
@@ -1400,7 +1400,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						string value of the unique account type-2 identifier or the default value
 	 */
 	public String toSteam2OrElse(Supplier<String> defaultValueSupplier) {
-		return UwObject.getIfNull(this.toSteam2OrNull(), defaultValueSupplier);
+		return UwObject.ifNull(this.toSteam2OrNull(), defaultValueSupplier);
 	}
 
 	/**
@@ -1502,7 +1502,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						string value of the unique account type-3 identifier or the default value
 	 */
 	public String toSteam3OrElse(Supplier<String> defaultValueSupplier) {
-		return UwObject.getIfNull(this.toSteam3OrNull(), defaultValueSupplier);
+		return UwObject.ifNull(this.toSteam3OrNull(), defaultValueSupplier);
 	}
 
 	/**
@@ -1578,7 +1578,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						string value of the invite code or the default value
 	 */
 	public String toInviteCodeOrElse(Supplier<String> defaultValueSupplier) {
-		return UwObject.getIfNull(this.toInviteCodeOrNull(), defaultValueSupplier);
+		return UwObject.ifNull(this.toInviteCodeOrNull(), defaultValueSupplier);
 	}
 
 	/**
@@ -1654,7 +1654,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						string value of the friend code or the default value.
 	 */
 	public String toCsgoCodeOrElse(Supplier<String> defaultValueSupplier) {
-		return UwObject.getIfNull(this.toCsgoCodeOrNull(), defaultValueSupplier);
+		return UwObject.ifNull(this.toCsgoCodeOrNull(), defaultValueSupplier);
 	}
 
 	/**
@@ -1732,7 +1732,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						string value of the URL or the default value
 	 */
 	public String toSteam64UrlOrElse(Supplier<String> defaultValueSupplier) {
-		return UwObject.getIfNull(this.toSteam64UrlOrNull(), defaultValueSupplier);
+		return UwObject.ifNull(this.toSteam64UrlOrNull(), defaultValueSupplier);
 	}
 
 	/**
@@ -1810,7 +1810,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						string value of the URL or the default value
 	 */
 	public String toSteam3UrlOrElse(Supplier<String> defaultValueSupplier) {
-		return UwObject.getIfNull(this.toSteam3UrlOrNull(), defaultValueSupplier);
+		return UwObject.ifNull(this.toSteam3UrlOrNull(), defaultValueSupplier);
 	}
 
 	/**
@@ -1888,7 +1888,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						string value of the user URL or the default value
 	 */
 	public String toSteamUserUrlOrElse(Supplier<String> defaultValueSupplier) {
-		return UwObject.getIfNull(this.toSteamUserUrlOrNull(), defaultValueSupplier);
+		return UwObject.ifNull(this.toSteamUserUrlOrNull(), defaultValueSupplier);
 	}
 
 	/**
@@ -1966,7 +1966,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						string value of the invite URL or the default value
 	 */
 	public String toSteamInviteUrlOrElse(Supplier<String> defaultValueSupplier) {
-		return UwObject.getIfNull(this.toSteamInviteUrlOrNull(), defaultValueSupplier);
+		return UwObject.ifNull(this.toSteamInviteUrlOrNull(), defaultValueSupplier);
 	}
 
 	/**
@@ -2044,7 +2044,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						string value of the URL or the default value
 	 */
 	public String toSteam64ChinaUrlOrElse(Supplier<String> defaultValueSupplier) {
-		return UwObject.getIfNull(this.toSteam64ChinaUrlOrNull(), defaultValueSupplier);
+		return UwObject.ifNull(this.toSteam64ChinaUrlOrNull(), defaultValueSupplier);
 	}
 
 	/**
@@ -2433,7 +2433,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						new {@link SteamId} instance or the default value
 	 */
 	public static SteamId fromSteamXuidOrElse(Integer xuid, Supplier<SteamId> defaultValueSupplier) {
-		return UwObject.getIfNull(fromSteamXuidOrNull(xuid), defaultValueSupplier);
+		return UwObject.ifNull(fromSteamXuidOrNull(xuid), defaultValueSupplier);
 	}
 
 	/**
@@ -2493,7 +2493,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						new {@link SteamId} instance or the default value
 	 */
 	public static SteamId fromSteamXuidOrElse(String xuid, Supplier<SteamId> defaultValueSupplier) {
-		return UwObject.getIfNull(fromSteamXuidOrNull(xuid), defaultValueSupplier);
+		return UwObject.ifNull(fromSteamXuidOrNull(xuid), defaultValueSupplier);
 	}
 
 	/**
@@ -2555,7 +2555,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						new {@link SteamId} instance or the default value
 	 */
 	public static SteamId fromSteam64OrElse(Long id64, Supplier<SteamId> defaultValueSupplier) {
-		return UwObject.getIfNull(fromSteam64OrNull(id64), defaultValueSupplier);
+		return UwObject.ifNull(fromSteam64OrNull(id64), defaultValueSupplier);
 	}
 
 	/**
@@ -2621,7 +2621,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						new {@link SteamId} instance or the default value
 	 */
 	public static SteamId fromSteam64OrElse(String id64, Supplier<SteamId> defaultValueSupplier) {
-		return UwObject.getIfNull(fromSteam64OrNull(id64), defaultValueSupplier);
+		return UwObject.ifNull(fromSteam64OrNull(id64), defaultValueSupplier);
 	}
 
 	/**
@@ -2694,7 +2694,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						new {@link SteamId} instance or the default value
 	 */
 	public static SteamId fromSteam2OrElse(String id2, Supplier<SteamId> defaultValueSupplier) {
-		return UwObject.getIfNull(fromSteam2OrNull(id2), defaultValueSupplier);
+		return UwObject.ifNull(fromSteam2OrNull(id2), defaultValueSupplier);
 	}
 
 	/**
@@ -2789,7 +2789,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						new {@link SteamId} instance or the default value
 	 */
 	public static SteamId fromSteam3OrElse(String id3, Supplier<SteamId> defaultValueSupplier) {
-		return UwObject.getIfNull(fromSteam3OrNull(id3), defaultValueSupplier);
+		return UwObject.ifNull(fromSteam3OrNull(id3), defaultValueSupplier);
 	}
 
 	/**
@@ -2848,7 +2848,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						new {@link SteamId} instance or the default value
 	 */
 	public static SteamId fromInviteCodeOrElse(String code, Supplier<SteamId> defaultValueSupplier) {
-		return UwObject.getIfNull(fromInviteCodeOrNull(code), defaultValueSupplier);
+		return UwObject.ifNull(fromInviteCodeOrNull(code), defaultValueSupplier);
 	}
 
 	/**
@@ -2907,7 +2907,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						new {@link SteamId} instance or the default value
 	 */
 	public static SteamId fromCsgoCodeOrElse(String code, Supplier<SteamId> defaultValueSupplier) {
-		return UwObject.getIfNull(fromCsgoCodeOrNull(code), defaultValueSupplier);
+		return UwObject.ifNull(fromCsgoCodeOrNull(code), defaultValueSupplier);
 	}
 
 	/**
@@ -2978,7 +2978,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						new {@link SteamId} instance or the default value
 	 */
 	public static SteamId fromSteamProfileUrlOrElse(String url, Supplier<SteamId> defaultValueSupplier) {
-		return UwObject.getIfNull(fromSteamProfileUrlOrNull(url), defaultValueSupplier);
+		return UwObject.ifNull(fromSteamProfileUrlOrNull(url), defaultValueSupplier);
 	}
 
 	/**
@@ -3043,7 +3043,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						new {@link SteamId} instance or the default value
 	 */
 	public static SteamId fromSteamUserUrlOrElse(String url, Supplier<SteamId> defaultValueSupplier) {
-		return UwObject.getIfNull(fromSteamUserUrlOrNull(url), defaultValueSupplier);
+		return UwObject.ifNull(fromSteamUserUrlOrNull(url), defaultValueSupplier);
 	}
 
 	/**
@@ -3108,7 +3108,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						new {@link SteamId} instance or the default value
 	 */
 	public static SteamId fromSteamUrlOrElse(String url, Supplier<SteamId> defaultValueSupplier) {
-		return UwObject.getIfNull(fromSteamUrlOrNull(url), defaultValueSupplier);
+		return UwObject.ifNull(fromSteamUrlOrNull(url), defaultValueSupplier);
 	}
 
 	/**
@@ -3276,7 +3276,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return						new {@link SteamId} instance or the default value
 	 */
 	public static SteamId fromSteamAnyOrElse(Object obj, Supplier<SteamId> defaultValueSupplier) {
-		return UwObject.getIfNull(fromSteamAnyOrNull(obj), defaultValueSupplier);
+		return UwObject.ifNull(fromSteamAnyOrNull(obj), defaultValueSupplier);
 	}
 
 	/**

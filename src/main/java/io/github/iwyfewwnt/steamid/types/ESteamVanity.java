@@ -160,7 +160,7 @@ public enum ESteamVanity implements Serializable {
 	 * @return						vanity URL type identifier or the defualt value
 	 */
 	public static Integer getIdOrElse(ESteamVanity vanity, Supplier<Integer> defaultValueSupplier) {
-		return UwObject.getIfNull(getIdOrNull(vanity), defaultValueSupplier);
+		return UwObject.ifNull(getIdOrNull(vanity), defaultValueSupplier);
 	}
 
 	/**
@@ -203,7 +203,7 @@ public enum ESteamVanity implements Serializable {
 	 * @return						associated {@link ESteamVanity} instance or the defualt value
 	 */
 	public static ESteamVanity fromIdOrElse(Integer id, Supplier<ESteamVanity> defaultValueSupplier) {
-		return UwObject.getIfNull(fromIdOrNull(id), defaultValueSupplier);
+		return UwObject.ifNull(fromIdOrNull(id), defaultValueSupplier);
 	}
 
 	/**
@@ -241,7 +241,7 @@ public enum ESteamVanity implements Serializable {
 	 * @return						associated {@link ESteamVanity} instance or the default value
 	 */
 	public static ESteamVanity fromIndexOrElse(Integer index, Supplier<ESteamVanity> defaultValueSupplier) {
-		return UwObject.getIfNull(fromIndexOrNull(index), defaultValueSupplier);
+		return UwObject.ifNull(fromIndexOrNull(index), defaultValueSupplier);
 	}
 
 	/**
