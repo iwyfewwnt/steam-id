@@ -38,7 +38,12 @@ import java.util.regex.Matcher;
  * includes a lot of methods to convert
  * and parse to/from any Steam related data.
  */
-@SuppressWarnings({"unused", "MethodDoesntCallSuperMethod"})
+@SuppressWarnings({
+		"unused",
+		"MethodDoesntCallSuperMethod",
+		"SynchronizeOnNonFinalField",
+		"BooleanMethodIsAlwaysInverted"
+})
 public final class SteamId implements Serializable, Cloneable {
 
 	/**
@@ -134,69 +139,176 @@ public final class SteamId implements Serializable, Cloneable {
 	private final ESteamAccount account;
 
 	/**
+	 * A cache of the validity check.
+	 */
+	private transient volatile Boolean isValidCache;
+
+	/**
 	 * A cache of the conversion to a static account key.
 	 */
-	private transient Long staticKeyCache;
+	private transient volatile Long staticKeyCache;
 
 	/**
 	 * A cache of the conversion to an account type-64 identifier.
 	 */
-	private transient Long id64Cache;
+	private transient volatile Long id64Cache;
 
 	/**
 	 * A cache of the conversion to an account type-2 identifier.
 	 */
-	private transient String id2Cache;
+	private transient volatile String id2Cache;
 
 	/**
 	 * A cache of the conversion to an account type-3 identifier.
 	 */
-	private transient String id3Cache;
+	private transient volatile String id3Cache;
 
 	/**
 	 * A cache of the conversion to a Steam invite code.
 	 */
-	private transient String inviteCodeCache;
+	private transient volatile String inviteCodeCache;
 
 	/**
 	 * A cache of the convertsion to a CS:GO friend code.
 	 */
-	private transient String csgoCodeCache;
+	private transient volatile String csgoCodeCache;
 
 	/**
 	 * A cache of the conversion to a /profiles/%id-64% URL.
 	 */
-	private transient String id64UrlCache;
+	private transient volatile String id64UrlCache;
 
 	/**
 	 * A cache of the conversion to a /profiles/%id-3% URL.
 	 */
-	private transient String id3UrlCache;
+	private transient volatile String id3UrlCache;
 
 	/**
 	 * A cache of the conversion to a /user/%invite-code% URL.
 	 */
-	private transient String userUrlCache;
+	private transient volatile String userUrlCache;
 
 	/**
 	 * A cache of the conversion to a /p/%invite-code% URL.
 	 */
-	private transient String inviteUrlCache;
+	private transient volatile String inviteUrlCache;
 
 	/**
 	 * A cache of the conversion to a China /profiles/%id-64% URL.
 	 */
-	private transient String chinaUrlCache;
+	private transient volatile String chinaUrlCache;
 
 	/**
 	 * A cache of the coversion to a hash code.
 	 */
-	private transient Integer hashCodeCache;
+	private transient volatile Integer hashCodeCache;
 
 	/**
 	 * A cache of the conversion to a string.
 	 */
-	private transient String stringCache;
+	private transient volatile String stringCache;
+
+	/**
+	 * A {@link #isValidCache} mutex.
+	 */
+	private transient Object isValidCacheMutex;
+
+	/**
+	 * A {@link #stringCache} mutex.
+	 */
+	private transient Object staticKeyCacheMutex;
+
+	/**
+	 * An {@link #id64Cache} mutex.
+	 */
+	private transient Object id64CacheMutex;
+
+	/**
+	 * An {@link #id2Cache} mutex.
+	 */
+	private transient Object id2CacheMutex;
+
+	/**
+	 * An {@link #id3Cache} mutex.
+	 */
+	private transient Object id3CacheMutex;
+
+	/**
+	 * An {@link #inviteCodeCache} mutex.
+	 */
+	private transient Object inviteCodeCacheMutex;
+
+	/**
+	 * A {@link #csgoCodeCache} mutex.
+	 */
+	private transient Object csgoCodeCacheMutex;
+
+	/**
+	 * An {@link #id64UrlCache} mutex.
+	 */
+	private transient Object id64UrlCacheMutex;
+
+	/**
+	 * An {@link #id3UrlCache} mutex.
+	 */
+	private transient Object id3UrlCacheMutex;
+
+	/**
+	 *  A {@link #userUrlCache} mutex.
+	 */
+	private transient Object userUrlCacheMutex;
+
+	/**
+	 * An {@link #inviteUrlCache} mutex.
+	 */
+	private transient Object inviteUrlCacheMutex;
+
+	/**
+	 * A {@link #chinaUrlCache} mutex.
+	 */
+	private transient Object chinaUrlCacheMutex;
+
+	/**
+	 * A {@link #hashCodeCache} mutex.
+	 */
+	private transient Object hashCodeCacheMutex;
+
+	/**
+	 * A {@link #stringCache} mutex.
+	 */
+	private transient Object stringCacheMutex;
+
+	/**
+	 * Initialize this mutex objects.
+	 */
+	private void initMutexObjects() {
+		this.isValidCacheMutex = new Object();
+		this.staticKeyCacheMutex = new Object();
+		this.id64CacheMutex = new Object();
+		this.id2CacheMutex = new Object();
+		this.id3CacheMutex = new Object();
+		this.inviteCodeCacheMutex = new Object();
+		this.csgoCodeCacheMutex = new Object();
+		this.id64UrlCacheMutex = new Object();
+		this.id3UrlCacheMutex = new Object();
+		this.userUrlCacheMutex = new Object();
+		this.inviteUrlCacheMutex = new Object();
+		this.chinaUrlCacheMutex = new Object();
+		this.hashCodeCacheMutex = new Object();
+		this.stringCacheMutex = new Object();
+	}
+
+	/**
+	 * Override the {@code #readResolve} method to set up
+	 * the object cache mutexes after deserialization.
+	 *
+	 * @return	this instance
+	 */
+	private Object readResolve() {
+		this.initMutexObjects();
+
+		return this;
+	}
 
 	/**
 	 * Intialize a {@link SteamId} instance.
@@ -211,6 +323,8 @@ public final class SteamId implements Serializable, Cloneable {
 		this.universe = universe;
 		this.instance = instance;
 		this.account = account;
+
+		this.initMutexObjects();
 	}
 
 	/**
@@ -279,6 +393,7 @@ public final class SteamId implements Serializable, Cloneable {
 				that.account
 		);
 
+		this.isValidCache = that.isValidCache;
 		this.staticKeyCache = that.staticKeyCache;
 		this.id64Cache = that.id64Cache;
 		this.id2Cache = that.id2Cache;
@@ -1139,29 +1254,38 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * @return	boolean value that describes validity of this instance
 	 */
-	@SuppressWarnings("BooleanMethodIsAlwaysInverted")
 	public boolean isValid() {
-		if (this.xuid == null || this.universe == null
-				|| this.instance == null || this.account == null) {
-			return false;
+		if (this.isValidCache != null) {
+			return this.isValidCache;
 		}
 
-		if (this.xuid < BASE_XUID/* && this.xuid > MAX_XUID*/) {
-			return false;
-		}
+		synchronized (this.isValidCacheMutex) {
+			if (this.isValidCache != null) {
+				return this.isValidCache;
+			}
 
-		if (this.universe == ESteamUniverse.INVALID
-				|| this.account == ESteamAccount.INVALID) {
-			return false;
-		}
+			if (this.xuid == null || this.universe == null
+					|| this.instance == null || this.account == null) {
+				return (this.isValidCache = false);
+			}
 
-		if (this.xuid < MIN_XUID) {
-			return this.account != ESteamAccount.INDIVIDUAL
-					&& this.account != ESteamAccount.GAME_SERVER
-					&& (this.account != ESteamAccount.CLAN || this.instance == ESteamInstance.ALL);
-		}
+			if (this.xuid < BASE_XUID/* && this.xuid > MAX_XUID*/) {
+				return (this.isValidCache = false);
+			}
 
-		return true;
+			if (this.universe == ESteamUniverse.INVALID
+					|| this.account == ESteamAccount.INVALID) {
+				return (this.isValidCache = false);
+			}
+
+			if (this.xuid < MIN_XUID) {
+				return (this.isValidCache = this.account != ESteamAccount.INDIVIDUAL
+						&& this.account != ESteamAccount.GAME_SERVER
+						&& (this.account != ESteamAccount.CLAN || this.instance == ESteamInstance.ALL));
+			}
+
+			return (this.isValidCache = true);
+		}
 	}
 
 	/**
@@ -1188,19 +1312,25 @@ public final class SteamId implements Serializable, Cloneable {
 			return defaultValue;
 		}
 
-		BigInteger universe = BigInteger.valueOf(this.universe.getId())
-				.shiftLeft(USteamBit.ACCOUNT_UNIVERSE_OFFSET);
+		synchronized (this.staticKeyCacheMutex) {
+			if (this.staticKeyCache != null) {
+				return this.staticKeyCache;
+			}
 
-		BigInteger account = BigInteger.valueOf(this.account.getId())
-				.shiftLeft(USteamBit.ACCOUNT_ID_OFFSET);
+			BigInteger universe = BigInteger.valueOf(this.universe.getId())
+					.shiftLeft(USteamBit.ACCOUNT_UNIVERSE_OFFSET);
 
-		try {
-			return (this.staticKeyCache = BigInteger.valueOf(this.xuid)
-					.add(universe)
-					.add(account)
-					.longValueExact());
-		} catch (ArithmeticException e) {
-			e.printStackTrace();
+			BigInteger account = BigInteger.valueOf(this.account.getId())
+					.shiftLeft(USteamBit.ACCOUNT_ID_OFFSET);
+
+			try {
+				return (this.staticKeyCache = BigInteger.valueOf(this.xuid)
+						.add(universe)
+						.add(account)
+						.longValueExact());
+			} catch (ArithmeticException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return defaultValue;
@@ -1290,15 +1420,21 @@ public final class SteamId implements Serializable, Cloneable {
 			return defaultValue;
 		}
 
-		long xuid = this.xuid;
-		long instance = this.instance.getId();
-		long account = this.account.getId();
-		long universe = this.account.getId();
+		synchronized (this.id64CacheMutex) {
+			if (this.id64Cache != null) {
+				return this.id64Cache;
+			}
 
-		return (this.id64Cache = xuid << USteamBit.ACCOUNT_ID_OFFSET
-				| instance << USteamBit.ACCOUNT_INSTANCE_OFFSET
-				| account << USteamBit.ACCOUNT_TYPE_OFFSET
-				| universe << USteamBit.ACCOUNT_UNIVERSE_OFFSET);
+			long xuid = this.xuid;
+			long instance = this.instance.getId();
+			long account = this.account.getId();
+			long universe = this.account.getId();
+
+			return (this.id64Cache = xuid << USteamBit.ACCOUNT_ID_OFFSET
+					| instance << USteamBit.ACCOUNT_INSTANCE_OFFSET
+					| account << USteamBit.ACCOUNT_TYPE_OFFSET
+					| universe << USteamBit.ACCOUNT_UNIVERSE_OFFSET);
+		}
 	}
 
 	/**
@@ -1380,11 +1516,17 @@ public final class SteamId implements Serializable, Cloneable {
 			return defaultValue;
 		}
 
-		int x = this.universe.getId();
-		int y = this.xuid & 1;
-		int z = this.xuid >> 1;
+		synchronized (this.id2CacheMutex) {
+			if (this.id2Cache != null) {
+				return this.id2Cache;
+			}
 
-		return (this.id2Cache = String.format(ID2_FMT, x, y, z));
+			int x = this.universe.getId();
+			int y = this.xuid & 1;
+			int z = this.xuid >> 1;
+
+			return (this.id2Cache = String.format(ID2_FMT, x, y, z));
+		}
 	}
 
 	/**
@@ -1460,33 +1602,39 @@ public final class SteamId implements Serializable, Cloneable {
 			return defaultValue;
 		}
 
-		boolean bInstance = false;
+		synchronized (this.id3CacheMutex) {
+			if (this.id3Cache != null) {
+				return this.id3Cache;
+			}
 
-		char ch = this.account.getChar();
+			boolean bInstance = false;
 
-		switch (this.account) {
-			case CHAT:
-				switch (this.instance) {
-					case CLAN:
-						ch = USteamAccount.CLAN_CHAT_CHAR;
-						break;
+			char ch = this.account.getChar();
 
-					case LOBBY:
-						ch = USteamAccount.LOBBY_CHAT_CHAR;
-						break;
-				}
-				break;
+			switch (this.account) {
+				case CHAT:
+					switch (this.instance) {
+						case CLAN:
+							ch = USteamAccount.CLAN_CHAT_CHAR;
+							break;
 
-			case ANON_GAME_SERVER:
-			case MULTISEAT:
-				bInstance = true;
-				break;
+						case LOBBY:
+							ch = USteamAccount.LOBBY_CHAT_CHAR;
+							break;
+					}
+					break;
+
+				case ANON_GAME_SERVER:
+				case MULTISEAT:
+					bInstance = true;
+					break;
+			}
+
+			int universe = this.universe.getId();
+			int instance = this.instance.getId();
+
+			return (this.id3Cache = String.format(ID3_FMT, ch, universe, this.xuid, bInstance ? ":" + instance : ""));
 		}
-
-		int universe = this.universe.getId();
-		int instance = this.instance.getId();
-
-		return (this.id3Cache = String.format(ID3_FMT, ch, universe, this.xuid, bInstance ? ":" + instance : ""));
 	}
 
 	/**
@@ -1562,7 +1710,19 @@ public final class SteamId implements Serializable, Cloneable {
 			return defaultValue;
 		}
 
-		return (this.inviteCodeCache = USteamInvite.fromXuidOrElse(this.xuid, defaultValue));
+		synchronized (this.inviteCodeCacheMutex) {
+			if (this.inviteCodeCache != null) {
+				return this.inviteCodeCache;
+			}
+
+			String code = USteamInvite.fromXuidOrNull(this.xuid);
+
+			if (code == null) {
+				return defaultValue;
+			}
+
+			return (this.inviteCodeCache = code);
+		}
 	}
 
 	/**
@@ -1638,7 +1798,19 @@ public final class SteamId implements Serializable, Cloneable {
 			return defaultValue;
 		}
 
-		return (this.csgoCodeCache = USteamCsgo.fromXuidOrElse(this.xuid, defaultValue));
+		synchronized (this.csgoCodeCacheMutex) {
+			if (this.csgoCodeCache != null) {
+				return this.csgoCodeCache;
+			}
+
+			String code = USteamCsgo.fromXuidOrNull(this.xuid);
+
+			if (code == null) {
+				return defaultValue;
+			}
+
+			return (this.csgoCodeCache = code);
+		}
 	}
 
 	/**
@@ -1716,7 +1888,13 @@ public final class SteamId implements Serializable, Cloneable {
 			return defaultValue;
 		}
 
-		return (this.id64UrlCache = USteamUrl.PROFILE + id64);
+		synchronized (this.id64UrlCacheMutex) {
+			if (this.id64UrlCache != null) {
+				return this.id64UrlCache;
+			}
+
+			return (this.id64UrlCache = USteamUrl.PROFILE + id64);
+		}
 	}
 
 	/**
@@ -1794,7 +1972,13 @@ public final class SteamId implements Serializable, Cloneable {
 			return defaultValue;
 		}
 
-		return (this.id3UrlCache = USteamUrl.PROFILE + id3);
+		synchronized (this.id3UrlCacheMutex) {
+			if (this.id3UrlCache != null) {
+				return this.id3UrlCache;
+			}
+
+			return (this.id3UrlCache = USteamUrl.PROFILE + id3);
+		}
 	}
 
 	/**
@@ -1872,7 +2056,13 @@ public final class SteamId implements Serializable, Cloneable {
 			return defaultValue;
 		}
 
-		return (this.userUrlCache = USteamUrl.USER + inviteCode);
+		synchronized (this.userUrlCacheMutex) {
+			if (this.userUrlCache != null) {
+				return this.userUrlCache;
+			}
+
+			return (this.userUrlCache = USteamUrl.USER + inviteCode);
+		}
 	}
 
 	/**
@@ -1950,7 +2140,13 @@ public final class SteamId implements Serializable, Cloneable {
 			return defaultValue;
 		}
 
-		return (this.inviteUrlCache = USteamUrl.INVITE + inviteCode);
+		synchronized (this.inviteUrlCacheMutex) {
+			if (this.inviteUrlCache != null) {
+				return this.inviteUrlCache;
+			}
+
+			return (this.inviteUrlCache = USteamUrl.INVITE + inviteCode);
+		}
 	}
 
 	/**
@@ -2028,7 +2224,13 @@ public final class SteamId implements Serializable, Cloneable {
 			return defaultValue;
 		}
 
-		return (this.chinaUrlCache = USteamUrl.CHINA + id64);
+		synchronized (this.chinaUrlCacheMutex) {
+			if (this.chinaUrlCache != null) {
+				return this.chinaUrlCache;
+			}
+
+			return (this.chinaUrlCache = USteamUrl.CHINA + id64);
+		}
 	}
 
 	/**
@@ -2209,14 +2411,13 @@ public final class SteamId implements Serializable, Cloneable {
 			return this.hashCodeCache;
 		}
 
-		return (this.hashCodeCache
-				= Objects.hash(
-						this.xuid,
-						this.universe,
-						this.instance,
-						this.account
-				)
-		);
+		synchronized (this.hashCodeCacheMutex) {
+			if (this.hashCodeCache != null) {
+				return this.hashCodeCache;
+			}
+
+			return (this.hashCodeCache = Objects.hash(this.xuid, this.universe, this.instance, this.account));
+		}
 	}
 
 	/**
@@ -2228,12 +2429,18 @@ public final class SteamId implements Serializable, Cloneable {
 			return this.stringCache;
 		}
 
-		return (this.stringCache = SIMPLE_NAME + "["
-				+ "xuid=" + this.xuid
-				+ ", universe=" + this.universe
-				+ ", instance=" + this.instance
-				+ ", account=" + this.account
-				+ "]");
+		synchronized (this.stringCacheMutex) {
+			if (this.stringCache != null) {
+				return this.stringCache;
+			}
+
+			return (this.stringCache = SIMPLE_NAME + "["
+					+ "xuid=" + this.xuid
+					+ ", universe=" + this.universe
+					+ ", instance=" + this.instance
+					+ ", account=" + this.account
+					+ "]");
+		}
 	}
 
 	/**
