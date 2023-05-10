@@ -22,7 +22,6 @@ import io.github.iwyfewwnt.uwutils.UwEnum;
 import io.github.iwyfewwnt.uwutils.UwMap;
 import io.github.iwyfewwnt.uwutils.UwObject;
 
-import java.io.Serializable;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -32,7 +31,7 @@ import java.util.function.Supplier;
  * <p>Wraps {@link USteamAuth}.
  */
 @SuppressWarnings("unused")
-public enum ESteamAuth implements Serializable {
+public enum ESteamAuth {
 
 	/**
 	 * An authentication type enum - No.
@@ -87,7 +86,7 @@ public enum ESteamAuth implements Serializable {
 	/**
 	 * A {@link ESteamAuth#toString()} cache.
 	 */
-	private transient String stringCache;
+	private String stringCache;
 
 	/**
 	 * Initialize an {@link ESteamAuth} instance.

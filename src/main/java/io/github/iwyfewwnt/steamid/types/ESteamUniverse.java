@@ -22,7 +22,6 @@ import io.github.iwyfewwnt.uwutils.UwEnum;
 import io.github.iwyfewwnt.uwutils.UwMap;
 import io.github.iwyfewwnt.uwutils.UwObject;
 
-import java.io.Serializable;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -32,7 +31,7 @@ import java.util.function.Supplier;
  * <p>Wraps {@link USteamUniverse}.
  */
 @SuppressWarnings("unused")
-public enum ESteamUniverse implements Serializable {
+public enum ESteamUniverse {
 
 	/**
 	 * An account universe type enum - Invalid.
@@ -122,7 +121,7 @@ public enum ESteamUniverse implements Serializable {
 	/**
 	 * A {@link ESteamUniverse#toString()} cache.
 	 */
-	private transient String stringCache;
+	private String stringCache;
 
 	/**
 	 * Initialize a {@link ESteamUniverse} instance.

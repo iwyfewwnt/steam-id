@@ -19,7 +19,6 @@ package io.github.iwyfewwnt.steamid.types;
 import io.github.iwyfewwnt.steamid.utils.USteamDomain;
 import io.github.iwyfewwnt.uwutils.*;
 
-import java.io.Serializable;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -29,7 +28,7 @@ import java.util.function.Supplier;
  * <p>Wraps {@link USteamDomain}.
  */
 @SuppressWarnings("unused")
-public enum ESteamDomain implements Serializable {
+public enum ESteamDomain {
 
 	/**
 	 * A worldwide Steam community domain enum.
@@ -77,7 +76,7 @@ public enum ESteamDomain implements Serializable {
 	/**
 	 * A {@link ESteamDomain#toString()} cache.
 	 */
-	private transient String stringCache;
+	private String stringCache;
 
 	/**
 	 * Initialize an {@link ESteamDomain} instance.

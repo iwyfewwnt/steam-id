@@ -19,7 +19,6 @@ package io.github.iwyfewwnt.steamid.types;
 import io.github.iwyfewwnt.steamid.utils.USteamInstance;
 import io.github.iwyfewwnt.uwutils.*;
 
-import java.io.Serializable;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -29,7 +28,7 @@ import java.util.function.Supplier;
  * <p>Wraps {@link USteamInstance}.
  */
 @SuppressWarnings("unused")
-public enum ESteamInstance implements Serializable {
+public enum ESteamInstance {
 
 	/**
 	 * An account instance type enum - All.
@@ -119,7 +118,7 @@ public enum ESteamInstance implements Serializable {
 	/**
 	 * A {@link ESteamInstance#toString()} cache.
 	 */
-	private transient String stringCache;
+	private String stringCache;
 
 	/**
 	 * Initialize a {@link ESteamInstance} instance.

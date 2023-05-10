@@ -19,7 +19,6 @@ package io.github.iwyfewwnt.steamid.types;
 import io.github.iwyfewwnt.steamid.utils.USteamVanity;
 import io.github.iwyfewwnt.uwutils.*;
 
-import java.io.Serializable;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -29,7 +28,7 @@ import java.util.function.Supplier;
  * <p>Wraps {@link USteamVanity}.
  */
 @SuppressWarnings("unused")
-public enum ESteamVanity implements Serializable {
+public enum ESteamVanity {
 
 	/**
 	 * A vanity URL type enum - Individual.
@@ -91,7 +90,7 @@ public enum ESteamVanity implements Serializable {
 	/**
 	 * A {@link ESteamVanity#toString()} cache.
 	 */
-	private transient String stringCache;
+	private String stringCache;
 
 	/**
 	 * Initialize an {@link ESteamVanity} instance.
