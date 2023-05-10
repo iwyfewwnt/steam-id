@@ -175,7 +175,12 @@ public enum ESteamAccount {
 	/**
 	 * A {@link ESteamAccount#toString()} cache.
 	 */
-	private String stringCache;
+	private volatile String stringCache;
+
+	/**
+	 * A {@link #stringCache} mutex.
+	 */
+	private final Object stringCacheMutex;
 
 	/**
 	 * Initialize an {@link ESteamAccount} instance.
@@ -186,6 +191,8 @@ public enum ESteamAccount {
 	ESteamAccount(int id, char ch) {
 		this.id = id;
 		this.ch = ch;
+
+		this.stringCacheMutex = new Object();
 	}
 
 	/**
@@ -215,10 +222,16 @@ public enum ESteamAccount {
 			return this.stringCache;
 		}
 
-		return (this.stringCache = SIMPLE_NAME + "::" + this.name() + "["
-				+ "id=" + this.id
-				+ ", ch='" + this.ch + "'"
-				+ "]");
+		synchronized (this.stringCacheMutex) {
+			if (this.stringCache != null) {
+				return this.stringCache;
+			}
+
+			return (this.stringCache = SIMPLE_NAME + "::" + this.name() + "["
+					+ "id=" + this.id
+					+ ", ch='" + this.ch + "'"
+					+ "]");
+		}
 	}
 
 	/**

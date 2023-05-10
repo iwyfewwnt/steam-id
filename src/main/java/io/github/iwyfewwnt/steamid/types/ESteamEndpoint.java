@@ -83,7 +83,12 @@ public enum ESteamEndpoint {
 	/**
 	 * A {@link ESteamEndpoint#toString()} cache.
 	 */
-	private String stringCache;
+	private volatile String stringCache;
+
+	/**
+	 * A {@link #stringCache} mutex.
+	 */
+	private final Object stringCacheMutex;
 
 	/**
 	 * Initialize an {@link ESteamEndpoint} instance.
@@ -92,6 +97,8 @@ public enum ESteamEndpoint {
 	 */
 	ESteamEndpoint(String endpoint) {
 		this.endpoint = endpoint;
+
+		this.stringCacheMutex = new Object();
 	}
 
 	/**
@@ -112,9 +119,15 @@ public enum ESteamEndpoint {
 			return this.stringCache;
 		}
 
-		return (this.stringCache = SIMPLE_NAME + "::" + this.name() + "["
-				+ "endpoint=\"" + this.endpoint + "\""
-				+ "]");
+		synchronized (this.stringCacheMutex) {
+			if (this.stringCache != null) {
+				return this.stringCache;
+			}
+
+			return (this.stringCache = SIMPLE_NAME + "::" + this.name() + "["
+					+ "endpoint=\"" + this.endpoint + "\""
+					+ "]");
+		}
 	}
 
 	/**

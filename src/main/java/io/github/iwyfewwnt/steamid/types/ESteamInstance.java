@@ -118,7 +118,12 @@ public enum ESteamInstance {
 	/**
 	 * A {@link ESteamInstance#toString()} cache.
 	 */
-	private String stringCache;
+	private volatile String stringCache;
+
+	/**
+	 * A {@link #stringCache} mutex.
+	 */
+	private final Object stringCacheMutex;
 
 	/**
 	 * Initialize a {@link ESteamInstance} instance.
@@ -127,6 +132,8 @@ public enum ESteamInstance {
 	 */
 	ESteamInstance(int id) {
 		this.id = id;
+
+		this.stringCacheMutex = new Object();
 	}
 
 	/**
@@ -143,13 +150,20 @@ public enum ESteamInstance {
 	 */
 	@Override
 	public String toString() {
+		//noinspection DuplicatedCode
 		if (this.stringCache != null) {
 			return this.stringCache;
 		}
 
-		return (this.stringCache = SIMPLE_NAME + "::" + this.name() + "["
-				+ "id=" + this.id
-				+ "]");
+		synchronized (this.stringCacheMutex) {
+			if (this.stringCache != null) {
+				return this.stringCache;
+			}
+
+			return (this.stringCache = SIMPLE_NAME + "::" + this.name() + "["
+					+ "id=" + this.id
+					+ "]");
+		}
 	}
 
 	/**

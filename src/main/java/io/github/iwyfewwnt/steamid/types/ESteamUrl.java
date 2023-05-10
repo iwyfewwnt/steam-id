@@ -90,7 +90,12 @@ public enum ESteamUrl {
 	/**
 	 * A {@link ESteamUrl#toString()} cache.
 	 */
-	private String stringCache;
+	private volatile String stringCache;
+
+	/**
+	 * A {@link #stringCache} mutex.
+	 */
+	private final Object stringCacheMutex;
 
 	/**
 	 * Initialize an {@link ESteamUrl} instance.
@@ -99,6 +104,8 @@ public enum ESteamUrl {
 	 */
 	ESteamUrl(String url) {
 		this.url = url;
+
+		this.stringCacheMutex = new Object();
 	}
 
 	/**
@@ -119,9 +126,15 @@ public enum ESteamUrl {
 			return this.stringCache;
 		}
 
-		return (this.stringCache = SIMPLE_NAME + "::" + this.name() + "["
-				+ "url=\"" + this.url + "\""
-				+ "]");
+		synchronized (this.stringCacheMutex) {
+			if (this.stringCache != null) {
+				return this.stringCache;
+			}
+
+			return (this.stringCache = SIMPLE_NAME + "::" + this.name() + "["
+					+ "url=\"" + this.url + "\""
+					+ "]");
+		}
 	}
 
 	/**

@@ -76,7 +76,12 @@ public enum ESteamDomain {
 	/**
 	 * A {@link ESteamDomain#toString()} cache.
 	 */
-	private String stringCache;
+	private volatile String stringCache;
+
+	/**
+	 * A {@link #stringCache} mutex.
+	 */
+	private final Object stringCacheMutex;
 
 	/**
 	 * Initialize an {@link ESteamDomain} instance.
@@ -85,6 +90,8 @@ public enum ESteamDomain {
 	 */
 	ESteamDomain(String domain) {
 		this.domain = domain;
+
+		this.stringCacheMutex = new Object();
 	}
 
 	/**
@@ -105,9 +112,15 @@ public enum ESteamDomain {
 			return this.stringCache;
 		}
 
-		return (this.stringCache = SIMPLE_NAME + "::" + this.name() + "["
-				+ "domain=\"" + this.domain + "\""
-				+ "]");
+		synchronized (this.stringCacheMutex) {
+			if (this.stringCache != null) {
+				return this.stringCache;
+			}
+
+			return (this.stringCache = SIMPLE_NAME + "::" + this.name() + "["
+					+ "domain=\"" + this.domain + "\""
+					+ "]");
+		}
 	}
 
 	/**
