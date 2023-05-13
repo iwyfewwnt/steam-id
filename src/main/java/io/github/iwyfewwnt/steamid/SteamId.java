@@ -2949,7 +2949,7 @@ public final class SteamId implements Serializable, Cloneable {
 		}
 
 		try {
-			int xuid = Integer.parseUnsignedInt(USteamRegex.Group.ID);
+			int xuid = Integer.parseUnsignedInt(m.group(USteamRegex.Group.ID));
 			int universe = Integer.parseUnsignedInt(m.group(USteamRegex.Group.UNIVERSE));
 			int instance = USteamInstance.DESKTOP;
 			char account = m.group(USteamRegex.Group.ACCOUNT).charAt(0);
