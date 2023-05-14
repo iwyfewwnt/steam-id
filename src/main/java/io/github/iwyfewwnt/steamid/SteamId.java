@@ -364,7 +364,7 @@ public final class SteamId implements Serializable, Cloneable {
 	/**
 	 * Intialize a {@link SteamId} instance.
 	 *
-	 * <p>Wraps {@link SteamId#SteamId(Integer, ESteamUniverse, ESteamInstance, ESteamAccount)}
+	 * <p>Wraps {@link #SteamId(Integer, ESteamUniverse, ESteamInstance, ESteamAccount)}
 	 * w/ {@link ESteamUniverse#PUBLIC}, {@link ESteamInstance#DESKTOP}, and {@link ESteamAccount#INDIVIDUAL}.
 	 *
 	 * @param xuid	integer value of the account type-32 identifier
@@ -586,7 +586,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#xuid} is {@code null}.
+	 *     <li>{@link #xuid} is {@code null}.
 	 * </ul>
 	 *
 	 * @param defaultValue	default value to return on failure
@@ -602,7 +602,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#xuid} is {@code null}.
+	 *     <li>{@link #xuid} is {@code null}.
 	 * </ul>
 	 *
 	 * @param defaultValueSupplier	supplier from which get the default value
@@ -618,10 +618,10 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#xuid} is {@code null}.
+	 *     <li>{@link #xuid} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#getXuidOrElse(Integer)}
+	 * <p>Wraps {@link #getXuidOrElse(Integer)}
 	 * w/ {@code 0} as the default value.
 	 *
 	 * @return	long value of the unique account type-32 identifier or {@code 0}
@@ -636,10 +636,10 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#xuid} is {@code null}.
+	 *     <li>{@link #xuid} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#getXuidOrElse(Integer)}
+	 * <p>Wraps {@link #getXuidOrElse(Integer)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @return	long value of the unique account type-32 identifier or {@code null}
@@ -654,7 +654,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#universe} is {@code null}.
+	 *     <li>{@link #universe} is {@code null}.
 	 * </ul>
 	 *
 	 * @param defaultValue	default value to return on failure
@@ -670,7 +670,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#universe} is {@code null}.
+	 *     <li>{@link #universe} is {@code null}.
 	 * </ul>
 	 *
 	 * @param defaultValueSupplier	supplier from which get the default value
@@ -686,10 +686,10 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#universe} is {@code null}.
+	 *     <li>{@link #universe} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#getUniverseTypeOrElse(ESteamUniverse)}
+	 * <p>Wraps {@link #getUniverseTypeOrElse(ESteamUniverse)}
 	 * w/ {@link ESteamUniverse#BASE} as the default value.
 	 *
 	 * @return	account universe enum type instance
@@ -704,10 +704,10 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#universe} is {@code null}.
+	 *     <li>{@link #universe} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#getUniverseTypeOrElse(ESteamUniverse)}
+	 * <p>Wraps {@link #getUniverseTypeOrElse(ESteamUniverse)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @return	account universe enum type instance or {@code null}
@@ -722,7 +722,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#universe} is {@code null}.
+	 *     <li>{@link #universe} is {@code null}.
 	 * </ul>
 	 *
 	 * <p>Delegates {@link ESteamUniverse#getIdOrElse(ESteamUniverse, Integer)}.
@@ -740,7 +740,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#universe} is {@code null}.
+	 *     <li>{@link #universe} is {@code null}.
 	 * </ul>
 	 *
 	 * <p>Delegates {@link ESteamUniverse#getIdOrElse(ESteamUniverse, Supplier)}.
@@ -758,7 +758,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#universe} is {@code null}.
+	 *     <li>{@link #universe} is {@code null}.
 	 * </ul>
 	 *
 	 * <p>Delegates {@link ESteamUniverse#getIdOrBase(ESteamUniverse)}.
@@ -775,7 +775,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#universe} is {@code null}.
+	 *     <li>{@link #universe} is {@code null}.
 	 * </ul>
 	 *
 	 * <p>Delegates {@link ESteamUniverse#getIdOrNull(ESteamUniverse)}.
@@ -792,7 +792,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#instance} is {@code null}.
+	 *     <li>{@link #instance} is {@code null}.
 	 * </ul>
 	 *
 	 * @param defaultValue	default value to return on failure
@@ -808,7 +808,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#instance} is {@code null}.
+	 *     <li>{@link #instance} is {@code null}.
 	 * </ul>
 	 *
 	 * @param defaultValueSupplier	supplier from which get the default value
@@ -824,10 +824,10 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#instance} is {@code null}.
+	 *     <li>{@link #instance} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#getInstanceTypeOrElse(ESteamInstance)}
+	 * <p>Wraps {@link #getInstanceTypeOrElse(ESteamInstance)}
 	 * w/ {@link ESteamInstance#MIN} as the default value.
 	 *
 	 * @return	account instance enum type
@@ -842,10 +842,10 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#instance} is {@code null}.
+	 *     <li>{@link #instance} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#getInstanceTypeOrElse(ESteamInstance)}
+	 * <p>Wraps {@link #getInstanceTypeOrElse(ESteamInstance)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @return	account instance enum type or {@code null}
@@ -860,7 +860,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#instance} is {@code null}.
+	 *     <li>{@link #instance} is {@code null}.
 	 * </ul>
 	 *
 	 * <p>Delegates {@link ESteamInstance#getIdOrElse(ESteamInstance, Integer)}.
@@ -878,7 +878,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#instance} is {@code null}.
+	 *     <li>{@link #instance} is {@code null}.
 	 * </ul>
 	 *
 	 * <p>Delegates {@link ESteamInstance#getIdOrElse(ESteamInstance, Supplier)}.
@@ -896,7 +896,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#instance} is {@code null}.
+	 *     <li>{@link #instance} is {@code null}.
 	 * </ul>
 	 *
 	 * <p>Delegates {@link ESteamInstance#getIdOrBase(ESteamInstance)}.
@@ -913,7 +913,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#instance} is {@code null}.
+	 *     <li>{@link #instance} is {@code null}.
 	 * </ul>
 	 *
 	 * <p>Delegates {@link ESteamInstance#getIdOrNull(ESteamInstance)}.
@@ -930,7 +930,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#account} is {@code null}.
+	 *     <li>{@link #account} is {@code null}.
 	 * </ul>
 	 *
 	 * @param defaultValue	default value to return on failure
@@ -946,7 +946,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#account} is {@code null}.
+	 *     <li>{@link #account} is {@code null}.
 	 * </ul>
 	 *
 	 * @param defaultValueSupplier	supplier from which get the default value
@@ -962,10 +962,10 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#account} is {@code null}.
+	 *     <li>{@link #account} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#getAccountTypeOrElse(ESteamAccount)}
+	 * <p>Wraps {@link #getAccountTypeOrElse(ESteamAccount)}
 	 * w/ {@link ESteamAccount#BASE} as the default value.
 	 *
 	 * @return	account type enum type
@@ -980,10 +980,10 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#account} is {@code null}.
+	 *     <li>{@link #account} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#getAccountTypeOrElse(ESteamAccount)}
+	 * <p>Wraps {@link #getAccountTypeOrElse(ESteamAccount)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @return	account type enum type or {@code null}
@@ -998,7 +998,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#account} is {@code null}.
+	 *     <li>{@link #account} is {@code null}.
 	 * </ul>
 	 *
 	 * <p>Delegates {@link ESteamAccount#getIdOrElse(ESteamAccount, Integer)}.
@@ -1016,7 +1016,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#account} is {@code null}.
+	 *     <li>{@link #account} is {@code null}.
 	 * </ul>
 	 *
 	 * <p>Delegates {@link ESteamAccount#getIdOrElse(ESteamAccount, Supplier)}.
@@ -1034,7 +1034,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#account} is {@code null}.
+	 *     <li>{@link #account} is {@code null}.
 	 * </ul>
 	 *
 	 * <p>Delegates {@link ESteamAccount#getIdOrBase(ESteamAccount)}.
@@ -1051,7 +1051,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#account} is {@code null}.
+	 *     <li>{@link #account} is {@code null}.
 	 * </ul>
 	 *
 	 * <p>Delegates {@link ESteamAccount#getIdOrNull(ESteamAccount)}.
@@ -1068,7 +1068,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#account} is {@code null}.
+	 *     <li>{@link #account} is {@code null}.
 	 * </ul>
 	 *
 	 * <p>Delegates {@link ESteamAccount#getCharOrElse(ESteamAccount, Character)}.
@@ -1086,7 +1086,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#account} is {@code null}.
+	 *     <li>{@link #account} is {@code null}.
 	 * </ul>
 	 *
 	 * <p>Delegates {@link ESteamAccount#getCharOrElse(ESteamAccount, Supplier)}.
@@ -1104,7 +1104,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#account} is {@code null}.
+	 *     <li>{@link #account} is {@code null}.
 	 * </ul>
 	 *
 	 * <p>Delegates {@link ESteamAccount#getCharOrBase(ESteamAccount)}.
@@ -1121,7 +1121,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>{@link SteamId#account} is {@code null}.
+	 *     <li>{@link #account} is {@code null}.
 	 * </ul>
 	 *
 	 * <p>Delegates {@link ESteamAccount#getCharOrNull(ESteamAccount)}.
@@ -1367,7 +1367,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>Catched {@link ArithmeticException}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toStaticKeyOrElse(Long)}
+	 * <p>Wraps {@link #toStaticKeyOrElse(Long)}
 	 * w/ {@code 0L} as the default value.
 	 *
 	 * @return 				long value of the static key or {@code 0L}
@@ -1388,7 +1388,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>Catched {@link ArithmeticException}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toStaticKeyOrElse(Long)}
+	 * <p>Wraps {@link #toStaticKeyOrElse(Long)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @return 				long value of the static key or {@code null}
@@ -1464,7 +1464,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>This instance is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toSteam64OrElse(Long)}
+	 * <p>Wraps {@link #toSteam64OrElse(Long)}
 	 * w/ {@code 0L} as the default value.
 	 *
 	 * @return 				long value of the unique account type-64 identifier or {@code 0L}
@@ -1484,7 +1484,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>This instance is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toSteam64OrElse(Long)}
+	 * <p>Wraps {@link #toSteam64OrElse(Long)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @return 				long value of the unique account type-64 identifier or {@code null}
@@ -1554,7 +1554,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>This instance is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toSteam2OrElse(String)}
+	 * <p>Wraps {@link #toSteam2OrElse(String)}
 	 * w/ {@link UwString#EMPTY} as the default value.
 	 *
 	 * @return	string value of the unique account type-2 identifier or the empty one
@@ -1572,7 +1572,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>This instance is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toSteam2OrElse(String)}
+	 * <p>Wraps {@link #toSteam2OrElse(String)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @return	string value of the unique account type-2 identifier or {@code null}
@@ -1662,7 +1662,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>This instance is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toSteam3OrElse(String)}
+	 * <p>Wraps {@link #toSteam3OrElse(String)}
 	 * w/ {@link UwString#EMPTY} as the default value.
 	 *
 	 * @return	string value of the unique account type-3 identifier or the empty one
@@ -1680,7 +1680,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>This instance is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toSteam3OrElse(String)}
+	 * <p>Wraps {@link #toSteam3OrElse(String)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @return	string value of the unique account type-3 identifier or {@code null}
@@ -1750,7 +1750,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>This intance is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toInviteCodeOrElse(String)}
+	 * <p>Wraps {@link #toInviteCodeOrElse(String)}
 	 * w/ {@link UwString#EMPTY} as the default value.
 	 *
 	 * @return	string value of the invite code or the empty one
@@ -1768,7 +1768,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>This intance is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toInviteCodeOrElse(String)}
+	 * <p>Wraps {@link #toInviteCodeOrElse(String)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @return	string value of the invite code or {@code null}
@@ -1838,7 +1838,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>This instance is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toCsgoCodeOrElse(String)}
+	 * <p>Wraps {@link #toCsgoCodeOrElse(String)}
 	 * w/ {@link UwString#EMPTY} as the default value.
 	 *
 	 * @return	string value of the friend code or the empty one
@@ -1856,7 +1856,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>This instance is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toCsgoCodeOrElse(String)}
+	 * <p>Wraps {@link #toCsgoCodeOrElse(String)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @return	string value of the friend code or {@code null}
@@ -1922,7 +1922,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>This instance is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toSteam64UrlOrElse(String)}
+	 * <p>Wraps {@link #toSteam64UrlOrElse(String)}
 	 * w/ {@link UwString#EMPTY} as the default value.
 	 *
 	 * @return	string value of the URL or the empty one
@@ -1940,7 +1940,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>This instance is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toSteam64UrlOrElse(String)}
+	 * <p>Wraps {@link #toSteam64UrlOrElse(String)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @return	string value of the URL or {@code null}
@@ -2006,7 +2006,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>This instance is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toSteam3UrlOrElse(String)}
+	 * <p>Wraps {@link #toSteam3UrlOrElse(String)}
 	 * w/ {@link UwString#EMPTY} as the default value.
 	 *
 	 * @return	string value of the URL or the empty one
@@ -2024,7 +2024,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>This instance is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toSteam3UrlOrElse(String)}
+	 * <p>Wraps {@link #toSteam3UrlOrElse(String)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @return	string value of the URL or {@code null}
@@ -2090,7 +2090,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>This instance is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toSteamUserUrlOrElse(String)}
+	 * <p>Wraps {@link #toSteamUserUrlOrElse(String)}
 	 * w/ {@link UwString#EMPTY} as the default value.
 	 *
 	 * @return	string value of the user URL or the empty one
@@ -2108,7 +2108,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>This instance is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toSteamUserUrlOrElse(String)}
+	 * <p>Wraps {@link #toSteamUserUrlOrElse(String)}
 	 * w/ {@link UwString#EMPTY} as the default value.
 	 *
 	 * @return	string value of the user URL or {@code null}
@@ -2174,7 +2174,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>This instance is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toSteamInviteUrlOrElse(String)}
+	 * <p>Wraps {@link #toSteamInviteUrlOrElse(String)}
 	 * w/ {@link UwString#EMPTY} as the default value.
 	 *
 	 * @return	string value of the invite URL or the empty one
@@ -2192,7 +2192,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>This instance is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toSteamInviteUrlOrElse(String)}
+	 * <p>Wraps {@link #toSteamInviteUrlOrElse(String)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @return	string value of the invite URL or {@code null}
@@ -2258,7 +2258,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>This instance is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toSteam64ChinaUrlOrElse(String)}
+	 * <p>Wraps {@link #toSteam64ChinaUrlOrElse(String)}
 	 * w/ {@link UwString#EMPTY} as the default value.
 	 *
 	 * @return	string value of the URL or the empty one
@@ -2276,7 +2276,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>This instance is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#toSteam64ChinaUrlOrElse(String)}
+	 * <p>Wraps {@link #toSteam64ChinaUrlOrElse(String)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @return	string value of the URL or {@code null}
@@ -2652,7 +2652,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>Account type-32 identifier is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#fromSteamXuidOrElse(Integer, SteamId)}
+	 * <p>Wraps {@link #fromSteamXuidOrElse(Integer, SteamId)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param xuid	integer value of the account type-32 identifier
@@ -2712,7 +2712,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>Account type-32 identifier is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#fromSteamXuidOrElse(String, SteamId)}
+	 * <p>Wraps {@link #fromSteamXuidOrElse(String, SteamId)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param xuid	string value of the account type-32 identifier
@@ -2774,7 +2774,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>Account type-64 identifier is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#fromSteam64OrElse(Long, SteamId)}
+	 * <p>Wraps {@link #fromSteam64OrElse(Long, SteamId)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param id64	long value of the account type-64 identifier
@@ -2840,7 +2840,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>Account type-64 identifier is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#fromSteam64OrElse(String, SteamId)}
+	 * <p>Wraps {@link #fromSteam64OrElse(String, SteamId)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param id64	string value of the account type-64 identifier
@@ -2913,7 +2913,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>Account type-2 identifier is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#fromSteam2OrElse(String, SteamId)}
+	 * <p>Wraps {@link #fromSteam2OrElse(String, SteamId)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param id2	string value of the account type-2 identifier
@@ -3008,7 +3008,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>Account type-3 identifier is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#fromSteam3OrElse(String, SteamId)}
+	 * <p>Wraps {@link #fromSteam3OrElse(String, SteamId)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param id3	string value of the account type-3 identifier
@@ -3067,7 +3067,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>Steam invite code is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#fromInviteCodeOrElse(String, SteamId)}
+	 * <p>Wraps {@link #fromInviteCodeOrElse(String, SteamId)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param code	string value of the invite code
@@ -3126,7 +3126,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>CS:GO friend code is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#fromCsgoCodeOrElse(String, SteamId)}
+	 * <p>Wraps {@link #fromCsgoCodeOrElse(String, SteamId)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param code	string value of the friend code
@@ -3197,7 +3197,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>Steam /profiles/ URL is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#fromSteamProfileUrlOrElse(String, SteamId)}
+	 * <p>Wraps {@link #fromSteamProfileUrlOrElse(String, SteamId)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param url	string value of the /profiles/ URL
@@ -3262,7 +3262,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>Steam /user/ URL is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#fromSteamUserUrlOrElse(String, SteamId)}
+	 * <p>Wraps {@link #fromSteamUserUrlOrElse(String, SteamId)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param url	string value of the /user/ URL
@@ -3330,7 +3330,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>Account type-32 identifier is invalid.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#fromSteamUrlOrElse(String, SteamId)}
+	 * <p>Wraps {@link #fromSteamUrlOrElse(String, SteamId)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param url	string value of the URL
@@ -3346,15 +3346,15 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Wraps all these methods in order:
 	 * <ul>
-	 *     <li>{@link SteamId#fromSteamXuidOrElse(Integer, SteamId)}
-	 *     <li>{@link SteamId#fromSteam64OrElse(Long, SteamId)}
-	 *     <li>{@link SteamId#fromSteamXuidOrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromSteam64OrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromSteam2OrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromSteam3OrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromInviteCodeOrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromCsgoCodeOrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromSteamUrlOrElse(String, SteamId)}
+	 *     <li>{@link #fromSteamXuidOrElse(Integer, SteamId)}
+	 *     <li>{@link #fromSteam64OrElse(Long, SteamId)}
+	 *     <li>{@link #fromSteamXuidOrElse(String, SteamId)}
+	 *     <li>{@link #fromSteam64OrElse(String, SteamId)}
+	 *     <li>{@link #fromSteam2OrElse(String, SteamId)}
+	 *     <li>{@link #fromSteam3OrElse(String, SteamId)}
+	 *     <li>{@link #fromInviteCodeOrElse(String, SteamId)}
+	 *     <li>{@link #fromCsgoCodeOrElse(String, SteamId)}
+	 *     <li>{@link #fromSteamUrlOrElse(String, SteamId)}
 	 * </ul>
 	 *
 	 * <p>Possible failure case:
@@ -3379,15 +3379,15 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Wraps all these methods in order:
 	 * <ul>
-	 *     <li>{@link SteamId#fromSteamXuidOrElse(Integer, SteamId)}
-	 *     <li>{@link SteamId#fromSteam64OrElse(Long, SteamId)}
-	 *     <li>{@link SteamId#fromSteamXuidOrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromSteam64OrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromSteam2OrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromSteam3OrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromInviteCodeOrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromCsgoCodeOrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromSteamUrlOrElse(String, SteamId)}
+	 *     <li>{@link #fromSteamXuidOrElse(Integer, SteamId)}
+	 *     <li>{@link #fromSteam64OrElse(Long, SteamId)}
+	 *     <li>{@link #fromSteamXuidOrElse(String, SteamId)}
+	 *     <li>{@link #fromSteam64OrElse(String, SteamId)}
+	 *     <li>{@link #fromSteam2OrElse(String, SteamId)}
+	 *     <li>{@link #fromSteam3OrElse(String, SteamId)}
+	 *     <li>{@link #fromInviteCodeOrElse(String, SteamId)}
+	 *     <li>{@link #fromCsgoCodeOrElse(String, SteamId)}
+	 *     <li>{@link #fromSteamUrlOrElse(String, SteamId)}
 	 * </ul>
 	 *
 	 * <p>Possible failure case:
@@ -3461,15 +3461,15 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Wraps all these methods in order:
 	 * <ul>
-	 *     <li>{@link SteamId#fromSteamXuidOrElse(Integer, SteamId)}
-	 *     <li>{@link SteamId#fromSteam64OrElse(Long, SteamId)}
-	 *     <li>{@link SteamId#fromSteamXuidOrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromSteam64OrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromSteam2OrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromSteam3OrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromInviteCodeOrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromCsgoCodeOrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromSteamUrlOrElse(String, SteamId)}
+	 *     <li>{@link #fromSteamXuidOrElse(Integer, SteamId)}
+	 *     <li>{@link #fromSteam64OrElse(Long, SteamId)}
+	 *     <li>{@link #fromSteamXuidOrElse(String, SteamId)}
+	 *     <li>{@link #fromSteam64OrElse(String, SteamId)}
+	 *     <li>{@link #fromSteam2OrElse(String, SteamId)}
+	 *     <li>{@link #fromSteam3OrElse(String, SteamId)}
+	 *     <li>{@link #fromInviteCodeOrElse(String, SteamId)}
+	 *     <li>{@link #fromCsgoCodeOrElse(String, SteamId)}
+	 *     <li>{@link #fromSteamUrlOrElse(String, SteamId)}
 	 * </ul>
 	 *
 	 * <p>Possible failure case:
@@ -3492,15 +3492,15 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Wraps all these methods in order:
 	 * <ul>
-	 *     <li>{@link SteamId#fromSteamXuidOrElse(Integer, SteamId)}
-	 *     <li>{@link SteamId#fromSteam64OrElse(Long, SteamId)}
-	 *     <li>{@link SteamId#fromSteamXuidOrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromSteam64OrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromSteam2OrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromSteam3OrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromInviteCodeOrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromCsgoCodeOrElse(String, SteamId)}
-	 *     <li>{@link SteamId#fromSteamUrlOrElse(String, SteamId)}
+	 *     <li>{@link #fromSteamXuidOrElse(Integer, SteamId)}
+	 *     <li>{@link #fromSteam64OrElse(Long, SteamId)}
+	 *     <li>{@link #fromSteamXuidOrElse(String, SteamId)}
+	 *     <li>{@link #fromSteam64OrElse(String, SteamId)}
+	 *     <li>{@link #fromSteam2OrElse(String, SteamId)}
+	 *     <li>{@link #fromSteam3OrElse(String, SteamId)}
+	 *     <li>{@link #fromInviteCodeOrElse(String, SteamId)}
+	 *     <li>{@link #fromCsgoCodeOrElse(String, SteamId)}
+	 *     <li>{@link #fromSteamUrlOrElse(String, SteamId)}
 	 * </ul>
 	 *
 	 * <p>Possible failure case:
@@ -3509,7 +3509,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *     <li>Provided argument is invalid for the all implemented methods
 	 * </ul>
 	 *
-	 * <p>Wraps {@link SteamId#fromSteamAnyOrElse(Object, SteamId)}
+	 * <p>Wraps {@link #fromSteamAnyOrElse(Object, SteamId)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param obj	value of the Steam related object

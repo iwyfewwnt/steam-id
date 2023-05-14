@@ -88,7 +88,7 @@ public enum ESteamVanity {
 	private final int id;
 
 	/**
-	 * A {@link ESteamVanity#toString()} cache.
+	 * A {@link #toString()} cache.
 	 */
 	private volatile String stringCache;
 
@@ -185,7 +185,7 @@ public enum ESteamVanity {
 	 *     <li>{@link ESteamVanity} instance is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link ESteamVanity#getIdOrElse(ESteamVanity, Integer)}
+	 * <p>Wraps {@link #getIdOrElse(ESteamVanity, Integer)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param vanity	enum value of the vanity URL type from which get the identifier
@@ -223,7 +223,7 @@ public enum ESteamVanity {
 	 * Get an {@link ESteamVanity} instance by its vanity URL type identifier
 	 * or return {@code null} if failed.
 	 *
-	 * <p>Wraps {@link ESteamVanity#fromIdOrElse(Integer, ESteamVanity)}
+	 * <p>Wraps {@link #fromIdOrElse(Integer, ESteamVanity)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param id	vanity URL type identifier of the instance
@@ -261,7 +261,7 @@ public enum ESteamVanity {
 	 * Get an {@link ESteamVanity} instance by its index
 	 * or return {@code null} if failed.
 	 *
-	 * <p>Wraps {@link ESteamVanity#fromIndexOrElse(Integer, ESteamVanity)}
+	 * <p>Wraps {@link #fromIndexOrElse(Integer, ESteamVanity)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param index		index of the instance

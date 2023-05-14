@@ -37,14 +37,14 @@ public final class USteamAuth {
 	/**
 	 * A minimum authentication type ID.
 	 *
-	 * <p>Wraps {@link USteamAuth#NO}.
+	 * <p>Wraps {@link #NO}.
 	 */
 	public static final int MIN = NO;
 
 	/**
 	 * A maximum authentication type ID.
 	 *
-	 * <p>Wraps {@link USteamAuth#YES}.
+	 * <p>Wraps {@link #YES}.
 	 */
 	public static final int MAX = YES;
 

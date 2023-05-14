@@ -173,7 +173,7 @@ public enum ESteamAccount {
 	private final char ch;
 
 	/**
-	 * A {@link ESteamAccount#toString()} cache.
+	 * A {@link #toString()} cache.
 	 */
 	private volatile String stringCache;
 
@@ -281,7 +281,7 @@ public enum ESteamAccount {
 	 *     <li>{@link ESteamAccount} instance is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link ESteamAccount#getIdOrElse(ESteamAccount, Integer)}
+	 * <p>Wraps {@link #getIdOrElse(ESteamAccount, Integer)}
 	 * w/ {@link USteamAccount#BASE_ID} as the default value.
 	 *
 	 * @param account	enum value of the account type from which get the identifier
@@ -300,7 +300,7 @@ public enum ESteamAccount {
 	 *     <li>{@link ESteamAccount} instance is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link ESteamAccount#getIdOrElse(ESteamAccount, Integer)}
+	 * <p>Wraps {@link #getIdOrElse(ESteamAccount, Integer)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param account	enum value of the account type from which get the identifier
@@ -357,7 +357,7 @@ public enum ESteamAccount {
 	 *     <li>{@link ESteamAccount} instance is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link ESteamAccount#getIdOrElse(ESteamAccount, Integer)}
+	 * <p>Wraps {@link #getIdOrElse(ESteamAccount, Integer)}
 	 * w/ {@link USteamAccount#BASE_CHAR} as the default value.
 	 *
 	 * @param account	enum value of the account type from which get the character
@@ -376,7 +376,7 @@ public enum ESteamAccount {
 	 *     <li>{@link ESteamAccount} instance is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link ESteamAccount#getCharOrElse(ESteamAccount, Character)}
+	 * <p>Wraps {@link #getCharOrElse(ESteamAccount, Character)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param account	enum value of the account type from which get the character
@@ -414,8 +414,8 @@ public enum ESteamAccount {
 	 * Get an {@link ESteamAccount} instance by its account type identifier
 	 * or return the base value if failed.
 	 *
-	 * <p>Wraps {@link ESteamAccount#fromIdOrElse(Integer, ESteamAccount)}
-	 * w/ {@link ESteamAccount#BASE} as the default value.
+	 * <p>Wraps {@link #fromIdOrElse(Integer, ESteamAccount)}
+	 * w/ {@link #BASE} as the default value.
 	 *
 	 * @param id	account type identifier of the instance
 	 * @return		associated {@link ESteamAccount} instance or the base value
@@ -428,7 +428,7 @@ public enum ESteamAccount {
 	 * Get an {@link ESteamAccount} instance by its account type identifier
 	 * or return {@code null} if failed.
 	 *
-	 * <p>Wraps {@link ESteamAccount#fromIdOrElse(Integer, ESteamAccount)}
+	 * <p>Wraps {@link #fromIdOrElse(Integer, ESteamAccount)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param id	account type identifier of the instance
@@ -466,8 +466,8 @@ public enum ESteamAccount {
 	 * Get an {@link ESteamAccount} instance by its account type character
 	 * or return the base value if failed.
 	 *
-	 * <p>Wraps {@link ESteamAccount#fromCharOrElse(Character, ESteamAccount)}
-	 * w/ {@link ESteamAccount#BASE} as the default value.
+	 * <p>Wraps {@link #fromCharOrElse(Character, ESteamAccount)}
+	 * w/ {@link #BASE} as the default value.
 	 *
 	 * @param ch	account type character of the instance
 	 * @return		associated {@link ESteamAccount} instance or the base value
@@ -480,7 +480,7 @@ public enum ESteamAccount {
 	 * Get an {@link ESteamAccount} instance by its account type character
 	 * or return {@code null} if failed.
 	 *
-	 * <p>Wraps {@link ESteamAccount#fromCharOrElse(Character, ESteamAccount)}
+	 * <p>Wraps {@link #fromCharOrElse(Character, ESteamAccount)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param ch	account type character of the instance
@@ -518,8 +518,8 @@ public enum ESteamAccount {
 	 * Get an {@link ESteamAccount} instance by its index
 	 * or return the base value if failed.
 	 *
-	 * <p>Wraps {@link ESteamAccount#fromIndexOrElse(Integer, ESteamAccount)}
-	 * w/ {@link ESteamAccount#BASE} as the default alue.
+	 * <p>Wraps {@link #fromIndexOrElse(Integer, ESteamAccount)}
+	 * w/ {@link #BASE} as the default alue.
 	 *
 	 * @param index		index of the instance
 	 * @return			associated {@link ESteamAccount} instance or the base value

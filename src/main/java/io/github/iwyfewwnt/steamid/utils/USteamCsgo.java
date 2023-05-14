@@ -96,7 +96,7 @@ public final class USteamCsgo {
 	 * <p>Possible failure cases:
 	 * <ul>
 	 *     <li>Steam account identifier isn't valid.
-	 *     <li>{@link USteamCsgo#MD5} is {@code null}.
+	 *     <li>{@link #MD5} is {@code null}.
 	 * </ul>
 	 *
 	 * <hr>
@@ -148,7 +148,7 @@ public final class USteamCsgo {
 	 * <p>Possible failure cases:
 	 * <ul>
 	 *     <li>Steam account identifier isn't valid.
-	 *     <li>{@link USteamCsgo#MD5} is {@code null}.
+	 *     <li>{@link #MD5} is {@code null}.
 	 * </ul>
 	 *
 	 * <hr>
@@ -183,10 +183,10 @@ public final class USteamCsgo {
 	 * <p>Possible failure cases:
 	 * <ul>
 	 *     <li>Steam account identifier isn't valid.
-	 *     <li>{@link USteamCsgo#MD5} is {@code null}.
+	 *     <li>{@link #MD5} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link USteamCsgo#fromXuidOrElse(Integer, String)}
+	 * <p>Wraps {@link #fromXuidOrElse(Integer, String)}
 	 * w/ {@link UwString#EMPTY} as the default value.
 	 *
 	 * <hr>
@@ -220,10 +220,10 @@ public final class USteamCsgo {
 	 * <p>Possible failure cases:
 	 * <ul>
 	 *     <li>Steam account identifier isn't valid.
-	 *     <li>{@link USteamCsgo#MD5} is {@code null}.
+	 *     <li>{@link #MD5} is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link USteamCsgo#fromXuidOrElse(Integer, String)}
+	 * <p>Wraps {@link #fromXuidOrElse(Integer, String)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * <hr>
@@ -352,7 +352,7 @@ public final class USteamCsgo {
 	 *     <li>CS:GO friend code doesn't match w/ the {@link USteamRegex#CSGO_CODE}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link USteamCsgo#toXuidOrElse(String, Integer)}
+	 * <p>Wraps {@link #toXuidOrElse(String, Integer)}
 	 * w/ {@code 0} as the default value.
 	 *
 	 * <hr>
@@ -392,7 +392,7 @@ public final class USteamCsgo {
 	 *     <li>CS:GO friend code doesn't match w/ the {@link USteamRegex#CSGO_CODE}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link USteamCsgo#toXuidOrElse(String, Integer)}
+	 * <p>Wraps {@link #toXuidOrElse(String, Integer)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * <hr>

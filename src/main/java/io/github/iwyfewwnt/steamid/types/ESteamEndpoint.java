@@ -81,7 +81,7 @@ public enum ESteamEndpoint {
 	private final String endpoint;
 
 	/**
-	 * A {@link ESteamEndpoint#toString()} cache.
+	 * A {@link #toString()} cache.
 	 */
 	private volatile String stringCache;
 
@@ -177,7 +177,7 @@ public enum ESteamEndpoint {
 	 *     <li>{@link ESteamEndpoint} instance is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link ESteamEndpoint#getEndpointOrElse(ESteamEndpoint, String)}
+	 * <p>Wraps {@link #getEndpointOrElse(ESteamEndpoint, String)}
 	 * w/ {@link UwString#EMPTY} as the default value.
 	 *
 	 * @param endpoint	enum value of the endpoint type from which get the string
@@ -196,7 +196,7 @@ public enum ESteamEndpoint {
 	 *     <li>{@link ESteamEndpoint} instance is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link ESteamEndpoint#getEndpointOrElse(ESteamEndpoint, String)}
+	 * <p>Wraps {@link #getEndpointOrElse(ESteamEndpoint, String)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param endpoint	enum value of the endpoint type from which get the string
@@ -234,7 +234,7 @@ public enum ESteamEndpoint {
 	 * Get an {@link ESteamEndpoint} instance by its endpoint string
 	 * or return {@code null} if failed.
 	 *
-	 * <p>Wraps {@link ESteamEndpoint#fromEndpointOrElse(String, ESteamEndpoint)}
+	 * <p>Wraps {@link #fromEndpointOrElse(String, ESteamEndpoint)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param endpoint	endpoint string of the instance
@@ -272,7 +272,7 @@ public enum ESteamEndpoint {
 	 * Get an {@link ESteamEndpoint} instance by its endpoint string
 	 * or return {@code null} if failed.
 	 *
-	 * <p>Wraps {@link ESteamEndpoint#fromIndexOrElse(Integer, ESteamEndpoint)}
+	 * <p>Wraps {@link #fromIndexOrElse(Integer, ESteamEndpoint)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param index		index of the instance

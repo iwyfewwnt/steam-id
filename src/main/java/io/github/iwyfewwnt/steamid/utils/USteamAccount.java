@@ -95,21 +95,21 @@ public final class USteamAccount {
 	/**
 	 * A base account type ID.
 	 *
-	 * <p>Wraps {@link USteamAccount#INVALID_ID}.
+	 * <p>Wraps {@link #INVALID_ID}.
 	 */
 	public static final int BASE_ID = INVALID_ID;
 
 	/**
 	 * A minimum account type ID.
 	 *
-	 * <p>Wraps {@link USteamAccount#INDIVIDUAL_ID}.
+	 * <p>Wraps {@link #INDIVIDUAL_ID}.
 	 */
 	public static final int MIN_ID = INDIVIDUAL_ID;
 
 	/**
 	 * A maximum account type ID.
 	 *
-	 * <p>Wraps {@link USteamAccount#UNKNOWN_ID}.
+	 * <p>Wraps {@link #UNKNOWN_ID}.
 	 */
 	public static final int MAX_ID = UNKNOWN_ID;
 
@@ -161,7 +161,7 @@ public final class USteamAccount {
 	/**
 	 * An account type char - Console User/P2P SuperSeeder.
 	 *
-	 * <p>There's no char variant for the {@link USteamAccount#CONSOLE_USER_ID}
+	 * <p>There's no char variant for the {@link #CONSOLE_USER_ID}
 	 * so this value is equal to {@code 0}.
 	 */
 	public static final char CONSOLE_USER_CHAR = 0;
@@ -189,21 +189,21 @@ public final class USteamAccount {
 	/**
 	 * A base account type char according to the base account type ID.
 	 *
-	 * <p>Wraps {@link USteamAccount#INVALID_CHAR}.
+	 * <p>Wraps {@link #INVALID_CHAR}.
 	 */
 	public static final char BASE_CHAR = INVALID_CHAR;
 
 	/**
 	 * A minimum account type char according to the minimum account type ID.
 	 *
-	 * <p>Wraps {@link USteamAccount#INDIVIDUAL_CHAR}.
+	 * <p>Wraps {@link #INDIVIDUAL_CHAR}.
 	 */
 	public static final char MIN_CHAR = INDIVIDUAL_CHAR;
 
 	/**
 	 * A maximum account type char according to the maximum account type ID.
 	 *
-	 * <p>Wraps {@link USteamAccount#UNKNOWN_CHAR}.
+	 * <p>Wraps {@link #UNKNOWN_CHAR}.
 	 */
 	public static final char MAX_CHAR = UNKNOWN_CHAR;
 

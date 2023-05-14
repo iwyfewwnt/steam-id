@@ -116,7 +116,7 @@ public enum ESteamInstance {
 	private final int id;
 
 	/**
-	 * A {@link ESteamInstance#toString()} cache.
+	 * A {@link #toString()} cache.
 	 */
 	private volatile String stringCache;
 
@@ -213,11 +213,11 @@ public enum ESteamInstance {
 	 *     <li>{@link ESteamInstance} instance is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link ESteamInstance#getIdOrElse(ESteamInstance, Integer)}
-	 * w/ {@link USteamInstance#MIN} as the default value.
+	 * <p>Wraps {@link #getIdOrElse(ESteamInstance, Integer)}
+	 * w/ {@link #MIN} as the default value.
 	 *
 	 * @param instance	enum value of the account instance type from which get the identifier
-	 * @return			account instance type identifier or the {@link USteamInstance#MIN} value
+	 * @return			account instance type identifier or the {@link #MIN} value
 	 */
 	public static Integer getIdOrBase(ESteamInstance instance) {
 		return getIdOrElse(instance, USteamInstance.MIN);
@@ -232,7 +232,7 @@ public enum ESteamInstance {
 	 *     <li>{@link ESteamInstance} instance is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link ESteamInstance#getIdOrElse(ESteamInstance, Integer)}
+	 * <p>Wraps {@link #getIdOrElse(ESteamInstance, Integer)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param instance	enum value of the account instance type from which get the identifier
@@ -270,11 +270,11 @@ public enum ESteamInstance {
 	 * Get an {@link ESteamInstance} instance by its account instance type identifier
 	 * or return the {@link ESteamInstance#MIN} value if failed.
 	 *
-	 * <p>Wraps {@link ESteamInstance#fromIdOrElse(Integer, ESteamInstance)}
-	 * w/ {@link ESteamInstance#MIN} as the default value.
+	 * <p>Wraps {@link #fromIdOrElse(Integer, ESteamInstance)}
+	 * w/ {@link #MIN} as the default value.
 	 *
 	 * @param id	account instance type identifier of the instance
-	 * @return		associated {@link ESteamInstance} instance or the {@link ESteamInstance#MIN} value
+	 * @return		associated {@link ESteamInstance} instance or the {@link #MIN} value
 	 */
 	public static ESteamInstance fromIdOrBase(Integer id) {
 		return fromIdOrElse(id, MIN);
@@ -284,7 +284,7 @@ public enum ESteamInstance {
 	 * Get an {@link ESteamInstance} instance by its account instance type identifier
 	 * or return {@code null} if failed.
 	 *
-	 * <p>Wraps {@link ESteamInstance#fromIdOrElse(Integer, ESteamInstance)}
+	 * <p>Wraps {@link #fromIdOrElse(Integer, ESteamInstance)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param id	account instance type identifier of the instance
@@ -320,13 +320,13 @@ public enum ESteamInstance {
 
 	/**
 	 * Get an {@link ESteamInstance} instance by its index
-	 * or return the {@link ESteamInstance#MIN} value if failed.
+	 * or return the {@link #MIN} value if failed.
 	 *
-	 * <p>Wraps {@link ESteamInstance#fromIndexOrElse(Integer, ESteamInstance)}
-	 * w/ {@link ESteamInstance#MIN} as the default value.
+	 * <p>Wraps {@link #fromIndexOrElse(Integer, ESteamInstance)}
+	 * w/ {@link #MIN} as the default value.
 	 *
 	 * @param index		index of the instance
-	 * @return			associated {@link ESteamInstance} instance or the {@link ESteamInstance#MIN} value
+	 * @return			associated {@link ESteamInstance} instance or the {@link #MIN} value
 	 */
 	public static ESteamInstance fromIndexOrBase(Integer index) {
 		return fromIndexOrElse(index, MIN);
@@ -336,7 +336,7 @@ public enum ESteamInstance {
 	 * Get an {@link ESteamInstance} instance by its index
 	 * or return {@code null} if failed.
 	 *
-	 * <p>Wraps {@link ESteamInstance#fromIndexOrElse(Integer, ESteamInstance)}
+	 * <p>Wraps {@link #fromIndexOrElse(Integer, ESteamInstance)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param index		index of the instance

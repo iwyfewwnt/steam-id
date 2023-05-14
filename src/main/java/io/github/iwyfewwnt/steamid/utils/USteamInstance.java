@@ -48,14 +48,14 @@ public final class USteamInstance {
 	/**
 	 * A minimum account instance type ID.
 	 *
-	 * <p>Wraps {@link USteamInstance#ALL}.
+	 * <p>Wraps {@link #ALL}.
 	 */
 	public static final int MIN = ALL;
 
 	/**
 	 * A maximum account instance type ID.
 	 *
-	 * <p>Wraps {@link USteamInstance#WEB}.
+	 * <p>Wraps {@link #WEB}.
 	 */
 	public static final int MAX = WEB;
 

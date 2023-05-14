@@ -60,21 +60,21 @@ public final class USteamUniverse {
 	/**
 	 * A base account universe type ID.
 	 *
-	 * <p>Wraps {@link USteamUniverse#INVALID}.
+	 * <p>Wraps {@link #INVALID}.
 	 */
 	public static final int BASE = INVALID;
 
 	/**
 	 * A minimum account universe type ID.
 	 *
-	 * <p>Wraps {@link USteamUniverse#PUBLIC}.
+	 * <p>Wraps {@link #PUBLIC}.
 	 */
 	public static final int MIN = PUBLIC;
 
 	/**
 	 * A maximum account universe type ID.
 	 *
-	 * <p>Wraps {@link USteamUniverse#RC}.
+	 * <p>Wraps {@link #RC}.
 	 */
 	public static final int MAX = RC;
 

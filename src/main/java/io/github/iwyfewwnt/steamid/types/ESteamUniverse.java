@@ -119,7 +119,7 @@ public enum ESteamUniverse {
 	private final int id;
 
 	/**
-	 * A {@link ESteamUniverse#toString()} cache.
+	 * A {@link #toString()} cache.
 	 */
 	private volatile String stringCache;
 
@@ -216,7 +216,7 @@ public enum ESteamUniverse {
 	 *     <li>{@link ESteamUniverse} instance is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link ESteamUniverse#getIdOrElse(ESteamUniverse, Integer)}
+	 * <p>Wraps {@link #getIdOrElse(ESteamUniverse, Integer)}
 	 * w/ {@link USteamUniverse#BASE} as the default value.
 	 *
 	 * @param universe	enum value of the account universe type from which get the identifier
@@ -235,7 +235,7 @@ public enum ESteamUniverse {
 	 *     <li>{@link ESteamUniverse} instance is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link ESteamUniverse#getIdOrElse(ESteamUniverse, Integer)}
+	 * <p>Wraps {@link #getIdOrElse(ESteamUniverse, Integer)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param universe	enum value of the account universe type from which get the identifier
@@ -273,8 +273,8 @@ public enum ESteamUniverse {
 	 * Get an {@link ESteamUniverse} instance by its account universe type identifier
 	 * or return the base value if failed.
 	 *
-	 * <p>Wraps {@link ESteamUniverse#fromIdOrElse(Integer, ESteamUniverse)}
-	 * w/ {@link ESteamUniverse#BASE} as the default value.
+	 * <p>Wraps {@link #fromIdOrElse(Integer, ESteamUniverse)}
+	 * w/ {@link #BASE} as the default value.
 	 *
 	 * @param id	account universe type identifier of the instance
 	 * @return		associated {@link ESteamUniverse} instance or the base value
@@ -287,7 +287,7 @@ public enum ESteamUniverse {
 	 * Get an {@link ESteamUniverse} instance by its account universe type identifier
 	 * or return {@code null} if failed.
 	 *
-	 * <p>Wraps {@link ESteamUniverse#fromIdOrElse(Integer, ESteamUniverse)}
+	 * <p>Wraps {@link #fromIdOrElse(Integer, ESteamUniverse)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param id	account universe type identifier of the instance
@@ -325,8 +325,8 @@ public enum ESteamUniverse {
 	 * Get an {@link ESteamUniverse} instance by its index
 	 * or return the base value if failed.
 	 *
-	 * <p>Wraps {@link ESteamUniverse#fromIndexOrElse(Integer, ESteamUniverse)}
-	 * w/ {@link ESteamUniverse#BASE} as the default value.
+	 * <p>Wraps {@link #fromIndexOrElse(Integer, ESteamUniverse)}
+	 * w/ {@link #BASE} as the default value.
 	 *
 	 * @param index		index of the instance
 	 * @return			associated {@link ESteamUniverse} instance or the base value

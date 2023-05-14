@@ -84,7 +84,7 @@ public enum ESteamAuth {
 	private final int id;
 
 	/**
-	 * A {@link ESteamAuth#toString()} cache.
+	 * A {@link #toString()} cache.
 	 */
 	private volatile String stringCache;
 
@@ -181,7 +181,7 @@ public enum ESteamAuth {
 	 *     <li>{@link ESteamAuth} instance is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link ESteamAuth#getIdOrElse(ESteamAuth, Integer)}
+	 * <p>Wraps {@link #getIdOrElse(ESteamAuth, Integer)}
 	 * w/ {@link USteamAuth#MIN} as the default value.
 	 *
 	 * @param auth	enum value of the account authentication type from which get the identifier
@@ -200,7 +200,7 @@ public enum ESteamAuth {
 	 *     <li>{@link ESteamAuth} instance is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link ESteamAuth#getIdOrElse(ESteamAuth, Integer)}
+	 * <p>Wraps {@link #getIdOrElse(ESteamAuth, Integer)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param auth	enum value of the account authentication type from which get the identifier
@@ -238,11 +238,11 @@ public enum ESteamAuth {
 	 * Get an {@link ESteamAuth} instance by its account authentication type identifier
 	 * or return the {@link ESteamAuth#MIN} value if failed.
 	 *
-	 * <p>Wraps {@link ESteamAuth#fromIdOrElse(Integer, ESteamAuth)}
-	 * w/ {@link ESteamAuth#MIN} as the default value.
+	 * <p>Wraps {@link #fromIdOrElse(Integer, ESteamAuth)}
+	 * w/ {@link #MIN} as the default value.
 	 *
 	 * @param id	account authentication type identifier of the instance
-	 * @return		associated {@link ESteamAuth} instance or the {@link ESteamAuth#MIN} value
+	 * @return		associated {@link ESteamAuth} instance or the {@link #MIN} value
 	 */
 	public static ESteamAuth fromIdOrBase(Integer id) {
 		return fromIdOrElse(id, MIN);
@@ -252,7 +252,7 @@ public enum ESteamAuth {
 	 * Get an {@link ESteamAuth} instance by its account authentication type identifier
 	 * or return {@code null} if failed.
 	 *
-	 * <p>Wraps {@link ESteamAuth#fromIdOrElse(Integer, ESteamAuth)}
+	 * <p>Wraps {@link #fromIdOrElse(Integer, ESteamAuth)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param id	account authentication type identifier of the instance
@@ -290,11 +290,11 @@ public enum ESteamAuth {
 	 * Get an {@link ESteamAuth} instance by its index
 	 * or return the {@link ESteamAuth#MIN} value if failed.
 	 *
-	 * <p>Wrapas {@link ESteamAuth#fromIndexOrElse(Integer, ESteamAuth)}
-	 * w/ {@link ESteamAuth#MIN} as the default value.
+	 * <p>Wrapas {@link #fromIndexOrElse(Integer, ESteamAuth)}
+	 * w/ {@link #MIN} as the default value.
 	 *
 	 * @param index		index of the instance
-	 * @return			associated {@link ESteamAuth} instance or the {@link ESteamAuth#MIN} value
+	 * @return			associated {@link ESteamAuth} instance or the {@link #MIN} value
 	 */
 	public static ESteamAuth fromIndexOrBase(Integer index) {
 		return fromIndexOrElse(index, MIN);

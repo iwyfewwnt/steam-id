@@ -88,7 +88,7 @@ public enum ESteamUrl {
 	private final String url;
 
 	/**
-	 * A {@link ESteamUrl#toString()} cache.
+	 * A {@link #toString()} cache.
 	 */
 	private volatile String stringCache;
 
@@ -184,7 +184,7 @@ public enum ESteamUrl {
 	 *     <li>{@link ESteamUrl} instance is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link ESteamUrl#getUrlOrElse(ESteamUrl, String)}
+	 * <p>Wraps {@link #getUrlOrElse(ESteamUrl, String)}
 	 * w/ {@link UwString#EMPTY} as the default value.
 	 *
 	 * @param url	enum value of the URL type from which get the string
@@ -203,7 +203,7 @@ public enum ESteamUrl {
 	 *     <li>{@link ESteamUrl} instance is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link ESteamUrl#getUrlOrElse(ESteamUrl, String)}
+	 * <p>Wraps {@link #getUrlOrElse(ESteamUrl, String)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param url	enum value of the URL type from which get the string
@@ -241,7 +241,7 @@ public enum ESteamUrl {
 	 * Get an {@link ESteamUrl} instance by its URL string
 	 * or return {@code null} if failed.
 	 *
-	 * <p>Wraps {@link ESteamUrl#fromUrlOrElse(String, ESteamUrl)}
+	 * <p>Wraps {@link #fromUrlOrElse(String, ESteamUrl)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param url	URL string of the instance
@@ -279,7 +279,7 @@ public enum ESteamUrl {
 	 * Get an {@link ESteamUrl} instance by its index
 	 * or return {@code null} if failed.
 	 *
-	 * <p>Wraps {@link ESteamUrl#fromIndexOrElse(Integer, ESteamUrl)}
+	 * <p>Wraps {@link #fromIndexOrElse(Integer, ESteamUrl)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param index		index of the instance

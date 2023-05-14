@@ -47,14 +47,14 @@ public final class USteamVanity {
 	/**
 	 * A minimum vanity URL type ID.
 	 *
-	 * <p>Wraps {@link USteamVanity#INDIVIDUAL}.
+	 * <p>Wraps {@link #INDIVIDUAL}.
 	 */
 	public static final int MIN = INDIVIDUAL;
 
 	/**
 	 * A maximum vanity URL type ID.
 	 *
-	 * <p>Wraps {@link USteamVanity#GAME_GROUP}.
+	 * <p>Wraps {@link #GAME_GROUP}.
 	 */
 	public static final int MAX = GAME_GROUP;
 

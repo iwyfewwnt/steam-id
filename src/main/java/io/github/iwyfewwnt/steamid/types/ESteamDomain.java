@@ -74,7 +74,7 @@ public enum ESteamDomain {
 	private final String domain;
 
 	/**
-	 * A {@link ESteamDomain#toString()} cache.
+	 * A {@link #toString()} cache.
 	 */
 	private volatile String stringCache;
 
@@ -170,7 +170,7 @@ public enum ESteamDomain {
 	 *     <li>{@link ESteamDomain} instance is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link ESteamDomain#getDomainOrElse(ESteamDomain, String)}
+	 * <p>Wraps {@link #getDomainOrElse(ESteamDomain, String)}
 	 * w/ {@link UwString#EMPTY} as the default value.
 	 *
 	 * @param domain	enum value of the domain type from which get the string
@@ -189,7 +189,7 @@ public enum ESteamDomain {
 	 *     <li>{@link ESteamDomain} instance is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link ESteamDomain#getDomainOrElse(ESteamDomain, String)}
+	 * <p>Wraps {@link #getDomainOrElse(ESteamDomain, String)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param domain	enum value of the domain type from which get the string
@@ -227,7 +227,7 @@ public enum ESteamDomain {
 	 * Get an {@link ESteamDomain} instance by its domain string
 	 * or return {@code null} if failed.
 	 *
-	 * <p>Wraps {@link ESteamDomain#fromDomainOrElse(String, ESteamDomain)}
+	 * <p>Wraps {@link #fromDomainOrElse(String, ESteamDomain)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param domain	domain string of the instance
@@ -265,7 +265,7 @@ public enum ESteamDomain {
 	 * Get an {@link ESteamDomain} instance by its index
 	 * or return {@code null} if failed.
 	 *
-	 * <p>Wraps {@link ESteamDomain#fromIndexOrElse(Integer, ESteamDomain)}
+	 * <p>Wraps {@link #fromIndexOrElse(Integer, ESteamDomain)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param index		index of the instance
