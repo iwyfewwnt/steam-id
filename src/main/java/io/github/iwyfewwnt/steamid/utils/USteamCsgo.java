@@ -105,13 +105,13 @@ public final class USteamCsgo {
 	 *     USteamCsgo.fromXuidOrElse(0, <defaultValue>);
 	 *
 	 *     // (String) defaultValue
-	 *     USteamCsgo.fromXuidOrElse(Long.MAX_VALUE, <defaultValue>);
+	 *     USteamCsgo.fromXuidOrElse(Integer.MAX_VALUE, <defaultValue>);
 	 *
 	 *     // (String) "AJJJS-ABAA"
-	 *     USteamCsgo.fromXuidOrElse(1L, <defaultValue>);
+	 *     USteamCsgo.fromXuidOrElse(1, <defaultValue>);
 	 *
 	 *     // (String) "AEVDG-WQTQ"
-	 *     USteamCsgo.fromXuidOrElse(1266042636L, <defaultValue>);
+	 *     USteamCsgo.fromXuidOrElse(1266042636, <defaultValue>);
 	 * }</pre>
 	 * <hr>
 	 *
@@ -157,13 +157,13 @@ public final class USteamCsgo {
 	 *     USteamCsgo.fromXuidOrElse(0, <defaultValueSupplier>);
 	 *
 	 *     // (String) defaultValue
-	 *     USteamCsgo.fromXuidOrElse(Long.MAX_VALUE, <defaultValueSupplier>);
+	 *     USteamCsgo.fromXuidOrElse(Integer.MAX_VALUE, <defaultValueSupplier>);
 	 *
 	 *     // (String) "AJJJS-ABAA"
-	 *     USteamCsgo.fromXuidOrElse(1L, <defaultValueSupplier>);
+	 *     USteamCsgo.fromXuidOrElse(1, <defaultValueSupplier>);
 	 *
 	 *     // (String) "AEVDG-WQTQ"
-	 *     USteamCsgo.fromXuidOrElse(1266042636L, <defaultValueSupplier>);
+	 *     USteamCsgo.fromXuidOrElse(1266042636, <defaultValueSupplier>);
 	 * }</pre>
 	 * <hr>
 	 *
@@ -195,13 +195,13 @@ public final class USteamCsgo {
 	 *     USteamCsgo.fromXuidOrEmpty(0);
 	 *
 	 *     // (String) ""
-	 *     USteamCsgo.fromXuidOrEmpty(Long.MAX_VALUE);
+	 *     USteamCsgo.fromXuidOrEmpty(Integer.MAX_VALUE);
 	 *
 	 *     // (String) "AJJJS-ABAA"
-	 *     USteamCsgo.fromXuidOrEmpty(1L);
+	 *     USteamCsgo.fromXuidOrEmpty(1);
 	 *
 	 *     // (String) "AEVDG-WQTQ"
-	 *     USteamCsgo.fromXuidOrEmpty(1266042636L);
+	 *     USteamCsgo.fromXuidOrEmpty(1266042636);
 	 * }</pre>
 	 * <hr>
 	 *
@@ -232,13 +232,13 @@ public final class USteamCsgo {
 	 *     USteamCsgo.fromXuidOrNull(0);
 	 *
 	 *     // (String) null
-	 *     USteamCsgo.fromXuidOrNull(Long.MAX_VALUE);
+	 *     USteamCsgo.fromXuidOrNull(Integer.MAX_VALUE);
 	 *
 	 *     // (String) "AJJJS-ABAA"
-	 *     USteamCsgo.fromXuidOrNull(1L);
+	 *     USteamCsgo.fromXuidOrNull(1);
 	 *
 	 *     // (String) "AEVDG-WQTQ"
-	 *     USteamCsgo.fromXuidOrNull(1266042636L);
+	 *     USteamCsgo.fromXuidOrNull(1266042636);
 	 * }</pre>
 	 * <hr>
 	 *

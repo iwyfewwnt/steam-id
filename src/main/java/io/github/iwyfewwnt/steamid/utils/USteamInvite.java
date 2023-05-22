@@ -77,13 +77,13 @@ public final class USteamInvite {
 	 *     USteamInvite.fromXuidOrElse(0, <defaultValue>);
 	 *
 	 *     // (String) defaultValue
-	 *     USteamInvite.fromXuidOrElse(Long.MAX_VALUE, <defaultValue>);
+	 *     USteamInvite.fromXuidOrElse(Integer.MAX_VALUE, <defaultValue>);
 	 *
 	 *     // (String) "c"
-	 *     USteamInvite.fromXuidOrElse(1L, <defaultValue>);
+	 *     USteamInvite.fromXuidOrElse(1, <defaultValue>);
 	 *
 	 *     // (String) "gqkj-gkbr"
-	 *     USteamInvite.fromXuidOrElse(1266042636L, <defaultValue>);
+	 *     USteamInvite.fromXuidOrElse(1266042636, <defaultValue>);
 	 * }</pre>
 	 * <hr>
 	 *
@@ -96,7 +96,7 @@ public final class USteamInvite {
 			return defaultValue;
 		}
 
-		String code = Long.toHexString(xuid);
+		String code = Integer.toHexString(xuid);
 		code = UwString.toBaseOrNull(code, XUID_BASE, CODE_BASE);
 
 		if (code == null) {
@@ -134,13 +134,13 @@ public final class USteamInvite {
 	 *     USteamInvite.fromXuidOrElse(0, <defaultValueSupplier>);
 	 *
 	 *     // (String) defaultValue
-	 *     USteamInvite.fromXuidOrElse(Long.MAX_VALUE, <defaultValueSupplier>);
+	 *     USteamInvite.fromXuidOrElse(Integer.MAX_VALUE, <defaultValueSupplier>);
 	 *
 	 *     // (String) "c"
-	 *     USteamInvite.fromXuidOrElse(1L, <defaultValueSupplier>);
+	 *     USteamInvite.fromXuidOrElse(1, <defaultValueSupplier>);
 	 *
 	 *     // (String) "gqkj-gkbr"
-	 *     USteamInvite.fromXuidOrElse(1266042636L, <defaultValueSupplier>);
+	 *     USteamInvite.fromXuidOrElse(1266042636, <defaultValueSupplier>);
 	 * }</pre>
 	 * <hr>
 	 *
@@ -175,13 +175,13 @@ public final class USteamInvite {
 	 *     USteamInvite.fromXuidOrEmpty(0);
 	 *
 	 *     // (String) ""
-	 *     USteamInvite.fromXuidOrEmpty(Long.MAX_VALUE);
+	 *     USteamInvite.fromXuidOrEmpty(Integer.MAX_VALUE);
 	 *
 	 *     // (String) "c"
-	 *     USteamInvite.fromXuidOrEmpty(1L);
+	 *     USteamInvite.fromXuidOrEmpty(1);
 	 *
 	 *     // (String) "gqkj-gkbr"
-	 *     USteamInvite.fromXuidOrEmpty(1266042636L);
+	 *     USteamInvite.fromXuidOrEmpty(1266042636);
 	 * }</pre>
 	 * <hr>
 	 *
@@ -215,13 +215,13 @@ public final class USteamInvite {
 	 *     USteamInvite.fromXuidOrNull(0);
 	 *
 	 *     // (String) null
-	 *     USteamInvite.fromXuidOrNull(Long.MAX_VALUE);
+	 *     USteamInvite.fromXuidOrNull(Integer.MAX_VALUE);
 	 *
 	 *     // (String) "c"
-	 *     USteamInvite.fromXuidOrNull(1L);
+	 *     USteamInvite.fromXuidOrNull(1);
 	 *
 	 *     // (String) "gqkj-gkbr"
-	 *     USteamInvite.fromXuidOrNull(1266042636L);
+	 *     USteamInvite.fromXuidOrNull(1266042636);
 	 * }</pre>
 	 * <hr>
 	 *
