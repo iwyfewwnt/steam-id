@@ -1296,7 +1296,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>This instance could is invalid.
+	 *     <li>This instance is invalid.
 	 *     <li>Catched {@link ArithmeticException}.
 	 * </ul>
 	 *
@@ -1344,7 +1344,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 *
 	 * <p>Possible failure cases:
 	 * <ul>
-	 *     <li>This instance could is invalid.
+	 *     <li>This instance is invalid.
 	 *     <li>Catched {@link ArithmeticException}.
 	 * </ul>
 	 *
