@@ -1328,8 +1328,7 @@ public final class SteamId implements Serializable, Cloneable {
 						.add(universe)
 						.add(account)
 						.longValueExact());
-			} catch (ArithmeticException e) {
-				e.printStackTrace();
+			} catch (ArithmeticException ignored) {
 			}
 		}
 
@@ -2488,8 +2487,7 @@ public final class SteamId implements Serializable, Cloneable {
 
 		try {
 			return isSteamXuidValid(Integer.parseUnsignedInt(xuid));
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
+		} catch (NumberFormatException ignored) {
 		}
 
 		return false;
@@ -2520,8 +2518,7 @@ public final class SteamId implements Serializable, Cloneable {
 
 		try {
 			return isSteamId64Valid(Long.parseUnsignedLong(id64));
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
+		} catch (NumberFormatException ignored) {
 		}
 
 		return false;
@@ -2571,8 +2568,7 @@ public final class SteamId implements Serializable, Cloneable {
 		try {
 			id2 = m.group(USteamRegex.Group.ID);
 			return isSteamId2Valid(Integer.parseUnsignedInt(id2));
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
+		} catch (NumberFormatException ignored) {
 		}
 
 		return false;
@@ -2598,8 +2594,7 @@ public final class SteamId implements Serializable, Cloneable {
 		try {
 			id3 = m.group(USteamRegex.Group.ID);
 			return isSteamXuidValid(Integer.parseUnsignedInt(id3));
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
+		} catch (NumberFormatException ignored) {
 		}
 
 		return false;
@@ -2679,8 +2674,7 @@ public final class SteamId implements Serializable, Cloneable {
 		try {
 			int id = Integer.parseUnsignedInt(xuid);
 			return fromSteamXuidOrElse(id, defaultValue);
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
+		} catch (NumberFormatException ignored) {
 		}
 
 		return defaultValue;
@@ -2807,8 +2801,7 @@ public final class SteamId implements Serializable, Cloneable {
 		try {
 			long val = Long.parseUnsignedLong(id64);
 			return fromSteam64OrElse(val, defaultValue);
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
+		} catch (NumberFormatException ignored) {
 		}
 
 		return defaultValue;
@@ -2880,8 +2873,7 @@ public final class SteamId implements Serializable, Cloneable {
 			int auth = Integer.parseUnsignedInt(m.group(USteamRegex.Group.AUTH));
 
 			return new SteamId((id << 1) | auth);
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
+		} catch (NumberFormatException ignored) {
 		}
 
 		return defaultValue;
@@ -2975,8 +2967,7 @@ public final class SteamId implements Serializable, Cloneable {
 			}
 
 			return new SteamId(xuid, universe, instance, account);
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
+		} catch (NumberFormatException ignored) {
 		}
 
 		return defaultValue;

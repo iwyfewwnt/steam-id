@@ -288,8 +288,7 @@ public final class USteamInvite {
 
 		try {
 			return Integer.parseUnsignedInt(code, 16);
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
+		} catch (NumberFormatException ignored) {
 		}
 
 		return defaultValue;
