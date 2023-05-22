@@ -72,13 +72,13 @@ public enum ESteamEndpoint {
 	 * A map of {@link ESteamEndpoint} instances by their endpoint field.
 	 */
 	private static final Map<String, ESteamEndpoint> MAP_BY_ENDPOINT = UwMap.newMapByFieldOrNull(
-			entry -> entry.endpoint, ESteamEndpoint.class
+			entry -> entry.value, ESteamEndpoint.class
 	);
 
 	/**
 	 * An endpoint string.
 	 */
-	private final String endpoint;
+	private final String value;
 
 	/**
 	 * A {@link #toString()} cache.
@@ -93,10 +93,10 @@ public enum ESteamEndpoint {
 	/**
 	 * Initialize an {@link ESteamEndpoint} instance.
 	 *
-	 * @param endpoint	endpoint string
+	 * @param value		endpoint string
 	 */
-	ESteamEndpoint(String endpoint) {
-		this.endpoint = endpoint;
+	ESteamEndpoint(String value) {
+		this.value = value;
 
 		this.stringCacheMutex = new Object();
 	}
@@ -106,8 +106,8 @@ public enum ESteamEndpoint {
 	 *
 	 * @return	endpoint string
 	 */
-	public String getEndpoint() {
-		return this.endpoint;
+	public String getAsString() {
+		return this.value;
 	}
 
 	/**
@@ -125,7 +125,7 @@ public enum ESteamEndpoint {
 			}
 
 			return (this.stringCache = SIMPLE_NAME + "::" + this.name() + "["
-					+ "endpoint=\"" + this.endpoint + "\""
+					+ "endpoint=\"" + this.value + "\""
 					+ "]");
 		}
 	}
@@ -143,8 +143,8 @@ public enum ESteamEndpoint {
 	 * @param defaultValue  default value to return on failure
 	 * @return				endpoint string or the default value
 	 */
-	public static String getEndpointOrElse(ESteamEndpoint endpoint, String defaultValue) {
-		return UwObject.ifNotNull(endpoint, ESteamEndpoint::getEndpoint, defaultValue);
+	public static String getAsStringOrElse(ESteamEndpoint endpoint, String defaultValue) {
+		return UwObject.ifNotNull(endpoint, ESteamEndpoint::getAsString, defaultValue);
 	}
 
 	/**
@@ -160,8 +160,8 @@ public enum ESteamEndpoint {
 	 * @param defaultValueSupplier 	supplier from which get the default value
 	 * @return						endpoint string or the default value
 	 */
-	public static String getEndpointOrElse(ESteamEndpoint endpoint, Supplier<String> defaultValueSupplier) {
-		return UwObject.ifNull(getEndpintOrNull(endpoint), defaultValueSupplier);
+	public static String getAsStringOrElse(ESteamEndpoint endpoint, Supplier<String> defaultValueSupplier) {
+		return UwObject.ifNull(getAsStringOrNull(endpoint), defaultValueSupplier);
 	}
 
 	/**
@@ -173,14 +173,14 @@ public enum ESteamEndpoint {
 	 *     <li>{@link ESteamEndpoint} instance is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link #getEndpointOrElse(ESteamEndpoint, String)}
+	 * <p>Wraps {@link #getAsStringOrElse(ESteamEndpoint, String)}
 	 * w/ {@link UwString#EMPTY} as the default value.
 	 *
 	 * @param endpoint	enum value of the endpoint type from which get the string
 	 * @return			endpoint string or the empty one
 	 */
-	public static String getEndpointOrEmpty(ESteamEndpoint endpoint) {
-		return getEndpointOrElse(endpoint, UwString.EMPTY);
+	public static String getAsStringOrEmpty(ESteamEndpoint endpoint) {
+		return getAsStringOrElse(endpoint, UwString.EMPTY);
 	}
 
 	/**
@@ -192,52 +192,52 @@ public enum ESteamEndpoint {
 	 *     <li>{@link ESteamEndpoint} instance is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link #getEndpointOrElse(ESteamEndpoint, String)}
+	 * <p>Wraps {@link #getAsStringOrElse(ESteamEndpoint, String)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param endpoint	enum value of the endpoint type from which get the string
 	 * @return			endpoint string or {@code null}
 	 */
-	public static String getEndpintOrNull(ESteamEndpoint endpoint) {
-		return getEndpointOrElse(endpoint, (String) null);
+	public static String getAsStringOrNull(ESteamEndpoint endpoint) {
+		return getAsStringOrElse(endpoint, (String) null);
 	}
 
 	/**
 	 * Get an {@link ESteamEndpoint} instance by its endpoint string
 	 * or return a default value if failed.
 	 *
-	 * @param endpoint		endpoint string of the instance
+	 * @param value			endpoint string of the instance
 	 * @param defaultValue	default value to return on failure
 	 * @return				associated {@link ESteamEndpoint} instance or the default value
 	 */
-	public static ESteamEndpoint fromEndpointOrElse(String endpoint, ESteamEndpoint defaultValue) {
-		return UwMap.getOrElse(endpoint, MAP_BY_ENDPOINT, defaultValue);
+	public static ESteamEndpoint fromStringOrElse(String value, ESteamEndpoint defaultValue) {
+		return UwMap.getOrElse(value, MAP_BY_ENDPOINT, defaultValue);
 	}
 
 	/**
 	 * Get an {@link ESteamEndpoint} instance by its endpoint string
 	 * or return a default value if failed.
 	 *
-	 * @param endpoint				endpoint string of the instance
+	 * @param value					endpoint string of the instance
 	 * @param defaultValueSupplier	supplier from which get the default value
 	 * @return						associated {@link ESteamEndpoint} instance or the default value
 	 */
-	public static ESteamEndpoint fromEndpointOrElse(String endpoint, Supplier<ESteamEndpoint> defaultValueSupplier) {
-		return UwObject.ifNull(fromEndpointOrNull(endpoint), defaultValueSupplier);
+	public static ESteamEndpoint fromStringOrElse(String value, Supplier<ESteamEndpoint> defaultValueSupplier) {
+		return UwObject.ifNull(fromStringOrNull(value), defaultValueSupplier);
 	}
 
 	/**
 	 * Get an {@link ESteamEndpoint} instance by its endpoint string
 	 * or return {@code null} if failed.
 	 *
-	 * <p>Wraps {@link #fromEndpointOrElse(String, ESteamEndpoint)}
+	 * <p>Wraps {@link #fromStringOrElse(String, ESteamEndpoint)}
 	 * w/ {@code null} as the default value.
 	 *
-	 * @param endpoint	endpoint string of the instance
+	 * @param value		endpoint string of the instance
 	 * @return			associated {@link ESteamEndpoint} instance or {@code null}
 	 */
-	public static ESteamEndpoint fromEndpointOrNull(String endpoint) {
-		return fromEndpointOrElse(endpoint, (ESteamEndpoint) null);
+	public static ESteamEndpoint fromStringOrNull(String value) {
+		return fromStringOrElse(value, (ESteamEndpoint) null);
 	}
 
 	/**

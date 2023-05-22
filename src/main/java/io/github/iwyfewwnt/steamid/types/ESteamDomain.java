@@ -65,13 +65,13 @@ public enum ESteamDomain {
 	 * A map of {@link ESteamDomain} instances by their domain field.
 	 */
 	private static final Map<String, ESteamDomain> MAP_BY_DOMAIN = UwMap.newMapByFieldOrNull(
-			entry -> entry.domain, ESteamDomain.class
+			entry -> entry.value, ESteamDomain.class
 	);
 
 	/**
 	 * A domain string.
 	 */
-	private final String domain;
+	private final String value;
 
 	/**
 	 * A {@link #toString()} cache.
@@ -86,10 +86,10 @@ public enum ESteamDomain {
 	/**
 	 * Initialize an {@link ESteamDomain} instance.
 	 *
-	 * @param domain	domain string
+	 * @param value		domain string
 	 */
-	ESteamDomain(String domain) {
-		this.domain = domain;
+	ESteamDomain(String value) {
+		this.value = value;
 
 		this.stringCacheMutex = new Object();
 	}
@@ -99,8 +99,8 @@ public enum ESteamDomain {
 	 *
 	 * @return	domain string
 	 */
-	public String getDomain() {
-		return this.domain;
+	public String getAsString() {
+		return this.value;
 	}
 
 	/**
@@ -118,7 +118,7 @@ public enum ESteamDomain {
 			}
 
 			return (this.stringCache = SIMPLE_NAME + "::" + this.name() + "["
-					+ "domain=\"" + this.domain + "\""
+					+ "domain=\"" + this.value + "\""
 					+ "]");
 		}
 	}
@@ -136,8 +136,8 @@ public enum ESteamDomain {
 	 * @param defaultValue	default value to return on failure
 	 * @return				domain string or the default value
 	 */
-	public static String getDomainOrElse(ESteamDomain domain, String defaultValue) {
-		return UwObject.ifNotNull(domain, ESteamDomain::getDomain, defaultValue);
+	public static String getAsStringOrElse(ESteamDomain domain, String defaultValue) {
+		return UwObject.ifNotNull(domain, ESteamDomain::getAsString, defaultValue);
 	}
 
 	/**
@@ -153,8 +153,8 @@ public enum ESteamDomain {
 	 * @param defaultValueSupplier	supplier from which get the default value
 	 * @return						domain string or the default value
 	 */
-	public static String getDomainOrElse(ESteamDomain domain, Supplier<String> defaultValueSupplier) {
-		return UwObject.ifNull(getDomainOrNull(domain), defaultValueSupplier);
+	public static String getAsStringOrElse(ESteamDomain domain, Supplier<String> defaultValueSupplier) {
+		return UwObject.ifNull(getAsStringOrNull(domain), defaultValueSupplier);
 	}
 
 	/**
@@ -166,14 +166,14 @@ public enum ESteamDomain {
 	 *     <li>{@link ESteamDomain} instance is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link #getDomainOrElse(ESteamDomain, String)}
+	 * <p>Wraps {@link #getAsStringOrElse(ESteamDomain, String)}
 	 * w/ {@link UwString#EMPTY} as the default value.
 	 *
 	 * @param domain	enum value of the domain type from which get the string
 	 * @return			domain string or the empty one
 	 */
-	public static String getDomainOrEmpty(ESteamDomain domain) {
-		return getDomainOrElse(domain, UwString.EMPTY);
+	public static String getAsStringOrEmpty(ESteamDomain domain) {
+		return getAsStringOrElse(domain, UwString.EMPTY);
 	}
 
 	/**
@@ -185,52 +185,52 @@ public enum ESteamDomain {
 	 *     <li>{@link ESteamDomain} instance is {@code null}.
 	 * </ul>
 	 *
-	 * <p>Wraps {@link #getDomainOrElse(ESteamDomain, String)}
+	 * <p>Wraps {@link #getAsStringOrElse(ESteamDomain, String)}
 	 * w/ {@code null} as the default value.
 	 *
 	 * @param domain	enum value of the domain type from which get the string
 	 * @return			domain string or {@code null}
 	 */
-	public static String getDomainOrNull(ESteamDomain domain) {
-		return getDomainOrElse(domain, (String) null);
+	public static String getAsStringOrNull(ESteamDomain domain) {
+		return getAsStringOrElse(domain, (String) null);
 	}
 
 	/**
 	 * Get an {@link ESteamDomain} instance by its domain string
 	 * or return a default value if failed.
 	 *
-	 * @param domain		domain string of the instance
+	 * @param value			domain string of the instance
 	 * @param defaultValue	default value to return on failure
 	 * @return				associated {@link ESteamDomain} instance or the default value
 	 */
-	public static ESteamDomain fromDomainOrElse(String domain, ESteamDomain defaultValue) {
-		return UwMap.getOrElse(domain, MAP_BY_DOMAIN, defaultValue);
+	public static ESteamDomain fromStringOrElse(String value, ESteamDomain defaultValue) {
+		return UwMap.getOrElse(value, MAP_BY_DOMAIN, defaultValue);
 	}
 
 	/**
 	 * Get an {@link ESteamDomain} instance by its domain string
 	 * or return a default value if failed.
 	 *
-	 * @param domain				domain string of the instance
+	 * @param value					domain string of the instance
 	 * @param defaultValueSupplier	supplier from which get the default value
 	 * @return						associated {@link ESteamDomain} instance or the default value
 	 */
-	public static ESteamDomain fromDomainOrElse(String domain, Supplier<ESteamDomain> defaultValueSupplier) {
-		return UwObject.ifNull(fromDomainOrNull(domain), defaultValueSupplier);
+	public static ESteamDomain fromStringOrElse(String value, Supplier<ESteamDomain> defaultValueSupplier) {
+		return UwObject.ifNull(fromStringOrNull(value), defaultValueSupplier);
 	}
 
 	/**
 	 * Get an {@link ESteamDomain} instance by its domain string
 	 * or return {@code null} if failed.
 	 *
-	 * <p>Wraps {@link #fromDomainOrElse(String, ESteamDomain)}
+	 * <p>Wraps {@link #fromStringOrElse(String, ESteamDomain)}
 	 * w/ {@code null} as the default value.
 	 *
-	 * @param domain	domain string of the instance
+	 * @param value		domain string of the instance
 	 * @return			associated {@link ESteamDomain} instance or {@code null}
 	 */
-	public static ESteamDomain fromDomainOrNull(String domain) {
-		return fromDomainOrElse(domain, (ESteamDomain) null);
+	public static ESteamDomain fromStringOrNull(String value) {
+		return fromStringOrElse(value, (ESteamDomain) null);
 	}
 
 	/**
