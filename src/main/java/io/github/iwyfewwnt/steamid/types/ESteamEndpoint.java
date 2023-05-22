@@ -115,6 +115,7 @@ public enum ESteamEndpoint {
 	 */
 	@Override
 	public String toString() {
+		//noinspection DuplicatedCode
 		if (this.stringCache != null) {
 			return this.stringCache;
 		}
@@ -125,7 +126,7 @@ public enum ESteamEndpoint {
 			}
 
 			return (this.stringCache = SIMPLE_NAME + "::" + this.name() + "["
-					+ "endpoint=\"" + this.value + "\""
+					+ "value=\"" + this.value + "\""
 					+ "]");
 		}
 	}

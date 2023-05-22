@@ -122,6 +122,7 @@ public enum ESteamUrl {
 	 */
 	@Override
 	public String toString() {
+		//noinspection DuplicatedCode
 		if (this.stringCache != null) {
 			return this.stringCache;
 		}
@@ -132,7 +133,7 @@ public enum ESteamUrl {
 			}
 
 			return (this.stringCache = SIMPLE_NAME + "::" + this.name() + "["
-					+ "url=\"" + this.value + "\""
+					+ "value=\"" + this.value + "\""
 					+ "]");
 		}
 	}

@@ -108,6 +108,7 @@ public enum ESteamDomain {
 	 */
 	@Override
 	public String toString() {
+		//noinspection DuplicatedCode
 		if (this.stringCache != null) {
 			return this.stringCache;
 		}
@@ -118,7 +119,7 @@ public enum ESteamDomain {
 			}
 
 			return (this.stringCache = SIMPLE_NAME + "::" + this.name() + "["
-					+ "domain=\"" + this.value + "\""
+					+ "value=\"" + this.value + "\""
 					+ "]");
 		}
 	}
