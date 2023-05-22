@@ -3359,39 +3359,6 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return				new {@link SteamId} instance or the default value
 	 */
 	public static SteamId fromSteamAnyOrElse(Object obj, SteamId defaultValue) {
-		return UwSystem.disableErrorPrint(() -> {
-			return fromSteamAnyOrElse0(obj, defaultValue);
-		});
-	}
-
-	/**
-	 * Create a {@link SteamId} instance from the Steam related object
-	 * or return a default value if failed.
-	 *
-	 * <p>Wraps all these methods in order:
-	 * <ul>
-	 *     <li>{@link #fromSteamXuidOrElse(Integer, SteamId)}
-	 *     <li>{@link #fromSteam64OrElse(Long, SteamId)}
-	 *     <li>{@link #fromSteamXuidOrElse(String, SteamId)}
-	 *     <li>{@link #fromSteam64OrElse(String, SteamId)}
-	 *     <li>{@link #fromSteam2OrElse(String, SteamId)}
-	 *     <li>{@link #fromSteam3OrElse(String, SteamId)}
-	 *     <li>{@link #fromInviteCodeOrElse(String, SteamId)}
-	 *     <li>{@link #fromCsgoCodeOrElse(String, SteamId)}
-	 *     <li>{@link #fromSteamUrlOrElse(String, SteamId)}
-	 * </ul>
-	 *
-	 * <p>Possible failure case:
-	 * <ul>
-	 *     <li>Object type doesn't match w/ Integer, Long, and String classes
-	 *     <li>Provided argument isn't valid for the all implemented methods
-	 * </ul>
-	 *
-	 * @param obj			Steam related object
-	 * @param defaultValue 	default value to return on failure
-	 * @return				new {@link SteamId} instance or the default value
-	 */
-	private static SteamId fromSteamAnyOrElse0(Object obj, SteamId defaultValue) {
 		if (obj == null) {
 			return defaultValue;
 		}
