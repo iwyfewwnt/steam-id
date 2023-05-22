@@ -2481,16 +2481,14 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return		boolean value that describes validity of the identifier
 	 */
 	public static boolean isSteamXuidValid(String xuid) {
-		if (xuid == null) {
-			return false;
-		}
+		Integer intVal = null;
 
 		try {
-			return isSteamXuidValid(Integer.parseUnsignedInt(xuid));
+			intVal = Integer.parseUnsignedInt(xuid);
 		} catch (NumberFormatException ignored) {
 		}
 
-		return false;
+		return isSteamXuidValid(intVal);
 	}
 
 	/**
@@ -2512,16 +2510,14 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return		boolean value that descibes validity of the identifier
 	 */
 	public static boolean isSteamId64Valid(String id64) {
-		if (id64 == null) {
-			return false;
-		}
+		Long longVal = null;
 
 		try {
-			return isSteamId64Valid(Long.parseUnsignedLong(id64));
+			longVal = Long.parseUnsignedLong(id64);
 		} catch (NumberFormatException ignored) {
 		}
 
-		return false;
+		return isSteamId64Valid(longVal);
 	}
 
 	/**
@@ -2565,13 +2561,14 @@ public final class SteamId implements Serializable, Cloneable {
 			return false;
 		}
 
+		Integer intVal = null;
+
 		try {
-			id2 = m.group(USteamRegex.Group.ID);
-			return isSteamId2Valid(Integer.parseUnsignedInt(id2));
+			intVal = Integer.parseUnsignedInt(m.group(USteamRegex.Group.ID));
 		} catch (NumberFormatException ignored) {
 		}
 
-		return false;
+		return isSteamId2Valid(intVal);
 	}
 
 	/**
@@ -2591,13 +2588,14 @@ public final class SteamId implements Serializable, Cloneable {
 			return false;
 		}
 
+		Integer intVal = null;
+
 		try {
-			id3 = m.group(USteamRegex.Group.ID);
-			return isSteamXuidValid(Integer.parseUnsignedInt(id3));
+			intVal = Integer.parseUnsignedInt(m.group(USteamRegex.Group.ID));
 		} catch (NumberFormatException ignored) {
 		}
 
-		return false;
+		return isSteamXuidValid(intVal);
 	}
 
 	/**
