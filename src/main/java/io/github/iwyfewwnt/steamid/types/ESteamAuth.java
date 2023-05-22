@@ -148,11 +148,7 @@ public enum ESteamAuth {
 	 * @return				account authentication type identifier or the default value
 	 */
 	public static Integer getIdOrElse(ESteamAuth auth, Integer defaultValue) {
-		if (auth == null) {
-			return defaultValue;
-		}
-
-		return auth.getId();
+		return UwObject.ifNotNull(auth, ESteamAuth::getId, defaultValue);
 	}
 
 	/**

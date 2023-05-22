@@ -151,11 +151,7 @@ public enum ESteamUrl {
 	 * @return				URL string or the default value
 	 */
 	public static String getUrlOrElse(ESteamUrl url, String defaultValue) {
-		if (url == null) {
-			return defaultValue;
-		}
-
-		return url.getUrl();
+		return UwObject.ifNotNull(url, ESteamUrl::getUrl, defaultValue);
 	}
 
 	/**

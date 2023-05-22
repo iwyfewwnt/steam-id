@@ -137,11 +137,7 @@ public enum ESteamDomain {
 	 * @return				domain string or the default value
 	 */
 	public static String getDomainOrElse(ESteamDomain domain, String defaultValue) {
-		if (domain == null) {
-			return defaultValue;
-		}
-
-		return domain.getDomain();
+		return UwObject.ifNotNull(domain, ESteamDomain::getDomain, defaultValue);
 	}
 
 	/**

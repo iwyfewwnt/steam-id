@@ -152,11 +152,7 @@ public enum ESteamVanity {
 	 * @return				vanity URL type identifier or the defualt value
 	 */
 	public static Integer getIdOrElse(ESteamVanity vanity, Integer defaultValue) {
-		if (vanity == null) {
-			return defaultValue;
-		}
-
-		return vanity.getId();
+		return UwObject.ifNotNull(vanity, ESteamVanity::getId, defaultValue);
 	}
 
 	/**

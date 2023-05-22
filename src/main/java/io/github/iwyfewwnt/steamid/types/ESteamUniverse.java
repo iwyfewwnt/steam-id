@@ -183,11 +183,7 @@ public enum ESteamUniverse {
 	 * @return				account universe type identifier or the default value
 	 */
 	public static Integer getIdOrElse(ESteamUniverse universe, Integer defaultValue) {
-		if (universe == null) {
-			return defaultValue;
-		}
-
-		return universe.getId();
+		return UwObject.ifNotNull(universe, ESteamUniverse::getId, defaultValue);
 	}
 
 	/**

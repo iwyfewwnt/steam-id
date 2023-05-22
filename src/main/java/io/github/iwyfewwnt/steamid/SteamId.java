@@ -3023,13 +3023,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return				new {@link SteamId} instance or the default value
 	 */
 	public static SteamId fromInviteCodeOrElse(String code, SteamId defaultValue) {
-		Integer xuid = USteamInvite.toXuidOrNull(code);
-
-		if (xuid == null) {
-			return defaultValue;
-		}
-
-		return new SteamId(xuid);
+		return UwObject.ifNotNull(USteamInvite.toXuidOrNull(code), SteamId::new, defaultValue);
 	}
 
 	/**
@@ -3082,13 +3076,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * @return				new {@link SteamId} instance or the default value
 	 */
 	public static SteamId fromCsgoCodeOrElse(String code, SteamId defaultValue) {
-		Integer xuid = USteamCsgo.toXuidOrNull(code);
-
-		if (xuid == null) {
-			return defaultValue;
-		}
-
-		return new SteamId(xuid);
+		return UwObject.ifNotNull(USteamCsgo.toXuidOrNull(code), SteamId::new, defaultValue);
 	}
 
 	/**

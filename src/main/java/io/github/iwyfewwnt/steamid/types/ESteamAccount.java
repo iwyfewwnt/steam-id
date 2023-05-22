@@ -248,11 +248,7 @@ public enum ESteamAccount {
 	 * @return				account type identifier or the default value
 	 */
 	public static Integer getIdOrElse(ESteamAccount account, Integer defualtValue) {
-		if (account == null) {
-			return defualtValue;
-		}
-
-		return account.getId();
+		return UwObject.ifNotNull(account, ESteamAccount::getId, defualtValue);
 	}
 
 	/**
@@ -324,11 +320,7 @@ public enum ESteamAccount {
 	 * @return				account type character or the default value
 	 */
 	public static Character getCharOrElse(ESteamAccount account, Character defaultValue) {
-		if (account == null) {
-			return defaultValue;
-		}
-
-		return account.getChar();
+		return UwObject.ifNotNull(account, ESteamAccount::getChar, defaultValue);
 	}
 
 	/**

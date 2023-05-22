@@ -180,11 +180,7 @@ public enum ESteamInstance {
 	 * @return				account instance type identifier or the default value
 	 */
 	public static Integer getIdOrElse(ESteamInstance instance, Integer defaultValue) {
-		if (instance == null) {
-			return defaultValue;
-		}
-
-		return instance.getId();
+		return UwObject.ifNotNull(instance, ESteamInstance::getId, defaultValue);
 	}
 
 	/**

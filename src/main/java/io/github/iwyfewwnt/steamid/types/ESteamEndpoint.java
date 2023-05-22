@@ -144,11 +144,7 @@ public enum ESteamEndpoint {
 	 * @return				endpoint string or the default value
 	 */
 	public static String getEndpointOrElse(ESteamEndpoint endpoint, String defaultValue) {
-		if (endpoint == null) {
-			return defaultValue;
-		}
-
-		return endpoint.getEndpoint();
+		return UwObject.ifNotNull(endpoint, ESteamEndpoint::getEndpoint, defaultValue);
 	}
 
 	/**
