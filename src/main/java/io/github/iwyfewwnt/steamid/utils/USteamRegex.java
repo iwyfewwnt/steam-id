@@ -129,7 +129,7 @@ public final class USteamRegex {
 	 *     <li>{@link USteamRegex.Group#ID}.
 	 * </ul>
 	 */
-	public static final String PROFILE_URL = String.format("^https?://(?:www\\.|(?!www))(?:my\\.steamchina|steamcommunity)\\.com/(profiles|gid)\\/(?<%s>.+?)(?:/|$)$",
+	public static final String PROFILE_URL = String.format("^(?:https?:+//)?/*(?:my\\.steamchina|(?:www\\.)?steamcommunity)\\.com/+profiles/+(?<%s>.+?)/*$",
 			Group.ID
 	);
 
@@ -141,7 +141,7 @@ public final class USteamRegex {
 	 *     <li>{@link USteamRegex.Group#ID}.
 	 * </ul>
 	 */
-	public static final String USER_URL = String.format("^https?://(?:www\\.|(?!www))(?:(?:my\\.steamchina|steamcommunity)\\.com/user|s\\.team/p)/(?<%s>[\\w-]+)(?:/|$)$",
+	public static final String USER_URL = String.format("^(?:https?:+//)?/*(?:(?:my\\.steamchina|(?:www\\.)?steamcommunity)\\.com/+user|s\\.team/+p)/+(?<%s>[\\w-]+)/*$",
 			Group.ID
 	);
 
