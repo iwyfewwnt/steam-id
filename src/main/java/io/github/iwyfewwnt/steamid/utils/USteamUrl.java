@@ -67,7 +67,7 @@ public final class USteamUrl {
 	 * @param endpoint	Steam endpoint to include in URL
 	 * @return			Steam URL pointing to the endpoint w/ specified domain
 	 *
-	 * @throws IllegalArgumentException	if domain is {@code null} or endpoint is {@code null}
+	 * @throws IllegalArgumentException	if domain is {@code null/empty} or endpoint is {@code null/empty}
 	 */
 	private static String url(String domain, String endpoint) {
 		if (domain == null) {
