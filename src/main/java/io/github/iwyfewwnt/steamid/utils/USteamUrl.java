@@ -50,17 +50,6 @@ public final class USteamUrl {
 	public static final String CHINA = url(USteamDomain.CHINA, USteamEndpoint.PROFILES);
 
 	/**
-	 * A Steam URL format string.
-	 *
-	 * <p>Arguments in order:
-	 * <ul>
-	 *     <li>String :: Steam domain value.
-	 *     <li>String :: Steam endpoint value.
-	 * </ul>
-	 */
-	private static final String URL_FMT = "https://%s/%s/";
-
-	/**
 	 * Make a Steam URL.
 	 *
 	 * @param domain	Steam domain to include in URL
@@ -86,7 +75,7 @@ public final class USteamUrl {
 			throw new IllegalArgumentException("Endpoint mustn't be <empty>");
 		}
 
-		return String.format(URL_FMT, domain, endpoint);
+		return "https://" + domain + "/" + endpoint + "/";
 	}
 
 	private USteamUrl() {
