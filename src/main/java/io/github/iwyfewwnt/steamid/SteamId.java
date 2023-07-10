@@ -381,7 +381,7 @@ public final class SteamId implements Serializable, Cloneable {
 	/**
 	 * Initialize a {@link SteamId} instance.
 	 *
-	 * <p>Defines a copy consutrctor.
+	 * <p>Defines a copy constructor.
 	 *
 	 * @param that	instance to copy field values from
 	 */
