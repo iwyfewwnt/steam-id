@@ -1368,7 +1368,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * <p>Wraps {@link #toStaticKeyOrElse(Long)}
 	 * w/ {@code 0L} as the default value.
 	 *
-	 * @return 				long value of the static key or {@code 0L}
+	 * @return 	long value of the static key or {@code 0L}
 	 */
 	public Long toStaticKeyOrZero() {
 		return this.toStaticKeyOrElse(0L);
@@ -1389,7 +1389,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * <p>Wraps {@link #toStaticKeyOrElse(Long)}
 	 * w/ {@code null} as the default value.
 	 *
-	 * @return 				long value of the static key or {@code null}
+	 * @return 	long value of the static key or {@code null}
 	 */
 	public Long toStaticKeyOrNull() {
 		return this.toStaticKeyOrElse((Long) null);
@@ -1465,7 +1465,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * <p>Wraps {@link #toSteam64OrElse(Long)}
 	 * w/ {@code 0L} as the default value.
 	 *
-	 * @return 				long value of the unique account type-64 identifier or {@code 0L}
+	 * @return 	long value of the unique account type-64 identifier or {@code 0L}
 	 *
 	 * @see <a href="https://vk.cc/ch9dMy">Steam ID as a Steam Community ID for 64-bit Systems</a>
 	 */
@@ -1485,7 +1485,7 @@ public final class SteamId implements Serializable, Cloneable {
 	 * <p>Wraps {@link #toSteam64OrElse(Long)}
 	 * w/ {@code null} as the default value.
 	 *
-	 * @return 				long value of the unique account type-64 identifier or {@code null}
+	 * @return 	long value of the unique account type-64 identifier or {@code null}
 	 *
 	 * @see <a href="https://vk.cc/ch9dMy">Steam ID as a Steam Community ID for 64-bit Systems</a>
 	 */
