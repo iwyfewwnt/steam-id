@@ -22,7 +22,6 @@ import io.github.iwyfewwnt.steamid.types.ESteamUniverse;
 import io.github.iwyfewwnt.steamid.utils.*;
 import io.github.iwyfewwnt.uwutils.UwObject;
 import io.github.iwyfewwnt.uwutils.UwString;
-import io.github.iwyfewwnt.uwutils.UwSystem;
 
 import java.io.Serializable;
 import java.math.BigInteger;
