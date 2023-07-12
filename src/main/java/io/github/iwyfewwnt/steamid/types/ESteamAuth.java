@@ -62,20 +62,25 @@ public enum ESteamAuth {
 	public static final ESteamAuth MAX = YES;
 
 	/**
+	 * A class instance of this class.
+	 */
+	private static final Class<ESteamAuth> CLASS = ESteamAuth.class;
+
+	/**
 	 * A simple name of this class.
 	 */
-	private static final String SIMPLE_NAME = ESteamAuth.class.getSimpleName();
+	private static final String SIMPLE_NAME = CLASS.getSimpleName();
 
 	/**
 	 * An array of {@link ESteamAuth} instances.
 	 */
-	private static final ESteamAuth[] VALUES = UwEnum.values(ESteamAuth.class);
+	private static final ESteamAuth[] VALUES = UwEnum.values(CLASS);
 
 	/**
 	 * A map of {@link ESteamAuth} instances by their identifier field.
 	 */
-	private static final Map<Integer, ESteamAuth> MAP_BY_ID = UwMap.newMapByFieldOrNull(
-			entry -> entry.id, ESteamAuth.class
+	private static final Map<Integer, ESteamAuth> MAP_BY_ID = UwMap.createByFieldOrNull(
+			entry -> entry.id, VALUES
 	);
 
 	/**

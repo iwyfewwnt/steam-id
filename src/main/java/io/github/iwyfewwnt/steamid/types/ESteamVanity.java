@@ -65,21 +65,23 @@ public enum ESteamVanity {
 	 */
 	public static final ESteamVanity MAX = GAME_GROUP;
 
+	private static final Class<ESteamVanity> CLASS = ESteamVanity.class;
+
 	/**
 	 * A simple name of this class.
 	 */
-	private static final String SIMPLE_NAME = ESteamVanity.class.getSimpleName();
+	private static final String SIMPLE_NAME = CLASS.getSimpleName();
 
 	/**
 	 * An array of {@link ESteamVanity} instances.
 	 */
-	private static final ESteamVanity[] VALUES = UwEnum.values(ESteamVanity.class);
+	private static final ESteamVanity[] VALUES = UwEnum.values(CLASS);
 
 	/**
 	 * A map of {@link ESteamVanity} instances by their identifier field.
 	 */
-	private static final Map<Integer, ESteamVanity> MAP_BY_ID = UwMap.newMapByFieldOrNull(
-			entry -> entry.id, ESteamVanity.class
+	private static final Map<Integer, ESteamVanity> MAP_BY_ID = UwMap.createByFieldOrNull(
+			entry -> entry.id, VALUES
 	);
 
 	/**

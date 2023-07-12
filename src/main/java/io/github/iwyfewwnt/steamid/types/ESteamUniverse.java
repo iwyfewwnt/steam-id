@@ -97,20 +97,25 @@ public enum ESteamUniverse {
 	public static final ESteamUniverse MAX = RC;
 
 	/**
+	 * A class instance of this class.
+	 */
+	private static final Class<ESteamUniverse> CLASS = ESteamUniverse.class;
+
+	/**
 	 * A simple name of this class.
 	 */
-	private static final String SIMPLE_NAME = ESteamUniverse.class.getSimpleName();
+	private static final String SIMPLE_NAME = CLASS.getSimpleName();
 
 	/**
 	 * An array of {@link ESteamUniverse} instances.
 	 */
-	private static final ESteamUniverse[] VALUES = UwEnum.values(ESteamUniverse.class);
+	private static final ESteamUniverse[] VALUES = UwEnum.values(CLASS);
 
 	/**
 	 * A map of {@link ESteamUniverse} instances by their identifier field.
 	 */
-	private static final Map<Integer, ESteamUniverse> MAP_BY_ID = UwMap.newMapByFieldOrNull(
-			entry -> entry.id, ESteamUniverse.class
+	private static final Map<Integer, ESteamUniverse> MAP_BY_ID = UwMap.createByFieldOrNull(
+			entry -> entry.id, VALUES
 	);
 
 	/**

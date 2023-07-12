@@ -52,20 +52,25 @@ public enum ESteamDomain {
 	CHINA(USteamDomain.CHINA);
 
 	/**
+	 * A class instance of this class.
+	 */
+	private static final Class<ESteamDomain> CLASS = ESteamDomain.class;
+
+	/**
 	 * A simple name of this class.
 	 */
-	private static final String SIMPLE_NAME = ESteamDomain.class.getSimpleName();
+	private static final String SIMPLE_NAME = CLASS.getSimpleName();
 
 	/**
 	 * An array of {@link ESteamDomain} instances.
 	 */
-	private static final ESteamDomain[] VALUES = UwEnum.values(ESteamDomain.class);
+	private static final ESteamDomain[] VALUES = UwEnum.values(CLASS);
 
 	/**
 	 * A map of {@link ESteamDomain} instances by their domain field.
 	 */
-	private static final Map<String, ESteamDomain> MAP_BY_DOMAIN = UwMap.newMapByFieldOrNull(
-			entry -> entry.value, ESteamDomain.class
+	private static final Map<String, ESteamDomain> MAP_BY_DOMAIN = UwMap.createByFieldOrNull(
+			entry -> entry.value, VALUES
 	);
 
 	/**

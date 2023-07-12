@@ -139,27 +139,32 @@ public enum ESteamAccount {
 	public static ESteamAccount MAX = UNKNOWN;
 
 	/**
+	 * A class instance of this class.
+	 */
+	private static final Class<ESteamAccount> CLASS = ESteamAccount.class;
+
+	/**
 	 * A simple name of this class.
 	 */
-	private static final String SIMPLE_NAME = ESteamAccount.class.getSimpleName();
+	private static final String SIMPLE_NAME = CLASS.getSimpleName();
 
 	/**
 	 * An array of {@link ESteamAccount} instances.
 	 */
-	private static final ESteamAccount[] VALUES = UwEnum.values(ESteamAccount.class);
+	private static final ESteamAccount[] VALUES = UwEnum.values(CLASS);
 
 	/**
 	 * A map of {@link ESteamAccount} instances by their identifier field.
 	 */
-	private static final Map<Integer, ESteamAccount> MAP_BY_ID = UwMap.newMapByFieldOrNull(
-			entry -> entry.id, ESteamAccount.class
+	private static final Map<Integer, ESteamAccount> MAP_BY_ID = UwMap.createByFieldOrNull(
+			entry -> entry.id, VALUES
 	);
 
 	/**
 	 * A map of {@link ESteamAccount} instances by their character field.
 	 */
-	private static final Map<Character, ESteamAccount> MAP_BY_CHAR = UwMap.newMapByFieldOrNull(
-			entry -> entry.ch, ESteamAccount.class
+	private static final Map<Character, ESteamAccount> MAP_BY_CHAR = UwMap.createByFieldOrNull(
+			entry -> entry.ch, VALUES
 	);
 
 	/**

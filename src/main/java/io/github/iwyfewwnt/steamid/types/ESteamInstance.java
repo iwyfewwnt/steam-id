@@ -94,20 +94,25 @@ public enum ESteamInstance {
 	public static final ESteamInstance MAX = WEB;
 
 	/**
+	 * A class instance of this class.
+	 */
+	private static final Class<ESteamInstance> CLASS = ESteamInstance.class;
+
+	/**
 	 * A simple name of this class.
 	 */
-	private static final String SIMPLE_NAME = ESteamInstance.class.getSimpleName();
+	private static final String SIMPLE_NAME = CLASS.getSimpleName();
 
 	/**
 	 * An array of {@link ESteamInstance} instances.
 	 */
-	private static final ESteamInstance[] VALUES = UwEnum.values(ESteamInstance.class);
+	private static final ESteamInstance[] VALUES = UwEnum.values(CLASS);
 
 	/**
 	 * A map of {@link ESteamInstance} instances by their identifier field.
 	 */
-	private static final Map<Integer, ESteamInstance> MAP_BY_ID = UwMap.newMapByFieldOrNull(
-			entry -> entry.id, ESteamInstance.class
+	private static final Map<Integer, ESteamInstance> MAP_BY_ID = UwMap.createByFieldOrNull(
+			entry -> entry.id, VALUES
 	);
 
 	/**

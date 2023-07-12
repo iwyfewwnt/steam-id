@@ -66,20 +66,25 @@ public enum ESteamUrl {
 	CHINA(USteamUrl.CHINA);
 
 	/**
+	 * A class instance of this class.
+	 */
+	private static final Class<ESteamUrl> CLASS = ESteamUrl.class;
+
+	/**
 	 * A simple name of this class.
 	 */
-	private static final String SIMPLE_NAME = ESteamUrl.class.getSimpleName();
+	private static final String SIMPLE_NAME = CLASS.getSimpleName();
 
 	/**
 	 * An array of {@link ESteamUrl} instances.
 	 */
-	private static final ESteamUrl[] VALUES = UwEnum.values(ESteamUrl.class);
+	private static final ESteamUrl[] VALUES = UwEnum.values(CLASS);
 
 	/**
 	 * A map of {@link ESteamUrl} instances by their URL field.
 	 */
-	private static final Map<String, ESteamUrl> MAP_BY_URL = UwMap.newMapByFieldOrNull(
-			entry -> entry.value, ESteamUrl.class
+	private static final Map<String, ESteamUrl> MAP_BY_URL = UwMap.createByFieldOrNull(
+			entry -> entry.value, VALUES
 	);
 
 	/**

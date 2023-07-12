@@ -59,19 +59,24 @@ public enum ESteamEndpoint {
 	P(USteamEndpoint.P);
 
 	/**
+	 * A class instance of this class.
+	 */
+	private static final Class<ESteamEndpoint> CLASS = ESteamEndpoint.class;
+
+	/**
 	 * A simple name of this class.
 	 */
-	private static final String SIMPLE_NAME = ESteamEndpoint.class.getSimpleName();
+	private static final String SIMPLE_NAME = CLASS.getSimpleName();
 
 	/**
 	 * An array of {@link ESteamEndpoint} instances.
 	 */
-	private static final ESteamEndpoint[] VALUES = UwEnum.values(ESteamEndpoint.class);
+	private static final ESteamEndpoint[] VALUES = UwEnum.values(CLASS);
 
 	/**
 	 * A map of {@link ESteamEndpoint} instances by their endpoint field.
 	 */
-	private static final Map<String, ESteamEndpoint> MAP_BY_ENDPOINT = UwMap.newMapByFieldOrNull(
+	private static final Map<String, ESteamEndpoint> MAP_BY_ENDPOINT = UwMap.createByFieldOrNull(
 			entry -> entry.value, ESteamEndpoint.class
 	);
 
